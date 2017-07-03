@@ -1,0 +1,12 @@
+[sids_path]
+/home/mehedi/projects/obesity/splits/raw/test/test-2.txt
+[col_path]
+/home/mehedi/projects/obesity/data/raw.txt
+[col_lm_path]
+/home/mehedi/projects/obesity/data/raw-col-lm.txt
+[cls_tops_path]
+/home/mehedi/projects/obesity/lda/raw/cls-tops-2.txt
+[out_file]
+/home/mehedi/projects/obesity/class/lda/raw/test-2.txt
+[verbose]
+0

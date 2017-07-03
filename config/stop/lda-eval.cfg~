@@ -1,0 +1,6 @@
+[test_splits_dir]
+/home/mehedi/projects/obesity/splits/stem/test
+[cls_res_dir]
+/home/mehedi/projects/obesity/class/lda/stem/
+[perf_file]
+/home/mehedi/projects/obesity/perf/lda/stem.txt
