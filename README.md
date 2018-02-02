@@ -5,17 +5,17 @@ We propose Latent Class Allocation (LCA) and Discriminative Labeled Latent Diric
 ## Compile Project
 
   * Open terminal in the src folder of the project
-  * Run 'make clean'
-  * Run 'make all'
+  * Run "make clean"
+  * Run "make all"
 
 ## Running Models and Evaluate Results
 
 Now, you have all the executables in your project bin directory. Go to the project bin directory first.
   
   * Check all configuration files and their directories
-  * Run one of the model from LabLDA, MGLabLDA and LTA : './LabLDA <cfg file>'
-  * Run './Eval <cfg file>'
-  * Performance of the model will be  saved into 'perf' folder
+  * Run one of the model from LabLDA, MGLabLDA and LTA : "./LabLDA <cfg file>"
+  * Run "./Eval <cfg file>"
+  * Performance of the model will be  saved into "perf" folder
 
 
 ## Citation
