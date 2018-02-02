@@ -13,8 +13,8 @@ We propose Latent Class Allocation (LCA) and Discriminative Labeled Latent Diric
 Now, you have all the executables in your project bin directory. Go to the project bin directory first.
   
   * Check all configuration files and their directories
-  * Run one of the model from LabLDA, MGLabLDA and LTA : "./LabLDA <cfg file>"
-  * Run "./Eval <cfg file>"
+  * Run one of the model from LabLDA, MGLabLDA and LTA : "./LabLDA &lt;cfg file &gt;"
+  * Run "./Eval  &lt;cfg file &gt;"
   * Performance of the model will be  saved into "perf" folder
 
 
