@@ -1,6 +1,6 @@
 # $Id: Makefile,v 1.4 2014/06/21 03:15:07 fn6418 Exp $
 
-PROJ_DIR=/home/mehedi/workspace/obesity
+PROJ_DIR=/home/mehedi/teana/projects/adolescent-obesity-AMIA-2015
 
 BIN_DIR=$(PROJ_DIR)/bin/$(BUILD_MODE)
 OBJ_DIR=$(PROJ_DIR)/_obj/$(BUILD_MODE)

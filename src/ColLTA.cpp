@@ -6,7 +6,7 @@
 #include "LTA.hpp"
 
 void usage(const char* progName) {
-  printf("Usage: %s arg_file\n", progName);
+  printf("Usage: %s arg_file \n", progName);
   printf("Arguments:\n");
   printf("  sids_path - path to the file with sample IDs\n");
   printf("  col_path - path to the file with classified sample collection\n");
