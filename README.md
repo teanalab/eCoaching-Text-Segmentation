@@ -19,7 +19,7 @@ Now, you have all the executables in your project bin directory. Go to the proje
   * Performance of the model will be  saved into "perf" folder
 
 
-N.B. : If you are using stopwords or stem and stop together, then you will have to modify the corresponding directory such as "../config/stop-stem/split.cfg"
+N.B. : If you are using stopwords or stem and stop together, then you will have to modify the corresponding file such as "../config/stop-stem/split.cfg"
 
 ## Citation
 
