@@ -12,11 +12,14 @@ We propose Latent Class Allocation (LCA) and Discriminative Labeled Latent Diric
 
 Now, you have all the executables in your project bin directory. Go to the project bin directory first.
   
-  * Check all configuration files and their directories
-  * Run one of the model from LabLDA, MGLabLDA and LTA : "./LabLDA &lt;cfg file&gt;"
-  * Run "./Eval  &lt;cfg file&gt;"
+  * Open all configuration files and check the directories mentined inside
+  * Split the dataset into train and test sets. You can modify the cfg file for KFolds, deafult value sets as 5. Run "./Splitter  &lt;../config/stem/split.cfg&gt;"
+  * Modify all configuration files from config/stem for Each model, you can modify the alpha and beta value from this configuration file. You need 10 cfg files for each model if 10 folds is used. Run one of the model from LabLDA, MGLabLDA and LTA : "./LabLDA &lt;../config/stem/lda-1.cfg&gt;"; You can create a bash file and run 10 folds one by one with a single line command. After this run you will get word distribution. 
+  * Modify configuration file from config/stem for evaluation. Run "./Eval  &lt;../config/stem/lda-eval.cfg&gt;"
   * Performance of the model will be  saved into "perf" folder
 
+
+N.B. : If you are using stopwords or stem and stop together, then you will have to modify the corresponding directory such as "../config/stop-stem/split.cfg"
 
 ## Citation
 
