@@ -40,7 +40,7 @@ You can create a bash file and run 10 folds one by one with a single line comman
   * Performance of the model will be  saved into "perf" folder
 
 
-	N.B. : If you are using stopwords or stem and stop together, then you will have to modify the corresponding file such as "../config/stop-stem/split.cfg"
+N.B. : If you are using stopwords or stem and stop together, then you will have to modify the corresponding file such as "../config/stop-stem/split.cfg"
 
 ## Databases and Results
 	* data : contains the raw/stem/stop-stem data
