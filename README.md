@@ -43,12 +43,12 @@ You can create a bash file and run 10 folds one by one with a single line comman
 N.B. : If you are using stopwords or stem and stop together, then you will have to modify the corresponding file such as "../config/stop-stem/split.cfg"
 
 ## Databases and Results
-	* data : contains the raw/stem/stop-stem data
-    * splits: contains train and test data after k folds splitting
-    * stats: statistics of train and test datasets 
-    * topic: topic distributions
-    * class: classification results of test data
-    * perf: performance detail of the models
+ * data : contains the raw/stem/stop-stem data
+ * splits: contains train and test data after k folds splitting
+ * stats: statistics of train and test datasets 
+ * topic: topic distributions
+ * class: classification results of test data
+ * perf: performance detail of the models
 
 ## Citation
 
