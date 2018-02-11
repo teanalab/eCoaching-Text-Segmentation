@@ -18,6 +18,10 @@ We propose a new method for the segmentation of text collected from eCoaching.
 Now, you have all the executables in your project bin directory. Go to the project bin directory first.
   
   * Open all configuration files and check the directories mentined inside
+  * Format input data for LDA model
+```
+ ./Formatter ../config/stem/format.cfg
+```
   * Split the dataset into train and test sets. You can modify the cfg file for KFolds, deafult value sets as 5. Run 
 ```
 ./Splitter  ../config/stem/split.cfg
