@@ -22,7 +22,13 @@
 	    <artifactId>mallet</artifactId>
 	    <version>2.0.12</version>
 	</dependency>
-	
+	<!-- https://mvnrepository.com/artifact/gov.sandia.foundry/porter-stemmer -->
+	<dependency>
+	    <groupId>gov.sandia.foundry</groupId>
+	    <artifactId>porter-stemmer</artifactId>
+	    <version>1.4</version>
+	</dependency>
+		
   </dependencies> 
   <build>
     <sourceDirectory>src</sourceDirectory>

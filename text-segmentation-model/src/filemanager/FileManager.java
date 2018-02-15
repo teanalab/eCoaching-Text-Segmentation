@@ -14,11 +14,12 @@ public class FileManager {
 		Writer.createInputForLDAFormat(inputDataDirectory, formatInputDataDirectory);
 	}
 
-	public static void createGoldStandard(String inputDir, String outputFile,
-			String codeMapFile) {
+	public static void createGoldStandard(String inputDir, String outputFile) {
+		
 	}
-
-	public static void createArffFile(String goldStandardFile, String arffFile) {
-
+	
+	public static void createArffFileWithTextAndCode(
+			String inputDataDirectory, String arffTextFile, String codeMapFile) {
+		Writer.createArffFileWithTextAndCode(inputDataDirectory, arffTextFile, codeMapFile);
 	}
 }

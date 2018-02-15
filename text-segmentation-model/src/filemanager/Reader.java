@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Vector;
 
 import main.Entry;
+import main.Helper;
 
 public class Reader {
     
@@ -71,13 +72,13 @@ public class Reader {
 	    }
 	}
 	
-	public static Map<String, String> readMap(String fileName, String delimiter) throws IOException {
+	public static Map<String, String> readMap(String fileName, String delimiter) {
   
-	    BufferedReader br = new BufferedReader(new FileReader(fileName));
+	    BufferedReader br;
 	    Map<String, String> mergeCodeMap = new HashMap<String, String>();  
 	    
 	    try {
-	    		        
+	    	br = new BufferedReader(new FileReader(fileName));        
 	        String line = br.readLine();
 
 	        while (line != null) {
@@ -93,9 +94,25 @@ public class Reader {
 	        return mergeCodeMap;
 	        
 	    } catch(Exception e) {
-	        br.close();
 	        System.out.print("Error in reading file: "+ fileName);
 	        return mergeCodeMap;
 	    }
 	}
+	
+	public static String getStemTextReplacedBySpecialChars(String text) {
+		String newText = text.replace("?", " questionmark ");
+		newText = newText.replace(".", " fullstop ");
+		newText = newText.replace(",", " comma ");
+		newText = newText.replace(";", " semiclone ");
+		newText = newText.replace(":", " clone ");
+		newText = newText.replace("!", " exclamation ");
+		newText = newText.replace("-", " hyphen ");
+		// also consider quotemark; already handled before
+		newText = newText.replaceAll("[&\\*%/\\+]", "");
+		newText = newText.replaceAll("\\d", "");
+
+		String pText = Helper.stemByPorterStemmer(newText);
+		return pText.trim();
+	}
+	
 }
