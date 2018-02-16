@@ -14,8 +14,10 @@ public class FileManager {
 		Writer.createInputForLDAFormat(inputDataDirectory, formatInputDataDirectory);
 	}
 
-	public static void createGoldStandard(String inputDir, String outputFile) {
-		
+	public static void createGoldStandard(String arffTextFile, String  arffFileStr2WordVector, 
+			String  goldStandardFile, String wordProbabilitiesFile, boolean withTopicDistribution) {
+		Writer.createGoldStandard(arffTextFile, arffFileStr2WordVector, goldStandardFile,
+				wordProbabilitiesFile, withTopicDistribution);
 	}
 	
 	public static void createArffFileWithTextAndCode(

@@ -43,4 +43,30 @@ public class Helper {
 			System.out.println(key + "," + key);
 		}		
 	}
+	
+	public static boolean isSpecialChar(String data){
+		if (data.contains("exclam")){
+			return true;
+		}
+		else if (data.contains("fullstop")){
+			return true;
+		}
+		else if (data.contains("questionmark")){
+			return true;
+		}
+		else if (data.contains("comma")){
+			return true;
+		}
+		else if (data.contains("hyphen")){
+			return true;
+		}
+		else if (data.contains("clone")){
+			return true;
+		}
+		else if (data.contains("semiclone")){
+			return true;
+		}
+		else
+			return false;
+	}
 }

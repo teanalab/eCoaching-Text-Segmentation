@@ -10,6 +10,8 @@ import java.io.PrintWriter;
 import java.util.Map;
 import java.util.TreeMap;
 
+import main.Helper;
+
 public class Writer {
 	
 	public static boolean removeDirectory(File directory) {
@@ -171,4 +173,125 @@ public class Writer {
 			e.printStackTrace();
 		}
 	}	
+	
+	public static void createGoldStandard(String arffTextFile, String  arffFileStr2WordVector, 
+			String  goldStandardFile, String wordProbabilitiesFile, boolean withTopicDistribution) {
+		// create map for topic distribution
+		Map<Integer, Map<Integer, Map<String, Double>>> mapWordProbabilityForClass = Reader.getWordProbabilityForClass(wordProbabilitiesFile);
+		
+		// create word dictionary for the entire collections
+		Map<String, Integer> mapWordDictionary = Reader.getWordDictionary(arffFileStr2WordVector);
+		
+		// create gold standard file
+		BufferedReader br;
+		FileWriter fw;
+		
+	    try {
+	    	br = new BufferedReader(new FileReader(arffTextFile));
+	    	fw = new FileWriter(goldStandardFile, false);
+	    	
+	    	for (int i = 0; i < 6; i++)
+	    		br.readLine();
+	    	
+	    	StringBuilder sb = new StringBuilder();
+        	String prevWordStr = "";
+        	String prevWordTopicStr = ""; 
+        	String specialCharStr = "";
+        	
+	        String line = br.readLine();
+	        int breakLabel = 0;
+	        while (line != null) {
+	        	String[] lineArr = line.split(",");
+	        	String[] oneLineText = lineArr[0].replace("'", "").split("\\s+");
+	        	double arrCurrWordTopicProb[] = new double[mapWordProbabilityForClass.get(1).size()];
+	        	breakLabel = 1;
+	        	
+	        	// process each instance
+	        	for (int i = 0; i < oneLineText.length; i++) {
+	        		String currWordStr = "";
+	        		int currWordIdx = 0;
+		        	String currWordTopicStr = ""; 
+		        
+		        	if (Helper.isSpecialChar(oneLineText[i].trim())) {
+		        		specialCharStr = "" + (mapWordDictionary.get(oneLineText[i])) + " 1";
+		        		//System.out.println("I am here..");
+		        		continue;
+		        	}		        	
+	        		else if (mapWordDictionary.containsKey(oneLineText[i].trim())) {
+		        		currWordStr = "" + (mapWordDictionary.get(oneLineText[i]) + mapWordDictionary.size()) + " 1";
+		        		currWordIdx = mapWordDictionary.get(oneLineText[i]);
+		        		
+		        		if (withTopicDistribution) {
+		        			for (int j = 1; j <= arrCurrWordTopicProb.length; j++) {
+		        				if (mapWordProbabilityForClass.get(Integer.parseInt(lineArr[1].trim())).get(j-1).containsKey(oneLineText[i].trim()))
+			        				arrCurrWordTopicProb[j-1] = mapWordProbabilityForClass.
+			        					get(Integer.parseInt(lineArr[1].trim())).get(j-1).get(oneLineText[i].trim()); 
+			        			
+		        				if (j > 1) {
+				        			currWordTopicStr = currWordTopicStr + "," + (mapWordDictionary.size()*2+ arrCurrWordTopicProb.length + j) + " " + arrCurrWordTopicProb[j-1];
+				        		}
+				        		else {
+				        			currWordTopicStr = (mapWordDictionary.size()*2 + arrCurrWordTopicProb.length + j) + " " + arrCurrWordTopicProb[j-1];
+				        		}
+				        	}
+			        	}
+		        	}
+		        	
+	        		sb.append("{0 " + breakLabel);
+	        		if (!prevWordStr.isEmpty()) {
+	        			sb.append(",");
+	        			sb.append(prevWordStr);
+	        			//sb.append(mapWordDictionary.containsValue(Integer.parseInt(prevWordStr)-1));
+	        		}
+		        	
+	        		sb.append(",");
+	        		//sb.append(oneLineText[i]);
+	        		sb.append(currWordStr);
+		        	
+		        	if (!specialCharStr.isEmpty()) {
+		        		sb.append(",");
+		        		sb.append(specialCharStr);
+		        	}
+		        	if (withTopicDistribution) {
+		        		if (!prevWordTopicStr.isEmpty()) {
+		        			sb.append(",");
+			        		sb.append(prevWordTopicStr);
+		        		}
+		        		
+		        		if (!currWordTopicStr.isEmpty()) {
+			        		sb.append(",");
+		        			sb.append(currWordTopicStr);
+		        		}
+		        	}
+		        	
+		        	sb.append("}");
+		        	fw.write(sb.toString() + "\n");
+		        	sb.setLength(0);
+		        	//System.out.println(oneLineText[i-1]+ " " + oneLineText[i]);
+		        	//System.out.println(lineArr[1]);
+
+		        	breakLabel = 0;
+		        	specialCharStr = "";
+		        	prevWordStr = "" + currWordIdx + " 1";
+		        	//prevWordStr = "" + currWordIdx;
+		        	prevWordTopicStr = "";
+		        	for (int j = 1; j < arrCurrWordTopicProb.length; j++) {
+		        		if (j > 1) {
+		        			prevWordTopicStr = prevWordTopicStr + "," + (mapWordDictionary.size()*2+j) + " " + arrCurrWordTopicProb[j-1];
+		        		}
+		        		else
+		        			prevWordTopicStr = (mapWordDictionary.size()*2+j) + " " + arrCurrWordTopicProb[j-1];
+		        	}
+	        	}
+	        	
+	        	line = br.readLine();	            
+	        }	        
+	        br.close();
+	        fw.close();
+	        
+	    } catch(Exception e) {
+	    	e.printStackTrace();
+	    }
+		
+	}
 }

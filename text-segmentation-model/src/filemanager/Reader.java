@@ -115,4 +115,74 @@ public class Reader {
 		return pText.trim();
 	}
 	
+	public static Map<Integer, Map<Integer, Map<String, Double>>> getWordProbabilityForClass(String wordProbabilitiesFile) {
+		
+		Map<Integer, Map<Integer, Map<String, Double>>> mapWordProbabilityForClass = new HashMap<Integer, Map<Integer, Map<String, Double>>>();
+		Map<Integer, Map<String, Double>> mapTopicWordProb = new HashMap<Integer, Map<String, Double>>();
+		Map<String, Double> mapWordProb = new HashMap<String, Double>();
+		
+		BufferedReader br;
+		int classLabel = 0, topicLabel = 0;
+	    
+	    try {
+	    	br = new BufferedReader(new FileReader(wordProbabilitiesFile));        
+	        String line = br.readLine();
+
+	        while (line != null) {	        		        	
+	        	if (line.contains("<")) {
+	        		classLabel = Integer.parseInt(line.replace("<", "").replace(">", ""));
+	        		mapTopicWordProb = new HashMap<Integer, Map<String, Double>>();
+	        		mapWordProbabilityForClass.put(classLabel, mapTopicWordProb);
+	        		line = br.readLine();
+	        		continue;
+	        	}
+	        	
+	        	String[] oneLine = line.split("\\s+");
+	        	if(oneLine.length > 1) {
+	        		mapTopicWordProb.get(topicLabel).put(oneLine[0].trim(), Double.valueOf(oneLine[oneLine.length-1].trim()));
+	        		mapWordProbabilityForClass.put(classLabel, mapTopicWordProb);
+	        	}
+	        	else {
+	        		topicLabel = Integer.parseInt(line.trim());
+	        		mapWordProb = new HashMap<String, Double>();
+	        		mapTopicWordProb.put(topicLabel, mapWordProb);
+	        	}
+	            line = br.readLine();	            
+	        }	        
+	        br.close();
+	        
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
+				
+		return mapWordProbabilityForClass;
+	}
+	
+	public static Map<String, Integer> getWordDictionary(String arffFileStr2WordVector) {
+		
+		Map<String, Integer> mapWords = new HashMap<String, Integer>();
+		
+		BufferedReader br;
+	    
+	    try {
+	    	br = new BufferedReader(new FileReader(arffFileStr2WordVector));        
+	        String line = br.readLine();
+	        int id = 1;
+
+	        while (line != null) {
+	        	if (line.contains("@attribute") && !line.contains("@@class@@")) {
+	        		String[] oneLine = line.split("\\s+");
+	        		mapWords.put(oneLine[1].trim(), id++);
+	        	}
+	            line = br.readLine();	            
+	        }	        
+	        br.close();
+	        
+	    } catch(Exception e) {
+	    	e.printStackTrace();
+	    }
+		
+		return mapWords;
+	}
+	
 }
