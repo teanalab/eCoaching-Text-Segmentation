@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -68,5 +69,26 @@ public class Helper {
 		}
 		else
 			return false;
+	}
+	
+	public static TreeMap<String, Integer> sortMapByValue(HashMap<String, Integer> map){
+		Comparator<String> comparator = new ValueComparator<String, Integer>(map);
+		TreeMap<String, Integer> result = new TreeMap<String, Integer>(comparator);
+		result.putAll(map);
+		return result;
+	}
+}
+
+//a comparator using generic type
+class ValueComparator<K, V extends Comparable<V>> implements Comparator<K>{
+ 
+	HashMap<K, V> map = new HashMap<K, V>();
+ 
+	public ValueComparator(HashMap<K, V> map){
+		this.map.putAll(map);
+	}
+ 
+	public int compare(K s1, K s2) {
+		return map.get(s1).compareTo(map.get(s2));	
 	}
 }

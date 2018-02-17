@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -180,7 +181,7 @@ public class Writer {
 		Map<Integer, Map<Integer, Map<String, Double>>> mapWordProbabilityForClass = Reader.getWordProbabilityForClass(wordProbabilitiesFile);
 		
 		// create word dictionary for the entire collections
-		Map<String, Integer> mapWordDictionary = Reader.getWordDictionary(arffFileStr2WordVector);
+		HashMap<String, Integer> mapWordDictionary = Reader.getWordDictionary(arffFileStr2WordVector);
 		
 		// create gold standard file
 		BufferedReader br;
@@ -189,6 +190,9 @@ public class Writer {
 	    try {
 	    	br = new BufferedReader(new FileReader(arffTextFile));
 	    	fw = new FileWriter(goldStandardFile, false);
+	    	
+	    	// write the header of the arff file
+	    	writeHeader(fw, mapWordProbabilityForClass, mapWordDictionary);
 	    	
 	    	for (int i = 0; i < 6; i++)
 	    		br.readLine();
@@ -293,5 +297,39 @@ public class Writer {
 	    	e.printStackTrace();
 	    }
 		
+	}
+	
+	public static void writeHeader(FileWriter fw, Map<Integer, Map<Integer, Map<String, Double>>> mapWordProbabilityForClass, 
+			HashMap<String, Integer> mapWordDict) {
+		
+		TreeMap<String, Integer> mapWordDictionary = Helper.sortMapByValue(mapWordDict);
+		try {
+			fw.write("@relation goldstandard\n\n");
+			fw.write("@attribute @@class@@ {");
+			for (int i = 1; i < mapWordProbabilityForClass.size(); i++) {
+				fw.write(i + ",");
+			}
+			fw.write(mapWordProbabilityForClass.size() + "}\n");
+			
+			for (String key : mapWordDictionary.keySet()) {
+				fw.write("@attribute " + key + " numeric\n");
+			}
+			
+			for (String key : mapWordDictionary.keySet()) {
+				fw.write("@attribute " + key + " numeric\n");
+			}
+			
+			for (int i = 1; i <= mapWordProbabilityForClass.get(41).size(); i++) {
+				fw.write("@attribute prevtopicprob" + i + " numeric\n");
+			}
+			
+			for (int i = 1; i <= mapWordProbabilityForClass.get(41).size(); i++) {
+				fw.write("@attribute currtopicprob" + i + " numeric\n");
+			}
+			fw.write("\n@data\n");
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

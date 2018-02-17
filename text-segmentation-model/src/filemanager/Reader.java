@@ -158,9 +158,9 @@ public class Reader {
 		return mapWordProbabilityForClass;
 	}
 	
-	public static Map<String, Integer> getWordDictionary(String arffFileStr2WordVector) {
+	public static HashMap<String, Integer> getWordDictionary(String arffFileStr2WordVector) {
 		
-		Map<String, Integer> mapWords = new HashMap<String, Integer>();
+		HashMap<String, Integer> mapWords = new HashMap<String, Integer>();
 		
 		BufferedReader br;
 	    
