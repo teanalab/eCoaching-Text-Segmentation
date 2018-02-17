@@ -189,10 +189,10 @@ public class Writer {
 		
 	    try {
 	    	br = new BufferedReader(new FileReader(arffTextFile));
-	    	fw = new FileWriter(goldStandardFile, false);
+	    	fw = new FileWriter(goldStandardFile + "_" + withTopicDistribution + ".arff", false);
 	    	
 	    	// write the header of the arff file
-	    	writeHeader(fw, mapWordProbabilityForClass, mapWordDictionary);
+	    	writeHeader(fw, mapWordProbabilityForClass, mapWordDictionary, withTopicDistribution);
 	    	
 	    	for (int i = 0; i < 6; i++)
 	    		br.readLine();
@@ -300,7 +300,7 @@ public class Writer {
 	}
 	
 	public static void writeHeader(FileWriter fw, Map<Integer, Map<Integer, Map<String, Double>>> mapWordProbabilityForClass, 
-			HashMap<String, Integer> mapWordDict) {
+			HashMap<String, Integer> mapWordDict, boolean withTopicDistribution) {
 		
 		TreeMap<String, Integer> mapWordDictionary = Helper.sortMapByValue(mapWordDict);
 		try {
@@ -319,12 +319,14 @@ public class Writer {
 				fw.write("@attribute " + key + " numeric\n");
 			}
 			
-			for (int i = 1; i <= mapWordProbabilityForClass.get(41).size(); i++) {
-				fw.write("@attribute prevtopicprob" + i + " numeric\n");
-			}
-			
-			for (int i = 1; i <= mapWordProbabilityForClass.get(41).size(); i++) {
-				fw.write("@attribute currtopicprob" + i + " numeric\n");
+			if (withTopicDistribution) {
+				for (int i = 1; i <= mapWordProbabilityForClass.get(41).size(); i++) {
+					fw.write("@attribute prevtopicprob" + i + " numeric\n");
+				}
+				
+				for (int i = 1; i <= mapWordProbabilityForClass.get(41).size(); i++) {
+					fw.write("@attribute currtopicprob" + i + " numeric\n");
+				}
 			}
 			fw.write("\n@data\n");
 			

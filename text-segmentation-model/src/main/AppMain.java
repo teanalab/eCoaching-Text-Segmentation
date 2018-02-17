@@ -1,7 +1,6 @@
 package main;
 
 import java.time.LocalDateTime;
-import java.util.Map;
 
 import filemanager.FileManager;
 import model.SegmentationModel;
@@ -19,7 +18,7 @@ public class AppMain {
 		String codeMapFile = "../config/stem/code-map-ecoaching.cfg";
 		String arffTextFile = "../../../data-source/ecoaching-text-segmentation-data/data/text_stem.arff";
 		String arffFileStr2WordVector = "../../../data-source/ecoaching-text-segmentation-data/data/stem_Str2WordVector.arff";
-		String goldStandardFile = "../../../data-source/ecoaching-text-segmentation-data/data/gold.arff";
+		String goldStandardFile = "../../../data-source/ecoaching-text-segmentation-data/data/gold";
 		String wordProbabilitiesFile = "../../../data-source/ecoaching-text-segmentation-data/topic/lda/stem/cls-tops.txt"; 
 
 		// pre-process data to run LDA model for getting the features values
