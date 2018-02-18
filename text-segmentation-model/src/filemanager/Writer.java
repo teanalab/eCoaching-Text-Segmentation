@@ -203,15 +203,17 @@ public class Writer {
         	String specialCharStr = "";
         	
 	        String line = br.readLine();
-	        int breakLabel = 0;
+	        int breakLabel = 1;
 	        while (line != null) {
 	        	String[] lineArr = line.split(",");
 	        	String[] oneLineText = lineArr[0].replace("'", "").split("\\s+");
 	        	double arrCurrWordTopicProb[] = new double[mapWordProbabilityForClass.get(1).size()];
-	        	breakLabel = 1;
+	        	breakLabel = 2;
 	        	
 	        	// process each instance
 	        	for (int i = 0; i < oneLineText.length; i++) {
+	        		oneLineText[i] = oneLineText[i].replace("(", "").
+	        				replace(")", "").replace("{", "").replace("}", "").trim();
 	        		String currWordStr = "";
 	        		int currWordIdx = 0;
 		        	String currWordTopicStr = ""; 
@@ -240,6 +242,10 @@ public class Writer {
 				        	}
 			        	}
 		        	}
+	        		else {
+	        			System.out.println(oneLineText[i]);
+	        			continue;
+	        		}
 		        	
 	        		sb.append("{0 " + breakLabel);
 	        		if (!prevWordStr.isEmpty()) {
@@ -256,6 +262,7 @@ public class Writer {
 		        		sb.append(",");
 		        		sb.append(specialCharStr);
 		        	}
+		        	
 		        	if (withTopicDistribution) {
 		        		if (!prevWordTopicStr.isEmpty()) {
 		        			sb.append(",");
@@ -269,12 +276,13 @@ public class Writer {
 		        	}
 		        	
 		        	sb.append("}");
-		        	fw.write(sb.toString() + "\n");
+		        	String sortedAttributes = Reader.getSortedAttributes(sb.toString());
+		        	fw.write(sortedAttributes + "\n");
 		        	sb.setLength(0);
 		        	//System.out.println(oneLineText[i-1]+ " " + oneLineText[i]);
 		        	//System.out.println(lineArr[1]);
 
-		        	breakLabel = 0;
+		        	breakLabel = 1;
 		        	specialCharStr = "";
 		        	prevWordStr = "" + currWordIdx + " 1";
 		        	//prevWordStr = "" + currWordIdx;
@@ -305,27 +313,28 @@ public class Writer {
 		TreeMap<String, Integer> mapWordDictionary = Helper.sortMapByValue(mapWordDict);
 		try {
 			fw.write("@relation goldstandard\n\n");
-			fw.write("@attribute @@class@@ {");
-			for (int i = 1; i < mapWordProbabilityForClass.size(); i++) {
-				fw.write(i + ",");
-			}
-			fw.write(mapWordProbabilityForClass.size() + "}\n");
+			fw.write("@attribute class {1,2}\n");
+			int idx = 1;
 			
 			for (String key : mapWordDictionary.keySet()) {
-				fw.write("@attribute " + key + " numeric\n");
+				fw.write("@attribute " + key + idx + " numeric\n");
+				idx++;
 			}
 			
 			for (String key : mapWordDictionary.keySet()) {
-				fw.write("@attribute " + key + " numeric\n");
+				fw.write("@attribute " + key + idx + " numeric\n");
+				idx++;
 			}
 			
 			if (withTopicDistribution) {
 				for (int i = 1; i <= mapWordProbabilityForClass.get(41).size(); i++) {
-					fw.write("@attribute prevtopicprob" + i + " numeric\n");
+					fw.write("@attribute prevtopicprob" + i + idx + " numeric\n");
+					idx++;
 				}
 				
 				for (int i = 1; i <= mapWordProbabilityForClass.get(41).size(); i++) {
-					fw.write("@attribute currtopicprob" + i + " numeric\n");
+					fw.write("@attribute currtopicprob" + i + idx + " numeric\n");
+					idx++;
 				}
 			}
 			fw.write("\n@data\n");

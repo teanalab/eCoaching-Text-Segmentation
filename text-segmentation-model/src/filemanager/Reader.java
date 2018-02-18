@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.Vector;
 
 import main.Entry;
@@ -183,6 +184,26 @@ public class Reader {
 	    }
 		
 		return mapWords;
+	}
+	
+	public static String getSortedAttributes(String s) {
+		StringBuilder result = new StringBuilder();
+		TreeMap<Integer, Double> map = new TreeMap<Integer, Double>();
+		//System.out.println(s.substring(1, s.length()-1));
+		String[] arrStr = s.substring(1, s.length()-1).split(",");
+		
+		for (int i = 0; i < arrStr.length; i++) {
+			String[] arrIdxValue = arrStr[i].trim().split(" ");
+			map.put(Integer.parseInt(arrIdxValue[0]), Double.valueOf(arrIdxValue[1]));
+		}
+		
+		for (Integer key : map.keySet()) {
+			if (key == 0)
+				result.append(key + " " + map.get(key).intValue() + ",");
+			else
+				result.append(key + " " + map.get(key) + ",");
+		}
+		return "{" + result.toString().substring(0, result.toString().length()-1) + "}";
 	}
 	
 }
