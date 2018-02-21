@@ -161,7 +161,8 @@ public class Writer {
 							System.out.println(line);
 						String code = mapCodeToInt.get(arr[0].trim());
 						String text = line.substring(arr[0].length()+1).toLowerCase()
-								.replaceAll("[^\\x00-\\x7F]", "").replaceAll("\"", "").replaceAll("'", "");
+								.replaceAll("[^\\x00-\\x7F]", "").replaceAll("\"", "").replaceAll("'", "")
+								.replace("(", "").replace(")", "").replace("{", "").replace("}", "");
 						
 						String processedText = Reader.getStemTextReplacedBySpecialChars(text);					
 						bw.write("'" + processedText + "'," + code + "\n");
