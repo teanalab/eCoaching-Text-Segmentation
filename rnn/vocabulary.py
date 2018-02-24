@@ -41,7 +41,7 @@ class Vocabulary:
         return self
 
     def size(self):
-        return len(self.vocab) + 1
+        return len(self.vocab)
 
     def tokenize(self, text):
         return [x.strip() for x in re.split('(\W+)', text) if x.strip()]

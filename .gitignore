@@ -4,4 +4,9 @@ _obj/
 *.class
 *.pyc
 *.vocab
+*.log
+*.aux
+*.synctex.gz
+*.bbl
+*.blg
 
