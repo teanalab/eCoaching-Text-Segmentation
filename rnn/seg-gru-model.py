@@ -22,6 +22,7 @@ char_to_int = dict((c, i+1) for i, c in enumerate(vocabulary_obj.vocab))
 int_to_char = dict((i+1, c) for i, c in enumerate(vocabulary_obj.vocab))
 
 # prepare the data set of input to output pairs encoded as integers
+f = open("results.txt", "a")
 max_len = 5
 folds = 5
 data = utility.get_ecoaching_data()
@@ -50,7 +51,7 @@ for fold_num in range(folds):
     model.add(GRU(32, input_shape=(X.shape[1], 1)))
     model.add(Dense(y.shape[1], activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-    model.fit(X, y, epochs=100, batch_size=batch_size, verbose=2)
+    model.fit(X, y, epochs=200, batch_size=batch_size, verbose=2)
 
     # summarize performance of the model
     scores = model.evaluate(X, y, verbose=0)
@@ -63,6 +64,13 @@ for fold_num in range(folds):
     index_original_y = numpy.argmax(test_y, axis=1)
     accuracy, precision, recall, f_measure = utility.get_macro_average_performance(index_original_y, index_prediction_y)
     results.append([fold_num, precision, recall, f_measure])
+
+    # Write results into file
+    f.write("fold number " + str(fold_num+1) + ": ")
+    f.write(str(precision) + "," + str(recall) + "," + str(f_measure))
+    f.write("\n")
+
+f.close()
 
 # print results
 print("Avg. performance of the model: ")
