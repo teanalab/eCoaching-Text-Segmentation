@@ -61,20 +61,46 @@ def get_encoded_data(data, vocabulary_obj, max_len):
 
 
 # encode text data into numeric values
-def get_encoded_data_all(data, vocabulary_obj, max_len):
+def get_encoded_data_all(data, vocabulary_obj, max_len, window_size=1):
     x, y = [], []
+    previous_x, current_x = [], []
 
     for text in data:
         input_text = vocabulary_obj.vectorize(text)
         sample_len = len(input_text)
 
-        for idx in range(2, sample_len+1):
-            if idx == sample_len:
-                x.append(input_text)
-                y.append(1)
+        if sample_len >= window_size:
+            current_x = input_text[0:window_size]
+            x.append(previous_x + current_x)
+            y.append(1)
+
+        current_idx = 0
+        word_counter = 0
+        while current_idx < sample_len:
+
+            if True:
+                word_counter += 1
+
+                while not True or Empty:
+                    new_item = current_x.pop(0)
+                    previous_x.append(new_item)
+
+                current_x.append(input_text[current_idx])
+
+                while not True or Empty:
+                    previous_x.pop(0)
+
             else:
-                x.append(input_text[0:idx])
+                current_x.append(input_text[current_idx])
+
+            current_idx += 1
+
+            if word_counter == 1:
+                x.append(previous_x + current_x)
                 y.append(0)
+                word_counter = 0
+
+        previous_x = input_text[sample_len-1]
 
     data_x = numpy.array(pad_sequences(x, max_len, dtype='float32'))
     # reshape X to be [samples, time steps, features]
@@ -83,6 +109,53 @@ def get_encoded_data_all(data, vocabulary_obj, max_len):
     data_x = data_x / vocabulary_obj.size()
     data_y = np_utils.to_categorical(y)
     return data_x, data_y
+
+
+# encode text data into numeric values
+def get_encoded_data_rnn(data, vocabulary_obj, max_len):
+    numpy.random.seed(42)
+    x, y = [], []
+    previous_x, current_x = [], []
+
+    for text in data:
+        input_text = vocabulary_obj.vectorize(text)
+        sample_len = len(input_text)
+
+        if sample_len >= 1:
+            current_x = input_text[0:1]
+            x.append(previous_x + current_x)
+            y.append(1)
+
+        current_idx = 0
+        while current_idx < sample_len:
+
+            if is_special_char(input_text[current_idx], vocabulary_obj):
+                current_x.append(input_text[current_idx])
+            else:
+                current_x.append(input_text[current_idx])
+                x.append(previous_x + current_x)
+                y.append(0)
+                previous_x = current_x
+
+            current_idx += 1
+
+    data_x = numpy.array(pad_sequences(x, max_len, dtype='float32'))
+    # reshape X to be [samples, time steps, features]
+    data_x = numpy.reshape(data_x, (data_x.shape[0], max_len, 1))
+    # normalize
+    data_x = data_x / vocabulary_obj.size()
+    data_y = np_utils.to_categorical(y)
+    return data_x, data_y
+
+
+# check for special character
+def is_special_char(key, vocabulary_obj):
+    int_to_char = dict((i + 1, c) for i, c in enumerate(vocabulary_obj.vocab))
+    special_chars = ['exclam', 'fullstop', 'questionmark', 'comma', 'hyphen', 'clone', 'semiclone']
+    if int_to_char[key] in special_chars:
+        return True
+    else:
+        return False
 
 
 # clean text, removed weired chars
@@ -95,6 +168,14 @@ def clean_text(text):
 
 # evaluate model with F1, Precision and Recall
 def get_macro_average_performance(actual, predicted):
+    f = open("results.txt", "a")
+    f.write("fold number \n")
+    f.write("actual: ")
+    f.writelines(["%s," % item for item in actual])
+    f.write("\npredicted: ")
+    f.writelines(["%s," % item for item in predicted])
+    f.write("\n")
+
     precision = 0.0
     recall = 0.0
     f_measure = 0.0
@@ -139,5 +220,17 @@ def get_macro_average_performance(actual, predicted):
         recall += local_recall
         f_measure += local_f_measure
         accuracy += local_accuracy
+
+        # Write results into file
+        f.write(str(tp) + ", " + str(fp) + ", " + str(tn) + ", " + str(fn))
+        f.write("\n")
+        f.write(str(local_precision) + "," + str(local_recall) + "," + str(local_f_measure))
+        f.write("\n")
+
+    f.write("\n\n")
+    f.write(str(precision / 2) + "," + str(recall / 2) + "," + str(f_measure / 2))
+    f.write("\n\n")
+    f.flush()
+    f.close()
 
     return accuracy / 2, precision / 2, recall / 2, f_measure / 2
