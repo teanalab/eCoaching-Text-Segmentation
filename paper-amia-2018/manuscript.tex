@@ -20,7 +20,7 @@ $^2$Department of Family Medicine and Public Health Sciences, School of Medicine
 \maketitle
 
 \noindent{\bf Abstract}
-\textit{Machine learning-based models has the potential to to efficiently and accurately identify patient-provider communication behaviors during eCoaching intervention sessions targeting fruit and vegetable intake among GenY young adults. }
+\textit{Machine learning-based models has the potential to to efficiently and accurately identify patient-provider communication behaviors during eCoaching intervention sessions targeting fruit and vegetable intake among young adults age 21-30. }
 
 1) Motivation: Why do we care about the problem and the results? \\
 2) Problem statement: What problem is the paper trying to solve and what is the scope of the work? \\
@@ -35,33 +35,11 @@ GenY is a tech-savvy generation requiring an intervention matched to their mobil
 
 A major drawback of this research is the qualitative methods traditionally used to analyze the communication process which are resource-intensive, requiring an iterative process of human (subjective) interpretation of text. Rapidly developing computational technologies, specifically machine learning combined with classification models, offer a unique opportunity to accelerate this process. Our research group has recently applied machine learning-based models to similar communication data\cite{hasan2016study,kotov2015interpretable}. A simple communication code scheme was automated to characterize patient communication and achieved accuracy comparable to human coders\cite{hasan2016study}. The ultimate goal of the research study is to leverage innovative machine learning models to fully automate the communication coding process in eCoach-patient communication to increases in fruit and vegetable intake. 
 
-However, a significant barrier of fully automate eCoaching is the unsegmented text data. Developing an automatic classification of clinical interactions required segmented text. eCoaching data comprised of email responses which need to be segmented into ``block of text'' refers to a particular MI behavior. Automatic segementation of eCoaching intervention sessions is a challenging task due to the 2 important reasons. First, the email is an unstructured text that contains informal email exchange in non-traditional formats. Second, a text segment not necessarily belongs to the entire sentence or collection of sentences. One sentence can be segmented into several MI behaviors, and vice versa. Figure 1 illustrates that the marked sentence taken from an eCoaching email exchanage, segmented into 2 different MI behaviors, CHT and HUP. 
+However, a significant barrier of fully automate eCoaching is the unsegmented text data. Developing an automatic classification of clinical interactions required segmented text. Nevertheless, eCoaching data comprised of email responses which need to be segmented into group of MI behavior referes to ``block of text''. Automatic segementation of eCoaching intervention sessions is a challenging task due to the 2 important reasons. First, the email is an unstructured text that contains informal email exchange in non-traditional formats. Second, a text segment not necessarily belongs to the entire sentence or collection of sentences. One sentence can be segmented into several MI behaviors, and vice versa. Figure 1 illustrates that the marked sentence taken from an eCoaching email exchanage, segmented into 2 different MI behaviors, CHT and HUP. 
 
-In this paper, we addressing these issues by developing several state-of-the-art machine learning based models for the segmentation of eCoaching text to promote the automatic identification of best communication strategies without human interference. More specifically, we develop Support Vector Machine (SVM), Naive Bayes (NB), K-Nearest Neighbor (KNN), Long Short Term Memory (LSTM), and Gated Recurrent Unit (GRU) by utlizing lexical, topic and punctuation mark features for the segmentation of eCoaching text. 
+In this paper, we address this problem by developing several state-of-the-art machine learning based models for the segmentation of eCoaching text to promote the automatic identification of best communication strategies without human interference. More specifically, we develop Support Vector Machine (SVM), Naive Bayes (NB), K-Nearest Neighbor (KNN), Long Short Term Memory (LSTM), and Gated Recurrent Unit (GRU) by utlizing contextual, topic and punctuation mark features, to find the best model for the segmentation of eCoaching text. 
 
-Previous studies mainly focus on segemntation of text into sections, headers or sentences. 
-
-The authors are not aware of any other work where this approach has been considered. This approach will accelerate the pace of identifying effective communication strategies linked to healthy eating. This study can also be used to tailor interventions and develop fully automated eCoaching. 
-
-What is the problem? \\
-
-Why is the problem important? \\
-
-What has so far been done on the  problem?\\
-1) describes previous work in more technical detail \\
-2) as far as needed for a proper understanding of the contribution of the paper \\
-
-What is the contribution of the paper on the problem?\\
-1) What are the rival approaches? \\
-2) What are the drawbacks of each?\\
-3) How has the battle between different approaches progressed?\\
-4) What are the major outstanding problems? (This is where you come in)\\
-
-Is the contribution original? Explain why \\
-
-Is the contribution non-trivial? Explain why \\
-
-
+Previous studies mainly focus on segemntation of text into sections and headers\cite{apostolova2009automatic,denny2009evaluation,tepper2012statistical,cho2002text} or sentence boundary detection\cite{griffis2016quantitative,kreuzthaler2015detection,treviso2016sentence} in the medical domain. Apostolova et al.\cite{apostolova2009automatic} applied SVM by utilizing word-vector cosine similarity metric combined with several heuristics to classify clinical report into semantic sections such as demographics, history, exam procedure, finding, impression, etc. After identification of each line in the document, Tepper et al. \cite{tepper2012statistical} trained an Maximum Entrophy models for the section classification. In 2009, Denny et al.\cite{denny2009evaluation} proposed a SecTag algorithm, which combined natural language processing technique, terminology-based rule, and naive bayesian score for identifying sections and headers that achieved 99\% recall with 95.6\% precision. On the other hand, SVM exploiting with linear kernel and recurrent convolutional neural networks with posodic, part of speech features and word embeddings, were trained by Kreuzthaler et al.\cite{kreuzthaler2015detection} and Griffis et al.\cite{griffis2016quantitative}, respectively, for the detection of sentence boundary. However, segmentation of clinical text, in partiicular, segmentation of MI or eCoaching text into group of MI behavior is ignored while relying on manual hand-coded approach. Therefore, this study introduce an innovative approach and the authors are not aware of any other work this approach has been considered for the segmentation of MI or eCoaching text into ``block of text''. 
 
 \section*{Methods}
 \subsection*{\textit{Data collection}}
@@ -110,17 +88,17 @@ or the results after applying the techniques outlined in the methods section. Th
 
 \begin{table}[ht]
 \centering
-\caption{Performance of MC, HMM, and RNN for predicting the success of under and over-sampled patient-provider communication sequences. The highest value for each performance metric is highlighted in bold.}
+\caption{Performance of NB, SVM, KNN, and RNN for identifying segmentation point in eCoaching text. The highest value for each performance metric is highlighted in bold.}
 \label{tab:result_under_over_sampled}
   \begin{tabular}{|l|l|l|l|l|l|l|}
   \hline
-   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{lexical features only}} & \multicolumn{3}{|c|}{\textbf{lexical features + topics}} \\\cline{2-7}
+   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{contextual features only}} & \multicolumn{3}{|c|}{\textbf{contextual + topics + punctuation marks}} \\\cline{2-7}
    & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score}\\ \hline    
     
- Naive Bayes Multinomial & 0.7060 & 0.7044 & 0.7038 & 0.7932 & 0.7799 & 0.7775 \\ \hline
- Support Vector Machine & 0.6395 & 0.6385 & 0.6379 & 0.7111 & 0.7029 & 0.7000\\ \hline
- K-Nearest Neighbour & 0.6244 & 0.6143 & 0.6067 & 0.7775 & 0.7567 & 0.7520\\ \hline
- Long Short Term Memory & \textbf{0.8733} & \textbf{0.8681} & \textbf{0.8677} & \textbf{0.8424} & \textbf{0.8385} & \textbf{0.8381}\\ \hline
+ Naive Bayes Multinomial & 0.594 & 0.662 & 0.626 & 0.590 & 0.666 & 0.626 \\ \hline
+ Support Vector Machine & 0.742 & \textbf{0.679} & 0.709 & 0.774 & 0.696 & 0.733\\ \hline
+ K-Nearest Neighbour & \textbf{0.808} & 0.663 & \textbf{0.728} & \textbf{0.820} & \textbf{0.742} & \textbf{0.779}\\ \hline
+ Long Short Term Memory & 0.8424 & 0.8385 & 0.8381 & 0.8424 & 0.8385 & 0.8381\\ \hline
  Gated Recurrent Unit & 0.8705 & 0.8676 & 0.8673 & 0.8412 & 0.8377 & 0.8373\\ \hline 
   \end{tabular}
 \end{table} 
@@ -129,17 +107,17 @@ Predictive performance summary of the proposed methods on under and over-sampled
 
 \begin{table}[ht]
 \centering
-\caption{Performance of MC, HMM, and RNN for predicting the success of under and over-sampled patient-provider communication sequences. The highest value for each performance metric is highlighted in bold.}
+\caption{Performance of NB, SVM, KNN, and RNN for identifying continuous eCoaching text. The highest value for each performance metric is highlighted in bold.}
 \label{tab:result_under_over_sampled}
   \begin{tabular}{|l|l|l|l|l|l|l|}
   \hline
-   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{lexical features only}} & \multicolumn{3}{|c|}{\textbf{lexical features + topics}} \\\cline{2-7}
+   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{contextual features only}} & \multicolumn{3}{|c|}{\textbf{contextual + topics + punctuation marks}} \\\cline{2-7}
    & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score}\\ \hline    
     
- Naive Bayes Multinomial & 0.7060 & 0.7044 & 0.7038 & 0.7932 & 0.7799 & 0.7775 \\ \hline
- Support Vector Machine & 0.6395 & 0.6385 & 0.6379 & 0.7111 & 0.7029 & 0.7000\\ \hline
- K-Nearest Neighbour & 0.6244 & 0.6143 & 0.6067 & 0.7775 & 0.7567 & 0.7520\\ \hline
- Long Short Term Memory & \textbf{0.8733} & \textbf{0.8681} & \textbf{0.8677} & \textbf{0.8424} & \textbf{0.8385} & \textbf{0.8381}\\ \hline
+ Naive Bayes Multinomial & 0.988 & 0.985 & 0.987 & 0.989 & 0.984 & 0.986 \\ \hline
+ Support Vector Machine & \textbf{0.989} & 0.992 & 0.991 & 0.990 & 0.993 & 0.991\\ \hline
+ K-Nearest Neighbour & \textbf{0.989} & \textbf{0.995} & \textbf{0.992} & \textbf{0.991} & \textbf{0.994} & \textbf{0.993}\\ \hline
+ Long Short Term Memory & 0.8424 & 0.8385 & 0.8381 & 0.8424 & 0.8385 & 0.8381\\ \hline
  Gated Recurrent Unit & 0.8705 & 0.8676 & 0.8673 & 0.8412 & 0.8377 & 0.8373\\ \hline 
   \end{tabular}
 \end{table} 
@@ -150,7 +128,7 @@ GRU, since one-hot vectors are high-dimensional and sparse.
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=0.90\textwidth]{figures/roc-curves.png}
+    \includegraphics[width=1.0\textwidth]{figures/roc-curves.png}
     \caption{\textbf{ROC curves compared the performance of different models}.}
     \label{fig:roc-curves}
 \end{figure}
@@ -171,8 +149,7 @@ performance of RNN models is substantially better than probabilistic models. In 
  
 \section*{Conclusion}
 In this paper, we compared the performance of machine learning models for the task of segmentation of e-coaching text. We found out that k-nearest neighbour provides the best performance for the segmentaion of text in terms of all performance metrics. Manual segmentation of e-coaching data is very resource-intensive and time consuming task, which can significantly decrease the time and effort required to develop effective behavioral interventions. Our
-proposed methods can help to identify individual text segments, which can be annotated directly with a classification model and increase
-the effectiveness of behavioral interventions. 
+proposed methods can help to identify individual text segments, which can be annotated directly with a classification model and increase the effectiveness of behavioral interventions. This approach will help for developing fully automated eCoaching and also accelerate the pace of identifying effective communication strategies linked to healthy eating.  
 
 1) The hypothesis and the evidence for and against it are briefly restated \\
 2) The original motivation is recapitulated \\
