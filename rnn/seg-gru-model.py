@@ -24,7 +24,6 @@ vocabulary_obj.create()
 char_to_int = dict((c, i+1) for i, c in enumerate(vocabulary_obj.vocab))
 int_to_char = dict((i+1, c) for i, c in enumerate(vocabulary_obj.vocab))
 
-
 # system configuration
 max_len = 5
 folds = 5

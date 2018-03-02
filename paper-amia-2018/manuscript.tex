@@ -98,12 +98,10 @@ or the results after applying the techniques outlined in the methods section. Th
  Naive Bayes Multinomial & 0.594 & 0.662 & 0.626 & 0.590 & 0.666 & 0.626 \\ \hline
  Support Vector Machine & 0.742 & \textbf{0.679} & 0.709 & 0.774 & 0.696 & 0.733\\ \hline
  K-Nearest Neighbour & \textbf{0.808} & 0.663 & \textbf{0.728} & \textbf{0.820} & \textbf{0.742} & \textbf{0.779}\\ \hline
- Long Short Term Memory & 0.8424 & 0.8385 & 0.8381 & 0.8424 & 0.8385 & 0.8381\\ \hline
- Gated Recurrent Unit & 0.8705 & 0.8676 & 0.8673 & 0.8412 & 0.8377 & 0.8373\\ \hline 
+ Long Short Term Memory & 0.8424 & 0.8385 & 0.8381  & -- & -- & --\\ \hline
+ Gated Recurrent Unit & 0.8705 & 0.8676 & 0.8673 & -- & -- & --\\ \hline 
   \end{tabular}
 \end{table} 
-
-Predictive performance summary of the proposed methods on under and over-sampled sequences is presented in Table.\\
 
 \begin{table}[ht]
 \centering
@@ -117,14 +115,33 @@ Predictive performance summary of the proposed methods on under and over-sampled
  Naive Bayes Multinomial & 0.988 & 0.985 & 0.987 & 0.989 & 0.984 & 0.986 \\ \hline
  Support Vector Machine & \textbf{0.989} & 0.992 & 0.991 & 0.990 & 0.993 & 0.991\\ \hline
  K-Nearest Neighbour & \textbf{0.989} & \textbf{0.995} & \textbf{0.992} & \textbf{0.991} & \textbf{0.994} & \textbf{0.993}\\ \hline
- Long Short Term Memory & 0.8424 & 0.8385 & 0.8381 & 0.8424 & 0.8385 & 0.8381\\ \hline
- Gated Recurrent Unit & 0.8705 & 0.8676 & 0.8673 & 0.8412 & 0.8377 & 0.8373\\ \hline 
+ Long Short Term Memory & 0.8424 & 0.8385 & 0.8381 & -- & -- & --\\ \hline
+ Gated Recurrent Unit & 0.8705 & 0.8676 & 0.8673 & -- & -- & --\\ \hline 
+  \end{tabular}
+\end{table}
+
+
+Predictive performance summary of the proposed methods on under and over-sampled sequences is presented in Table.\\
+
+\begin{table}[ht]
+\centering
+\caption{Performance of NB, SVM, KNN, and RNN for the identification of segmentation and continuous eCoaching text. The highest value for each performance metric is highlighted in bold.}
+\label{tab:result_under_over_sampled}
+  \begin{tabular}{|l|l|l|l|l|l|l|}
+  \hline
+   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{contextual features only}} & \multicolumn{3}{|c|}{\textbf{contextual + topics + punctuation marks}} \\\cline{2-7}
+   & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score}\\ \hline    
+    
+ Naive Bayes Multinomial & 0.975 & 0.974 & 0.975 & 0.976 & 0.974 & 0.975 \\ \hline
+ Support Vector Machine & 0.981 & 0.982 & 0.981 & 0.983 & 0.983 & 0.983\\ \hline
+ K-Nearest Neighbour & \textbf{0.983} & \textbf{0.984} & \textbf{0.983} & \textbf{0.986} & \textbf{0.986} & \textbf{0.986}\\ \hline
+ Long Short Term Memory & 0.8424 & 0.8385 & 0.8381 & -- & -- & --\\ \hline
+ Gated Recurrent Unit & 0.8705 & 0.8676 & 0.8673 & -- & -- & --\\ \hline 
   \end{tabular}
 \end{table} 
 
 We took the inspiration for the representation of behavior codes from the idea of word embeddings. Word embedding is a representation of words in
-low-dimensional space by vectors, which contain the features of the words. In our study, we employed embedding in place of one-hot vectors for representation of behavior codes as input to LSTM and
-GRU, since one-hot vectors are high-dimensional and sparse. 
+low-dimensional space by vectors, which contain the features of the words. In our study, we employed embedding in place of one-hot vectors for representation of behavior codes as input to LSTM and GRU, since one-hot vectors are high-dimensional and sparse. 
 
 \begin{figure}[!htb]
     \centering
@@ -148,14 +165,8 @@ performance of RNN models is substantially better than probabilistic models. In 
 8) What is new and significant?\\
  
 \section*{Conclusion}
-In this paper, we compared the performance of machine learning models for the task of segmentation of e-coaching text. We found out that k-nearest neighbour provides the best performance for the segmentaion of text in terms of all performance metrics. Manual segmentation of e-coaching data is very resource-intensive and time consuming task, which can significantly decrease the time and effort required to develop effective behavioral interventions. Our
-proposed methods can help to identify individual text segments, which can be annotated directly with a classification model and increase the effectiveness of behavioral interventions. This approach will help for developing fully automated eCoaching and also accelerate the pace of identifying effective communication strategies linked to healthy eating.  
+Segmentation of eCoaching text is an integral part of developing an automated eCoaching intervention. Although several studies have done for the segmentation of clinical text into sections and sentences, none of them are used for the segmentation of text into a group of MI behavior in the setting of discourse analysis with email under the principle of motivational interviews. In this paper, we compared the performance of machine learning models for the task of segmentation of e-coaching text. We found out that k-nearest neighbour provides the best performance for the segmentaion of text in terms of all performance metrics. Manual segmentation of e-coaching data is very resource-intensive and time consuming task, which can significantly decrease the time and effort required to develop effective behavioral interventions. Our proposed methods can help to identify individual text segments, which can be annotated directly with a classification model and increase the effectiveness of behavioral interventions. This approach will help for developing fully automated eCoaching and also accelerate the pace of identifying effective communication strategies linked to healthy eating. As our future work, we plan to evaluate our approach on other datasets involves in discourse analysis for enhancing our proposed method.  
 
-1) The hypothesis and the evidence for and against it are briefly restated \\
-2) The original motivation is recapitulated \\
-3) The state of the field in the light of this new contribution is reassessed \\
-4) describes future research and new directions suggested by the contribution\\
-5) in particular, research that would improve the evidence for or against the hypothesis
 
 \section*{Acknowledgments}
 This study was supported by a grant from the National Institutes of Health, NIDDK R21DK108071, Carcone and Kotov, MPIs. We would like to thank the student assistants in the Department of Family Medicine and Public Health Sciences at Wayne State University School of Medicine for their help in developing the training dataset by manually annotating the dataset using the MYSCOPE codebook. 

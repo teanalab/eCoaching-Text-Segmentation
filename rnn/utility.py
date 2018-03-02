@@ -1,6 +1,7 @@
 # include required packages
 import numpy
 import re
+import sys
 
 from keras.utils import np_utils
 from keras.preprocessing.sequence import pad_sequences
@@ -118,6 +119,7 @@ def get_encoded_data_rnn(data, vocabulary_obj, max_len):
     previous_x, current_x = [], []
 
     for text in data:
+        # print text
         input_text = vocabulary_obj.vectorize(text)
         sample_len = len(input_text)
 
@@ -126,16 +128,38 @@ def get_encoded_data_rnn(data, vocabulary_obj, max_len):
             x.append(previous_x + current_x)
             y.append(1)
 
-        current_idx = 0
+            # for idx in previous_x + current_x:
+            #     sys.stdout.write(str(vocabulary_obj.int_to_word[idx] + ', '))
+            # sys.stdout.write("1\n")
+
+            previous_x = input_text[0:1]
+            current_x = []
+
+        current_idx = 1
         while current_idx < sample_len:
 
             if is_special_char(input_text[current_idx], vocabulary_obj):
                 current_x.append(input_text[current_idx])
+                if current_idx == sample_len - 1:
+                    previous_x.append(input_text[current_idx])
             else:
                 current_x.append(input_text[current_idx])
                 x.append(previous_x + current_x)
                 y.append(0)
-                previous_x = current_x
+
+                # for idx in previous_x + current_x:
+                #     sys.stdout.write(str(vocabulary_obj.int_to_word[idx] + ', '))
+                #     pass
+                # sys.stdout.write("0\n")
+
+                if current_idx == sample_len-1 and not is_special_char(input_text[current_idx], vocabulary_obj):
+                    previous_x = [input_text[current_idx]]
+                else:
+                    if len(current_x) > 1:
+                        previous_x = [input_text[current_idx]]
+                    else:
+                        previous_x = current_x
+                current_x = []
 
             current_idx += 1
 
@@ -150,9 +174,8 @@ def get_encoded_data_rnn(data, vocabulary_obj, max_len):
 
 # check for special character
 def is_special_char(key, vocabulary_obj):
-    int_to_char = dict((i + 1, c) for i, c in enumerate(vocabulary_obj.vocab))
-    special_chars = ['exclam', 'fullstop', 'questionmark', 'comma', 'hyphen', 'clone', 'semiclone']
-    if int_to_char[key] in special_chars:
+    special_chars = ['exclam', 'quotemark', 'fullstop', 'questionmark', 'comma', 'hyphen', 'clone', 'semiclone']
+    if vocabulary_obj.int_to_word[key] in special_chars:
         return True
     else:
         return False

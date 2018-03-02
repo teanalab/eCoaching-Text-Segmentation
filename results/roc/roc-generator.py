@@ -151,7 +151,7 @@ def get_encoded_data_rnn(data, vocabulary_obj, max_len):
 # check for special character
 def is_special_char(key, vocabulary_obj):
     int_to_char = dict((i + 1, c) for i, c in enumerate(vocabulary_obj.vocab))
-    special_chars = ['exclam', 'fullstop', 'questionmark', 'comma', 'hyphen', 'clone', 'semiclone']
+    special_chars = ['exclam', 'fullstop', 'quotemark', 'questionmark', 'comma', 'hyphen', 'clone', 'semiclone']
     if int_to_char[key] in special_chars:
         return True
     else:

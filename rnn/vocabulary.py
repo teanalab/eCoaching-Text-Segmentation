@@ -6,6 +6,7 @@ import operator
 class Vocabulary:
     def __init__(self, vocab_path='e-coaching.vocab'):
         self.vocab = dict()
+        self.int_to_word = dict()
         self.vocab_path = vocab_path
 
     # build e-coaching dictionary
@@ -13,7 +14,7 @@ class Vocabulary:
         with codecs.open(self.vocab_path, 'r', 'UTF-8') as train_file:
             words = [x.strip().rstrip('\n') for x in train_file.readlines()]
             self.vocab = dict((c, i + 1) for i, c in enumerate(words))
-
+            self.int_to_word = dict((i+1, c) for i, c in enumerate(words))
         return self
 
     # read all the data from file and create vocabulary, also find # classes
