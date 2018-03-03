@@ -35,7 +35,14 @@ GenY is a tech-savvy generation requiring an intervention matched to their mobil
 
 A major drawback of this research is the qualitative methods traditionally used to analyze the communication process which are resource-intensive, requiring an iterative process of human (subjective) interpretation of text. Rapidly developing computational technologies, specifically machine learning combined with classification models, offer a unique opportunity to accelerate this process. Our research group has recently applied machine learning-based models to similar communication data\cite{hasan2016study,kotov2015interpretable}. A simple communication code scheme was automated to characterize patient communication and achieved accuracy comparable to human coders\cite{hasan2016study}. The ultimate goal of the research study is to leverage innovative machine learning models to fully automate the communication coding process in eCoach-patient communication to increases in fruit and vegetable intake. 
 
-However, a significant barrier of fully automate eCoaching is the unsegmented text data. Developing an automatic classification of clinical interactions required segmented text. Nevertheless, eCoaching data comprised of email responses which need to be segmented into group of MI behavior referes to ``block of text''. Automatic segementation of eCoaching intervention sessions is a challenging task due to the 2 important reasons. First, the email is an unstructured text that contains informal email exchange in non-traditional formats. Second, a text segment not necessarily belongs to the entire sentence or collection of sentences. One sentence can be segmented into several MI behaviors, and vice versa. Figure 1 illustrates that the marked sentence taken from an eCoaching email exchanage, segmented into 2 different MI behaviors, CHT and HUP. 
+However, a significant barrier of fully automate eCoaching is the unsegmented text data. Developing an automatic classification of clinical interactions required segmented text. Nevertheless, eCoaching data comprised of email responses which need to be segmented into group of MI behavior referes to ``block of text''. Automatic segementation of eCoaching intervention sessions is a challenging task due to the 2 important reasons. First, the email is an unstructured text that contains informal email exchange in non-traditional formats. Second, a text segment not necessarily belongs to the entire sentence or collection of sentences. One sentence can be segmented into several MI behaviors, and vice versa. Figure~\ref{fig:text-segment} illustrates that the marked sentence taken from an eCoaching email exchanage, segmented into 2 different MI behaviors, CHT and HUP. 
+
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/roc-curves.png}
+    \caption{\textbf{Challenge for text segmentation}.}
+    \label{fig:text-segment}
+\end{figure}
 
 In this paper, we address this problem by developing several state-of-the-art machine learning based models for the segmentation of eCoaching text to promote the automatic identification of best communication strategies without human interference. More specifically, we develop Support Vector Machine (SVM), Naive Bayes (NB), K-Nearest Neighbor (KNN), Long Short Term Memory (LSTM), and Gated Recurrent Unit (GRU) by utlizing contextual, topic and punctuation mark features, to find the best model for the segmentation of eCoaching text. 
 
@@ -43,30 +50,20 @@ Previous studies mainly focus on segemntation of text into sections and headers\
 
 \section*{Methods}
 \subsection*{\textit{Data collection}}
-The experimental dataset for this work was constructed from the transcripts of 129 motivational interviews, which include a total of 50,239 segmented and annotated utterances. Each transcript consists
-of an MI interview session involving counselor, adolescent, and caregiver. The utterances were annotated based on MYSCOPE codebook \cite{carcone2013provider}, in which the codes are grouped into
-patient (adolescent and caregiver) codes and counselor codes. Utterances were divided into successful and unsuccessful communication sequences. Successful communication sequences result in
-positive change talk and commitment language statements by an adolescent or caregiver, while unsuccessful sequences are the ones that result in negative change talk or commitment language and the
-sequences, in which no change talk or commitment language statements occur. Out of 5143 observed sequences, 4225 were positive and 918 were negative. Successful sequences had an average length of
-9.79 utterances, while unsuccessful sequences had on average 9.65 utterances. For each of the probabilistic models (MC and HMM), two models were trained, one model was trained using successful
-sequences and another one was trained using unsuccessful sequences. 
+The experimental dataset for this work was constructed from the 49 eCoaching sessions, which include a total of 3,138 segmented and annotated MI behaviors. Each session consists of an MI intervention involving patient-provider communications in email. To filter out noise from the dataset, we removed all non-ascii characters and then applied stemming to obtain a general form of word from different word representations, such as ``eating'', ``eats'', and ``eat''. We formulate the text segmentation task into a binary classification, as shown in Figure~\ref{fig:classifier}. An email text is given as the input, it is partitioned into adjacent word pairs by sliding them. Each pair of them classified into either of the two categories: ``boundary'' and ``not boundary''. The text is segmented at position,  where an adjacent word pair classified into ``boundary'' class. If all pairs of word classified into ``'not boundary'', the text is treated as one about a single MI behavior. Totaly, we obtained 95,421 word pairs, which include 3,138 ``boundary'' and 92,283 ``not boundary'' instances.    
 
-Part 1
-
-1) What algorithms or data structures did you select? Who created them? What is their asymptotic behavior? What other specific characteristics are worth noting for this study?\\
-2) What programming language and platform did you use? What impact did these choices have on your project?\\
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/roc-curves.png}
+    \caption{\textbf{Transformation of text segmentation into text classification}.}
+    \label{fig:classifier}
+\end{figure}
 
 
-Part 2
+For the experiment, we utilized three type of features including word, tpoic, and punctuation mark. Each word represented in a binary format, where 1 indicates the appearance of the word and 0 for absence. Topics are considered as features since topic models are very effective\cite{kotov2015interpretable,hashimoto2016topic,lu2016modeling} to represent text documents. In this paper, we exploit the Labeled LDA model\cite{kotov2015interpretable} and represent each word in a vector of 2 topics, where the number of topics is experimentaly determined by the model performance. Punctuation mark is one of the most important feature as they indicate the boundary of a sentence, clause and phrase. Therefore, punctuation mark containing one of the symbols \{`.', `,', `!', `?', `:', `;', `-'\} is employed as feature.  
 
-1) How specifically did you implement the algorithms?\\
-2) How did you handle instrumentation code? Why?\\
-3) Did you perform any optimizations? Why or why not?\\
-4) How did you choose to test and benchmark your code?\\
-5) What inputs (data) did you select to test your implementations? Why?\\
-
-\subsection*{\textit{Segmentation method}}
-Generally, a sequence can be viewed as a temporally ordered set of events. In this study, an event is a behavior code that also has a symbolic representation.
+\subsection*{\textit{Segmentation classifiers}}
+Several state-of-the-art classifiers, including Naive Bayes (NB)\cite{pedregosa2011scikit}, Support Vector Machine (SVM)\cite{chang2011libsvm}, K-Nearest Neighbour (KNN)\cite{pedregosa2011scikit}, two variant of Recurrent Neural Networks (RNN)\cite{bengio1993problem}: Long Short Term Memory (LSTM)\cite{hochreiter1997long} and Gated Recurrent Unit (GRU)\cite{cho2014properties}, are employed to estimate the classification performance.  
 
 \textbf{Naive Bayes}: comming soon...
 
