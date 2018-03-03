@@ -25,12 +25,12 @@ char_to_int = dict((c, i+1) for i, c in enumerate(vocabulary_obj.vocab))
 int_to_char = dict((i+1, c) for i, c in enumerate(vocabulary_obj.vocab))
 
 # system configuration
-max_len = 5
+max_len = 3
 folds = 5
 embed_dim = 300
-lstm_out = 64
+lstm_out = 32
 dropout_x = 0.5
-batch_size = 40
+batch_size = 32
 
 # prepare the data set of input to output pairs encoded as integers
 data = utility.get_ecoaching_data()
@@ -56,11 +56,11 @@ for fold_num in range(folds):
     model = Sequential()
     # model.add(Embedding(vocabulary_obj.size()+1, embed_dim, input_length=X.shape[1]))
     # model.add(GRU(lstm_out, recurrent_regularizer=l1_l2(l1=0.0, l2=0.033), dropout=dropout_x))
-    model.add(LSTM(lstm_out, input_shape=(X.shape[1], 1)))
-    # model.add(GRU(lstm_out, input_shape=(X.shape[1], 1)))
+    # model.add(LSTM(lstm_out, input_shape=(X.shape[1], 1)))
+    model.add(GRU(lstm_out, input_shape=(X.shape[1], 1)))
     model.add(Dense(y.shape[1], activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-    model.fit(X, y, epochs=400, batch_size=batch_size, verbose=2)
+    model.fit(X, y, epochs=700, batch_size=batch_size, verbose=2)
 
     # summarize performance of the model
     scores = model.evaluate(X, y, verbose=0)

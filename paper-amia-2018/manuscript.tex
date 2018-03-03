@@ -40,7 +40,7 @@ However, a significant barrier of fully automate eCoaching is the unsegmented te
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/roc-curves.png}
-    \caption{\textbf{Challenge for text segmentation}.}
+    \caption{\textbf{Main challenge of text segmentation}.}
     \label{fig:text-segment}
 \end{figure}
 
@@ -50,7 +50,7 @@ Previous studies mainly focus on segemntation of text into sections and headers\
 
 \section*{Methods}
 \subsection*{\textit{Data collection}}
-The experimental dataset for this work was constructed from the 49 eCoaching sessions, which include a total of 3,138 segmented and annotated MI behaviors. Each session consists of an MI intervention involving patient-provider communications in email. To filter out noise from the dataset, we removed all non-ascii characters and then applied stemming to obtain a general form of word from different word representations, such as ``eating'', ``eats'', and ``eat''. We formulate the text segmentation task into a binary classification, as shown in Figure~\ref{fig:classifier}. An email text is given as the input, it is partitioned into adjacent word pairs by sliding them. Each pair of them classified into either of the two categories: ``boundary'' and ``not boundary''. The text is segmented at position,  where an adjacent word pair classified into ``boundary'' class. If all pairs of word classified into ``'not boundary'', the text is treated as one about a single MI behavior. Totaly, we obtained 95,421 word pairs, which include 3,138 ``boundary'' and 92,283 ``not boundary'' instances.    
+The experimental dataset for this work was constructed from the 49 eCoaching sessions, which include a total of 3,138 segmented and annotated MI behaviors. Each session contains an MI intervention involving patient-provider communications in email. To filter out noise from the dataset, non-ascii characters are removed and then applied stemming to obtain a general form of word from different word representations, such as ``eating'', ``eats'', and ``eat''. We formulate the text segmentation task into a binary classification, as shown in Figure~\ref{fig:classifier}. An email text is given as the input, it is partitioned into adjacent word pairs by sliding them. Each pair of them classified into either of the two categories: ``boundary'' and ``not boundary''. The text is segmented at position, where an adjacent word pair classified into ``boundary'' class. If all pairs of word classified into ``not boundary'', the text is treated as one about a single MI behavior. Totaly, we obtained 95,421 word pairs, which include 3,138 ``boundary'' and 92,283 ``not boundary'' instances.    
 
 \begin{figure}[!htb]
     \centering
@@ -60,28 +60,46 @@ The experimental dataset for this work was constructed from the 49 eCoaching ses
 \end{figure}
 
 
-For the experiment, we utilized three type of features including word, tpoic, and punctuation mark. Each word represented in a binary format, where 1 indicates the appearance of the word and 0 for absence. Topics are considered as features since topic models are very effective\cite{kotov2015interpretable,hashimoto2016topic,lu2016modeling} to represent text documents. In this paper, we exploit the Labeled LDA model\cite{kotov2015interpretable} and represent each word in a vector of 2 topics, where the number of topics is experimentaly determined by the model performance. Punctuation mark is one of the most important feature as they indicate the boundary of a sentence, clause and phrase. Therefore, punctuation mark containing one of the symbols \{`.', `,', `!', `?', `:', `;', `-'\} is employed as feature.  
+For the experiment, we utilized three type of features including word, tpoic, and punctuation mark. Each word represented in a binary format, where 1 indicates the appearance of the word and 0 for absence. Topics are considered as features since topic models are very effective\cite{kotov2015interpretable,hashimoto2016topic,lu2016modeling} to represent text documents. In this paper, we exploit the Labeled LDA model\cite{kotov2015interpretable} and represent each word in a vector of 2 topics, where the number of topics is experimentaly determined by the model performance. Punctuation mark containing one of the symbols \{`.', `,', `!', `?', `:', `;', `-'\} is also employed as feature. This is one of the most important feature as they indicate the boundary of a sentence, clause and phrase.   
 
 \subsection*{\textit{Segmentation classifiers}}
-Several state-of-the-art classifiers, including Naive Bayes (NB)\cite{pedregosa2011scikit}, Support Vector Machine (SVM)\cite{chang2011libsvm}, K-Nearest Neighbour (KNN)\cite{pedregosa2011scikit}, two variant of Recurrent Neural Networks (RNN)\cite{bengio1993problem}: Long Short Term Memory (LSTM)\cite{hochreiter1997long} and Gated Recurrent Unit (GRU)\cite{cho2014properties}, are employed to estimate the classification performance.  
+Several state-of-the-art classifiers, including Naive Bayes (NB)\cite{pedregosa2011scikit}, Support Vector Machine (SVM)\cite{chang2011libsvm}, K-Nearest Neighbour (KNN)\cite{pedregosa2011scikit}, two variant of Recurrent Neural Networks (RNN)\cite{bengio1993problem}: Long Short Term Memory (LSTM)\cite{hochreiter1997long} and Gated Recurrent Unit (GRU)\cite{cho2014properties}, are employed to estimate the classification performance. 
 
-\textbf{Naive Bayes}: comming soon...
+\textbf{Naive Bayes}: this model is constructed by using the training data and estimate the prior probability of classes, and each feature given the class. Then, posterior probability is computed to predict the class label by applying the bayes theorem with the assumption that features are conditionally independent. This study utilized a specialized version of Naive Bayes called Multinomial Naive Bayes, which is best suitable for discrete features such as word.
 
-\textbf{Support Vector Machine}: comming soon...
+\textbf{Support Vector Machine}: we used this model as one of the state-of-the-art classification technique proven to perform well in text categorisation\cite{joachims1998text} for its ability to cope with very high dmensional input feature space. SVM finds the best hyperplane in the feature space that maximize the separation between the closest ``boundary'' and ``not boundary'' training examples. In this experiment, polynomial kernel is employed to train the SVM model for the segmentation of eCoaching text.   
 
-\textbf{K-Nearest Neighbour}: comming soon...
+\textbf{K-Nearest Neighbour}: By this model, each training sample represented as a point in the input feature space. For a new test sample, Euclidean distance is calculated to find the k-nearest neighbors. Finally, the test sample is classified into majority class of the k-nearest neighbors. We experimentaly determined that best performance was achieved with k = 3 for the classification of word pairs. 
 
-\textbf{Recurrent Neural Networks}: comming soon...
+\textbf{Recurrent Neural Networks}: RNN is a neural network architecture designed to capture sequential patterns present in temporal sequence such as text data. When we predict the ``boundary'' point, adjacent word pair will help to understand the pattern of the sequence. Long Short Term Memory networks usually reffered as LSTMs\cite{hochreiter1997long}, are a special type of RNN capable of handling variable size input sequence, contains internal memory. GRU\cite{cho2014properties} is a variant of LSTM mathematically represented by the following formula:
+
+\begin{equation}
+z_t = \sigma(W_zx_t + U_zh_{t-1} + b_z)
+\label{eq:firstgru}
+\end{equation}
+\begin{equation}
+r_t = \sigma(W_rx_t + U_rh_{t-1} + b_r)
+\label{eq:resetgru}
+\end{equation}
+\begin{equation}
+\tilde h_t = tanh(W_hx_t + r_t \odot U_hh_{t-1} + b_h) 
+\label{eq:candidategru}
+\end{equation}
+\begin{equation}
+h_t = z_t \odot h_{t-1} + (1-z_t) \odot \tilde h_t
+\label{eq:lastgru}
+\end{equation}  
+In Eq.~\ref{eq:firstgru}-\ref{eq:lastgru}, $\sigma$ corresponds to sigmoid function and $\odot$ designates an element-wise product. The update gate $z_t$ and reset gate $r_t$ at time step $t$ are computed by the Eq.~(\ref{eq:firstgru}) and~(\ref{eq:resetgru}), where $W_z$, $W_r$, $W_h$, $U_z$, $U_r$, $U_h$ are the weight matrices and $b_z$, $b_h$ and $b_r$ are bias vectors. The activation $h_t$ of the GRU at time $t$ is a linear combination of previous activation $h_{t-1}$ and the candidate activation $\tilde h_t$, which is represented by Eq.~(\ref{eq:lastgru}) and~(\ref{eq:candidategru}). We experimentally determined that the best performance is achieved when the number of hidden units=32, batch size=32, optimizer=adam, as well as early stopping is used based on the validation loss.         
   
 \subsection*{\textit{Evaluation metrics}}
-Performance of the proposed method was evaluated in terms of precision, recall, and F-measure using 10 folds cross-validation and weighted macro-averaging of these metrics over the folds. However, LSTM and GRU are trained on 80\% of the data and validated on 10\%. The remaining 10\% of the data is used as a test set for reporting the performance of the model. 
+In this experiment, standard metrics: precision, recall, and F-measure, are applied to evaluate the performance of binary classifiers\cite{aas1999text}. However, we didn't report accuracy as a performance metric because accuracy is highly sensitive to the prior class probabilities and does not fully describe the actual difficulty of the decision problem for unbalanced dataset. We conduct the experiment with 5 folds cross-validation and weighted macro-averaging of these metrics over the folds. All models are trained on 80\% of the word pairs and remaining 20\% of the data is used as a test set for reporting the performance of the model. We also estimated the area under the receiving operating characterstics curve (AUC) metric due to its effectiveness in measuring the quality of binary classifiers for imbalanced datasets\cite{hu2015kernelized}. 
 
 \section*{Results}
 Experimental evaluation of the proposed method is conducted on both under and over-sampled sequences. Predictive performance summary of the proposed methods on under and over-sampled sequences is presented in Table.\\
 
 1) In general, the pure, unbiased results should be presented first without interpretation (van Wagenen 1990). \\
 2) These results should present the raw data
-or the results after applying the techniques outlined in the methods section. The results are simply results; they do not draw conclusions.
+or the results after applying the techniques outlined in the methods section. The results are simply results; they do not draw conclusions.\\
 
 \begin{table}[ht]
 \centering
@@ -166,7 +184,7 @@ Segmentation of eCoaching text is an integral part of developing an automated eC
 
 
 \section*{Acknowledgments}
-This study was supported by a grant from the National Institutes of Health, NIDDK R21DK108071, Carcone and Kotov, MPIs. We would like to thank the student assistants in the Department of Family Medicine and Public Health Sciences at Wayne State University School of Medicine for their help in developing the training dataset by manually annotating the dataset using the MYSCOPE codebook. 
+This study was supported by a grant from the National Institutes of Health, NIDDK R21DK108071, Carcone and Kotov, MPIs. We would like to thank the student assistants in the Department of Family Medicine and Public Health Sciences at Wayne State University School of Medicine for their help in developing the training dataset by manually segmented the eCoaching text. 
 
 \bibliographystyle{vancouver}
 \bibliography{references}
