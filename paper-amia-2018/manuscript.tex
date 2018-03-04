@@ -20,13 +20,8 @@ $^2$Department of Family Medicine and Public Health Sciences, School of Medicine
 \maketitle
 
 \noindent{\bf Abstract}
-\textit{Machine learning-based models has the potential to to efficiently and accurately identify patient-provider communication behaviors during eCoaching intervention sessions targeting fruit and vegetable intake among young adults age 21-30. }
+\textit{Poor eating habits, particularly low fruit and vegetable intake, is a growing, serious public health concern among young adults. An effective intervention is required to improve eating habits. eCoaching is an email-based intervention technique where a critical step is the segmentation of text for the automatic annotation of email exchange. In this study, we transformed this task into classification of detecting boundary of segmentation, and developed sevarals state-of-the-art machine learning models including Support Vector Machine, Naive Bayes, K-Nearest Neighbor (KNN), Recurrent Neural Networks by utlizing contextual, topic and punctuation mark features. Results indicate that KNN is the best model and achieved 0.986 F1-score in overall, 0.779 and 0.993 F1-scores for detecting boundary, not boundary, respectively. This study has a great implication to identify individual text segments, which can be annotated directly with a classification model, and accelerate the pace of identifying effective communication strategies linked to healthy eating.}
 
-1) Motivation: Why do we care about the problem and the results? \\
-2) Problem statement: What problem is the paper trying to solve and what is the scope of the work? \\
-3) Approach: What was done to solve the problem? \\
-4) Results: What is the answer to the problem? \\
-5) Conclusions: What implications does the answer imply?
 
 \section*{Introduction}
 Unhealthy eating habits, particularly low fruit and vegetable intake, is a growing, serious public health concern, particularly among young adults age 21-30, referred to as Generation Y (GenY)\cite{blanck2008trends,centers2007fruit}. This generation has adopted a lifestyle that involves eating accessible, ``no mess'', quick, ``grab and go'' foods\cite{nebeling2007still,brug1999application}. They mainly eat ``out'' and infrequently shop and prepare food, limiting access to fruit and vegetables (FV)\cite{nelson2009improving,larson2006food}. Unfortunately, less than one-third of US adults\cite{blanck2008trends,ogden2006prevalence} and only 20\% of GenY\cite{blanck2008trends,american2006american,thompson2005dietary} eat the recommended 5 servings of fruit and vegetables daily. Those in inner city urban and rural settings have among the poorest eating habits\cite{blanck2008trends,centers2007fruit,ogden2006prevalence,american2006american,thompson2005dietary}. GenY's poor dietary practices placing them at high risk for obesity and many chronic diseases, such as type 2 diabetes, as well as declines in predicted health status and life expectancy. Thus, there is a need to develop effective interventions to improve GenY's eating habits.
@@ -35,12 +30,12 @@ GenY is a tech-savvy generation requiring an intervention matched to their mobil
 
 A major drawback of this research is the qualitative methods traditionally used to analyze the communication process which are resource-intensive, requiring an iterative process of human (subjective) interpretation of text. Rapidly developing computational technologies, specifically machine learning combined with classification models, offer a unique opportunity to accelerate this process. Our research group has recently applied machine learning-based models to similar communication data\cite{hasan2016study,kotov2015interpretable}. A simple communication code scheme was automated to characterize patient communication and achieved accuracy comparable to human coders\cite{hasan2016study}. The ultimate goal of the research study is to leverage innovative machine learning models to fully automate the communication coding process in eCoach-patient communication to increases in fruit and vegetable intake. 
 
-However, a significant barrier of fully automate eCoaching is the unsegmented text data. Developing an automatic classification of clinical interactions required segmented text. Nevertheless, eCoaching data comprised of email responses which need to be segmented into group of MI behavior referes to ``block of text''. Automatic segementation of eCoaching intervention sessions is a challenging task due to the 2 important reasons. First, the email is an unstructured text that contains informal email exchange in non-traditional formats. Second, a text segment not necessarily belongs to the entire sentence or collection of sentences. One sentence can be segmented into several MI behaviors, and vice versa. Figure~\ref{fig:text-segment} illustrates that the marked sentence taken from an eCoaching email exchanage, segmented into 2 different MI behaviors, CHT and HUP. 
+However, a significant barrier of fully automate eCoaching is the unsegmented text data. Developing an automatic classification of clinical interactions required segmented text. Nevertheless, eCoaching data comprised of email responses which need to be segmented into group of MI behavior referes to ``block of text''. Automatic segementation of eCoaching intervention sessions is a challenging task due to the 2 important reasons. First, the email is an unstructured text that contains informal email exchange in non-traditional formats. Second, a text segment not necessarily belongs to the entire sentence or collection of sentences. One sentence can be segmented into several MI behaviors, and vice versa. Figure~\ref{fig:text-segment} illustrates the segmentation of an eCoaching email exchanage where first sentence segmented into 2 different MI behaviors. On the other hand, fourth and fifth segments contain only one and multiple sentences, respectively.  
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.9\textwidth]{figures/segment-example.png}
-    \caption{\textbf{Main challenge of text segmentation}.}
+    \caption{\textbf{Segmentation of eCoaching text depicts the main challenges of boundary detection}.}
     \label{fig:text-segment}
 \end{figure}
 
@@ -50,17 +45,17 @@ Previous studies mainly focus on segemntation of text into sections and headers\
 
 \section*{Methods}
 \subsection*{\textit{Data collection}}
-The experimental dataset for this work was constructed from the 49 eCoaching sessions, which include a total of 3,138 segmented and annotated MI behaviors. Each session contains an MI intervention involving patient-provider communications in email. To filter out noise from the dataset, non-ascii characters are removed and then applied stemming to obtain a general form of word from different word representations, such as ``eating'', ``eats'', and ``eat''. We formulate the text segmentation task into a binary classification, as shown in Figure~\ref{fig:classifier}. An email text is given as the input, it is partitioned into adjacent word pairs by sliding them. Each pair of them classified into either of the two categories: ``boundary'' and ``not boundary''. The text is segmented at position, where an adjacent word pair classified into ``boundary'' class. If all pairs of word classified into ``not boundary'', the text is treated as one about a single MI behavior. Totaly, we obtained 95,421 word pairs, which include 3,138 ``boundary'' and 92,283 ``not boundary'' instances.    
+The experimental dataset for this work was constructed from the 49 eCoaching sessions, which include a total of 3,138 segmented and annotated MI behaviors. Each session contains an MI intervention involving patient-provider communications in email. To filter out noise from the dataset, non-ascii characters are removed and then applied stemming to obtain a general form of word from different word representations, such as ``eating'', ``eats'', and ``eat''. We formulate the text segmentation task into a binary classification, as shown in Figure~\ref{fig:classifier}. An intervention session with email exchange is given as the input, it is partitioned into adjacent word pairs by sliding them. Each pair of them classified into either of the two categories: ``boundary'' and ``not boundary''. The text is segmented at position, where an adjacent word pair classified into ``boundary'' class. If all pairs of word classified into ``not boundary'', the text is treated as one about a single MI behavior. Totaly, we obtained 95,421 word pairs, which include 3,138 ``boundary'' and 92,283 ``not boundary'' instances.    
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=0.80\textwidth]{figures/classifier.png}
-    \caption{\textbf{Transformation of text segmentation into text classification}.}
+    \caption{\textbf{Transformation of text segmentation task into text classification task}.}
     \label{fig:classifier}
 \end{figure}
 
 
-For the experiment, we utilized three type of features including word, tpoic, and punctuation mark. Each word represented in a binary format, where 1 indicates the appearance of the word and 0 for absence. Topics are considered as features since topic models are very effective\cite{kotov2015interpretable,hashimoto2016topic,lu2016modeling} to represent text documents. In this paper, we exploit the Labeled LDA model\cite{kotov2015interpretable} and represent each word in a vector of 2 topics, where the number of topics is experimentaly determined by the model performance. Punctuation mark containing one of the symbols \{`.', `,', `!', `?', `:', `;', `-'\} is also employed as feature. This is one of the most important feature as they indicate the boundary of a sentence, clause and phrase.   
+For the experiment, we utilized three type of features including word (textual feature), tpoic, and punctuation mark. Each word represented in a binary format, where 1 indicates the appearance of the word and 0 for absence. Topics are considered as features since topic models are very effective\cite{kotov2015interpretable,hashimoto2016topic,lu2016modeling} to represent text documents. In this paper, we exploit the Labeled LDA model\cite{kotov2015interpretable} and represent each word in a vector of 2 topics, where the number of topics is experimentaly determined by the model performance. Punctuation mark containing one of the symbols \{`.', `,', `!', `?', `:', `;', `-'\} is also employed as feature. This is one of the most important feature as they indicate the boundary of a sentence, clause and phrase.   
 
 \subsection*{\textit{Segmentation classifiers}}
 Several state-of-the-art classifiers, including Naive Bayes (NB)\cite{pedregosa2011scikit}, Support Vector Machine (SVM)\cite{chang2011libsvm}, K-Nearest Neighbour (KNN)\cite{pedregosa2011scikit}, two variant of Recurrent Neural Networks (RNN)\cite{bengio1993problem}: Long Short Term Memory (LSTM)\cite{hochreiter1997long} and Gated Recurrent Unit (GRU)\cite{cho2014properties}, are employed to estimate the classification performance. 
@@ -89,7 +84,7 @@ r_t = \sigma(W_rx_t + U_rh_{t-1} + b_r)
 h_t = z_t \odot h_{t-1} + (1-z_t) \odot \tilde h_t
 \label{eq:lastgru}
 \end{equation}  
-In Eq.~\ref{eq:firstgru}-\ref{eq:lastgru}, $\sigma$ corresponds to sigmoid function and $\odot$ designates an element-wise product. The update gate $z_t$ and reset gate $r_t$ at time step $t$ are computed by the Eq.~(\ref{eq:firstgru}) and~(\ref{eq:resetgru}), where $W_z$, $W_r$, $W_h$, $U_z$, $U_r$, $U_h$ are the weight matrices and $b_z$, $b_h$ and $b_r$ are bias vectors. The activation $h_t$ of the GRU at time $t$ is a linear combination of previous activation $h_{t-1}$ and the candidate activation $\tilde h_t$, which is represented by Eq.~(\ref{eq:lastgru}) and~(\ref{eq:candidategru}). We build our RNN model with one hidden layer, output layer, and input layer which get one hot encoding of word vector as input. We experimentally determined that the best performance is achieved when the number of hidden units=32, batch size=32, optimizer=adam, as well as early stopping is used based on the validation loss.         
+In Eq.~\ref{eq:firstgru}-\ref{eq:lastgru}, $\sigma$ corresponds to sigmoid function and $\odot$ designates an element-wise product. The update gate $z_t$ and reset gate $r_t$ at time step $t$ are computed by the Eq.~(\ref{eq:firstgru}) and~(\ref{eq:resetgru}), where $W_z$, $W_r$, $W_h$, $U_z$, $U_r$, $U_h$ are the weight matrices and $b_z$, $b_h$ and $b_r$ are bias vectors. The activation $h_t$ of the GRU at time $t$ is a linear combination of previous activation $h_{t-1}$ and the candidate activation $\tilde h_t$, which is represented by Eq.~(\ref{eq:lastgru}) and~(\ref{eq:candidategru}). We build our RNN model with one hidden layer, output layer, and input layer which get one hot encoding of word vector as input. Since one-hot vector is given in the input layer, results are reported with textual features and punctuation marks only. We experimentally determined that the best performance is achieved when the number of hidden units = 32, batch size = 8, optimizer = adam, as well as 600 epochs is used based on the validation loss.         
   
 \subsection*{\textit{Evaluation metrics}}
 In this experiment, standard metrics: precision, recall, and F-measure, are applied to evaluate the performance of binary classifiers\cite{aas1999text}. However, we didn't report accuracy as a performance metric because accuracy is highly sensitive to the prior class probabilities and does not fully describe the actual difficulty of the decision problem for unbalanced dataset. We conduct the experiment with 5 folds cross-validation and weighted macro-averaging of these metrics over the folds. All models are trained on 80\% of the word pairs and remaining 20\% of the data is used as a test set for reporting the performance of the model. We also estimated the area under the receiving operating characterstics curve (AUC) metric due to its effectiveness in measuring the quality of binary classifiers for imbalanced datasets\cite{hu2015kernelized}. 
@@ -103,35 +98,35 @@ or the results after applying the techniques outlined in the methods section. Th
 
 \begin{table}[ht]
 \centering
-\caption{Performance of NB, SVM, KNN, and RNN for identifying segmentation point in eCoaching text. The highest value for each performance metric is highlighted in bold.}
-\label{tab:result_under_over_sampled}
-  \begin{tabular}{|l|l|l|l|l|l|l|}
+\caption{Performance of NB, SVM, KNN, and RNN for detecting boundaries of segmentation in eCoaching text. The highest value for each performance metric is highlighted in bold.}
+\label{tab:result_boundary}
+  \begin{tabular}{|l|l|l|l|p{0.15\linewidth}|p{0.15\linewidth}|l|}
   \hline
-   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{contextual features only}} & \multicolumn{3}{|c|}{\textbf{contextual + topics + punctuation marks}} \\\cline{2-7}
+   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{contextual features only}} & \multicolumn{3}{|c|}{\textbf{contextual + punctuation marks (+ topics except RNN)}} \\\cline{2-7}
    & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score}\\ \hline    
     
- Naive Bayes Multinomial & 0.594 & 0.662 & 0.626 & 0.590 & 0.666 & 0.626 \\ \hline
- Support Vector Machine & 0.742 & \textbf{0.679} & 0.709 & 0.774 & 0.696 & 0.733\\ \hline
- K-Nearest Neighbour & \textbf{0.808} & 0.663 & \textbf{0.728} & \textbf{0.820} & \textbf{0.742} & \textbf{0.779}\\ \hline
- Long Short Term Memory & 0.8424 & 0.8385 & 0.8381  & -- & -- & --\\ \hline
- Gated Recurrent Unit & 0.8705 & 0.8676 & 0.8673 & -- & -- & --\\ \hline 
+ NB & 0.594 & 0.662 & 0.626 & 0.590 & 0.666 & 0.626 \\ \hline
+ SVM & 0.742 & \textbf{0.679} & 0.709 & 0.774 & 0.696 & 0.733\\ \hline
+ KNN & \textbf{0.808} & 0.663 & \textbf{0.728} & \textbf{0.820} & \textbf{0.742} & \textbf{0.779}\\ \hline
+ RNN-LSTM & -- & -- & -- & 0.637 & 0.414 & 0.501  \\ \hline
+ RNN-GRU & -- & -- & -- & 0.642 & 0.490 & 0.554 \\ \hline 
   \end{tabular}
 \end{table} 
 
 \begin{table}[ht]
 \centering
-\caption{Performance of NB, SVM, KNN, and RNN for identifying continuous eCoaching text. The highest value for each performance metric is highlighted in bold.}
-\label{tab:result_under_over_sampled}
-  \begin{tabular}{|l|l|l|l|l|l|l|}
+\caption{Performance of NB, SVM, KNN, and RNN  for detecting no boundaries in eCoaching text. The highest value for each performance metric is highlighted in bold.}
+\label{tab:result_not_boundary}
+  \begin{tabular}{|l|l|l|l|p{0.15\linewidth}|p{0.15\linewidth}|l|}
   \hline
-   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{contextual features only}} & \multicolumn{3}{|c|}{\textbf{contextual + topics + punctuation marks}} \\\cline{2-7}
+   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{contextual features only}} & \multicolumn{3}{|c|}{\textbf{contextual + punctuation marks (+ topics except RNN)}} \\\cline{2-7}
    & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score}\\ \hline    
     
- Naive Bayes Multinomial & 0.988 & 0.985 & 0.987 & 0.989 & 0.984 & 0.986 \\ \hline
- Support Vector Machine & \textbf{0.989} & 0.992 & 0.991 & 0.990 & 0.993 & 0.991\\ \hline
- K-Nearest Neighbour & \textbf{0.989} & \textbf{0.995} & \textbf{0.992} & \textbf{0.991} & \textbf{0.994} & \textbf{0.993}\\ \hline
- Long Short Term Memory & 0.8424 & 0.8385 & 0.8381 & -- & -- & --\\ \hline
- Gated Recurrent Unit & 0.8705 & 0.8676 & 0.8673 & -- & -- & --\\ \hline 
+ NB & 0.988 & 0.985 & 0.987 & 0.989 & 0.984 & 0.986 \\ \hline
+ SVM & \textbf{0.989} & 0.992 & 0.991 & 0.990 & 0.993 & 0.991\\ \hline
+ KNN & \textbf{0.989} & \textbf{0.995} & \textbf{0.992} & \textbf{0.991} & \textbf{0.994} & \textbf{0.993}\\ \hline
+ RNN-LSTM & -- & -- & -- & 0.980 & 0.992 & 0.986 \\ \hline
+ RNN-GRU & -- & -- & -- & 0.983 & 0.991 & 0.987 \\ \hline 
   \end{tabular}
 \end{table}
 
@@ -140,35 +135,34 @@ Predictive performance summary of the proposed methods on under and over-sampled
 
 \begin{table}[ht]
 \centering
-\caption{Performance of NB, SVM, KNN, and RNN for the identification of segmentation and continuous eCoaching text. The highest value for each performance metric is highlighted in bold.}
-\label{tab:result_under_over_sampled}
-  \begin{tabular}{|l|l|l|l|l|l|l|}
+\caption{Weighted average performance of NB, SVM, KNN, and RNN for the segmentation of eCoaching text in detecting both ``boundary'' and ``not boundary''. The highest value for each performance metric is highlighted in bold.}
+\label{tab:result_weighted_avg}
+  \begin{tabular}{|l|l|l|l|p{0.15\linewidth}|p{0.15\linewidth}|l|}
   \hline
-   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{contextual features only}} & \multicolumn{3}{|c|}{\textbf{contextual + topics + punctuation marks}} \\\cline{2-7}
+   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{contextual features only)}} & \multicolumn{3}{|c|}{\textbf{contextual + punctuation marks (+ topics except RNN)}} \\\cline{2-7}
    & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score}\\ \hline    
     
- Naive Bayes Multinomial & 0.975 & 0.974 & 0.975 & 0.976 & 0.974 & 0.975 \\ \hline
- Support Vector Machine & 0.981 & 0.982 & 0.981 & 0.983 & 0.983 & 0.983\\ \hline
- K-Nearest Neighbour & \textbf{0.983} & \textbf{0.984} & \textbf{0.983} & \textbf{0.986} & \textbf{0.986} & \textbf{0.986}\\ \hline
- Long Short Term Memory & 0.8424 & 0.8385 & 0.8381 & -- & -- & --\\ \hline
- Gated Recurrent Unit & 0.8705 & 0.8676 & 0.8673 & -- & -- & --\\ \hline 
+ NB & 0.975 & 0.974 & 0.975 & 0.976 & 0.974 & 0.975 \\ \hline
+ SVM & 0.981 & 0.982 & 0.981 & 0.983 & 0.983 & 0.983\\ \hline
+ KNN & \textbf{0.983} & \textbf{0.984} & \textbf{0.983} & \textbf{0.986} & \textbf{0.986} & \textbf{0.986}\\ \hline
+ RNN-LSTM & -- & -- & -- & 0.969 & 0.973 & 0.970 \\ \hline
+ RNN-GRU & -- & -- & -- & 0.972 & 0.974 & 0.973 \\ \hline 
   \end{tabular}
 \end{table} 
 
 We took the inspiration for the representation of behavior codes from the idea of word embeddings. Word embedding is a representation of words in
 low-dimensional space by vectors, which contain the features of the words. In our study, we employed embedding in place of one-hot vectors for representation of behavior codes as input to LSTM and GRU, since one-hot vectors are high-dimensional and sparse. 
 
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=1.0\textwidth]{figures/roc-curves.png}
-    \caption{\textbf{ROC curves compared the performance of different models}.}
-    \label{fig:roc-curves}
-\end{figure}
-
 \section*{Discussion}
 By analyzing the experimental results of different communication sequence outcome prediction methods proposed in this paper, we arrived at the following conclusions. First, the overall predictive
 performance of RNN models is substantially better than probabilistic models. In particular, the RNN-based method achieves near-human accuracy for predicting the 
 
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=1.0\textwidth]{figures/roc-curves.png}
+    \caption{\textbf{Receiver operating characteristic curves showing the performance of binary classifiers for the segmentation of eCoaching text}.}
+    \label{fig:roc-curves}
+\end{figure}
 
 1) What, specifically, did you learn from comparing these algorithms or data structures? \\
 2) What do your results say about the problem or question you were investigating?\\
