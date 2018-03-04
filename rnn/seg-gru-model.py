@@ -30,7 +30,7 @@ folds = 5
 embed_dim = 300
 lstm_out = 32
 dropout_x = 0.5
-batch_size = 32
+batch_size = 8
 
 # prepare the data set of input to output pairs encoded as integers
 data = utility.get_ecoaching_data()
@@ -60,7 +60,10 @@ for fold_num in range(folds):
     model.add(GRU(lstm_out, input_shape=(X.shape[1], 1)))
     model.add(Dense(y.shape[1], activation='softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-    model.fit(X, y, epochs=700, batch_size=batch_size, verbose=2)
+    # early_stop = EarlyStopping(monitor='val_acc', min_delta=0.00005, patience=20, verbose=1, mode='auto')
+    # callbacks_list = [early_stop]
+    # model.fit(X, y, epochs=1500, callbacks=callbacks_list, batch_size=batch_size, verbose=2, validation_split=0.2)
+    model.fit(X, y, epochs=600, batch_size=batch_size, verbose=2)
 
     # summarize performance of the model
     scores = model.evaluate(X, y, verbose=0)

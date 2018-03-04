@@ -39,7 +39,7 @@ However, a significant barrier of fully automate eCoaching is the unsegmented te
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=1.0\textwidth]{figures/roc-curves.png}
+    \includegraphics[width=0.9\textwidth]{figures/segment-example.png}
     \caption{\textbf{Main challenge of text segmentation}.}
     \label{fig:text-segment}
 \end{figure}
@@ -54,7 +54,7 @@ The experimental dataset for this work was constructed from the 49 eCoaching ses
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=1.0\textwidth]{figures/roc-curves.png}
+    \includegraphics[width=0.80\textwidth]{figures/classifier.png}
     \caption{\textbf{Transformation of text segmentation into text classification}.}
     \label{fig:classifier}
 \end{figure}
@@ -89,7 +89,7 @@ r_t = \sigma(W_rx_t + U_rh_{t-1} + b_r)
 h_t = z_t \odot h_{t-1} + (1-z_t) \odot \tilde h_t
 \label{eq:lastgru}
 \end{equation}  
-In Eq.~\ref{eq:firstgru}-\ref{eq:lastgru}, $\sigma$ corresponds to sigmoid function and $\odot$ designates an element-wise product. The update gate $z_t$ and reset gate $r_t$ at time step $t$ are computed by the Eq.~(\ref{eq:firstgru}) and~(\ref{eq:resetgru}), where $W_z$, $W_r$, $W_h$, $U_z$, $U_r$, $U_h$ are the weight matrices and $b_z$, $b_h$ and $b_r$ are bias vectors. The activation $h_t$ of the GRU at time $t$ is a linear combination of previous activation $h_{t-1}$ and the candidate activation $\tilde h_t$, which is represented by Eq.~(\ref{eq:lastgru}) and~(\ref{eq:candidategru}). We experimentally determined that the best performance is achieved when the number of hidden units=32, batch size=32, optimizer=adam, as well as early stopping is used based on the validation loss.         
+In Eq.~\ref{eq:firstgru}-\ref{eq:lastgru}, $\sigma$ corresponds to sigmoid function and $\odot$ designates an element-wise product. The update gate $z_t$ and reset gate $r_t$ at time step $t$ are computed by the Eq.~(\ref{eq:firstgru}) and~(\ref{eq:resetgru}), where $W_z$, $W_r$, $W_h$, $U_z$, $U_r$, $U_h$ are the weight matrices and $b_z$, $b_h$ and $b_r$ are bias vectors. The activation $h_t$ of the GRU at time $t$ is a linear combination of previous activation $h_{t-1}$ and the candidate activation $\tilde h_t$, which is represented by Eq.~(\ref{eq:lastgru}) and~(\ref{eq:candidategru}). We build our RNN model with one hidden layer, output layer, and input layer which get one hot encoding of word vector as input. We experimentally determined that the best performance is achieved when the number of hidden units=32, batch size=32, optimizer=adam, as well as early stopping is used based on the validation loss.         
   
 \subsection*{\textit{Evaluation metrics}}
 In this experiment, standard metrics: precision, recall, and F-measure, are applied to evaluate the performance of binary classifiers\cite{aas1999text}. However, we didn't report accuracy as a performance metric because accuracy is highly sensitive to the prior class probabilities and does not fully describe the actual difficulty of the decision problem for unbalanced dataset. We conduct the experiment with 5 folds cross-validation and weighted macro-averaging of these metrics over the folds. All models are trained on 80\% of the word pairs and remaining 20\% of the data is used as a test set for reporting the performance of the model. We also estimated the area under the receiving operating characterstics curve (AUC) metric due to its effectiveness in measuring the quality of binary classifiers for imbalanced datasets\cite{hu2015kernelized}. 
