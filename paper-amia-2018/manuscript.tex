@@ -104,10 +104,10 @@ opening para: evaluated with boundary, not boudary and overall \\
  NB & 0.594 & 0.662 & 0.626 & 0.590 & 0.666 & 0.626 \\ \hline
  SVM & 0.742 & \textbf{0.679} & 0.709 & 0.774 & 0.696 & 0.733\\ \hline
  KNN & \textbf{0.808} & 0.663 & \textbf{0.728} & \textbf{0.820} & \textbf{0.742} & \textbf{0.779}\\ \hline
- LSTM & -- & -- & -- & 0.637 & 0.414 & 0.501  \\ \hline
+ LSTM & -- & -- & -- & 0.619 & 0.416 & 0.497  \\ \hline
  GRU & -- & -- & -- & 0.642 & 0.490 & 0.554 \\ \hline 
   \end{tabular}
-\end{table} 
+\end{table} 				
 
 para 1:
 0) opening with referencing table
@@ -131,7 +131,7 @@ para 1:
  NB & 0.988 & 0.985 & 0.987 & 0.989 & 0.984 & 0.986 \\ \hline
  SVM & \textbf{0.989} & 0.992 & 0.991 & 0.990 & 0.993 & 0.991\\ \hline
  KNN & \textbf{0.989} & \textbf{0.995} & \textbf{0.992} & \textbf{0.991} & \textbf{0.994} & \textbf{0.993}\\ \hline
- LSTM & -- & -- & -- & 0.980 & 0.992 & 0.986 \\ \hline
+ LSTM & -- & -- & -- & 0.981 & 0.991 & 0.986 \\ \hline
  GRU & -- & -- & -- & 0.983 & 0.991 & 0.987 \\ \hline 
   \end{tabular}
 \end{table}
@@ -155,7 +155,7 @@ para 2:
  NB & 0.975 & 0.974 & 0.975 & 0.976 & 0.974 & 0.975 \\ \hline
  SVM & 0.981 & 0.982 & 0.981 & 0.983 & 0.983 & 0.983\\ \hline
  KNN & \textbf{0.983} & \textbf{0.984} & \textbf{0.983} & \textbf{0.986} & \textbf{0.986} & \textbf{0.986}\\ \hline
- LSTM & -- & -- & -- & 0.969 & 0.973 & 0.970 \\ \hline
+ LSTM & -- & -- & -- & 0.969 & 0.972 & 0.970 \\ \hline
  GRU & -- & -- & -- & 0.972 & 0.974 & 0.973 \\ \hline 
   \end{tabular}
 \end{table} 
@@ -179,7 +179,7 @@ The additional topic and punctuation mark features, made significant improvement
     \label{fig:roc-curves}
 \end{figure}
 
-In this paper, results are reported by each class to avoid confusion about the overall model performance. In addition, standard metrics: precision, recall and F1-score were used to eliminate doubt about the model performance because accuracy is misleading for imbalance dataset. AUC values are also outlined due to its effectiveness in measuring the quality of binary classifiers for imbalanced datasets\cite{hu2015kernelized}, which was demonstrated by the ROC curves in Figure~\ref{fig:roc-curves}. NB shows the highest AUC values and achieved 0.978 for both cases while it provides lowest classification results except RNN. On the other hand, KNN and SVM exibits 0.972 and 0.835 AUCs when only textual features are used; and 0.959 and 0.844 AUCs when combination of textual, topic and punctuation mark features are used, respectively. Finally, LSTM and GRU demonstrate lowest AUC values among all machine learning models, achieved 0.751 and 0.759 AUCs, respectively. 
+In this paper, results are reported by each class to avoid confusion about the overall model performance. In addition, standard metrics: precision, recall and F1-score were used to eliminate doubt about the model performance because accuracy is misleading for imbalance dataset. AUC values are also outlined due to its effectiveness in measuring the quality of binary classifiers for imbalanced datasets\cite{hu2015kernelized}, which was demonstrated by the ROC curves in Figure~\ref{fig:roc-curves}. NB shows the highest AUC values and achieved 0.978 for both cases while it provides lowest classification results except RNN. On the other hand, KNN and SVM exibits 0.972 and 0.835 AUCs when only textual features are used; and 0.959 and 0.844 AUCs when combination of textual, topic and punctuation mark features are used. Finally, RNN demonstrate lowest AUC values among all machine learning models, achieved AUC values 0.704 and 0.740 for LSTM and GRU, respectively. 
 
 We observed worst results of RNN, in particular LSTM and GRU for the text segmetation. We believe that RNN performed poorly because it has a large set of weights which required large set of data for both class. It this study, we utilized 3,138 examples of boundary case which failed to achieve good results. While performance of RNN is poor, GRU performed better than LSTM which was already observed in other previous study\cite{chung2014empirical}.
 
