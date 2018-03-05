@@ -26,17 +26,17 @@ def create_roc_csv_for_rnn(path):
         if 'RNN' in file_name and 'csv' not in file_name:
             actual = []
             predicted = []
-            count = 0
+            count = 1
             with open(path + "/" + file_name, "r") as file_stream:
                 for line in file_stream:
-                    count += 1
                     if count == 1:
                         current_line = line.split(",")
                         actual += current_line
+                        count = 0
                     else:
                         current_line = line.split(",")
                         predicted += current_line
-                        count = 0
+                        count = 1
 
             sorted_actual, sorted_predicted = [], []
             for i in numpy.fliplr([numpy.argsort(predicted)])[0]:

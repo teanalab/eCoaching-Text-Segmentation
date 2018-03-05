@@ -41,7 +41,7 @@ However, a significant barrier of fully automate eCoaching is the unsegmented te
 
 In this paper, we address this problem by developing several state-of-the-art machine learning based models for the segmentation of eCoaching text to promote the automatic identification of best communication strategies without human interference. More specifically, we develop Support Vector Machine (SVM), Naive Bayes (NB), K-Nearest Neighbor (KNN), Long Short Term Memory (LSTM), and Gated Recurrent Unit (GRU) by utlizing contextual, topic and punctuation mark features, to find the best model for the segmentation of eCoaching text. 
 
-Previous studies mainly focus on segemntation of text into sections and headers\cite{apostolova2009automatic,denny2009evaluation,tepper2012statistical,cho2002text} or sentence boundary detection\cite{griffis2016quantitative,kreuzthaler2015detection,treviso2016sentence} in the medical domain. Apostolova et al.\cite{apostolova2009automatic} applied SVM by utilizing word-vector cosine similarity metric combined with several heuristics to classify clinical report into semantic sections such as demographics, history, exam procedure, finding, impression, etc. After identification of each line in the document, Tepper et al. \cite{tepper2012statistical} trained an Maximum Entrophy models for the section classification. In 2009, Denny et al.\cite{denny2009evaluation} proposed a SecTag algorithm, which combined natural language processing technique, terminology-based rule, and naive bayesian score for identifying sections and headers that achieved 99\% recall with 95.6\% precision. On the other hand, SVM exploiting with linear kernel and recurrent convolutional neural networks with posodic, part of speech features and word embeddings, were trained by Kreuzthaler et al.\cite{kreuzthaler2015detection} and Griffis et al.\cite{griffis2016quantitative}, respectively, for the detection of sentence boundary. However, segmentation of clinical text, in partiicular, segmentation of MI or eCoaching text into group of MI behavior is ignored while relying on manual hand-coded approach. Therefore, this study introduce an innovative approach and the authors are not aware of any other work this approach has been considered for the segmentation of MI or eCoaching text into ``block of text''. 
+Previous studies mainly focus on segemntation of text into sections and headers\cite{apostolova2009automatic,denny2009evaluation,tepper2012statistical,cho2002text} or sentence boundary detection\cite{griffis2016quantitative,kreuzthaler2015detection,treviso2016sentence} in the medical domain. Apostolova et al.\cite{apostolova2009automatic} applied SVM by utilizing word-vector cosine similarity metric combined with several heuristics to classify clinical report into semantic sections such as demographics, history, exam procedure, finding, impression, etc. After identification of each line in the document, Tepper et al. \cite{tepper2012statistical} trained an Maximum Entrophy models for the section classification. In 2009, Denny et al.\cite{denny2009evaluation} proposed a SecTag algorithm, which combined natural language processing technique, terminology-based rule, and naive bayesian score for identifying sections and headers that achieved 99\% recall with 95.6\% precision. On the other hand, SVM exploiting with linear kernel and recurrent convolutional neural networks with posodic, part of speech features and word embeddings, were trained by Kreuzthaler et al.\cite{kreuzthaler2015detection} and Griffis et al.\cite{griffis2016quantitative}, respectively, for the detection of sentence boundary. However, segmentation of clinical text, in partiicular, segmentation of MI or eCoaching text into group of MI behavior is ignored while relying on manual hand-coded approach. Therefore, this study introduce a novel approach and the authors are not aware of any other work this approach has been considered for the segmentation of MI or eCoaching text into ``block of text''. 
 
 \section*{Methods}
 \subsection*{\textit{Data collection}}
@@ -87,14 +87,10 @@ h_t = z_t \odot h_{t-1} + (1-z_t) \odot \tilde h_t
 In Eq.~\ref{eq:firstgru}-\ref{eq:lastgru}, $\sigma$ corresponds to sigmoid function and $\odot$ designates an element-wise product. The update gate $z_t$ and reset gate $r_t$ at time step $t$ are computed by the Eq.~(\ref{eq:firstgru}) and~(\ref{eq:resetgru}), where $W_z$, $W_r$, $W_h$, $U_z$, $U_r$, $U_h$ are the weight matrices and $b_z$, $b_h$ and $b_r$ are bias vectors. The activation $h_t$ of the GRU at time $t$ is a linear combination of previous activation $h_{t-1}$ and the candidate activation $\tilde h_t$, which is represented by Eq.~(\ref{eq:lastgru}) and~(\ref{eq:candidategru}). We build our RNN model with one hidden layer, output layer, and input layer which get one hot encoding of word vector as input. Since one-hot vector is given in the input layer, results are reported with textual features and punctuation marks only. We experimentally determined that the best performance is achieved when the number of hidden units = 32, batch size = 8, optimizer = adam, as well as 600 epochs is used based on the validation loss.         
   
 \subsection*{\textit{Evaluation metrics}}
-In this experiment, standard metrics: precision, recall, and F-measure, are applied to evaluate the performance of binary classifiers\cite{aas1999text}. However, we didn't report accuracy as a performance metric because accuracy is highly sensitive to the prior class probabilities and does not fully describe the actual difficulty of the decision problem for unbalanced dataset. We conduct the experiment with 5 folds cross-validation and weighted macro-averaging of these metrics over the folds. All models are trained on 80\% of the word pairs and remaining 20\% of the data is used as a test set for reporting the performance of the model. We also estimated the area under the receiving operating characterstics curve (AUC) metric due to its effectiveness in measuring the quality of binary classifiers for imbalanced datasets\cite{hu2015kernelized}. 
+In this experiment, standard metrics: precision, recall, and F-measure, are applied to evaluate the performance of binary classifiers\cite{aas1999text}. However, we didn't report accuracy as a performance metric because accuracy is highly sensitive to the prior class probabilities and does not fully describe the actual difficulty of the decision problem for unbalanced dataset. We conduct the experiment with 5 folds cross-validation and weighted macro-averaging of these metrics over the folds. All models are trained on 80\% of the word pairs and remaining 20\% of the data is used as a test set for reporting the performance of the model. We also estimated the area under the receiving operating characterstics (ROC) curve\cite{kumar2011receiver} (AUC) metric due to its effectiveness in measuring the quality of binary classifiers for imbalanced datasets\cite{hu2015kernelized}. 
 
 \section*{Results}
-Experimental evaluation of the proposed method is conducted on both under and over-sampled sequences. Predictive performance summary of the proposed methods on under and over-sampled sequences is presented in Table.\\
-
-1) In general, the pure, unbiased results should be presented first without interpretation (van Wagenen 1990). \\
-2) These results should present the raw data
-or the results after applying the techniques outlined in the methods section. The results are simply results; they do not draw conclusions.\\
+opening para: evaluated with boundary, not boudary and overall \\
 
 \begin{table}[ht]
 \centering
@@ -108,10 +104,20 @@ or the results after applying the techniques outlined in the methods section. Th
  NB & 0.594 & 0.662 & 0.626 & 0.590 & 0.666 & 0.626 \\ \hline
  SVM & 0.742 & \textbf{0.679} & 0.709 & 0.774 & 0.696 & 0.733\\ \hline
  KNN & \textbf{0.808} & 0.663 & \textbf{0.728} & \textbf{0.820} & \textbf{0.742} & \textbf{0.779}\\ \hline
- RNN-LSTM & -- & -- & -- & 0.637 & 0.414 & 0.501  \\ \hline
- RNN-GRU & -- & -- & -- & 0.642 & 0.490 & 0.554 \\ \hline 
+ LSTM & -- & -- & -- & 0.637 & 0.414 & 0.501  \\ \hline
+ GRU & -- & -- & -- & 0.642 & 0.490 & 0.554 \\ \hline 
   \end{tabular}
 \end{table} 
+
+para 1:
+0) opening with referencing table
+1) KNN best in all metrics except Recall
+2) RNN shows lowest performance in terms of recall and F1 score, although GRU better than LSTM 
+3) SVM is second highest model and highest model in terms of recall when only textual features is used.
+4) NB shows lowest precision value among all and better than RNN with recall and F1-score
+5) for additional features, recall and F1 increase x, y, z, for a, b, c, respectively
+6) However, precision increase for all except NB \\
+
 
 \begin{table}[ht]
 \centering
@@ -125,13 +131,17 @@ or the results after applying the techniques outlined in the methods section. Th
  NB & 0.988 & 0.985 & 0.987 & 0.989 & 0.984 & 0.986 \\ \hline
  SVM & \textbf{0.989} & 0.992 & 0.991 & 0.990 & 0.993 & 0.991\\ \hline
  KNN & \textbf{0.989} & \textbf{0.995} & \textbf{0.992} & \textbf{0.991} & \textbf{0.994} & \textbf{0.993}\\ \hline
- RNN-LSTM & -- & -- & -- & 0.980 & 0.992 & 0.986 \\ \hline
- RNN-GRU & -- & -- & -- & 0.983 & 0.991 & 0.987 \\ \hline 
+ LSTM & -- & -- & -- & 0.980 & 0.992 & 0.986 \\ \hline
+ GRU & -- & -- & -- & 0.983 & 0.991 & 0.987 \\ \hline 
   \end{tabular}
 \end{table}
 
-
-Predictive performance summary of the proposed methods on under and over-sampled sequences is presented in Table.\\
+para 2:
+0) opening with referencing table
+2) Similar to boundary detection, KNN is best and RNN is lowest in all metrics for 'not boundary' identification
+3) Performance is very high compared to boundary detection however, perform better than random
+4) Effect of additional feature is consistent in 'not boundary' classification.
+5) for additional features, precision, recall and F1 increase x, y, z, for a, b, c, respectively \\
 
 \begin{table}[ht]
 \centering
@@ -145,33 +155,39 @@ Predictive performance summary of the proposed methods on under and over-sampled
  NB & 0.975 & 0.974 & 0.975 & 0.976 & 0.974 & 0.975 \\ \hline
  SVM & 0.981 & 0.982 & 0.981 & 0.983 & 0.983 & 0.983\\ \hline
  KNN & \textbf{0.983} & \textbf{0.984} & \textbf{0.983} & \textbf{0.986} & \textbf{0.986} & \textbf{0.986}\\ \hline
- RNN-LSTM & -- & -- & -- & 0.969 & 0.973 & 0.970 \\ \hline
- RNN-GRU & -- & -- & -- & 0.972 & 0.974 & 0.973 \\ \hline 
+ LSTM & -- & -- & -- & 0.969 & 0.973 & 0.970 \\ \hline
+ GRU & -- & -- & -- & 0.972 & 0.974 & 0.973 \\ \hline 
   \end{tabular}
 \end{table} 
 
-We took the inspiration for the representation of behavior codes from the idea of word embeddings. Word embedding is a representation of words in
-low-dimensional space by vectors, which contain the features of the words. In our study, we employed embedding in place of one-hot vectors for representation of behavior codes as input to LSTM and GRU, since one-hot vectors are high-dimensional and sparse. 
+para 3:
+0) opening with referencing table
+1) Overall, KNN is best and RNN is lowest in all metrics for 'not boundary' identification
+2) SVM and RNN achieved x and xx, y and yy, z and zz for precision, recall and F1, respectively.
+3) Effect of additional feature is also consistent.
+4) for additional features, precision, recall and F1 increase x, y, z, for a, b, c, respectively\\
 
 \section*{Discussion}
-By analyzing the experimental results of different communication sequence outcome prediction methods proposed in this paper, we arrived at the following conclusions. First, the overall predictive
-performance of RNN models is substantially better than probabilistic models. In particular, the RNN-based method achieves near-human accuracy for predicting the 
+This study is the first large-scale efforts to evaluate the segmentation of eCoaching text. Experimental results indicate that KNN achieved the best results among all machine learning methods considered for this study. KNN achieved 0.986 F1-score in overall, 0.779 and 0.993 F1-scores for detecting ``boundary'' and ``not boundary'', respectively. Robust performance of KNN provides the evidence that machine learning models are capable to learn information from the email exchange. Although the domain of this study was intentinally quite small, we believe that our study is not limited to ecoacing domain, and it can be successfully applied to other domain as well.
+
+The additional topic and punctuation mark features, made significant improvement in performance of all maching learning methods. In every cases, model performs better when contextual feature is used in combination with topic and punctuation mark features. Thsi results also mean that segmentation performance might be improved by adding more relevant features including human insight into the problem.       
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/roc-curves.png}
-    \caption{\textbf{Receiver operating characteristic curves showing the performance of binary classifiers for the segmentation of eCoaching text}.}
+    \caption{\textbf{Receiver operating characteristic curves showing the performance of binary classifiers for the segmentation of eCoaching text when textual features (left) and combination of textual and other features (right) are used}.}
     \label{fig:roc-curves}
 \end{figure}
 
-1) What, specifically, did you learn from comparing these algorithms or data structures? \\
-2) What do your results say about the problem or question you were investigating?\\
-3) Was your hypothesis confirmed or disproved?\\
-4) Are the results what you expected?\\
-5) If you obtained anomalies or other unexpected results, can you explain them? If not, how could you set about in the future to identify what caused them? \\
-6) How do your results compare to past findings? Are they consistent? Different?Why? \\
-7) How would you respond to objections or questions that other researchers might have about your methods, results, or interpretations? \\
-8) What is new and significant?\\
+In this paper, results are reported by each class to avoid confusion about the overall model performance. In addition, standard metrics: precision, recall and F1-score were used to eliminate doubt about the model performance because accuracy is misleading for imbalance dataset. AUC values are also outlined due to its effectiveness in measuring the quality of binary classifiers for imbalanced datasets\cite{hu2015kernelized}, which was demonstrated by the ROC curves in Figure~\ref{fig:roc-curves}. NB shows the highest AUC values and achieved 0.978 for both cases while it provides lowest classification results except RNN. On the other hand, KNN and SVM exibits 0.972 and 0.835 AUCs when only textual features are used; and 0.959 and 0.844 AUCs when combination of textual, topic and punctuation mark features are used, respectively. Finally, LSTM and GRU demonstrate lowest AUC values among all machine learning models, achieved 0.751 and 0.759 AUCs, respectively. 
+
+We observed worst results of RNN, in particular LSTM and GRU for the text segmetation. We believe that RNN performed poorly because it has a large set of weights which required large set of data for both class. It this study, we utilized 3,138 examples of boundary case which failed to achieve good results. While performance of RNN is poor, GRU performed better than LSTM which was already observed in other previous study\cite{chung2014empirical}.
+
+Punctuation mark plays an important role in segmentation boundary detection, and a large numbers of errors were encountered by the false positive of boundary identification. Similarly, additional information is the common reason of classified original segment into multiple segments. For example, [need help from April].
+
+Our proposed approach is a novel approach for text segmentation where previous study focus on the segmentation of text into sections, headers, and sentences. However, this study segmented email exchange into ``block of text'' represent a particular MI behavior. This work will significantly reduce the amount of resource and time required to segemnt email text manually. Furthermore, this paper can help to annotate each segment automatically by building a new classifer, which will accelerate the pace of finding best communication strategies to develop an effective MI intervention for healthy eating.
+
+As for future work, we plan to evaluate our methods with several similar and different datasets. We also plan to use combination of machine laerning and natural language approaches to improve model performance. For example, part-of-speech tagging and distance from boundary of the sentence might significantly enhance the classification performance. The limitation of this study is that eCoaching text are collected from a single medical institute; formatting, style, and email segment can be different in other settings.
  
 \section*{Conclusion}
 Segmentation of eCoaching text is an integral part of developing an automated eCoaching intervention. Although several studies have done for the segmentation of clinical text into sections and sentences, none of them are used for the segmentation of text into a group of MI behavior in the setting of discourse analysis with email under the principle of motivational interviews. In this paper, we compared the performance of machine learning models for the task of segmentation of e-coaching text. We found out that k-nearest neighbour provides the best performance for the segmentaion of text in terms of all performance metrics. Manual segmentation of e-coaching data is very resource-intensive and time consuming task, which can significantly decrease the time and effort required to develop effective behavioral interventions. Our proposed methods can help to identify individual text segments, which can be annotated directly with a classification model and increase the effectiveness of behavioral interventions. This approach will help for developing fully automated eCoaching and also accelerate the pace of identifying effective communication strategies linked to healthy eating. As our future work, we plan to evaluate our approach on other datasets involves in discourse analysis for enhancing our proposed method.  
