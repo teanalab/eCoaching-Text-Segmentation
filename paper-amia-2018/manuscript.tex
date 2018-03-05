@@ -149,7 +149,7 @@ para 2:
 \label{tab:result_weighted_avg}
   \begin{tabular}{|l|l|l|l|p{0.15\linewidth}|p{0.15\linewidth}|l|}
   \hline
-   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{contextual features only)}} & \multicolumn{3}{|c|}{\textbf{contextual + punctuation marks (+ topics except RNN)}} \\\cline{2-7}
+   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{contextual features only}} & \multicolumn{3}{|c|}{\textbf{contextual + punctuation marks (+ topics except RNN)}} \\\cline{2-7}
    & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-Score}\\ \hline    
     
  NB & 0.975 & 0.974 & 0.975 & 0.976 & 0.974 & 0.975 \\ \hline
@@ -168,7 +168,7 @@ para 3:
 4) for additional features, precision, recall and F1 increase x, y, z, for a, b, c, respectively\\
 
 \section*{Discussion}
-This study is the first large-scale efforts to evaluate the segmentation of eCoaching text. Experimental results indicate that KNN achieved the best results among all machine learning methods considered for this study. KNN achieved 0.986 F1-score in overall, 0.779 and 0.993 F1-scores for detecting ``boundary'' and ``not boundary'', respectively. Robust performance of KNN provides the evidence that machine learning models are capable to learn information from the email exchange. Although the domain of this study was intentinally quite small, we believe that our study is not limited to ecoacing domain, and it can be successfully applied to other domain as well.
+This study is the first large-scale efforts to evaluate the segmentation of eCoaching text. Experimental results indicate that KNN is the best model among all machine learning methods considered for this study. KNN achieved 0.986 F1-score in overall, 0.779 and 0.993 F1-scores for detecting ``boundary'' and ``not boundary'', respectively. Robust performance of KNN provides the evidence that machine learning models are capable to learn information from the email exchange. Although the domain of this study was intentinally quite small, we believe that our study is not limited to ecoacing domain, and it can be successfully applied to other domain as well.
 
 The additional topic and punctuation mark features, made significant improvement in performance of all maching learning methods. In every cases, model performs better when contextual feature is used in combination with topic and punctuation mark features. Thsi results also mean that segmentation performance might be improved by adding more relevant features including human insight into the problem.       
 
