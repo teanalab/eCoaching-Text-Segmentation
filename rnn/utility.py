@@ -62,6 +62,42 @@ def get_encoded_data(data, vocabulary_obj, max_len):
 
 
 # encode text data into numeric values
+def get_encoded_long_sequence(data, vocabulary_obj, max_len):
+    x, y = [], []
+
+    for text in data:
+        input_text = vocabulary_obj.vectorize(text)
+        sample_len = len(input_text)
+        idx = 2
+
+        while idx < sample_len:
+            if idx == sample_len-1:
+                x.append(input_text[0:sample_len])
+                y.append(1)
+
+                # for i in input_text[0:sample_len]:
+                #     sys.stdout.write(str(vocabulary_obj.int_to_word[i] + ', '))
+                # sys.stdout.write("1\n")
+            else:
+                x.append(input_text[0:idx])
+                y.append(0)
+
+                # for i in input_text[0:idx]:
+                #     sys.stdout.write(str(vocabulary_obj.int_to_word[i] + ', '))
+                # sys.stdout.write("0\n")
+
+            idx += 1
+
+    data_x = numpy.array(pad_sequences(x, max_len, padding='pre', truncating='pre', dtype='float32'))
+    # reshape X to be [samples, time steps, features]
+    # data_x = numpy.reshape(data_x, (data_x.shape[0], max_len, 1))
+    # normalize
+    data_x = data_x / vocabulary_obj.size()
+    data_y = np_utils.to_categorical(y)
+    return data_x, data_y
+
+
+# encode text data into numeric values
 def get_encoded_data_all(data, vocabulary_obj, max_len, window_size=1):
     x, y = [], []
     previous_x, current_x = [], []
@@ -172,6 +208,66 @@ def get_encoded_data_rnn(data, vocabulary_obj, max_len):
     return data_x, data_y
 
 
+# encode text data into numeric values
+def get_encoded_data_rnn_embed(data, vocabulary_obj, max_len):
+    numpy.random.seed(42)
+    x, y = [], []
+    previous_x, current_x = [], []
+
+    for text in data:
+        # print text
+        input_text = vocabulary_obj.vectorize(text)
+        sample_len = len(input_text)
+
+        if sample_len >= 1:
+            current_x = input_text[0:1]
+            x.append(previous_x + current_x)
+            y.append(1)
+
+            # for idx in previous_x + current_x:
+            #     sys.stdout.write(str(vocabulary_obj.int_to_word[idx] + ', '))
+            # sys.stdout.write("1\n")
+
+            previous_x = input_text[0:1]
+            current_x = []
+
+        current_idx = 1
+        while current_idx < sample_len:
+
+            if is_special_char(input_text[current_idx], vocabulary_obj):
+                current_x.append(input_text[current_idx])
+                if current_idx == sample_len - 1:
+                    previous_x.append(input_text[current_idx])
+            else:
+                current_x.append(input_text[current_idx])
+                x.append(previous_x + current_x)
+                y.append(0)
+
+                # for idx in previous_x + current_x:
+                #     sys.stdout.write(str(vocabulary_obj.int_to_word[idx] + ', '))
+                #     pass
+                # sys.stdout.write("0\n")
+
+                if current_idx == sample_len-1 and not is_special_char(input_text[current_idx], vocabulary_obj):
+                    previous_x = [input_text[current_idx]]
+                else:
+                    if len(current_x) > 1:
+                        previous_x = [input_text[current_idx]]
+                    else:
+                        previous_x = current_x
+                current_x = []
+
+            current_idx += 1
+
+    data_x = numpy.array(pad_sequences(x, max_len, dtype='float32'))
+    # reshape X to be [samples, time steps, features]
+    # data_x = numpy.reshape(data_x, (data_x.shape[0], max_len, 1))
+    # normalize
+    data_x = data_x / vocabulary_obj.size()
+    data_y = np_utils.to_categorical(y)
+    return data_x, data_y
+
+
 # check for special character
 def is_special_char(key, vocabulary_obj):
     special_chars = ['exclam', 'quotemark', 'fullstop', 'questionmark', 'comma', 'hyphen', 'clone', 'semiclone']
@@ -187,6 +283,10 @@ def clean_text(text):
     new_text = new_text.replace("\n", "").strip()
     new_text = re.sub(r'[?|`|>|<|$|.|!|;|:|=|&|\'|\"|\-|/|)|(|\]|[|]', r'', new_text)
     return new_text
+
+
+def tokenize(text):
+    return [x.strip() for x in re.split('(\W+)', text) if x.strip()]
 
 
 # evaluate model with F1, Precision and Recall
