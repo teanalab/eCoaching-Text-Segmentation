@@ -20,9 +20,10 @@ numpy.random.seed(42)
 
 # system configuration
 folds = 5
-lstm_out = 10
+lstm_out = 25
 batch_size = 1
 max_len = 50
+
 
 class ResetStatesCallback(Callback):
     def __init__(self):
@@ -31,7 +32,7 @@ class ResetStatesCallback(Callback):
     def on_batch_begin(self, batch, logs={}):
         if self.counter % max_len == 0:
             self.model.reset_states()
-            # print("Reset States..............")
+            # print("Reset States..............", max_len)
         self.counter += 1
 
 # create e-coaching dictionary
@@ -74,7 +75,7 @@ for fold_num in range(folds):
         max_len = len(X[i])
         if i % 100 == 0:
             print("Records processed: ", i)
-        model.fit(x_data, y_data, callbacks=[ResetStatesCallback()], shuffle=False, batch_size=batch_size, verbose=0)
+        model.fit(x_data, y_data, callbacks=[ResetStatesCallback()], epochs=max_len, shuffle=False, batch_size=batch_size, verbose=2)
 
     # get encoded test data
     test_x, test_y = utility_var_sequence.get_encoded_sequence(test_data, vocabulary_obj)
