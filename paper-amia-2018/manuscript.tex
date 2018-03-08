@@ -90,7 +90,7 @@ r_t = \sigma(W_rx_t + U_rh_{t-1} + b_r)
 h_t = z_t \odot h_{t-1} + (1-z_t) \odot \tilde h_t
 \label{eq:lastgru}
 \end{equation}  
-In Eq.~\ref{eq:firstgru}-\ref{eq:lastgru}, $\sigma$ corresponds to sigmoid function and $\odot$ designates an element-wise product. The update gate $z_t$ and reset gate $r_t$ at time step $t$ are computed by the Eq.~(\ref{eq:firstgru}) and~(\ref{eq:resetgru}), where $W_z$, $W_r$, $W_h$, $U_z$, $U_r$, $U_h$ are the weight matrices and $b_z$, $b_h$ and $b_r$ are bias vectors. The activation $h_t$ of the GRU at time $t$ is a linear combination of previous activation $h_{t-1}$ and the candidate activation $\tilde h_t$, which is represented by Eq.~(\ref{eq:lastgru}) and~(\ref{eq:candidategru}). We build our RNN model with one hidden layer, output layer, and input layer which get one hot encoding of word vector as input. Since one-hot vector is given in the input layer, results are reported with textual and punctuation mark features only. We experimentally determined that the best performance is achieved when the number of hidden units = 32, batch size = 8, optimizer = adam, as well as 600 epochs is used.         
+In Eq.~\ref{eq:firstgru}-\ref{eq:lastgru}, $\sigma$ corresponds to sigmoid function and $\odot$ designates an element-wise product. The update gate $z_t$ and reset gate $r_t$ at time step $t$ are computed by the Eq.~(\ref{eq:firstgru}) and~(\ref{eq:resetgru}), where $W_z$, $W_r$, $W_h$, $U_z$, $U_r$, $U_h$ are the weight matrices and $b_z$, $b_h$ and $b_r$ are bias vectors. The activation $h_t$ of the GRU at time $t$ is a linear combination of previous activation $h_{t-1}$ and the candidate activation $\tilde h_t$, which is represented by Eq.~(\ref{eq:lastgru}) and~(\ref{eq:candidategru}). We build our RNN model with one hidden layer, output layer, and input layer. One segmented text was taken as input sequence which get one hot encoding of word vector for the model input. A binary label was assigned as output sequence where ``boundary'' and `not boundary'' words were associated with label 1 and 0, respectively. Since one-hot vector is given in the input layer, results are reported with textual and punctuation mark features only. We experimentally determined that the best performance is achieved when the number of hidden units = 25, batch size = 1, and optimizer = adam.         
   
 \subsection*{\textit{Evaluation metrics}}
 In this experiment, standard metrics: precision, recall, and F1-measure, are applied to evaluate the performance of binary classifiers\cite{aas1999text}. However, accuracy is not reported as a performance metric because accuracy is highly sensitive to the prior class probabilities and does not fully describe the actual difficulty of the decision problem for an unbalanced dataset. We conduct the experiment with 5 folds cross-validation and weighted macro-averaging of these metrics over the folds. All models have trained on 80\% of the word pairs and remaining 20\% of the data is used as a test set for reporting the performance of the model. We also estimate the area under the receiving operating characteristics (ROC) curve\cite{kumar2011receiver} (AUC) metric due to its effectiveness in measuring the quality of binary classifiers for imbalanced datasets\cite{hu2015kernelized}. 
@@ -110,8 +110,8 @@ Experimental results are evaluated with ``boundary'' and ``not boundary'' classe
  NB & 0.594 & 0.662 & 0.626 & 0.590 & 0.666 & 0.626 \\ \hline
  SVM & 0.742 & \textbf{0.679} & 0.709 & 0.774 & 0.696 & 0.733\\ \hline
  KNN & \textbf{0.808} & 0.663 & \textbf{0.728} & \textbf{0.820} & \textbf{0.742} & \textbf{0.779}\\ \hline
- LSTM & -- & -- & -- & 0.619 & 0.416 & 0.497  \\ \hline
- GRU & -- & -- & -- & 0.642 & 0.490 & 0.554 \\ \hline 
+ LSTM & -- & -- & -- & 0.800 & 0.646 & 0.714  \\ \hline
+ GRU & -- & -- & -- & 0.769 & 0.715 & 0.741 \\ \hline 
   \end{tabular}
 \end{table}                 
 
@@ -128,9 +128,9 @@ As follows from Table~\ref{tab:result_boundary}, KNN performs best among all mac
     
  NB & 0.988 & 0.985 & 0.987 & 0.989 & 0.984 & 0.986 \\ \hline
  SVM & \textbf{0.989} & 0.992 & 0.991 & 0.990 & 0.993 & 0.991\\ \hline
- KNN & \textbf{0.989} & \textbf{0.995} & \textbf{0.992} & \textbf{0.991} & \textbf{0.994} & \textbf{0.993}\\ \hline
- LSTM & -- & -- & -- & 0.981 & 0.991 & 0.986 \\ \hline
- GRU & -- & -- & -- & 0.983 & 0.991 & 0.987 \\ \hline 
+ KNN & \textbf{0.989} & \textbf{0.995} & \textbf{0.992} & 0.991 & \textbf{0.994} & 0.993\\ \hline
+ LSTM & -- & -- & -- & 0.993 & \textbf{0.994} & \textbf{0.994} \\ \hline
+ GRU & -- & -- & -- & \textbf{0.994} & \textbf{0.994} & \textbf{0.994} \\ \hline 
   \end{tabular}
 \end{table}
 
@@ -147,9 +147,9 @@ Table~\ref{tab:result_not_boundary} summarizes the performance of NB, SVM, KNN, 
     
  NB & 0.975 & 0.974 & 0.975 & 0.976 & 0.974 & 0.975 \\ \hline
  SVM & 0.981 & 0.982 & 0.981 & 0.983 & 0.983 & 0.983\\ \hline
- KNN & \textbf{0.983} & \textbf{0.984} & \textbf{0.983} & \textbf{0.986} & \textbf{0.986} & \textbf{0.986}\\ \hline
- LSTM & -- & -- & -- & 0.969 & 0.972 & 0.970 \\ \hline
- GRU & -- & -- & -- & 0.972 & 0.974 & 0.973 \\ \hline 
+ KNN & \textbf{0.983} & \textbf{0.984} & 0.983 & \textbf{0.986} & \textbf{0.986} & \textbf{0.986}\\ \hline
+ LSTM & -- & -- & -- & \textbf{0.986} & 0.983 & 0.984 \\ \hline
+ GRU & -- & -- & -- & \textbf{0.986} & 0.985 & \textbf{0.986} \\ \hline 
   \end{tabular}
 \end{table} 
 
@@ -167,11 +167,11 @@ The additional topic and punctuation mark feature made a significant improvement
     \label{fig:roc-curves}
 \end{figure}
 
-In this paper, results are reported by each class to avoid confusion about the overall model performance. In addition, standard metrics: precision, recall, and F1-measure were used to eliminate doubt about the model performance because accuracy is misleading for imbalance dataset. AUC values are also outlined due to its effectiveness in measuring the quality of binary classifiers for imbalanced datasets\cite{hu2015kernelized}, which are demonstrated by the ROC curves in Figure~\ref{fig:roc-curves}. NB shows the highest AUC values, achieved 0.978 for both cases while provides lowest classification results except RNN. On the other hand, KNN and SVM exhibit 0.972 and 0.835 AUCs when only textual features are used; and 0.959 and 0.844 AUCs when a combination of textual, topic and punctuation mark features are used. Finally, RNN demonstrates lowest AUC values among all machine learning models, achieved AUC values 0.704 and 0.740 for LSTM and GRU, respectively. The conclusion drawn from the ROC curves also confirmed the robustness and superiority of KNN model for the segmentation of clinical exchange.      
+In this paper, results are reported by each class to avoid confusion about the overall model performance. In addition, standard metrics: precision, recall, and F1-measure were used to eliminate doubt about the model performance because accuracy is misleading for imbalance dataset. AUC values are also outlined due to its effectiveness in measuring the quality of binary classifiers for imbalanced datasets\cite{hu2015kernelized}, which are demonstrated by the ROC curves in Figure~\ref{fig:roc-curves}. NB shows the highest AUC values, achieved 0.978 for both cases while provides lowest classification results. On the other hand, KNN and SVM exhibit 0.972 and 0.835 AUCs when only textual features are used; and 0.959 and 0.844 AUCs when a combination of textual, topic and punctuation mark features are used. Finally, LSTM demonstrates lowest AUC values among all machine learning models, achieved 0.82 AUC while GRU achieved 0.854 AUC. The conclusion drawn from the ROC curves also confirmed the robustness and superiority of KNN model for the segmentation of clinical exchange.      
 
-We observed worst results of RNN, in particular, LSTM and GRU for the text segmentation. We believe that RNN performed poorly because it has a large set of weights which required longer sequence with a large set of data for all labels. In this study, a maximum length of the input sequence was 3 and we utilized 3,138 examples of boundary case which failed to achieve good results. While the performance of RNN is poor, GRU performs better than LSTM which was observed in other previous study\cite{chung2014empirical}.
+We observed second highest performance of RNN, in particular, LSTM and GRU for the text segmentation. We believe that RNN will perform better if a large set of data is utilized. In this study, we employed 3,138 examples of boundary case which failed to achieve best results. We also observed that GRU performs better than LSTM which was observed in other previous study\cite{chung2014empirical}.
 
-Punctuation mark plays an important role in segmentation boundary detection, and large numbers of errors were encountered by the false positive of boundary identification. For example, a text block ``A1 A2 A3. B1 B2 B3. C1 C2 C3 C4.'' can be segmented at position A3, B3, and C4 where a punctuation mark was encountered. Similarly, additional information is the common reason for the classified original segment into multiple segments. For instance, the above text block can be segmented at position B3 and C4 because third sentence (C) only supports the MI code confirmed by first two sentences (A and B). 
+Although punctuation mark plays an important role in segmentation boundary detection, and large numbers of errors were encountered by the false positive of boundary identification. For example, a text block ``A1 A2 A3. B1 B2 B3. C1 C2 C3 C4.'' can be incorrectly segmented at position A3, B3, and C4 where a punctuation mark was encountered. Similarly, additional information is the common reason for the classified original segment into multiple segments. For instance, the above text block can also be incorrectly segmented at position B3 and C4 because third sentence (C) only supports the MI code confirmed by first two sentences (A and B). 
 
 Our proposed approach is novel for the segmentation of e-coaching text because previous studies mainly focus on the segmentation of text into sections, headers, and sentences in other medical domain. However, this study segmented clinical exchange into groups of MI behaviors which will significantly reduce the amount of resource and time required to segment clinical exchange manually. Furthermore, these segmentation models could be integrated with auto coding classifiers to build a software package of automatic coding procedure of clinical exchange.
 
