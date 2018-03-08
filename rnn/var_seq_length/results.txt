@@ -1,0 +1,13 @@
+
+
+Count one: 0
+Count zero: 22154
+
+Count one: 0
+Count zero: 22154
+
+Count one: 0
+Count zero: 19189
+
+Count one: 0
+Count zero: 22154
