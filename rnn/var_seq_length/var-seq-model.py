@@ -75,7 +75,7 @@ for fold_num in range(folds):
         max_len = len(X[i])
         if i % 100 == 0:
             print("Records processed: ", i)
-        model.fit(x_data, y_data, callbacks=[ResetStatesCallback()], epochs=max_len, shuffle=False, batch_size=batch_size, verbose=2)
+        model.fit(x_data, y_data, callbacks=[ResetStatesCallback()], epochs=max_len, shuffle=False, batch_size=batch_size, verbose=0)
 
     # get encoded test data
     test_x, test_y = utility_var_sequence.get_encoded_sequence(test_data, vocabulary_obj)
