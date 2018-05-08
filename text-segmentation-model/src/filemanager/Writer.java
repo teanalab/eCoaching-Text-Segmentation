@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -178,11 +179,14 @@ public class Writer {
 	
 	public static void createGoldStandard(String arffTextFile, String  arffFileStr2WordVector, 
 			String  goldStandardFile, String wordProbabilitiesFile, boolean withTopicDistribution) {
-		// create map for topic distribution
-		Map<Integer, Map<Integer, Map<String, Double>>> mapWordProbabilityForClass = Reader.getWordProbabilityForClass(wordProbabilitiesFile);
-		
+
 		// create word dictionary for the entire collections
 		HashMap<String, Integer> mapWordDictionary = Reader.getWordDictionary(arffFileStr2WordVector);
+		Map<Integer, Double> mapLabelDist = Reader.getLabelDistribution(arffFileStr2WordVector);
+				
+		// create map for topic distribution
+		Map<String, Map<Integer, Double>> mapLabelProbabilityForWord = Reader.getLabelProbabilityForWord(
+				wordProbabilitiesFile, mapWordDictionary, mapLabelDist);
 		
 		// create gold standard file
 		BufferedReader br;
@@ -193,7 +197,7 @@ public class Writer {
 	    	fw = new FileWriter(goldStandardFile + "_" + withTopicDistribution + ".arff", false);
 	    	
 	    	// write the header of the arff file
-	    	writeHeader(fw, mapWordProbabilityForClass, mapWordDictionary, withTopicDistribution);
+	    	writeHeader(fw, mapLabelProbabilityForWord, mapWordDictionary, withTopicDistribution);
 	    	
 	    	for (int i = 0; i < 6; i++)
 	    		br.readLine();
@@ -208,7 +212,7 @@ public class Writer {
 	        while (line != null) {
 	        	String[] lineArr = line.split(",");
 	        	String[] oneLineText = lineArr[0].replace("'", "").split("\\s+");
-	        	double arrCurrWordTopicProb[] = new double[mapWordProbabilityForClass.get(1).size()];
+	        	double arrCurrWordTopicProb[] = new double[mapLabelDist.size()];
 	        	breakLabel = 2;
 	        	
 	        	// process each instance
@@ -230,9 +234,11 @@ public class Writer {
 		        		
 		        		if (withTopicDistribution) {
 		        			for (int j = 1; j <= arrCurrWordTopicProb.length; j++) {
-		        				if (mapWordProbabilityForClass.get(Integer.parseInt(lineArr[1].trim())).get(j-1).containsKey(oneLineText[i].trim()))
-			        				arrCurrWordTopicProb[j-1] = mapWordProbabilityForClass.
-			        					get(Integer.parseInt(lineArr[1].trim())).get(j-1).get(oneLineText[i].trim()); 
+		        				if (mapLabelProbabilityForWord.containsKey(oneLineText[i].trim())) {
+		        					if (mapLabelProbabilityForWord.get(oneLineText[i].trim()).containsKey(j)) {
+		        						arrCurrWordTopicProb[j-1] = mapLabelProbabilityForWord.get(oneLineText[i].trim()).get(j);
+		        					}
+		        				}
 			        			
 		        				if (j > 1) {
 				        			currWordTopicStr = currWordTopicStr + "," + (mapWordDictionary.size()*2+ arrCurrWordTopicProb.length + j) + " " + arrCurrWordTopicProb[j-1];
@@ -308,7 +314,7 @@ public class Writer {
 		
 	}
 	
-	public static void writeHeader(FileWriter fw, Map<Integer, Map<Integer, Map<String, Double>>> mapWordProbabilityForClass, 
+	public static void writeHeader(FileWriter fw, Map<String, Map<Integer, Double>> mapLabelProbabilityForWord, 
 			HashMap<String, Integer> mapWordDict, boolean withTopicDistribution) {
 		
 		TreeMap<String, Integer> mapWordDictionary = Helper.sortMapByValue(mapWordDict);
@@ -328,12 +334,12 @@ public class Writer {
 			}
 			
 			if (withTopicDistribution) {
-				for (int i = 1; i <= mapWordProbabilityForClass.get(41).size(); i++) {
+				for (int i = 1; i <= mapLabelProbabilityForWord.get("half").size(); i++) {
 					fw.write("@attribute prevtopicprob" + i + idx + " numeric\n");
 					idx++;
 				}
 				
-				for (int i = 1; i <= mapWordProbabilityForClass.get(41).size(); i++) {
+				for (int i = 1; i <= mapLabelProbabilityForWord.get("half").size(); i++) {
 					fw.write("@attribute currtopicprob" + i + idx + " numeric\n");
 					idx++;
 				}

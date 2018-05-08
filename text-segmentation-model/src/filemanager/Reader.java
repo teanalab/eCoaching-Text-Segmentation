@@ -116,9 +116,12 @@ public class Reader {
 		return pText.trim();
 	}
 	
-	public static Map<Integer, Map<Integer, Map<String, Double>>> getWordProbabilityForClass(String wordProbabilitiesFile) {
+	public static Map<String, Map<Integer, Double>> getLabelProbabilityForWord(String wordProbabilitiesFile, 
+			Map<String, Integer> mapWordDictionary, Map<Integer, Double> mapLabelDist) {
 		
-		Map<Integer, Map<Integer, Map<String, Double>>> mapWordProbabilityForClass = new HashMap<Integer, Map<Integer, Map<String, Double>>>();
+		Map<Integer, Map<String, Double>> mapWordProbabilityForClass = new HashMap<Integer, Map<String, Double>>();
+		Map<String, Map<Integer, Double>> mapLabelProbabilityForWord = new HashMap<String, Map<Integer, Double>>();
+		Map<Integer, Map<Integer, Map<String, Double>>> mapWordProbabilityPerTopicForClass = new HashMap<Integer, Map<Integer, Map<String, Double>>>();
 		Map<Integer, Map<String, Double>> mapTopicWordProb = new HashMap<Integer, Map<String, Double>>();
 		Map<String, Double> mapWordProb = new HashMap<String, Double>();
 		
@@ -133,7 +136,7 @@ public class Reader {
 	        	if (line.contains("<")) {
 	        		classLabel = Integer.parseInt(line.replace("<", "").replace(">", ""));
 	        		mapTopicWordProb = new HashMap<Integer, Map<String, Double>>();
-	        		mapWordProbabilityForClass.put(classLabel, mapTopicWordProb);
+	        		mapWordProbabilityPerTopicForClass.put(classLabel, mapTopicWordProb);
 	        		line = br.readLine();
 	        		continue;
 	        	}
@@ -141,7 +144,7 @@ public class Reader {
 	        	String[] oneLine = line.split("\\s+");
 	        	if(oneLine.length > 1) {
 	        		mapTopicWordProb.get(topicLabel).put(oneLine[0].trim(), Double.valueOf(oneLine[oneLine.length-1].trim()));
-	        		mapWordProbabilityForClass.put(classLabel, mapTopicWordProb);
+	        		mapWordProbabilityPerTopicForClass.put(classLabel, mapTopicWordProb);
 	        	}
 	        	else {
 	        		topicLabel = Integer.parseInt(line.trim());
@@ -155,8 +158,46 @@ public class Reader {
 	    } catch(Exception e) {
 	        e.printStackTrace();
 	    }
+	    
+	    // compute p(w/l)
+	    for (int label : mapWordProbabilityPerTopicForClass.keySet()) {
+	    	
+	    	Map<Integer, Map<String, Double>> mapWordPerTopic = mapWordProbabilityPerTopicForClass.get(label);
+	    	Map<String, Double> mapSumWordProb = new HashMap<String, Double>();
+	    	
+	    	for (int topic : mapWordPerTopic.keySet()) {
+	    		
+	    		Map<String, Double> mapWordProbability = mapWordPerTopic.get(topic);
+	    		
+	    		for (String word : mapWordProbability.keySet()) {
+	    			if (mapSumWordProb.containsKey(word)) {
+	    				mapSumWordProb.put(word, mapSumWordProb.get(word) + mapWordProbability.get(word));
+	    			}
+	    			else {
+	    				mapSumWordProb.put(word, mapWordProbability.get(word));
+	    			}
+	    		}
+	    	}
+	    	
+	    	mapWordProbabilityForClass.put(label, mapSumWordProb);
+	    }
+	    
+	    // use bayes theorem, compute p(l/w)
+	    for (String w : mapWordDictionary.keySet()) {
+	    	Map<Integer, Double> mapLabelByWord = new HashMap<Integer, Double>(); 
+	    	for (int label : mapLabelDist.keySet()) {
+	    		if (mapWordProbabilityForClass.get(label).containsKey(w)) {
+	    			double prob_w_by_l = mapWordProbabilityForClass.get(label).get(w);
+			    	double prob_w = (double)mapWordDictionary.get(w)/mapWordDictionary.size();
+			    	double prob_l_by_w = (prob_w_by_l*mapLabelDist.get(label))/prob_w;
+			    	
+			    	mapLabelByWord.put(label, prob_l_by_w);
+	    		}	    		
+		    }
+	    	mapLabelProbabilityForWord.put(w, mapLabelByWord);
+	    }
 				
-		return mapWordProbabilityForClass;
+		return mapLabelProbabilityForWord;
 	}
 	
 	public static HashMap<String, Integer> getWordDictionary(String arffFileStr2WordVector) {
@@ -184,6 +225,42 @@ public class Reader {
 	    }
 		
 		return mapWords;
+	}
+	
+	public static Map<Integer, Double> getLabelDistribution(String arffFileStr2WordVector) {
+		
+		Map<Integer, Double> mapLabels = new HashMap<Integer, Double>();
+		int count = 0;
+		BufferedReader br;
+	    
+	    try {
+	    	br = new BufferedReader(new FileReader(arffFileStr2WordVector));        
+	        String line = br.readLine();
+
+	        while (line != null) {
+	        	if (line.contains("{") && !line.contains("@@class@@")) {
+	        		String[] oneLine = line.split(",")[0].split("\\s+");
+	        		
+	        		if (mapLabels.containsKey(Integer.parseInt(oneLine[1].trim())))
+	        			mapLabels.put(Integer.parseInt(oneLine[1].trim()), mapLabels.get(Integer.parseInt(oneLine[1].trim())));
+	        		else
+	        			mapLabels.put(Integer.parseInt(oneLine[1].trim()), 1.0);
+	        		
+	        		count++;
+	        	}
+	            line = br.readLine();	            
+	        }	        
+	        br.close();
+	        
+	    } catch(Exception e) {
+	    	e.printStackTrace();
+	    }
+	    
+	    for (Integer k : mapLabels.keySet()) {
+	    	mapLabels.put(k, mapLabels.get(k)/count);
+	    }
+		
+		return mapLabels;
 	}
 	
 	public static String getSortedAttributes(String s) {

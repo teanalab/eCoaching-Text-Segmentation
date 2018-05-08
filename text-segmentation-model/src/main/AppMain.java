@@ -47,8 +47,8 @@ public class AppMain {
 				wordProbabilitiesFile, true);
 
 		// run model with arff file to evaluate the model performance
-		SegmentationModel model = new SegmentationModel();
-		model.runSVM(goldStandardFile);
+		//SegmentationModel model = new SegmentationModel();
+		//model.runSVM(goldStandardFile);
 
 		// finish execution
 		System.out.println("Finished execution at: " + LocalDateTime.now());
