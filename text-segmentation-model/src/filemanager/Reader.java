@@ -242,7 +242,7 @@ public class Reader {
 	        		String[] oneLine = line.split(",")[0].split("\\s+");
 	        		
 	        		if (mapLabels.containsKey(Integer.parseInt(oneLine[1].trim())))
-	        			mapLabels.put(Integer.parseInt(oneLine[1].trim()), mapLabels.get(Integer.parseInt(oneLine[1].trim())));
+	        			mapLabels.put(Integer.parseInt(oneLine[1].trim()), mapLabels.get(Integer.parseInt(oneLine[1].trim()))+1.0);
 	        		else
 	        			mapLabels.put(Integer.parseInt(oneLine[1].trim()), 1.0);
 	        		
@@ -275,10 +275,15 @@ public class Reader {
 		}
 		
 		for (Integer key : map.keySet()) {
-			if (key == 0)
+			if (key == 0) {				
 				result.append(key + " " + map.get(key).intValue() + ",");
-			else
-				result.append(key + " " + map.get(key) + ",");
+			}
+			else {
+				if (map.get(key) >= 0.000000001) {
+					//result.append(key + " " + String.format("%.5f", map.get(key)) + ",");
+					result.append(key + " " + map.get(key) + ",");
+				}
+			}
 		}
 		return "{" + result.toString().substring(0, result.toString().length()-1) + "}";
 	}
