@@ -15,9 +15,9 @@ public class FileManager {
 	}
 
 	public static void createGoldStandard(String arffTextFile, String  arffFileStr2WordVector, 
-			String  goldStandardFile, String wordProbabilitiesFile, boolean withTopicDistribution) {
+			String  goldStandardFile, String wordProbabilitiesFile, boolean withTopicDistribution, String model) {
 		Writer.createGoldStandard(arffTextFile, arffFileStr2WordVector, goldStandardFile,
-				wordProbabilitiesFile, withTopicDistribution);
+				wordProbabilitiesFile, withTopicDistribution, model);
 	}
 	
 	public static void createArffFileWithTextAndCode(

@@ -200,6 +200,61 @@ public class Reader {
 		return mapLabelProbabilityForWord;
 	}
 	
+	public static Map<String, Map<Integer, Double>> getLabelProbabilityForWordInLCA(String wordProbabilitiesFile, 
+			Map<String, Integer> mapWordDictionary, Map<Integer, Double> mapLabelDist) {
+		
+		Map<Integer, Map<String, Double>> mapWordProbabilityForClass = new HashMap<Integer, Map<String, Double>>();
+		Map<String, Map<Integer, Double>> mapLabelProbabilityForWord = new HashMap<String, Map<Integer, Double>>();
+		
+		
+		BufferedReader br;
+		int classLabel = 0;
+	    
+		// compute p(w/l)
+	    try {
+	    	br = new BufferedReader(new FileReader(wordProbabilitiesFile));        
+	        String line = br.readLine();
+
+	        while (line != null) {	
+	        	String wd[] = line.split("\\s+");
+	        	if (wd.length > 2){
+	        		System.out.println(line);
+	        	}
+	        	else if (wd.length > 1) {
+	        		mapWordProbabilityForClass.get(classLabel).put(wd[0].trim(), Double.valueOf(wd[1].trim()));
+	        	}
+	        	else {
+	        		classLabel = Integer.parseInt(line.trim());
+	        		Map<String, Double> mapWordProb = new HashMap<String, Double>();
+	        		mapWordProbabilityForClass.put(classLabel, mapWordProb);
+	        	}
+	            line = br.readLine();	            
+	        }	        
+	        br.close();
+	        
+	    } catch(Exception e) {
+	        e.printStackTrace();
+	    }
+	    
+	    // use bayes theorem, compute p(l/w)
+	    for (String w : mapWordDictionary.keySet()) {
+	    	Map<Integer, Double> mapLabelByWord = new HashMap<Integer, Double>(); 
+	    	for (int label : mapLabelDist.keySet()) {
+	    		if (mapWordProbabilityForClass.get(label).containsKey(w)) {
+	    			double prob_w_by_l = mapWordProbabilityForClass.get(label).get(w);
+			    	double prob_w = (double)mapWordDictionary.get(w)/mapWordDictionary.size();
+			    	double prob_l_by_w = (prob_w_by_l*mapLabelDist.get(label))/prob_w;
+			    	
+			    	mapLabelByWord.put(label, prob_l_by_w);
+	    		}	    		
+		    }
+	    	mapLabelProbabilityForWord.put(w, mapLabelByWord);
+	    }
+				
+	    System.out.println("Executed feature extraction process based on LCA topic model");
+		return mapLabelProbabilityForWord;
+	}
+	
 	public static HashMap<String, Integer> getWordDictionary(String arffFileStr2WordVector) {
 		
 		HashMap<String, Integer> mapWords = new HashMap<String, Integer>();

@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -178,14 +177,20 @@ public class Writer {
 	}	
 	
 	public static void createGoldStandard(String arffTextFile, String  arffFileStr2WordVector, 
-			String  goldStandardFile, String wordProbabilitiesFile, boolean withTopicDistribution) {
+			String  goldStandardFile, String wordProbabilitiesFile, boolean withTopicDistribution, String model) {
 
 		// create word dictionary for the entire collections
 		HashMap<String, Integer> mapWordDictionary = Reader.getWordDictionary(arffFileStr2WordVector);
 		Map<Integer, Double> mapLabelDist = Reader.getLabelDistribution(arffFileStr2WordVector);
 				
 		// create map for topic distribution
-		Map<String, Map<Integer, Double>> mapLabelProbabilityForWord = Reader.getLabelProbabilityForWord(
+		Map<String, Map<Integer, Double>> mapLabelProbabilityForWord;
+		
+		if (model.equalsIgnoreCase("lca"))
+			mapLabelProbabilityForWord = Reader.getLabelProbabilityForWordInLCA(
+				wordProbabilitiesFile, mapWordDictionary, mapLabelDist);
+		else
+			mapLabelProbabilityForWord = Reader.getLabelProbabilityForWord(
 				wordProbabilitiesFile, mapWordDictionary, mapLabelDist);
 		
 		// create gold standard file

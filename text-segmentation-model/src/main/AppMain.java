@@ -19,7 +19,11 @@ public class AppMain {
 		String arffTextFile = "../../../data-source/ecoaching-text-segmentation-data/data/text_stem.arff";
 		String arffFileStr2WordVector = "../../../data-source/ecoaching-text-segmentation-data/data/stem_Str2WordVector.arff";
 		String goldStandardFile = "../../../data-source/ecoaching-text-segmentation-data/data/gold";
-		String wordProbabilitiesFile = "../../../data-source/ecoaching-text-segmentation-data/topic/lda/stem/cls-tops.txt"; 
+		
+		// use the correct topic models 
+		String wordProbabilitiesFile = "../../../data-source/ecoaching-text-segmentation-data/topic/lta/stem/cls-lms.txt"; 
+		//String wordProbabilitiesFile = "../../../data-source/ecoaching-text-segmentation-data/topic/mg-lda/stem/cls-tops.txt"; 
+		//String wordProbabilitiesFile = "../../../data-source/ecoaching-text-segmentation-data/topic/lda/stem/cls-tops.txt"; 
 
 		// pre-process data to run LDA model for getting the features values
 		//FileManager.preprocessRawData(rawDataDirectory, inputDataDirectory, codeMapFile);
@@ -44,7 +48,7 @@ public class AppMain {
 		// 5. add label as break (1) or not (0)
 		
 		FileManager.createGoldStandard(arffTextFile, arffFileStr2WordVector, goldStandardFile,
-				wordProbabilitiesFile, true);
+				wordProbabilitiesFile, true, "lca");
 
 		// run model with arff file to evaluate the model performance
 		//SegmentationModel model = new SegmentationModel();
