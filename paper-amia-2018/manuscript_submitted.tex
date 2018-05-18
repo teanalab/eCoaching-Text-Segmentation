@@ -66,10 +66,7 @@ The experimental dataset for this work was constructed from 49 e-coaching sessio
 
 \subsection*{\textit{Features}}
 
-We utilized three types of features in conjunction with SVM, NB and KNN methods: lexical, punctuation and topic features. Lexical features represent each word in a pair as a binary vector, in which 1 corresponds to the word in question and 0 to all other words. 
-
-
-\textbf{L-LDA} Since topic models\cite{kotov2015interpretable,hashimoto2016topic,lu2016modeling} have been shown to be effective semantic abstractions of individual words, we derived topic features from Labeled LDA\cite{ramage2009labeled}, a topic model for annotated corpora. We considered each textual segment in the training set as a document and the MI code assigned to the segment as a label. First, we derived a label-specific multinomial $p(w|l)$ for each label $l$ from the word distributions $p(w|l,z)$ for topic $z$ specific to label $l$ by marginalizing over topics: 
+We utilized three types of features in conjunction with SVM, NB and KNN methods: lexical, punctuation and topic features. Lexical features represent each word in a pair as a binary vector, in which 1 corresponds to the word in question and 0 to all other words. Since topic models\cite{kotov2015interpretable,hashimoto2016topic,lu2016modeling} have been shown to be effective semantic abstractions of individual words, we derived topic features from Labeled LDA\cite{ramage2009labeled}, a topic model for annotated corpora. We considered each textual segment in the training set as a document and the MI code assigned to the segment as a label. First, we derived a label-specific multinomial $p(w|l)$ for each label $l$ from the word distributions $p(w|l,z)$ for topic $z$ specific to label $l$ by marginalizing over topics: 
 
 $$p(w|l) = {\sum_{z=1}^{K}{p(w|z,l)}}$$
 
@@ -77,29 +74,7 @@ where $K$ is the optimal number of topics experimentally determined to minimize 
 
 $$p(l|w) = \frac{p(w|l)p(l)}{p(w)}$$
 
-where $p(l)$ is the prior probabilities of label $l$ in the training set and $p(w)$ is the prior probability of word $w$ in the language model estimated from the training set using maximum likelihood. We use the distribution $p(l|w)$ as the topical feature vector, which shows how indicative each word $w$ is for a particular behavior code $l$. Topical features allow to abstract away from individual words and detect segment boundaries by indirectly capturing transitions between behavior codes when only observing a pair of words that are specific to different behavior codes. 
-
-\textbf{MG-LDA} First, we derived a label-specific multinomial $p(w|l)$ for each label $l$ from the word distributions $p(w|l,z)$ for topic $z$ specific to label $l$ by marginalizing over topics: 
-
-$$p(w|l) = {\sum_{z=1}^{K}{p(w|z,l)}}$$
-
-where $K$ is the optimal number of topics experimentally determined to minimize perplexity. After that, distributions over labels, $p(l|w)$, for each word were obtained from label-specific multinomials $p(w|l)$ using Bayesian inversion: 
-
-$$p(l|w) = \frac{p(w|l)p(l)}{p(w)}$$
-
-where $p(l)$ is the prior probabilities of label $l$ in the training set and $p(w)$ is the prior probability of word $w$ in the language model estimated from the training set using maximum likelihood. We use the distribution $p(l|w)$ as the topical feature vector, which shows how indicative each word $w$ is for a particular behavior code $l$.
-
-\textbf{LCA} First, we derived a label-specific multinomial $p(w|l)$ for each label $l$ from the word distributions $p(w|l,z)$ for topic $z$ specific to label $l$ by marginalizing over topics: 
-
-$$p(w|l) = {\sum_{z=1}^{K}{p(w|z,l)}}$$
-
-where $K$ is the optimal number of topics experimentally determined to minimize perplexity. After that, distributions over labels, $p(l|w)$, for each word were obtained from label-specific multinomials $p(w|l)$ using Bayesian inversion: 
-
-$$p(l|w) = \frac{p(w|l)p(l)}{p(w)}$$
-
-where $p(l)$ is the prior probabilities of label $l$ in the training set and $p(w)$ is the prior probability of word $w$ in the language model estimated from the training set using maximum likelihood. We use the distribution $p(l|w)$ as the topical feature vector, which shows how indicative each word $w$ is for a particular behavior code $l$.
-
-Punctuation marks, which correspond to one of the symbols \{`.', `,', `!', `?', `:', `;', `-'\} between a pair of words, are also employed as a feature, since punctuation marks designate the boundary of a sentence, clause, and phrase and often also correspond to segment boundary.   
+where $p(l)$ is the prior probabilities of label $l$ in the training set and $p(w)$ is the prior probability of word $w$ in the language model estimated from the training set using maximum likelihood. We use the distribution $p(c|w)$ as the topical feature vector, which shows how indicative each word $w$ is for a particular behavior code $l$. Topical features allow to abstract away from individual words and detect segment boundaries by indirectly capturing transitions between behavior codes when only observing a pair of words that are specific to different behavior codes. Punctuation marks, which correspond to one of the symbols \{`.', `,', `!', `?', `:', `;', `-'\} between a pair of words, are also employed as a feature, since punctuation marks designate the boundary of a sentence, clause, and phrase and often also correspond to segment boundary.   
 
 \subsection*{\textit{Classifiers}}
 
@@ -107,7 +82,7 @@ We experimented both with traditional classifiers, including Naive Bayes (NB)\ci
 
 \textbf{Naive Bayes}: this model estimates the prior probability of classes along with conditional probabilities of each feature given the class. Then, the posterior probability is computed to predict the class for each sample by applying the Bayes rule with the assumption that features are conditionally independent. We used Multinomial Naive Bayes in experiments.
 
-\textbf{Support Vector Machine}: state-of-the-art supervised classification method proven to be effective for text categorization\cite{joachims1998text} for its ability to cope with high dimensional input feature space. SVM finds the hyperplane that maximizes the separation between the closest ``new segment'' and ``same segment'' training examples. We used L1-regularized linear SVM with squared error minimization in experiments.   
+\textbf{Support Vector Machine}: state-of-the-art supervised classification method proven to be effective for text categorization\cite{joachims1998text} for its ability to cope with high dimensional input feature space. SVM finds the hyperplane that maximizes the separation between the closest ``new segment'' and ``same segment'' training examples. We used SVM with polynomial kernel in experiments.   
 
 \textbf{K-Nearest Neighbor}: this method considers each training sample as a point in the input feature space. For a new test sample, Euclidean distance is calculated to find the k-nearest classified neighbors from the training set. Finally, the test sample is classified into a majority class of its k-nearest neighbors. We experimentally determined that best performance was achieved when the number of neighbors is 3. 
 
@@ -140,19 +115,18 @@ Experimental results are reported with respect to ``new segment'' and ``same seg
 
 \begin{table}[ht]
 \centering
-\caption{Performance of NB, SVM, and KNN methods for identification of ``new segment'' and ``same segment'' classes as well as segmentation of e-Coaching emails as a weighted average over ``same segment'' and ``new segment'' in e-Coaching emails. The highest value for each performance metric is highlighted in bold.}
-\label{tab:result_base}
-  \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+\caption{Performance of NB, SVM, KNN, and RNN methods for identification of ``new segment'' class in e-Coaching emails. The highest value for each performance metric is highlighted in bold.}
+\label{tab:result_boundary}
+  \begin{tabular}{|l|l|l|l|p{0.15\linewidth}|p{0.15\linewidth}|l|}
   \hline
-   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{new segment}} & \multicolumn{3}{|c|}{\textbf{same segment}}  & \multicolumn{3}{|c|}{\textbf{overall}} \\\cline{2-10}
-   & \textbf{Precision}  & \textbf{Recall} & \textbf{F1} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1}\\ \hline    
- \multicolumn{10}{|c|}{lexical features only} \\ \hline   
- NB & 0.594 & 0.662 & 0.626 & 0.988 & 0.985 & 0.987 & 0.975 & 0.974 & 0.975  \\ \hline
- SVM & 0.762 & \textbf{0.673} & 0.715 & \textbf{0.989} & 0.993 & 0.991  & 0.981 & 0.982 & 0.982 \\ \hline
- KNN & \textbf{0.808} & 0.663 & \textbf{0.728} & \textbf{0.989} & \textbf{0.995} & \textbf{0.992} & \textbf{0.983} & \textbf{0.984} & \textbf{0.983} \\ \hline
- \multicolumn{10}{|c|}{lexical and puctuation features} \\ \hline
- LSTM & \textbf{0.800} & 0.646 & 0.714  & 0.993 & \textbf{0.994} & \textbf{0.994} & \textbf{0.986} & 0.983 & 0.984 \\ \hline
- GRU & \textbf{0.800} & \textbf{0.715} & \textbf{0.741} & \textbf{0.994} & \textbf{0.994} & \textbf{0.994} & \textbf{0.986} & \textbf{0.985} & \textbf{0.986} \\ \hline
+   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{lexical features only}} & \multicolumn{3}{|c|}{\textbf{lexical + punctuation (+ topic features except RNN)}} \\\cline{2-7}
+   & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-measure} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-measure}\\ \hline    
+    
+ NB & 0.594 & 0.662 & 0.626 & 0.590 & 0.666 & 0.626 \\ \hline
+ SVM & 0.742 & \textbf{0.679} & 0.709 & 0.774 & 0.696 & 0.733\\ \hline
+ KNN & \textbf{0.808} & 0.663 & \textbf{0.728} & \textbf{0.820} & \textbf{0.742} & \textbf{0.779}\\ \hline
+ LSTM & -- & -- & -- & 0.800 & 0.646 & 0.714  \\ \hline
+ GRU & -- & -- & -- & 0.800 & 0.715 & 0.741 \\ \hline 
   \end{tabular}
 \end{table}                 
 
@@ -160,52 +134,44 @@ As follows from Table~\ref{tab:result_boundary}, KNN outperforms all other model
 
 \begin{table}[ht]
 \centering
-\caption{Performance of NB, SVM, and KNN methods with different topic model's features for identification of ``new segment'' class in e-Coaching emails, when all three features are used together. The highest value for each performance metric is highlighted in bold.}
-\label{tab:result_boundary}
-  \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
-  \hline
-   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{L-LDA based topic features}} & \multicolumn{3}{|c|}{\textbf{MG-LDA based topic features}}  & \multicolumn{3}{|c|}{\textbf{LCA based topic features}} \\\cline{2-10} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1}\\ \hline  
-    
- NB & 0.573 & 0.680 & 0.622 & 0.573 & 0.677 & 0.621 & 0.593 & 0.662 & 0.626 \\ \hline
- SVM & 0.800 & 0.799 & 0.799 & \textbf{0.848} & \textbf{0.849} & \textbf{0.848} & 0.836 & 0.839 & 0.837  \\ \hline
- KNN & 0.808 & 0.741 & 0.773 & 0.814 & 0.732 & 0.771 & 0.814 & 0.740 & 0.775 \\ \hline
-  \end{tabular}
-\end{table}                 
-
-\begin{table}[ht]
-\centering
-\caption{Performance of NB, SVM, KNN, and RNN methods with different topic model's features for identification of ``same segment'' class in e-Coaching emails, when all three features are used together. The highest value for each performance metric is highlighted in bold.}
+\caption{Performance of NB, SVM, KNN, and RNN methods for identification of ``same segment'' class in e-Coaching emails. The highest value for each performance metric is highlighted in bold.}
 \label{tab:result_not_boundary}
-  \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+  \begin{tabular}{|l|l|l|l|p{0.15\linewidth}|p{0.15\linewidth}|l|}
   \hline
-   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{L-LDA based topic features}} & \multicolumn{3}{|c|}{\textbf{MG-LDA based topic features}}  & \multicolumn{3}{|c|}{\textbf{LCA based topic features}} \\\cline{2-10} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1}\\ \hline  
+   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{lexical features only}} & \multicolumn{3}{|c|}{\textbf{lexical + punctuation (+ topic features except RNN)}} \\\cline{2-7}
+   & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-measure} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-measure}\\ \hline    
     
- NB & 0.989 & 0.983 & 0.986 & 0.989 & 0.983 & 0.986 & 0.988 & 0.985 & 0.987 \\ \hline
- SVM & 0.993 & 0.993 & 0.993 & \textbf{0.995} & \textbf{0.995} & \textbf{0.995} & \textbf{0.995} & 0.994 & 0.994  \\ \hline
- KNN & 0.991 & 0.994 & 0.993 & 0.991 & 0.994 & 0.993 & 0.991 & 0.994 & 0.993 \\ \hline
+ NB & 0.988 & 0.985 & 0.987 & 0.989 & 0.984 & 0.986 \\ \hline
+ SVM & \textbf{0.989} & 0.992 & 0.991 & 0.990 & 0.993 & 0.991\\ \hline
+ KNN & \textbf{0.989} & \textbf{0.995} & \textbf{0.992} & 0.991 & \textbf{0.994} & 0.993\\ \hline
+ LSTM & -- & -- & -- & 0.993 & \textbf{0.994} & \textbf{0.994} \\ \hline
+ GRU & -- & -- & -- & \textbf{0.994} & \textbf{0.994} & \textbf{0.994} \\ \hline 
   \end{tabular}
-\end{table}         
+\end{table}
 
-Table~\ref{tab:result_not_boundary} summarizes the performance of NB, SVM, KNN, and RNN models for detecting ``same segment'' class. We observed that performance is remarkably better for ``same segment'' class compared to new segment detection, which is expected, since 96.71\% instances belong to ``same segment'' class. KNN achieves 22.40\%, 50.07\%, and 36.26\% higher precision, recall, and F1-measure, respectively, for lexical features; and 20.85\%, 33.96\%, and 27.47\% higher precision, recall, and F1-measure, respectively, for combined features compared to new segment classification. In contrast to new segment detection, RNN demonstrates the highest performance among all models. LSTM obtains 0.993 precision with 0.994 recall and F1-measure while GRU has 0.994 for all performance metrics. The impact of punctuation and topic model-based features is consistent with ``new segment'' classification. Results indicate that F1-measure increases by 0\%, and 0.1\% for SVM and KNN models and decreases by 0.1\% for NB. \\
+Table~\ref{tab:result_not_boundary} summarizes the performance of NB, SVM, KNN, and RNN models for detecting ``same segment'' class. We observed that performance is remarkably better for ``same segment'' class compared to new segment detection, which is expected, since 96.71\% instances belong to ``same segment'' class. KNN achieves 22.40\%, 50.07\%, and 36.26\% higher precision, recall, and F1-measure, respectively, for lexical features; and 20.85\%, 33.96\%, and 27.47\% higher precision, recall, and F1-measure, respectively, for combined features compared to new segment classification. In contrast to boundary detection, RNN demonstrates the highest performance among all models. LSTM obtains 0.993 precision with 0.994 recall and F1-measure while GRU has 0.994 for all performance metrics. The impact of punctuation and topic model-based features is consistent with ``new segment'' classification. Results indicate that F1-measure increases by 0\%, and 0.1\% for SVM and KNN models and decreases by 0.1\% for NB. \\
 
 \begin{table}[ht]
 \centering
-\caption{Performance of NB, SVM, KNN, and RNN methods with different topic model's features for segmentation of e-Coaching emails as a weighted average over ``same segment'' and ``new segment'' classification results, when all three features are used together. The highest value for each performance metric is highlighted in bold.}
+\caption{Performance of NB, SVM, KNN, and RNN methods for segmentation of e-Coaching emails as a weighted average over ``same segment'' and ``new segment'' classification results. The highest value for each performance metric is highlighted in bold.}
 \label{tab:result_weighted_avg}
-  \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+  \begin{tabular}{|l|l|l|l|p{0.15\linewidth}|p{0.15\linewidth}|l|}
   \hline
-   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{L-LDA based topic features}} & \multicolumn{3}{|c|}{\textbf{MG-LDA based topic features}}  & \multicolumn{3}{|c|}{\textbf{LCA based topic features}} \\\cline{2-10} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1}\\ \hline  
+   \multirow{2}{*}{\textbf{Method}} & \multicolumn{3}{|c|}{\textbf{lexical features only}} & \multicolumn{3}{|c|}{\textbf{lexical + punctuation (+ topic features except RNN)}} \\\cline{2-7}
+   & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-measure} & \textbf{Precision}  & \textbf{Recall} & \textbf{F1-measure}\\ \hline    
     
- NB & 0.975 & 0.973 & 0.974 & 0.975 & 0.973 & 0.974 & 0.975 & 0.974 & 0.975 \\ \hline
- SVM & 0.987 & 0.987 & 0.987 & \textbf{0.990} & \textbf{0.990} & \textbf{0.990} & 0.989 & 0.989 & 0.989 \\ \hline
- KNN & 0.985 & 0.986 & 0.985 & 0.985 & 0.986 & 0.985 & 0.985 & 0.986 & 0.986 \\ \hline
+ NB & 0.975 & 0.974 & 0.975 & 0.976 & 0.974 & 0.975 \\ \hline
+ SVM & 0.981 & 0.982 & 0.981 & 0.983 & 0.983 & 0.983\\ \hline
+ KNN & \textbf{0.983} & \textbf{0.984} & \textbf{0.983} & \textbf{0.986} & \textbf{0.986} & \textbf{0.986}\\ \hline
+ LSTM & -- & -- & -- & \textbf{0.986} & 0.983 & 0.984 \\ \hline
+ GRU & -- & -- & -- & \textbf{0.986} & 0.985 & \textbf{0.986} \\ \hline 
   \end{tabular}
-\end{table}         
+\end{table} 
 
 Table~\ref{tab:result_weighted_avg} summarizes the weighted average results of the models for segmentation of e-Coaching emails. Overall, KNN has the best performance across all metrics and NB has the lowest performance among all methods. GRU demonstrates the same result as KNN for precision and F1-measure, but not for recall. SVM shows moderate performance, achieving 0.981, 0.982, and 0.983 for precision, recall, and F1-measure, respectively, when lexical features are used. Influence of the additional features is also consistent with the results in Tables~\ref{tab:result_boundary} and~\ref{tab:result_not_boundary}. Precision increases by 0.1\%, 0.2\%, and 0.3\%; recall increases by 0\%, 0.1\%, and 0.2\%; and F1-measure increases by 0\%, 0.2\%, and 0.3\% for NB, SVM, and KNN methods, respectively, when feature combination is used.\\
 
 \section*{Discussion}
-This study is the first effort to evaluate the automatic segmentation of e-Coaching emails. Experimental results indicate that KNN is the best model among all machine learning methods considered for this study. KNN achieved 0.986 F1-measure in overall, 0.779 and 0.993 F1-measures for detecting ``new segment'' and ``same segment'', respectively. The robust performance of KNN provides the evidence that machine learning models are capable to learn conceptual information from clinical exchange. It also indicates that topic features are more important than lexical features, even when deep learning methods are employed. Although the domain of this study was intentionally quite small, we believe that our study is not limited to the e-coaching domain, and it can be successfully applied to other domains, in which discourse segmentation is an preliminary step for annotation.
+This study is the first effort to evaluate the automatic segmentation of e-Coaching emails. Experimental results indicate that KNN is the best model among all machine learning methods considered for this study. KNN achieved 0.986 F1-measure in overall, 0.779 and 0.993 F1-measures for detecting ``boundary'' and ``not boundary'', respectively. The robust performance of KNN provides the evidence that machine learning models are capable to learn conceptual information from clinical exchange. It also indicates that topic features are more important than lexical features, even when deep learning methods are employed. Although the domain of this study was intentionally quite small, we believe that our study is not limited to the e-coaching domain, and it can be successfully applied to other domains, in which discourse segmentation is an preliminary step for annotation.
 
 Punctuation mark and topic model-based features made a significant improvement in performance of all machine learning methods. In nearly all cases, ML methods perform better, when lexical features are used in combination with punctuation and topic model-based features. This results also indicate that segmentation performance might be improved by adding additional relevant features.       
 
