@@ -116,12 +116,11 @@ In Eq.~\ref{eq:firstgru}-\ref{eq:lastgru}, $\sigma$ corresponds to sigmoid funct
 We report standard metrics for experiments (precision, recall, and F1-measure) to evaluate the performance of binary classifiers\cite{aas1999text}. However, accuracy is not reported as a performance metric because accuracy is highly sensitive to the prior class probabilities and does not fully describe the actual difficulty of the decision problem for an unbalanced dataset. The results are reported based on 5 folds cross-validation and weighted macro-averaging over the folds. We also estimate the area under the receiving operating characteristics (ROC) curve\cite{kumar2011receiver} (AUC) metric due to its effectiveness in measuring the quality of binary classifiers for imbalanced datasets \cite{hu2015kernelized}. 
 
 \section*{Results}
-
-Experimental results are reported with respect to ``new segment'' and ``same segment'' classes as well as their weighted average in Tables~\ref{tab:result_boundary}, \ref{tab:result_not_boundary}, and \ref{tab:result_weighted_avg}, respectively.\\
+Our experimental results have two important directions. First, results are reported with respect to ``new segment'' and ``same segment'' classes as well as their weighted average in Table~\ref{tab:result_base}. Second, classification performance of different machine learning methods are outlined in Tables~\ref{tab:result_boundary}, \ref{tab:result_not_boundary}, and \ref{tab:result_weighted_avg} when topic features are extracted with different probabilistic generative latent variable models.\\
 
 \begin{table}[ht]
 \centering
-\caption{Performance of NB, SVM, and KNN methods for identification of ``new segment'' and ``same segment'' classes as well as segmentation of e-Coaching emails as a weighted average over ``same segment'' and ``new segment'' in e-Coaching emails. The highest value for each performance metric is highlighted in bold.}
+\caption{Performance of NB, SVM, and KNN methods for identification of ``new segment'' and ``same segment'' classes as well as their weighted average. The highest value for each performance metric is highlighted in bold.}
 \label{tab:result_base}
   \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
   \hline
@@ -137,11 +136,13 @@ Experimental results are reported with respect to ``new segment'' and ``same seg
   \end{tabular}
 \end{table}                 
 
-As follows from Table~\ref{tab:result_boundary}, KNN outperforms all other models in terms of precision and F1-measure achieving 0.808 precision with 0.728 F1-measure when lexical features are used; 0.820 precision and 0.779 F1-measure when a combination of lexical, punctuation and topic features are used. NB demonstrates the lowest performance among all models in terms of all performance metrics. GRU has the second best results showing 10.68\% higher recall and 3.78\%  higher F1-measure than LSTM. On the other hand, SVM has the highest recall of 0.679 when only lexical features are used. When lexical features are used in combination with punctuation mark and topic model-based features, recall increases by 0.6\%, 2.5\%, and 11.92\%; and F1-measure increases by 0\%, 3.39\%, and 7\% for NB, SVM, and KNN models, respectively, while precision increases by 4.31\% and 1.49\% for SVM and KNN methods and decreases by 0.7\% for NB. \\
+As follows from Table~\ref{tab:result_base}, KNN outperforms all other models in terms of precision and F1-measure achieving 0.808 precision with 0.728 F1-measure for new segment detection. KNN also shows superior performance in all performance metrics for ``same segment'' class and wighted average over ``new segment'' and ``same segment'' classes. NB demonstrates the lowest performance among all models in terms of all performance metrics. On the other hand, SVM has the highest recall of 0.673 when only lexical features are used to identify ``new segment''. Results indicate that performance of classifiers is remarkably higher for ``same segment'' class compared to ``new segment'' class, which is expected, since 96.71\% instances belong to ``same segment'' categories. For example, KNN achieves 22.40\%, 50.07\%, and 36.26\% higher precision, recall, and F1-measure, respectively, in same segment identification compared to new segment detection. When lexical features are used in combination with punctuation mark, GRU demonstrates the best performance in all cases showing 10.68\% higher recall and 3.78\%  higher F1-measure than LSTM for new segment identification, 0.1\% higher precision than LSTM for same segment identification and 0.2\% higher recall and 0.2\%  higher F1-measure than LSTM for overall classification. \\  
+
+%When lexical features are used in combination with punctuation mark and topic model-based features, recall increases by 0.6\%, 2.5\%, and 11.92\%; and F1-measure increases by 0\%, 3.39\%, and 7\% for NB, SVM, and KNN models, respectively, while precision increases by 4.31\% and 1.49\% for SVM and KNN methods and decreases by 0.7\% for NB. \\
 
 \begin{table}[ht]
 \centering
-\caption{Performance of NB, SVM, and KNN methods with different topic model's features for identification of ``new segment'' class in e-Coaching emails, when all three features are used together. The highest value for each performance metric is highlighted in bold.}
+\caption{Performance of NB, SVM, and KNN methods with different topic model-based features for identification of ``new segment'' class in e-Coaching emails, when all features are used together. The highest value for each performance metric is highlighted in bold.}
 \label{tab:result_boundary}
   \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
   \hline
@@ -151,11 +152,13 @@ As follows from Table~\ref{tab:result_boundary}, KNN outperforms all other model
  SVM & 0.800 & 0.799 & 0.799 & \textbf{0.848} & \textbf{0.849} & \textbf{0.848} & 0.836 & 0.839 & 0.837  \\ \hline
  KNN & 0.808 & 0.741 & 0.773 & 0.814 & 0.732 & 0.771 & 0.814 & 0.740 & 0.775 \\ \hline
   \end{tabular}
-\end{table}                 
+\end{table} 
+
+Table~\ref{tab:result_boundary} summarizes the performance of NB, SVM, KNN, and RNN models for detecting ``new segment'' class. We observed that performance is remarkably better for ``new segment'' class compared to new segment detection, which is expected, since 96.71\% instances belong to ``same segment'' class. GRU demonstrates the same result as KNN for precision and F1-measure, but not for recall. SVM shows moderate performance, achieving 0.981, 0.982, and 0.983 for precision, recall, and F1-measure, respectively, when lexical features are used. \\                
 
 \begin{table}[ht]
 \centering
-\caption{Performance of NB, SVM, KNN, and RNN methods with different topic model's features for identification of ``same segment'' class in e-Coaching emails, when all three features are used together. The highest value for each performance metric is highlighted in bold.}
+\caption{Performance of NB, SVM, and KNN methods with different topic model-based features for identification of ``same segment'' class in e-Coaching emails, when all features are used together. The highest value for each performance metric is highlighted in bold.}
 \label{tab:result_not_boundary}
   \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
   \hline
@@ -167,11 +170,11 @@ As follows from Table~\ref{tab:result_boundary}, KNN outperforms all other model
   \end{tabular}
 \end{table}         
 
-Table~\ref{tab:result_not_boundary} summarizes the performance of NB, SVM, KNN, and RNN models for detecting ``same segment'' class. We observed that performance is remarkably better for ``same segment'' class compared to new segment detection, which is expected, since 96.71\% instances belong to ``same segment'' class. KNN achieves 22.40\%, 50.07\%, and 36.26\% higher precision, recall, and F1-measure, respectively, for lexical features; and 20.85\%, 33.96\%, and 27.47\% higher precision, recall, and F1-measure, respectively, for combined features compared to new segment classification. In contrast to new segment detection, RNN demonstrates the highest performance among all models. LSTM obtains 0.993 precision with 0.994 recall and F1-measure while GRU has 0.994 for all performance metrics. The impact of punctuation and topic model-based features is consistent with ``new segment'' classification. Results indicate that F1-measure increases by 0\%, and 0.1\% for SVM and KNN models and decreases by 0.1\% for NB. \\
+As shown in Table~\ref{tab:result_not_boundary}, performance of classifiers is remarkably higher for ``same segment'' class compared to new segment class, which is expected, since 96.71\% instances belong to ``same segment'' categories. KNN achieves 22.40\%, 50.07\%, and 36.26\% higher precision, recall, and F1-measure, respectively, for lexical features; and 20.85\%, 33.96\%, and 27.47\% higher precision, recall, and F1-measure, respectively, for combined features compared to new segment classification. In contrast to new segment detection, RNN demonstrates the highest performance among all models. The impact of punctuation and topic model-based features is consistent with ``new segment'' classification. Results indicate that F1-measure increases by 0\%, and 0.1\% for SVM and KNN models and decreases by 0.1\% for NB. \\
 
 \begin{table}[ht]
 \centering
-\caption{Performance of NB, SVM, KNN, and RNN methods with different topic model's features for segmentation of e-Coaching emails as a weighted average over ``same segment'' and ``new segment'' classification results, when all three features are used together. The highest value for each performance metric is highlighted in bold.}
+\caption{Performance of NB, SVM, and KNN methods with different topic model-based features for segmentation of e-Coaching emails as a weighted average over ``same segment'' and ``new segment'' classification results, when all features are used together. The highest value for each performance metric is highlighted in bold.}
 \label{tab:result_weighted_avg}
   \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
   \hline
@@ -183,7 +186,7 @@ Table~\ref{tab:result_not_boundary} summarizes the performance of NB, SVM, KNN, 
   \end{tabular}
 \end{table}         
 
-Table~\ref{tab:result_weighted_avg} summarizes the weighted average results of the models for segmentation of e-Coaching emails. Overall, KNN has the best performance across all metrics and NB has the lowest performance among all methods. GRU demonstrates the same result as KNN for precision and F1-measure, but not for recall. SVM shows moderate performance, achieving 0.981, 0.982, and 0.983 for precision, recall, and F1-measure, respectively, when lexical features are used. Influence of the additional features is also consistent with the results in Tables~\ref{tab:result_boundary} and~\ref{tab:result_not_boundary}. Precision increases by 0.1\%, 0.2\%, and 0.3\%; recall increases by 0\%, 0.1\%, and 0.2\%; and F1-measure increases by 0\%, 0.2\%, and 0.3\% for NB, SVM, and KNN methods, respectively, when feature combination is used.\\
+Table~\ref{tab:result_weighted_avg} summarizes the weighted average results of the models for segmentation of e-Coaching emails. Overall, SVM has the best performance across all topic model-based features in terms of all performance metrics, achieves 0.990 precision, recall and F1-measure when DL-LDA-based topic features are used. Similar to results in Tables~\ref{tab:result_base}, \ref{tab:result_boundary} and \ref{tab:result_not_boundary}, NB demonstrates the lowest performance among all methods while shows best performance with LCA-based topic features compared to other model-based topic features. Influence of the additional features is also consistent with the results in Tables~\ref{tab:result_boundary} and~\ref{tab:result_not_boundary}. Precision increases by 0\%, 1.43\%, and 0.2\%; recall increases by 0\%, 1.32\%, and 0.2\%; and F1-measure increases by 0\%, 1.32\%, and 0.3\% for NB, SVM, and KNN methods, respectively, when lexical feature is used in combination with punctuation and best model-based topic features.\\
 
 \section*{Discussion}
 This study is the first effort to evaluate the automatic segmentation of e-Coaching emails. Experimental results indicate that SVM is the best model among all machine learning methods considered for this study. SVM achieved 0.990 F1-measure in overall, 0.848 and 0.995 F1-measures for detecting ``new segment'' and ``same segment'', respectively. The robust performance of SVM provides the evidence that machine learning models are capable to learn conceptual information from clinical exchange. It also indicates that topic features are more important than lexical features, even when deep learning methods are employed. Although the domain of this study was intentionally quite small, we believe that our study is not limited to the e-Coaching domain, and it can be successfully applied to other domains, in which discourse segmentation is an preliminary step for annotation.
