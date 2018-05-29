@@ -1,1318 +1,2302 @@
 === Run information ===
 
-Scheme:       weka.classifiers.functions.SMO -C 1.0 -L 0.001 -P 1.0E-12 -N 0 -V -1 -W 1 -K "weka.classifiers.functions.supportVector.PolyKernel -E 1.0 -C 250007" -calibrator "weka.classifiers.functions.Logistic -R 1.0E-8 -M -1 -num-decimal-places 4"
+Scheme:       weka.classifiers.functions.LibLINEAR -S 5 -C 1.0 -E 0.001 -B 1.0 -Z -L 0.1 -I 1000
 Relation:     goldstandard
-Instances:    95487
-Attributes:   2185
+Instances:    95421
+Attributes:   2255
               [list of attributes omitted]
 Test mode:    5-fold cross-validation
 
 === Classifier model (full training set) ===
 
-SMO
+LibLINEAR wrapper
 
-Kernel used:
-  Linear Kernel: K(x,y) = <x,y>
+Model bias=1.0 nr_class=2 nr_feature=2255 solverType=L1R_L2LOSS_SVC
 
-Classifier for classes: 1, 2
+Model for class 2
 
-BinarySMO
++        0.51 * (normalized) [xxxx]1
++        0    * (normalized) a2
++        0    * (normalized) abil3
++        0    * (normalized) abl4
++        0.77 * (normalized) about5
++        0    * (normalized) absolut6
+-        0.51 * (normalized) accomplish7
++        0    * (normalized) account8
++        0    * (normalized) achiev9
++        0.68 * (normalized) activ10
++        0    * (normalized) actual11
+-        0.19 * (normalized) ad12
++        0.05 * (normalized) add13
++        0    * (normalized) addit14
++        0.02 * (normalized) advanc15
++        0    * (normalized) advantag16
++        0    * (normalized) advic17
++        0    * (normalized) afford18
++        0    * (normalized) afraid19
++        0    * (normalized) after20
++        0    * (normalized) afternoon21
++        0.01 * (normalized) again22
++        0.55 * (normalized) ago23
++        0    * (normalized) agre24
++        0.27 * (normalized) ahead25
++        2.59 * (normalized) alex26
++        0    * (normalized) all27
++        1.35 * (normalized) allow28
++        0    * (normalized) almond29
++        0    * (normalized) almost30
++        0    * (normalized) along31
+-        0.2  * (normalized) alreadi32
++        0    * (normalized) also33
++        0    * (normalized) although34
++        0    * (normalized) alwai35
++        0    * (normalized) am36
++        0    * (normalized) amaz37
++        1.7  * (normalized) ami38
++        0    * (normalized) amount39
++        0    * (normalized) an40
+-        0.13 * (normalized) and41
++        0    * (normalized) andor42
++        0    * (normalized) ani43
++        0    * (normalized) anim44
+-        0.68 * (normalized) anoth45
++        0    * (normalized) answer46
++        0    * (normalized) anyon47
++        0    * (normalized) anyth48
+-        0.57 * (normalized) anywai49
++        0    * (normalized) apolog50
++        0    * (normalized) appeal51
+-        0.81 * (normalized) appear52
++        0    * (normalized) appl53
++        0    * (normalized) applesauc54
++        0.08 * (normalized) appreci55
++        0    * (normalized) approach56
++        0    * (normalized) april57
+-        0.57 * (normalized) ar58
++        0    * (normalized) area59
++        0    * (normalized) aren60
++        0    * (normalized) arent61
++        0    * (normalized) around62
++        0    * (normalized) articl63
++        0    * (normalized) arugula64
++        0.08 * (normalized) as65
++        0    * (normalized) asid66
++        0.48 * (normalized) ask67
++        0    * (normalized) asparagu68
++        0    * (normalized) assist69
+-        1.36 * (normalized) at70
++        0    * (normalized) athlet71
++        0    * (normalized) attempt72
++        0    * (normalized) attent73
++        1.07 * (normalized) attitud74
++        0    * (normalized) august75
+-        0.03 * (normalized) avail76
++        0    * (normalized) avoid77
+-        0.73 * (normalized) awai78
++        0    * (normalized) awar79
++        0.68 * (normalized) awesom80
++        0    * (normalized) babi81
++        0.04 * (normalized) back82
++        0.52 * (normalized) bad83
++        0    * (normalized) bag84
++        0    * (normalized) bake85
++        0    * (normalized) balanc86
++        0    * (normalized) banana87
++        0    * (normalized) base88
++        0.13 * (normalized) basi89
++        0    * (normalized) basic90
++        0    * (normalized) be91
++        0    * (normalized) bean92
++        0    * (normalized) beat93
++        0    * (normalized) becaus94
++        0    * (normalized) becom95
++        0    * (normalized) been96
+-        0.14 * (normalized) befor97
++        0    * (normalized) began98
+-        1.05 * (normalized) begin99
++        0    * (normalized) behind100
++        0    * (normalized) believ101
++        0    * (normalized) below102
++        0.61 * (normalized) benefit103
++        0    * (normalized) berri104
++        0    * (normalized) besid105
++        0.14 * (normalized) best106
++        0.31 * (normalized) better107
+-        0.83 * (normalized) between108
++        0.66 * (normalized) beverag109
++        0    * (normalized) big110
++        0    * (normalized) biggest111
+-        0.54 * (normalized) bit112
++        0    * (normalized) blend113
+-        0.82 * (normalized) blog114
++        0    * (normalized) blueberri115
+-        0.25 * (normalized) bodi116
++        0    * (normalized) bonu117
+-        0.18 * (normalized) bore118
++        0    * (normalized) both119
++        0    * (normalized) bother120
++        0    * (normalized) bought121
+-        0.73 * (normalized) boyfriend122
+-        0.04 * (normalized) bread123
++        0.11 * (normalized) breakfast124
+-        0.1  * (normalized) breastfeed125
++        0.65 * (normalized) bring126
++        0    * (normalized) broccoli127
++        0    * (normalized) brown128
+-        0.14 * (normalized) budget129
+-        0.88 * (normalized) bui130
++        0    * (normalized) build131
++        0    * (normalized) bunch132
++        0    * (normalized) burger133
++        0.63 * (normalized) busi134
++        0    * (normalized) but135
++        0    * (normalized) butter136
++        0    * (normalized) by137
++        0    * (normalized) cake138
++        0.25 * (normalized) call139
++        0    * (normalized) calori140
++        0    * (normalized) came141
+-        0.27 * (normalized) can142
++        0    * (normalized) candi143
++        0    * (normalized) cannedjar144
++        0    * (normalized) cant145
++        0    * (normalized) carb146
++        0    * (normalized) care147
++        0    * (normalized) carrot148
++        0    * (normalized) case149
++        0    * (normalized) cash150
++        2.3  * (normalized) cathi151
++        0    * (normalized) celeri152
++        0    * (normalized) cereal153
++        0    * (normalized) certain154
++        0    * (normalized) certainli155
++        0.43 * (normalized) challeng156
++        0    * (normalized) chanc157
++        0.28 * (normalized) chang158
++        0    * (normalized) charg159
++        0.4  * (normalized) chat160
++        0    * (normalized) cheaper161
++        0    * (normalized) check162
++        0    * (normalized) cheer163
++        0    * (normalized) chees164
++        0    * (normalized) chef165
++        0    * (normalized) chicken166
++        0    * (normalized) chip167
++        0.07 * (normalized) choic168
++        0    * (normalized) choos169
++        0    * (normalized) chop170
++        0    * (normalized) chose171
++        2.16 * (normalized) chri172
++        0.04 * (normalized) christma173
++        1.82 * (normalized) clair174
++        0    * (normalized) clarifi175
++        0    * (normalized) class176
++        0    * (normalized) clear177
++        0    * (normalized) click178
++        1.26 * (normalized) clone179
+-        0.59 * (normalized) close180
++        0.63 * (normalized) coach181
++        0    * (normalized) coffe182
++        0    * (normalized) cold183
++        0    * (normalized) colleg184
++        0    * (normalized) combin185
++        0    * (normalized) come186
++        0    * (normalized) comfort187
+-        0.43 * (normalized) comma188
++        0    * (normalized) comment189
++        0.1  * (normalized) commit190
+-        0.13 * (normalized) commun191
++        0    * (normalized) compar192
+-        1.06 * (normalized) compet193
++        0    * (normalized) complet194
++        0    * (normalized) concern195
++        0.37 * (normalized) confid196
++        0.91 * (normalized) congrat197
++        0.93 * (normalized) congratul198
++        0    * (normalized) connect199
+-        0.22 * (normalized) consciou200
++        0    * (normalized) consid201
++        0    * (normalized) consider202
++        0    * (normalized) consist203
++        0.13 * (normalized) consum204
++        0    * (normalized) contain205
++        0    * (normalized) content206
+-        0.26 * (normalized) continu207
++        0.02 * (normalized) control208
++        0.53 * (normalized) conveni209
++        0.03 * (normalized) cook210
++        0    * (normalized) cooki211
++        0    * (normalized) cool212
++        0    * (normalized) copi213
++        0    * (normalized) corn214
++        0.19 * (normalized) correct215
+-        0.32 * (normalized) cost216
+-        0.13 * (normalized) could217
++        0    * (normalized) count218
++        0    * (normalized) coupl219
++        0    * (normalized) cours220
++        0    * (normalized) cover221
++        0    * (normalized) cracker222
+-        0.12 * (normalized) crave223
++        0    * (normalized) cream224
++        0    * (normalized) creat225
++        0    * (normalized) creativ226
++        0    * (normalized) crockpot227
+-        0.16 * (normalized) cucumb228
++        0    * (normalized) cup229
++        0    * (normalized) curb230
++        0    * (normalized) curiou231
+-        0.57 * (normalized) current232
++        0    * (normalized) custom233
++        0    * (normalized) cut234
++        0    * (normalized) d235
++        0.06 * (normalized) dai236
++        0.43 * (normalized) daili237
++        0    * (normalized) daughter238
++        0    * (normalized) dear239
++        0    * (normalized) decemb240
++        0    * (normalized) decid241
++        0.18 * (normalized) decis242
++        0.38 * (normalized) dedic243
++        0    * (normalized) definit244
++        0    * (normalized) delai245
++        0.16 * (normalized) delici246
++        0    * (normalized) depend247
++        0    * (normalized) describ248
++        0.35 * (normalized) desk249
++        0    * (normalized) despit250
++        0    * (normalized) dessert251
++        0    * (normalized) detail252
++        0    * (normalized) determin253
++        0    * (normalized) did254
++        0    * (normalized) didn255
++        0.42 * (normalized) diet256
++        0    * (normalized) differ257
++        0    * (normalized) difficult258
++        0    * (normalized) digest259
++        0    * (normalized) dinner260
++        0.6  * (normalized) dip261
+-        0.45 * (normalized) direct262
++        0.16 * (normalized) discourag263
++        0    * (normalized) discuss264
++        0    * (normalized) diseas265
++        0.21 * (normalized) dish266
++        0.17 * (normalized) do267
++        0    * (normalized) doe268
++        0    * (normalized) doesn269
++        0    * (normalized) don270
+-        0.42 * (normalized) done271
++        0    * (normalized) dont272
+-        0.24 * (normalized) down273
++        0    * (normalized) dress274
++        0    * (normalized) dri275
++        0.38 * (normalized) drink276
++        0    * (normalized) drive277
++        0    * (normalized) due278
++        0    * (normalized) dure279
+-        0.48 * (normalized) e280
++        0.27 * (normalized) each281
++        0    * (normalized) earlier282
+-        0.81 * (normalized) easi283
++        0    * (normalized) easier284
++        0    * (normalized) easili285
++        0.04 * (normalized) eat286
++        0    * (normalized) eater287
++        0.16 * (normalized) ecoach288
++        0    * (normalized) effect289
++        0    * (normalized) effort290
+-        0.23 * (normalized) egg291
++        0    * (normalized) either292
++        0    * (normalized) elimin293
++        0.25 * (normalized) els294
++        0.1  * (normalized) email295
++        0    * (normalized) encourag296
++        0.23 * (normalized) end297
++        0    * (normalized) energ298
+-        0.77 * (normalized) energet299
++        0.08 * (normalized) energi300
+-        0.52 * (normalized) engag301
++        0    * (normalized) enjoi302
++        0    * (normalized) enjoy303
++        0    * (normalized) enough304
++        0    * (normalized) enrol305
++        0    * (normalized) enthusiasm306
++        0    * (normalized) entir307
++        0    * (normalized) especi308
+-        0.64 * (normalized) etc309
++        0    * (normalized) even310
++        0    * (normalized) event311
++        0    * (normalized) ever312
++        0    * (normalized) everi313
++        0    * (normalized) everydai314
++        0    * (normalized) everyon315
++        0.16 * (normalized) everyth316
++        0    * (normalized) exactli317
++        0.18 * (normalized) exampl318
+-        2.34 * (normalized) exchang319
++        0    * (normalized) excit320
++        1.45 * (normalized) exclam321
+-        0.55 * (normalized) exercis322
+-        0.07 * (normalized) expens323
++        0.32 * (normalized) experi324
++        0    * (normalized) extra325
++        0    * (normalized) extrem326
++        0    * (normalized) face327
++        0    * (normalized) fact328
++        0    * (normalized) factor329
++        0    * (normalized) fairli330
++        0    * (normalized) fall331
++        0.18 * (normalized) famili332
++        0    * (normalized) fan333
++        0.63 * (normalized) fantast334
++        0.19 * (normalized) far335
++        0    * (normalized) fast336
++        0    * (normalized) fat337
++        0    * (normalized) fatigu338
++        0    * (normalized) favorit339
++        0    * (normalized) featur340
++        0    * (normalized) featuresmain341
++        0    * (normalized) februari342
++        0    * (normalized) feedback343
++        0.1  * (normalized) feel344
++        0    * (normalized) felt345
++        0    * (normalized) few346
++        0.28 * (normalized) fianc347
++        0    * (normalized) figur348
++        0    * (normalized) fill349
++        0    * (normalized) final350
++        0    * (normalized) financi351
+-        0.98 * (normalized) find352
++        0    * (normalized) finish353
++        0    * (normalized) fire354
++        0.13 * (normalized) first355
++        0    * (normalized) fit356
+-        0.22 * (normalized) fix357
++        0.19 * (normalized) flavor358
++        0    * (normalized) focu359
++        0    * (normalized) focus360
+-        0.26 * (normalized) follow361
++        0.2  * (normalized) food362
++        0.13 * (normalized) for363
++        0.51 * (normalized) form364
++        0    * (normalized) forward365
++        0.12 * (normalized) found366
++        0    * (normalized) free367
++        0    * (normalized) freez368
++        0    * (normalized) frequent369
++        0.12 * (normalized) fresh370
+-        0.5  * (normalized) fri371
++        0    * (normalized) fridg372
++        0    * (normalized) friend373
++        0    * (normalized) friendli374
++        0    * (normalized) from375
++        0    * (normalized) frozen376
++        0.24 * (normalized) fruit377
++        0    * (normalized) fruitsveget378
++        0    * (normalized) fruitsveggi379
++        0    * (normalized) fruitveggi380
++        0    * (normalized) fry381
+-        0.21 * (normalized) full382
++        1.52 * (normalized) fullstop383
++        0    * (normalized) fun384
++        0.19 * (normalized) further385
++        0.39 * (normalized) futur386
++        0    * (normalized) gain387
++        0.08 * (normalized) game388
++        0.41 * (normalized) garden389
++        0    * (normalized) gave390
+-        0.4  * (normalized) gener391
+-        0.82 * (normalized) get392
++        0    * (normalized) give393
++        0    * (normalized) given394
++        0    * (normalized) glad395
++        0.17 * (normalized) gluten396
++        0    * (normalized) gm397
++        0.38 * (normalized) go398
+-        0.03 * (normalized) goal399
++        0.14 * (normalized) goe400
++        0    * (normalized) gone401
++        0.08 * (normalized) good402
++        0    * (normalized) got403
++        0    * (normalized) gotten404
+-        0.21 * (normalized) grab405
++        0    * (normalized) gradual406
+-        0.97 * (normalized) graduat407
++        0.23 * (normalized) grain408
++        1.38 * (normalized) grape409
++        0.1  * (normalized) great410
++        0    * (normalized) green411
++        0    * (normalized) grill412
++        0    * (normalized) groceri413
++        0    * (normalized) group414
++        0    * (normalized) grow415
++        0    * (normalized) guess416
++        0    * (normalized) gym417
++        0.07 * (normalized) ha418
++        0.14 * (normalized) habit419
++        0    * (normalized) had420
++        0    * (normalized) hadn421
++        1.02 * (normalized) haha422
++        0.86 * (normalized) half423
++        0    * (normalized) hand424
++        0.33 * (normalized) happen425
+-        0.73 * (normalized) happi426
++        0    * (normalized) hard427
++        0    * (normalized) harder428
++        0    * (normalized) have429
++        0    * (normalized) haven430
++        0    * (normalized) havent431
++        0    * (normalized) he432
++        0    * (normalized) headach433
++        0.31 * (normalized) health434
++        0.41 * (normalized) healthi435
++        0.01 * (normalized) healthier436
++        0.22 * (normalized) healthiest437
++        0    * (normalized) hear438
++        0    * (normalized) heard439
++        0    * (normalized) heart440
++        0.44 * (normalized) hectic441
++        0    * (normalized) hei442
++        0    * (normalized) hello443
++        0.18 * (normalized) help444
++        0    * (normalized) her445
+-        0.18 * (normalized) here446
+-        0.04 * (normalized) hi447
++        0.29 * (normalized) high448
++        0    * (normalized) higher449
++        0.19 * (normalized) highest450
++        0    * (normalized) him451
++        0    * (normalized) hit452
++        0    * (normalized) hold453
++        0.42 * (normalized) holidai454
++        0    * (normalized) home455
++        0    * (normalized) homemad456
++        0    * (normalized) honest457
++        0    * (normalized) honestli458
++        0    * (normalized) hope459
++        0.74 * (normalized) hopefulli460
++        0.17 * (normalized) hour461
++        0    * (normalized) hous462
++        0    * (normalized) how463
++        0    * (normalized) howev464
+-        0.07 * (normalized) http465
++        0    * (normalized) huge466
++        0    * (normalized) hungri467
++        0    * (normalized) husband468
++        0.61 * (normalized) hyphen469
++        0    * (normalized) i470
++        0    * (normalized) ic471
++        0    * (normalized) id472
+-        0.22 * (normalized) idea473
++        0    * (normalized) if474
++        0    * (normalized) ill475
++        0    * (normalized) im476
++        0    * (normalized) imagin477
++        0.32 * (normalized) import478
+-        1.14 * (normalized) improv479
+-        0.24 * (normalized) in480
++        0    * (normalized) incent481
+-        0.34 * (normalized) includ482
++        0    * (normalized) incorpor483
++        0.2  * (normalized) increas484
++        1.13 * (normalized) independ485
++        0    * (normalized) indic486
++        0    * (normalized) indulg487
++        0    * (normalized) influenc488
++        0    * (normalized) info489
++        0.08 * (normalized) inform490
++        0    * (normalized) initi491
++        0    * (normalized) input492
++        0.27 * (normalized) insight493
++        0.54 * (normalized) instead494
++        0    * (normalized) intak495
+-        0.56 * (normalized) interest496
+-        0.5  * (normalized) into497
++        0    * (normalized) introduc498
++        0    * (normalized) involv499
++        2.85 * (normalized) iphon500
+-        0.06 * (normalized) is501
++        0    * (normalized) isn502
++        0    * (normalized) issu503
+-        0.23 * (normalized) it504
++        0.22 * (normalized) item505
++        0    * (normalized) iv506
++        0    * (normalized) januari507
+-        0.23 * (normalized) job508
++        0    * (normalized) join509
+-        0.09 * (normalized) joke510
++        0.03 * (normalized) juic511
++        0.03 * (normalized) juicer512
++        0    * (normalized) juli513
++        0.6  * (normalized) june514
++        0.28 * (normalized) junk515
++        0    * (normalized) just516
++        0    * (normalized) kale517
++        0    * (normalized) keep518
++        0    * (normalized) kei519
++        1.63 * (normalized) kelli520
++        0    * (normalized) kept521
++        0    * (normalized) kick522
++        0.46 * (normalized) kid523
++        0    * (normalized) kind524
++        0    * (normalized) kitchen525
++        0    * (normalized) know526
++        0.53 * (normalized) kudo527
++        0    * (normalized) lack528
++        0.66 * (normalized) larg529
++        0    * (normalized) last530
++        0    * (normalized) lastli531
+-        0.42 * (normalized) late532
++        0    * (normalized) later533
+-        0.22 * (normalized) laugh534
++        0    * (normalized) lb535
++        0    * (normalized) lead536
++        0    * (normalized) lean537
++        0    * (normalized) learn538
++        0    * (normalized) least539
++        0    * (normalized) leav540
++        0    * (normalized) left541
++        0    * (normalized) less542
++        0    * (normalized) let543
++        0    * (normalized) letter544
++        0    * (normalized) lettuc545
++        0    * (normalized) level546
++        0.24 * (normalized) life547
++        0    * (normalized) lifestyl548
++        0.09 * (normalized) like549
++        0    * (normalized) limit550
++        0    * (normalized) link551
+-        0.2  * (normalized) list552
++        0.26 * (normalized) littl553
++        0    * (normalized) live554
++        0    * (normalized) ll555
++        0    * (normalized) load556
++        0.9  * (normalized) local557
+-        0.24 * (normalized) long558
+-        0.97 * (normalized) longer559
+-        1.15 * (normalized) look560
++        0    * (normalized) lose561
+-        0.33 * (normalized) loss562
++        0    * (normalized) lost563
++        0    * (normalized) lot564
++        0.25 * (normalized) love565
++        0    * (normalized) low566
++        0    * (normalized) lower567
++        0    * (normalized) lunch568
++        0    * (normalized) m569
+-        0.21 * (normalized) made570
+-        0.3  * (normalized) mai571
+-        0.25 * (normalized) mail572
++        0    * (normalized) main573
++        0    * (normalized) maintain574
++        0    * (normalized) major575
+-        0.62 * (normalized) make576
+-        0.21 * (normalized) manag577
+-        0.72 * (normalized) mandarin578
++        0.53 * (normalized) mani579
++        0    * (normalized) march580
++        0    * (normalized) materi581
+-        0.08 * (normalized) matter582
++        0    * (normalized) mayb583
++        0.05 * (normalized) me584
+-        0.09 * (normalized) meal585
++        0    * (normalized) mealssnack586
++        0.09 * (normalized) mean587
++        0    * (normalized) meat588
++        0.19 * (normalized) meet589
++        0    * (normalized) mention590
++        0.18 * (normalized) menu591
++        0.7  * (normalized) menuchoic592
++        0.61 * (normalized) messag593
++        0.74 * (normalized) middl594
+-        0.03 * (normalized) midterm595
++        0    * (normalized) might596
++        0    * (normalized) migrain597
++        0    * (normalized) milk598
+-        0.08 * (normalized) mind599
++        0    * (normalized) minut600
+-        0.53 * (normalized) miss601
+-        0.64 * (normalized) mix602
++        0    * (normalized) model603
+-        0.65 * (normalized) moder604
+-        0.2  * (normalized) mondai605
+-        0.27 * (normalized) monei606
++        0.24 * (normalized) month607
++        0.17 * (normalized) more608
++        0.19 * (normalized) morn609
++        0    * (normalized) most610
++        0    * (normalized) mostli611
++        0    * (normalized) mother612
++        0    * (normalized) motiv613
++        0.26 * (normalized) move614
+-        0.2  * (normalized) much615
++        0    * (normalized) multipl616
+-        0.31 * (normalized) my617
++        0    * (normalized) myself618
++        0    * (normalized) name619
++        1.01 * (normalized) natur620
++        0    * (normalized) navig621
++        0    * (normalized) nd622
++        0    * (normalized) need623
+-        0.01 * (normalized) neg624
++        0    * (normalized) never625
++        0    * (normalized) new626
++        0    * (normalized) next627
++        0.19 * (normalized) nice628
++        0    * (normalized) night629
+-        0.28 * (normalized) no630
+-        0.38 * (normalized) none631
++        0    * (normalized) noodl632
++        0    * (normalized) normal633
++        0    * (normalized) not634
+-        0.24 * (normalized) note635
+-        0.03 * (normalized) noth636
++        0    * (normalized) notic637
++        0    * (normalized) novemb638
++        0.31 * (normalized) now639
++        0    * (normalized) number640
++        0    * (normalized) nut641
++        0    * (normalized) nutrient642
++        0    * (normalized) nutrit643
++        0    * (normalized) nutritionist644
++        0    * (normalized) oatmeal645
++        0    * (normalized) obstacl646
++        0    * (normalized) occas647
++        0    * (normalized) occasion648
++        0    * (normalized) octob649
+-        0.14 * (normalized) of650
+-        1.08 * (normalized) off651
++        0.5  * (normalized) offer652
+-        0.01 * (normalized) offic653
++        0.05 * (normalized) often654
++        0    * (normalized) oil655
+-        0.12 * (normalized) oj656
+-        0.21 * (normalized) ok657
+-        0.3  * (normalized) okai658
+-        0.69 * (normalized) old659
++        0    * (normalized) omelet660
+-        0.02 * (normalized) on661
+-        0.08 * (normalized) onc662
++        0    * (normalized) onion663
++        0    * (normalized) onli664
++        0    * (normalized) open665
++        0    * (normalized) opportun666
++        0.29 * (normalized) option667
++        0.22 * (normalized) or668
++        0.17 * (normalized) orang669
+-        0.1  * (normalized) order670
++        0    * (normalized) organ671
++        0    * (normalized) origin672
+-        0.03 * (normalized) other673
++        0    * (normalized) our674
+-        0.15 * (normalized) out675
++        0    * (normalized) outsid676
++        0    * (normalized) over677
++        0    * (normalized) overal678
++        0    * (normalized) overcom679
++        0    * (normalized) own680
++        0    * (normalized) pack681
+-        0.12 * (normalized) packag682
++        0    * (normalized) page683
++        0    * (normalized) pai684
+-        1.09 * (normalized) parent685
++        0    * (normalized) part686
++        0    * (normalized) parti687
++        0    * (normalized) particip688
+-        0.31 * (normalized) partner689
++        0    * (normalized) pass690
++        0    * (normalized) past691
++        0.12 * (normalized) pasta692
++        0.03 * (normalized) path693
+-        0.21 * (normalized) pea694
++        0    * (normalized) peanut695
+-        0.1  * (normalized) pear696
++        0.16 * (normalized) peopl697
+-        0.34 * (normalized) pepper698
++        0    * (normalized) per699
++        0    * (normalized) perhap700
+-        0.35 * (normalized) person701
++        0    * (normalized) pick702
++        0    * (normalized) picki703
++        0    * (normalized) piec704
++        0    * (normalized) pineappl705
+-        0.22 * (normalized) pizza706
+-        0.3  * (normalized) place707
++        0    * (normalized) plai708
++        0    * (normalized) plain709
++        0    * (normalized) plan710
++        0    * (normalized) pleas711
++        0    * (normalized) plu712
++        0.04 * (normalized) point713
++        0    * (normalized) pop714
++        0    * (normalized) portion715
++        0    * (normalized) posit716
++        0    * (normalized) possibl717
+-        0.19 * (normalized) post718
++        0.36 * (normalized) potato719
++        0    * (normalized) practic720
++        0    * (normalized) prep721
+-        0.15 * (normalized) prepar722
++        0    * (normalized) present723
++        0.12 * (normalized) pretti724
++        0    * (normalized) previou725
+-        0.42 * (normalized) prioriti726
++        0    * (normalized) probabl727
++        0    * (normalized) problem728
++        0    * (normalized) process729
++        0.39 * (normalized) produc730
+-        0.13 * (normalized) program731
+-        0.18 * (normalized) progress732
+-        0.49 * (normalized) project733
+-        0.12 * (normalized) promot734
+-        0.37 * (normalized) protein735
++        0    * (normalized) proud736
++        0    * (normalized) provid737
++        0    * (normalized) purchas738
++        0    * (normalized) push739
++        0    * (normalized) put740
+-        0.17 * (normalized) qualiti741
++        0    * (normalized) quantiti742
+-        0.31 * (normalized) question743
++        1.52 * (normalized) questionmark744
++        0.44 * (normalized) quick745
++        0    * (normalized) quickli746
++        0    * (normalized) quit747
+-        0.4  * (normalized) quotemark748
+-        0.16 * (normalized) rare749
++        0    * (normalized) raspberri750
++        0.48 * (normalized) rate751
++        0    * (normalized) rather752
+-        0.75 * (normalized) raw753
++        0    * (normalized) rd754
++        0    * (normalized) re755
++        0.09 * (normalized) reach756
++        0    * (normalized) read757
++        0    * (normalized) readi758
++        0    * (normalized) readili759
++        0    * (normalized) real760
+-        0.21 * (normalized) realiz761
++        0    * (normalized) realli762
++        0    * (normalized) reason763
++        0.17 * (normalized) receiv764
+-        0.2  * (normalized) recent765
++        0.26 * (normalized) recip766
++        0    * (normalized) recommend767
++        0    * (normalized) reduc768
+-        0.3  * (normalized) reflect769
++        0    * (normalized) regard770
++        0    * (normalized) regular771
++        0    * (normalized) regularli772
++        0    * (normalized) reintroduc773
++        0    * (normalized) relat774
++        0    * (normalized) relationship775
++        0    * (normalized) relax776
++        0    * (normalized) reli777
++        0    * (normalized) remain778
++        0    * (normalized) rememb779
++        0    * (normalized) remind780
++        0    * (normalized) replac781
++        0.06 * (normalized) repli782
++        0    * (normalized) report783
++        0    * (normalized) requir784
++        0.06 * (normalized) research785
+-        0.62 * (normalized) resourc786
+-        1.09 * (normalized) respect787
++        0    * (normalized) respond788
++        0    * (normalized) respons789
++        0    * (normalized) rest790
++        0    * (normalized) restaur791
+-        0.23 * (normalized) result792
++        0    * (normalized) return793
++        0    * (normalized) review794
++        0    * (normalized) rice795
++        0.08 * (normalized) right796
++        0    * (normalized) role797
++        0    * (normalized) room798
+-        0.01 * (normalized) routin799
++        0    * (normalized) rule800
++        0.36 * (normalized) run801
++        0.25 * (normalized) s802
+-        0.14 * (normalized) sai803
++        0    * (normalized) said804
++        0    * (normalized) salad805
++        0    * (normalized) same806
++        0.42 * (normalized) sandwich807
++        0.03 * (normalized) satisfi808
+-        0.21 * (normalized) sauc809
++        0    * (normalized) save810
++        0.44 * (normalized) schedul811
+-        0.62 * (normalized) school812
++        0    * (normalized) score813
+-        0.31 * (normalized) season814
++        0    * (normalized) second815
+-        0.05 * (normalized) section816
+-        0.33 * (normalized) see817
++        0    * (normalized) seem818
++        0    * (normalized) seen819
++        0    * (normalized) select820
++        0.81 * (normalized) semiclon821
++        0    * (normalized) send822
++        0    * (normalized) sent823
++        0    * (normalized) septemb824
++        0    * (normalized) seriou825
++        0.18 * (normalized) serv826
++        0    * (normalized) session827
++        0    * (normalized) set828
++        0    * (normalized) sever829
++        0.07 * (normalized) share830
++        0    * (normalized) she831
++        0    * (normalized) shift832
+-        0.34 * (normalized) shop833
++        0    * (normalized) short834
+-        0.59 * (normalized) should835
++        0    * (normalized) shouldn836
+-        0.22 * (normalized) show837
+-        0.2  * (normalized) side838
++        0    * (normalized) sign839
++        0    * (normalized) similar840
++        0    * (normalized) simpl841
++        0    * (normalized) simpli842
++        0    * (normalized) sinc843
++        0    * (normalized) sincer844
++        0    * (normalized) singl845
+-        0.73 * (normalized) site846
+-        0.16 * (normalized) situat847
+-        0.16 * (normalized) size848
++        0    * (normalized) slice849
++        0    * (normalized) slob850
++        0    * (normalized) slow851
++        0    * (normalized) small852
++        0    * (normalized) smaller853
++        0    * (normalized) smoothi854
+-        0.01 * (normalized) snack855
+-        0.03 * (normalized) so856
+-        0.02 * (normalized) soda857
++        0    * (normalized) solut858
++        0    * (normalized) some859
+-        0.38 * (normalized) someon860
+-        0.44 * (normalized) someth861
++        0.39 * (normalized) sometim862
++        0    * (normalized) somewhat863
++        0    * (normalized) son864
++        0.03 * (normalized) soon865
++        0    * (normalized) sorbet866
++        0.32 * (normalized) sorri867
++        0    * (normalized) sort868
++        0    * (normalized) sound869
++        0.16 * (normalized) soup870
++        0    * (normalized) special871
++        0    * (normalized) specif872
++        0    * (normalized) spend873
+-        0.55 * (normalized) spice874
++        0.23 * (normalized) spinach875
+-        0.27 * (normalized) squash876
+-        2.33 * (normalized) st877
++        0.02 * (normalized) stai878
++        0.43 * (normalized) star879
++        0.45 * (normalized) start880
+-        0.5  * (normalized) stash881
++        0    * (normalized) state882
+-        0.7  * (normalized) steam883
+-        0.15 * (normalized) step884
++        0    * (normalized) stick885
++        0    * (normalized) still886
++        0    * (normalized) stir887
++        0.63 * (normalized) stock888
++        0    * (normalized) stop889
++        0.19 * (normalized) store890
++        0.2  * (normalized) strategi891
++        0    * (normalized) strawberri892
++        0    * (normalized) strength893
++        0    * (normalized) stress894
+-        0.7  * (normalized) strong895
+-        0.38 * (normalized) struggl896
++        0.57 * (normalized) studi897
+-        0.53 * (normalized) stuff898
++        0    * (normalized) subwai899
++        0.39 * (normalized) succe900
++        0.01 * (normalized) success901
++        0.43 * (normalized) successfulli902
+-        0.26 * (normalized) such903
++        0.45 * (normalized) sugar904
++        0    * (normalized) sugari905
++        0.16 * (normalized) suggest906
++        0.04 * (normalized) summer907
++        0.21 * (normalized) sundai908
+-        0.43 * (normalized) super909
++        0    * (normalized) supper910
+-        1.12 * (normalized) support911
+-        0.23 * (normalized) suppos912
++        0    * (normalized) sure913
++        0    * (normalized) surround914
++        0.38 * (normalized) survei915
++        0    * (normalized) swap916
+-        0.12 * (normalized) sweet917
++        0.11 * (normalized) sweeten918
++        0    * (normalized) switch919
++        0.29 * (normalized) system920
+-        0.4  * (normalized) t921
++        0    * (normalized) tab922
+-        0.16 * (normalized) tag923
++        0    * (normalized) take924
++        0    * (normalized) taken925
++        0    * (normalized) talk926
++        1.14 * (normalized) task927
++        0    * (normalized) tast928
+-        0.02 * (normalized) tasti929
++        0    * (normalized) tea930
++        0    * (normalized) team931
++        0.56 * (normalized) teas932
++        0    * (normalized) tell933
++        0    * (normalized) tempt934
+-        0.96 * (normalized) temptat935
++        0    * (normalized) tend936
+-        0.51 * (normalized) term937
++        0    * (normalized) textur938
+-        0.35 * (normalized) tgif939
+-        0.09 * (normalized) th940
++        0    * (normalized) than941
+-        0.36 * (normalized) thank942
++        0    * (normalized) thanksgiv943
++        0.2  * (normalized) that944
+-        0.02 * (normalized) the945
++        0.02 * (normalized) thei946
++        0.83 * (normalized) their947
++        0.17 * (normalized) them948
++        0    * (normalized) theme949
++        0.02 * (normalized) then950
+-        0.05 * (normalized) there951
++        0    * (normalized) therefor952
++        0    * (normalized) these953
++        0.37 * (normalized) thi954
++        0.11 * (normalized) thing955
++        0.21 * (normalized) think956
++        0    * (normalized) third957
+-        0.69 * (normalized) those958
+-        0.16 * (normalized) though959
+-        1.23 * (normalized) thought960
++        0    * (normalized) three961
++        0.33 * (normalized) through962
++        0    * (normalized) throughout963
++        0    * (normalized) throw964
++        0    * (normalized) thumb965
+-        0.12 * (normalized) time966
+-        0.1  * (normalized) tip967
++        0    * (normalized) tire968
+-        0.58 * (normalized) to969
++        0    * (normalized) toast970
++        0.34 * (normalized) todai971
++        0    * (normalized) togeth972
++        0    * (normalized) told973
++        0.35 * (normalized) tomato974
++        0    * (normalized) ton975
+-        0.39 * (normalized) too976
++        0    * (normalized) took977
+-        0.87 * (normalized) top978
++        0    * (normalized) topic979
++        0    * (normalized) total980
++        0    * (normalized) touch981
++        0    * (normalized) tough982
++        0    * (normalized) toward983
++        0    * (normalized) track984
++        0    * (normalized) train985
++        0    * (normalized) treat986
++        0    * (normalized) tri987
++        0.19 * (normalized) trick988
++        0    * (normalized) troubl989
++        0    * (normalized) try990
+-        0.33 * (normalized) turkei991
++        0    * (normalized) turn992
++        0    * (normalized) tweak993
++        0    * (normalized) twice994
++        0    * (normalized) two995
++        0    * (normalized) type996
++        0    * (normalized) typic997
++        0    * (normalized) typicalregular998
++        0    * (normalized) under999
++        0    * (normalized) understand1000
+-        0.52 * (normalized) unfortun1001
++        0.19 * (normalized) unhealthi1002
++        0    * (normalized) until1003
+-        0.33 * (normalized) up1004
++        1.01 * (normalized) updat1005
++        0.15 * (normalized) us1006
++        0    * (normalized) usual1007
+-        0.15 * (normalized) vacat1008
++        0    * (normalized) valu1009
++        0    * (normalized) vari1010
++        0.49 * (normalized) varieti1011
++        0    * (normalized) ve1012
++        0.38 * (normalized) veget1013
+-        0.38 * (normalized) vegetarian1014
++        0.05 * (normalized) veggi1015
++        0    * (normalized) veri1016
++        0    * (normalized) video1017
++        0    * (normalized) visit1018
++        0.17 * (normalized) wa1019
+-        0.21 * (normalized) wai1020
++        0    * (normalized) walk1021
++        0    * (normalized) want1022
++        0    * (normalized) warm1023
++        0    * (normalized) wasn1024
++        0    * (normalized) wast1025
++        0    * (normalized) watch1026
++        0    * (normalized) watcher1027
+-        0.12 * (normalized) water1028
++        0    * (normalized) we1029
++        0    * (normalized) weather1030
++        0.19 * (normalized) websit1031
+-        0.69 * (normalized) wednesdai1032
++        0.42 * (normalized) week1033
+-        0.13 * (normalized) weekend1034
++        0    * (normalized) weekli1035
++        0    * (normalized) weigh1036
+-        0.3  * (normalized) weight1037
+-        0.31 * (normalized) welcom1038
++        0.02 * (normalized) well1039
++        0    * (normalized) went1040
++        0.02 * (normalized) were1041
++        0.05 * (normalized) what1042
++        0    * (normalized) whatev1043
++        0    * (normalized) wheat1044
++        0    * (normalized) when1045
++        0    * (normalized) where1046
++        0    * (normalized) which1047
+-        0.14 * (normalized) while1048
++        0    * (normalized) white1049
++        0    * (normalized) who1050
++        0    * (normalized) whole1051
+-        0.06 * (normalized) why1052
++        0    * (normalized) wide1053
++        0    * (normalized) wife1054
++        0    * (normalized) will1055
++        0.02 * (normalized) win1056
++        0    * (normalized) wish1057
+-        0.05 * (normalized) with1058
++        0    * (normalized) within1059
++        0    * (normalized) without1060
++        0    * (normalized) won1061
++        0    * (normalized) wonder1062
++        0    * (normalized) wont1063
++        0    * (normalized) word1064
++        0    * (normalized) work1065
++        0    * (normalized) workout1066
++        0    * (normalized) worri1067
++        0.19 * (normalized) worth1068
++        0    * (normalized) would1069
++        0    * (normalized) wouldn1070
+-        0.51 * (normalized) wow1071
++        0    * (normalized) write1072
++        0    * (normalized) www1073
++        0    * (normalized) y1074
++        0    * (normalized) ye1075
+-        0.32 * (normalized) year1076
++        0    * (normalized) yet1077
+-        0.75 * (normalized) yogurt1078
++        0.05 * (normalized) you1079
++        0    * (normalized) young1080
++        0.04 * (normalized) your1081
++        0    * (normalized) yourself1082
++        0    * (normalized) youv1083
++        0    * (normalized) yummi1084
+-        0.48 * (normalized) [xxxx]1085
+-        0.42 * (normalized) a1086
++        0    * (normalized) abil1087
++        0    * (normalized) abl1088
++        0    * (normalized) about1089
++        0    * (normalized) absolut1090
++        0    * (normalized) accomplish1091
++        0    * (normalized) account1092
++        0    * (normalized) achiev1093
++        0    * (normalized) activ1094
++       40.64 * (normalized) actual1095
++        0    * (normalized) ad1096
++        0    * (normalized) add1097
++        0    * (normalized) addit1098
++        0    * (normalized) advanc1099
++        0    * (normalized) advantag1100
++        0    * (normalized) advic1101
++        0    * (normalized) afford1102
++        0    * (normalized) afraid1103
++       23.07 * (normalized) after1104
++        0    * (normalized) afternoon1105
++       17.52 * (normalized) again1106
++        0    * (normalized) ago1107
++        0    * (normalized) agre1108
++        0    * (normalized) ahead1109
++       17.9  * (normalized) alex1110
++       17.87 * (normalized) all1111
++        0    * (normalized) allow1112
++        0    * (normalized) almond1113
++        0    * (normalized) almost1114
++        0    * (normalized) along1115
++        0    * (normalized) alreadi1116
++       13.19 * (normalized) also1117
++        0    * (normalized) although1118
++        0    * (normalized) alwai1119
++        0    * (normalized) am1120
++        0    * (normalized) amaz1121
++       11.28 * (normalized) ami1122
++        0    * (normalized) amount1123
++        0    * (normalized) an1124
++        0.13 * (normalized) and1125
++        0    * (normalized) andor1126
++        9.36 * (normalized) ani1127
++        0    * (normalized) anim1128
++        9.28 * (normalized) anoth1129
++        0    * (normalized) answer1130
++        0    * (normalized) anyon1131
++        0    * (normalized) anyth1132
++        8.98 * (normalized) anywai1133
++        0    * (normalized) apolog1134
++        0    * (normalized) appeal1135
++        0    * (normalized) appear1136
++        0    * (normalized) appl1137
++        0    * (normalized) applesauc1138
++        0    * (normalized) appreci1139
++        0    * (normalized) approach1140
++        0    * (normalized) april1141
++       11.71 * (normalized) ar1142
++        0    * (normalized) area1143
++        0    * (normalized) aren1144
++        0    * (normalized) arent1145
++        0    * (normalized) around1146
++        0    * (normalized) articl1147
++        0    * (normalized) arugula1148
++        6.99 * (normalized) as1149
++        7.01 * (normalized) asid1150
++        0    * (normalized) ask1151
++        0    * (normalized) asparagu1152
++        0    * (normalized) assist1153
++        0    * (normalized) at1154
++        0    * (normalized) athlet1155
++        0    * (normalized) attempt1156
++        0    * (normalized) attent1157
++        0    * (normalized) attitud1158
++        0    * (normalized) august1159
++        0    * (normalized) avail1160
++        0    * (normalized) avoid1161
++        0    * (normalized) awai1162
++        0    * (normalized) awar1163
++        4.94 * (normalized) awesom1164
++        0    * (normalized) babi1165
++        0    * (normalized) back1166
++        0    * (normalized) bad1167
++        0    * (normalized) bag1168
++        0    * (normalized) bake1169
++        0    * (normalized) balanc1170
++        4.13 * (normalized) banana1171
++        5.22 * (normalized) base1172
++        0    * (normalized) basi1173
++        0    * (normalized) basic1174
++        7.82 * (normalized) be1175
++        0    * (normalized) bean1176
++        0    * (normalized) beat1177
++       11.01 * (normalized) becaus1178
++        0    * (normalized) becom1179
++        0    * (normalized) been1180
++        0    * (normalized) befor1181
++        0    * (normalized) began1182
++        0    * (normalized) begin1183
++        0    * (normalized) behind1184
++        0    * (normalized) believ1185
++        3.97 * (normalized) below1186
++        0    * (normalized) benefit1187
++        0    * (normalized) berri1188
++        0    * (normalized) besid1189
++        0    * (normalized) best1190
++        0    * (normalized) better1191
++        3.86 * (normalized) between1192
++        0    * (normalized) beverag1193
++        0    * (normalized) big1194
++        0    * (normalized) biggest1195
++        0    * (normalized) bit1196
++        0    * (normalized) blend1197
++        0    * (normalized) blog1198
++        0    * (normalized) blueberri1199
++        0    * (normalized) bodi1200
++        0    * (normalized) bonu1201
++        0    * (normalized) bore1202
++        0    * (normalized) both1203
++        0    * (normalized) bother1204
++        0    * (normalized) bought1205
++        0    * (normalized) boyfriend1206
++        0    * (normalized) bread1207
++        4.2  * (normalized) breakfast1208
++        0    * (normalized) breastfeed1209
++        0    * (normalized) bring1210
++        0    * (normalized) broccoli1211
++        0    * (normalized) brown1212
++        0    * (normalized) budget1213
++        0    * (normalized) bui1214
++        0    * (normalized) build1215
++        0    * (normalized) bunch1216
++        0    * (normalized) burger1217
++        0    * (normalized) busi1218
++        2.56 * (normalized) but1219
++        0    * (normalized) butter1220
++        0    * (normalized) by1221
++        0    * (normalized) cake1222
++        0    * (normalized) call1223
++        0    * (normalized) calori1224
++        0    * (normalized) came1225
++        3.33 * (normalized) can1226
++        0    * (normalized) candi1227
++        0    * (normalized) cannedjar1228
++        0    * (normalized) cant1229
++        0    * (normalized) carb1230
++        0    * (normalized) care1231
++        0    * (normalized) carrot1232
++        0    * (normalized) case1233
++        0    * (normalized) cash1234
++        1.71 * (normalized) cathi1235
++        0    * (normalized) celeri1236
++        0    * (normalized) cereal1237
++        0    * (normalized) certain1238
++        0    * (normalized) certainli1239
++        0    * (normalized) challeng1240
++        0    * (normalized) chanc1241
++        2.12 * (normalized) chang1242
++        0    * (normalized) charg1243
++        0    * (normalized) chat1244
++        0    * (normalized) cheaper1245
++        0    * (normalized) check1246
++        0    * (normalized) cheer1247
++        0    * (normalized) chees1248
++        0    * (normalized) chef1249
++        0    * (normalized) chicken1250
++        0    * (normalized) chip1251
++        0    * (normalized) choic1252
++        0    * (normalized) choos1253
++        0    * (normalized) chop1254
++        0    * (normalized) chose1255
++        1.2  * (normalized) chri1256
++        0    * (normalized) christma1257
++        1.14 * (normalized) clair1258
++        0    * (normalized) clarifi1259
++        0    * (normalized) class1260
++        0    * (normalized) clear1261
++        0    * (normalized) click1262
++        0    * (normalized) clone1263
++        0    * (normalized) close1264
++        0    * (normalized) coach1265
++        0    * (normalized) coffe1266
++        0    * (normalized) cold1267
++        0    * (normalized) colleg1268
++        0    * (normalized) combin1269
++        0    * (normalized) come1270
++        0    * (normalized) comfort1271
++        0    * (normalized) comma1272
++        0    * (normalized) comment1273
++        0    * (normalized) commit1274
++        0    * (normalized) commun1275
++        0    * (normalized) compar1276
++        0    * (normalized) compet1277
++        0    * (normalized) complet1278
++        0    * (normalized) concern1279
++        0    * (normalized) confid1280
++        2.82 * (normalized) congrat1281
++        1.41 * (normalized) congratul1282
++        0    * (normalized) connect1283
++        0    * (normalized) consciou1284
++        0    * (normalized) consid1285
++        0    * (normalized) consider1286
++        0    * (normalized) consist1287
++        0    * (normalized) consum1288
++        0    * (normalized) contain1289
++        0    * (normalized) content1290
++        0    * (normalized) continu1291
++        0    * (normalized) control1292
++        0    * (normalized) conveni1293
++        1.61 * (normalized) cook1294
++        0    * (normalized) cooki1295
++        0    * (normalized) cool1296
++        0    * (normalized) copi1297
++        0    * (normalized) corn1298
++        0    * (normalized) correct1299
++        0    * (normalized) cost1300
++        4.14 * (normalized) could1301
++        0    * (normalized) count1302
++        0    * (normalized) coupl1303
++        0    * (normalized) cours1304
++        0    * (normalized) cover1305
++        0    * (normalized) cracker1306
++        0    * (normalized) crave1307
++        0    * (normalized) cream1308
++        0    * (normalized) creat1309
++        0    * (normalized) creativ1310
++        0    * (normalized) crockpot1311
++        0    * (normalized) cucumb1312
++        0    * (normalized) cup1313
++        0    * (normalized) curb1314
++        0    * (normalized) curiou1315
++        0    * (normalized) current1316
++        0    * (normalized) custom1317
++        8.99 * (normalized) cut1318
++        0    * (normalized) d1319
++        0    * (normalized) dai1320
++        0    * (normalized) daili1321
++        0    * (normalized) daughter1322
++        1.52 * (normalized) dear1323
++        0    * (normalized) decemb1324
++        0    * (normalized) decid1325
++        0    * (normalized) decis1326
++        0    * (normalized) dedic1327
++        0    * (normalized) definit1328
++        0    * (normalized) delai1329
++        0    * (normalized) delici1330
++        0    * (normalized) depend1331
++        1.76 * (normalized) describ1332
++        0    * (normalized) desk1333
++        0.57 * (normalized) despit1334
++        0    * (normalized) dessert1335
++        0    * (normalized) detail1336
++        0    * (normalized) determin1337
++        1.37 * (normalized) did1338
++        0    * (normalized) didn1339
+-        0.1  * (normalized) diet1340
++        1.46 * (normalized) differ1341
++        0    * (normalized) difficult1342
++        0    * (normalized) digest1343
++        0    * (normalized) dinner1344
++        0    * (normalized) dip1345
++        0    * (normalized) direct1346
++        0    * (normalized) discourag1347
++        0    * (normalized) discuss1348
++        0    * (normalized) diseas1349
++        0    * (normalized) dish1350
++        2.6  * (normalized) do1351
++        2    * (normalized) doe1352
++        0    * (normalized) doesn1353
++        0    * (normalized) don1354
++        0    * (normalized) done1355
++        0    * (normalized) dont1356
++        0    * (normalized) down1357
++        0    * (normalized) dress1358
++        0    * (normalized) dri1359
++        0    * (normalized) drink1360
++        0    * (normalized) drive1361
++        1.12 * (normalized) due1362
++        0    * (normalized) dure1363
++        0    * (normalized) e1364
++        0    * (normalized) each1365
++        0    * (normalized) earlier1366
++        1.31 * (normalized) easi1367
++        0    * (normalized) easier1368
++        0    * (normalized) easili1369
+-        0.06 * (normalized) eat1370
++        0    * (normalized) eater1371
++        0    * (normalized) ecoach1372
++        0    * (normalized) effect1373
++        0    * (normalized) effort1374
++        0    * (normalized) egg1375
++        0    * (normalized) either1376
++        0    * (normalized) elimin1377
++        0    * (normalized) els1378
++        0    * (normalized) email1379
++        0    * (normalized) encourag1380
++        0    * (normalized) end1381
++        0    * (normalized) energ1382
++        0    * (normalized) energet1383
++        1.98 * (normalized) energi1384
++        0    * (normalized) engag1385
+-        0.13 * (normalized) enjoi1386
++        0    * (normalized) enjoy1387
++        0    * (normalized) enough1388
++        0    * (normalized) enrol1389
++        0    * (normalized) enthusiasm1390
++        0    * (normalized) entir1391
++        0    * (normalized) especi1392
++        0    * (normalized) etc1393
+-        0.05 * (normalized) even1394
++        0    * (normalized) event1395
++        0    * (normalized) ever1396
++        1.06 * (normalized) everi1397
++        0    * (normalized) everydai1398
++        0    * (normalized) everyon1399
++        0.17 * (normalized) everyth1400
++        0    * (normalized) exactli1401
++        0    * (normalized) exampl1402
++        1.67 * (normalized) exchang1403
++        0    * (normalized) excit1404
++        0    * (normalized) exclam1405
++        0    * (normalized) exercis1406
++        0    * (normalized) expens1407
++        0    * (normalized) experi1408
++        0    * (normalized) extra1409
++        0    * (normalized) extrem1410
++        0    * (normalized) face1411
++        0    * (normalized) fact1412
++        0    * (normalized) factor1413
++        0    * (normalized) fairli1414
++        0    * (normalized) fall1415
++        0    * (normalized) famili1416
++        0    * (normalized) fan1417
++        1.55 * (normalized) fantast1418
++        0    * (normalized) far1419
++        0    * (normalized) fast1420
++        0    * (normalized) fat1421
++        0    * (normalized) fatigu1422
++        0    * (normalized) favorit1423
++        0    * (normalized) featur1424
++        0    * (normalized) featuresmain1425
++        0    * (normalized) februari1426
++        0    * (normalized) feedback1427
++        0    * (normalized) feel1428
++        0    * (normalized) felt1429
++        0    * (normalized) few1430
++        0    * (normalized) fianc1431
++        0    * (normalized) figur1432
++        0    * (normalized) fill1433
++        0    * (normalized) final1434
++        0    * (normalized) financi1435
++        0    * (normalized) find1436
++        0    * (normalized) finish1437
++        0    * (normalized) fire1438
++        0    * (normalized) first1439
++        0    * (normalized) fit1440
++        0    * (normalized) fix1441
+-        0.05 * (normalized) flavor1442
++        0    * (normalized) focu1443
++        0    * (normalized) focus1444
++        0    * (normalized) follow1445
++        0    * (normalized) food1446
+-        0.17 * (normalized) for1447
++        0    * (normalized) form1448
++        0    * (normalized) forward1449
++        0    * (normalized) found1450
++        0    * (normalized) free1451
++        0    * (normalized) freez1452
++        0    * (normalized) frequent1453
++        0    * (normalized) fresh1454
++        0    * (normalized) fri1455
++        0    * (normalized) fridg1456
++        0.77 * (normalized) friend1457
++        0    * (normalized) friendli1458
++        3.44 * (normalized) from1459
++        0.45 * (normalized) frozen1460
++        0    * (normalized) fruit1461
++        0    * (normalized) fruitsveget1462
++        0    * (normalized) fruitsveggi1463
++        0    * (normalized) fruitveggi1464
++        0    * (normalized) fry1465
++        0    * (normalized) full1466
++        0    * (normalized) fullstop1467
++        0    * (normalized) fun1468
++        0    * (normalized) further1469
++        0    * (normalized) futur1470
++        0    * (normalized) gain1471
++        0    * (normalized) game1472
++        0    * (normalized) garden1473
++        0    * (normalized) gave1474
++        0    * (normalized) gener1475
++        0.59 * (normalized) get1476
++        0    * (normalized) give1477
++        0    * (normalized) given1478
+-        0.59 * (normalized) glad1479
++        0    * (normalized) gluten1480
++        2.65 * (normalized) gm1481
++        0    * (normalized) go1482
++        0    * (normalized) goal1483
++        0    * (normalized) goe1484
++        0    * (normalized) gone1485
++        2.12 * (normalized) good1486
++        0    * (normalized) got1487
++        0    * (normalized) gotten1488
++        0    * (normalized) grab1489
++        0    * (normalized) gradual1490
++        0    * (normalized) graduat1491
++        0    * (normalized) grain1492
++        0    * (normalized) grape1493
++        0.96 * (normalized) great1494
++        0    * (normalized) green1495
++        0    * (normalized) grill1496
++        0    * (normalized) groceri1497
++        0    * (normalized) group1498
++        0    * (normalized) grow1499
++        1.17 * (normalized) guess1500
++        0    * (normalized) gym1501
++        1.51 * (normalized) ha1502
++        0    * (normalized) habit1503
++        0    * (normalized) had1504
++        0    * (normalized) hadn1505
++        0    * (normalized) haha1506
++        0    * (normalized) half1507
++        0    * (normalized) hand1508
++        0    * (normalized) happen1509
+-        1.46 * (normalized) happi1510
++        0    * (normalized) hard1511
++        0    * (normalized) harder1512
+-        0.34 * (normalized) have1513
++        5.71 * (normalized) haven1514
++        0    * (normalized) havent1515
++        0.06 * (normalized) he1516
++        0    * (normalized) headach1517
++        1.8  * (normalized) health1518
++        1.09 * (normalized) healthi1519
++        0    * (normalized) healthier1520
++        0    * (normalized) healthiest1521
++        0    * (normalized) hear1522
++        0    * (normalized) heard1523
++        0    * (normalized) heart1524
++        0    * (normalized) hectic1525
++        2.59 * (normalized) hei1526
++        2.95 * (normalized) hello1527
++        0    * (normalized) help1528
++        0    * (normalized) her1529
+-        0.73 * (normalized) here1530
++        2.64 * (normalized) hi1531
++        0    * (normalized) high1532
++        0    * (normalized) higher1533
++        0    * (normalized) highest1534
++        0    * (normalized) him1535
++        0    * (normalized) hit1536
++        0    * (normalized) hold1537
++        0    * (normalized) holidai1538
++        0    * (normalized) home1539
++        0    * (normalized) homemad1540
++        0    * (normalized) honest1541
++        0.59 * (normalized) honestli1542
++        0    * (normalized) hope1543
+-        0.13 * (normalized) hopefulli1544
++        0    * (normalized) hour1545
++        0    * (normalized) hous1546
++        1.84 * (normalized) how1547
+-        0.44 * (normalized) howev1548
+-        0.23 * (normalized) http1549
++        0    * (normalized) huge1550
++        0    * (normalized) hungri1551
++        0    * (normalized) husband1552
++        0    * (normalized) hyphen1553
+-        0.2  * (normalized) i1554
++        0    * (normalized) ic1555
++        0.14 * (normalized) id1556
++        0    * (normalized) idea1557
++        0    * (normalized) if1558
++        0    * (normalized) ill1559
+-        0.14 * (normalized) im1560
++        0    * (normalized) imagin1561
++        0    * (normalized) import1562
++        0    * (normalized) improv1563
++        1.51 * (normalized) in1564
++        0    * (normalized) incent1565
++        0    * (normalized) includ1566
++        0.83 * (normalized) incorpor1567
++        0    * (normalized) increas1568
++        0    * (normalized) independ1569
++        0    * (normalized) indic1570
++        0    * (normalized) indulg1571
++        0    * (normalized) influenc1572
++        0    * (normalized) info1573
++        0    * (normalized) inform1574
++        0    * (normalized) initi1575
++        0    * (normalized) input1576
++        0    * (normalized) insight1577
+-        0.09 * (normalized) instead1578
++        0    * (normalized) intak1579
++        0    * (normalized) interest1580
++        0    * (normalized) into1581
++        0    * (normalized) introduc1582
++        0    * (normalized) involv1583
++        0    * (normalized) iphon1584
++        1.25 * (normalized) is1585
++        0    * (normalized) isn1586
++        0    * (normalized) issu1587
++        1.57 * (normalized) it1588
++        0    * (normalized) item1589
+-        0.2  * (normalized) iv1590
++        0    * (normalized) januari1591
++        0    * (normalized) job1592
++        0    * (normalized) join1593
++        0    * (normalized) joke1594
++        0.78 * (normalized) juic1595
++        0    * (normalized) juicer1596
+-        0.7  * (normalized) juli1597
+-        0.75 * (normalized) june1598
++        0    * (normalized) junk1599
++        0.62 * (normalized) just1600
++        0    * (normalized) kale1601
++        0    * (normalized) keep1602
++        0    * (normalized) kei1603
+-        0.71 * (normalized) kelli1604
++        0    * (normalized) kept1605
++        0    * (normalized) kick1606
++        0    * (normalized) kid1607
+-        0.14 * (normalized) kind1608
++        0    * (normalized) kitchen1609
++        0    * (normalized) know1610
++        0.44 * (normalized) kudo1611
++        0    * (normalized) lack1612
++        0    * (normalized) larg1613
+-        0.06 * (normalized) last1614
++        0.82 * (normalized) lastli1615
+-        0.37 * (normalized) late1616
++        0    * (normalized) later1617
++        0    * (normalized) laugh1618
++        0    * (normalized) lb1619
++        0    * (normalized) lead1620
++        0    * (normalized) lean1621
++        0    * (normalized) learn1622
++        0    * (normalized) least1623
++        0    * (normalized) leav1624
++        0    * (normalized) left1625
++        0    * (normalized) less1626
++        1.39 * (normalized) let1627
++        0    * (normalized) letter1628
++        0    * (normalized) lettuc1629
++        0    * (normalized) level1630
++        1.23 * (normalized) life1631
++        0    * (normalized) lifestyl1632
++        3.2  * (normalized) like1633
++        0    * (normalized) limit1634
++        0    * (normalized) link1635
++        0    * (normalized) list1636
++        0    * (normalized) littl1637
++        0    * (normalized) live1638
++        0    * (normalized) ll1639
++        0    * (normalized) load1640
++        0    * (normalized) local1641
++        0    * (normalized) long1642
++        0    * (normalized) longer1643
++        1.41 * (normalized) look1644
+-        0.28 * (normalized) lose1645
++        0    * (normalized) loss1646
++        0    * (normalized) lost1647
++        0.01 * (normalized) lot1648
++        0    * (normalized) love1649
++        0    * (normalized) low1650
++        0    * (normalized) lower1651
+-        0.02 * (normalized) lunch1652
++        0    * (normalized) m1653
++        0    * (normalized) made1654
++        0    * (normalized) mai1655
++        0    * (normalized) mail1656
+-        0.01 * (normalized) main1657
+-        0.47 * (normalized) maintain1658
++        0    * (normalized) major1659
++        0.3  * (normalized) make1660
++        0    * (normalized) manag1661
++        0    * (normalized) mandarin1662
++        0    * (normalized) mani1663
++        0    * (normalized) march1664
++        0    * (normalized) materi1665
++        0    * (normalized) matter1666
+-        0.5  * (normalized) mayb1667
++        0    * (normalized) me1668
+-        0.39 * (normalized) meal1669
++        0    * (normalized) mealssnack1670
++        0    * (normalized) mean1671
++        0    * (normalized) meat1672
++        0    * (normalized) meet1673
++        0    * (normalized) mention1674
++        0    * (normalized) menu1675
+-        0.42 * (normalized) menuchoic1676
++        0    * (normalized) messag1677
++        0    * (normalized) middl1678
++        0    * (normalized) midterm1679
++        0    * (normalized) might1680
++        0    * (normalized) migrain1681
++        0    * (normalized) milk1682
++        0    * (normalized) mind1683
++        0    * (normalized) minut1684
++        0    * (normalized) miss1685
++        0    * (normalized) mix1686
++        0    * (normalized) model1687
++        0    * (normalized) moder1688
++        0    * (normalized) mondai1689
++        0    * (normalized) monei1690
++        0    * (normalized) month1691
+-        0.02 * (normalized) more1692
++        0    * (normalized) morn1693
++        0    * (normalized) most1694
+-        0.33 * (normalized) mostli1695
++        0    * (normalized) mother1696
++        0    * (normalized) motiv1697
++        0.3  * (normalized) move1698
++        0    * (normalized) much1699
++        0    * (normalized) multipl1700
++        5.34 * (normalized) my1701
++        0    * (normalized) myself1702
++        0    * (normalized) name1703
++        0    * (normalized) natur1704
++        0    * (normalized) navig1705
++        0    * (normalized) nd1706
+-        0    * (normalized) need1707
++        0    * (normalized) neg1708
++        0    * (normalized) never1709
++        0.21 * (normalized) new1710
++        0.56 * (normalized) next1711
+-        0.48 * (normalized) nice1712
++        0    * (normalized) night1713
+-        0.31 * (normalized) no1714
++        0    * (normalized) none1715
++        0    * (normalized) noodl1716
+-        0.53 * (normalized) normal1717
+-        0.55 * (normalized) not1718
+-        0.52 * (normalized) note1719
+-        0.22 * (normalized) noth1720
++        0    * (normalized) notic1721
++        0    * (normalized) novemb1722
++        0.64 * (normalized) now1723
++        0    * (normalized) number1724
++        0    * (normalized) nut1725
++        0    * (normalized) nutrient1726
++        0    * (normalized) nutrit1727
++        0    * (normalized) nutritionist1728
++        0    * (normalized) oatmeal1729
++        0    * (normalized) obstacl1730
++        0    * (normalized) occas1731
++        0    * (normalized) occasion1732
++        0    * (normalized) octob1733
++        0    * (normalized) of1734
++        0    * (normalized) off1735
++        0    * (normalized) offer1736
++        0    * (normalized) offic1737
++        0.27 * (normalized) often1738
++        0    * (normalized) oil1739
++        0    * (normalized) oj1740
++        0.5  * (normalized) ok1741
++        0    * (normalized) okai1742
++        0    * (normalized) old1743
++        0    * (normalized) omelet1744
+-        0.12 * (normalized) on1745
++        0.12 * (normalized) onc1746
++        0    * (normalized) onion1747
+-        0.31 * (normalized) onli1748
++        0    * (normalized) open1749
++        0    * (normalized) opportun1750
++        0    * (normalized) option1751
+-        0.02 * (normalized) or1752
++        0    * (normalized) orang1753
++        0    * (normalized) order1754
++        0    * (normalized) organ1755
++        0    * (normalized) origin1756
+-        0.48 * (normalized) other1757
++        1.32 * (normalized) our1758
+-        0.12 * (normalized) out1759
+-        0.55 * (normalized) outsid1760
+-        0.96 * (normalized) over1761
+-        0.29 * (normalized) overal1762
++        0    * (normalized) overcom1763
++        0    * (normalized) own1764
++        0.43 * (normalized) pack1765
++        0    * (normalized) packag1766
++        0    * (normalized) page1767
++        0    * (normalized) pai1768
++        0    * (normalized) parent1769
++        0    * (normalized) part1770
++        0.3  * (normalized) parti1771
++        0    * (normalized) particip1772
++        0    * (normalized) partner1773
++        0    * (normalized) pass1774
++        0    * (normalized) past1775
++        0    * (normalized) pasta1776
++        0    * (normalized) path1777
++        0    * (normalized) pea1778
+-        0.31 * (normalized) peanut1779
++        0    * (normalized) pear1780
++        1.21 * (normalized) peopl1781
++        0    * (normalized) pepper1782
++        0    * (normalized) per1783
+-        0.32 * (normalized) perhap1784
++        0    * (normalized) person1785
++        0    * (normalized) pick1786
++        0    * (normalized) picki1787
++        0    * (normalized) piec1788
++        0    * (normalized) pineappl1789
+-        0.18 * (normalized) pizza1790
++        0    * (normalized) place1791
++        0    * (normalized) plai1792
++        0    * (normalized) plain1793
++        0    * (normalized) plan1794
++        1.47 * (normalized) pleas1795
+-        0.84 * (normalized) plu1796
++        0    * (normalized) point1797
++        0    * (normalized) pop1798
++        0    * (normalized) portion1799
++        0    * (normalized) posit1800
+-        0.8  * (normalized) possibl1801
++        0    * (normalized) post1802
+-        0.06 * (normalized) potato1803
++        0    * (normalized) practic1804
++        0    * (normalized) prep1805
++        0.42 * (normalized) prepar1806
++        0    * (normalized) present1807
++        0    * (normalized) pretti1808
++        0    * (normalized) previou1809
++        0    * (normalized) prioriti1810
++        0    * (normalized) probabl1811
++        0    * (normalized) problem1812
++        0    * (normalized) process1813
++        0    * (normalized) produc1814
++        0    * (normalized) program1815
++        0    * (normalized) progress1816
++        0    * (normalized) project1817
++        0    * (normalized) promot1818
++        0    * (normalized) protein1819
++        0    * (normalized) proud1820
++        0    * (normalized) provid1821
+-        0.37 * (normalized) purchas1822
++        0    * (normalized) push1823
++        0    * (normalized) put1824
++        0    * (normalized) qualiti1825
++        0    * (normalized) quantiti1826
++        0    * (normalized) question1827
++        0    * (normalized) questionmark1828
++        0    * (normalized) quick1829
++        0    * (normalized) quickli1830
+-        0.8  * (normalized) quit1831
++        4.38 * (normalized) quotemark1832
++        0    * (normalized) rare1833
++        0    * (normalized) raspberri1834
++        0    * (normalized) rate1835
++        0    * (normalized) rather1836
++        0    * (normalized) raw1837
++        0    * (normalized) rd1838
++        0    * (normalized) re1839
++        0    * (normalized) reach1840
++        0    * (normalized) read1841
++        0    * (normalized) readi1842
++        0    * (normalized) readili1843
++        0    * (normalized) real1844
++        0    * (normalized) realiz1845
++        0.82 * (normalized) realli1846
++        0    * (normalized) reason1847
++        0    * (normalized) receiv1848
++        0    * (normalized) recent1849
++        0    * (normalized) recip1850
++        0    * (normalized) recommend1851
++        0    * (normalized) reduc1852
++        0    * (normalized) reflect1853
+-        1.06 * (normalized) regard1854
++        0    * (normalized) regular1855
++        0    * (normalized) regularli1856
++        0    * (normalized) reintroduc1857
++        0    * (normalized) relat1858
++        0    * (normalized) relationship1859
++        0    * (normalized) relax1860
++        0    * (normalized) reli1861
++        0    * (normalized) remain1862
++        0.31 * (normalized) rememb1863
++        0    * (normalized) remind1864
++        0    * (normalized) replac1865
++        0    * (normalized) repli1866
++        0    * (normalized) report1867
++        0    * (normalized) requir1868
+-        0.27 * (normalized) research1869
++        0    * (normalized) resourc1870
++        0    * (normalized) respect1871
++        0    * (normalized) respond1872
++        0    * (normalized) respons1873
++        0    * (normalized) rest1874
++        0    * (normalized) restaur1875
++        0    * (normalized) result1876
++        0    * (normalized) return1877
++        0    * (normalized) review1878
++        0    * (normalized) rice1879
++        0.29 * (normalized) right1880
++        0    * (normalized) role1881
++        0    * (normalized) room1882
++        0    * (normalized) routin1883
++        0    * (normalized) rule1884
++        0    * (normalized) run1885
++        0    * (normalized) s1886
++        0    * (normalized) sai1887
++        0    * (normalized) said1888
+-        0.38 * (normalized) salad1889
+-        0.38 * (normalized) same1890
+-        0.07 * (normalized) sandwich1891
++        0    * (normalized) satisfi1892
++        0    * (normalized) sauc1893
++        0    * (normalized) save1894
++        0    * (normalized) schedul1895
+-        0.34 * (normalized) school1896
++        0    * (normalized) score1897
++        0    * (normalized) season1898
+-        0.48 * (normalized) second1899
++        0    * (normalized) section1900
+-        1.14 * (normalized) see1901
+-        1    * (normalized) seem1902
++        0    * (normalized) seen1903
++        0    * (normalized) select1904
++        0    * (normalized) semiclon1905
++        0    * (normalized) send1906
+-        0.87 * (normalized) sent1907
++        0    * (normalized) septemb1908
++        0    * (normalized) seriou1909
++        0    * (normalized) serv1910
++        0    * (normalized) session1911
++        0    * (normalized) set1912
+-        0.4  * (normalized) sever1913
++        0    * (normalized) share1914
++        0    * (normalized) she1915
++        0    * (normalized) shift1916
++        0    * (normalized) shop1917
++        0    * (normalized) short1918
++        0    * (normalized) should1919
++        0    * (normalized) shouldn1920
++        0    * (normalized) show1921
++        0    * (normalized) side1922
++        0    * (normalized) sign1923
++        0    * (normalized) similar1924
++        0    * (normalized) simpl1925
++        0    * (normalized) simpli1926
+-        0.26 * (normalized) sinc1927
+-        1.03 * (normalized) sincer1928
++        0    * (normalized) singl1929
++        0    * (normalized) site1930
++        0    * (normalized) situat1931
++        0    * (normalized) size1932
++        0    * (normalized) slice1933
++        0    * (normalized) slob1934
++        0    * (normalized) slow1935
++        0    * (normalized) small1936
++        0    * (normalized) smaller1937
++        0    * (normalized) smoothi1938
++        0    * (normalized) snack1939
+-        0.35 * (normalized) so1940
++        0    * (normalized) soda1941
++        0    * (normalized) solut1942
++        0.87 * (normalized) some1943
++        0    * (normalized) someon1944
+-        0.51 * (normalized) someth1945
++        0.49 * (normalized) sometim1946
++        0    * (normalized) somewhat1947
++        0    * (normalized) son1948
++        0    * (normalized) soon1949
++        0    * (normalized) sorbet1950
+-        1.13 * (normalized) sorri1951
++        0    * (normalized) sort1952
+-        0.58 * (normalized) sound1953
++        0    * (normalized) soup1954
++        0    * (normalized) special1955
++        0    * (normalized) specif1956
++        0    * (normalized) spend1957
++        0    * (normalized) spice1958
++        0    * (normalized) spinach1959
++        0    * (normalized) squash1960
++        0    * (normalized) st1961
++        0    * (normalized) stai1962
++        0    * (normalized) star1963
++        0    * (normalized) start1964
++        0    * (normalized) stash1965
++        0    * (normalized) state1966
++        0    * (normalized) steam1967
++        0    * (normalized) step1968
++        0    * (normalized) stick1969
++        0    * (normalized) still1970
++        0    * (normalized) stir1971
++        0    * (normalized) stock1972
++        0    * (normalized) stop1973
++        0    * (normalized) store1974
++        0    * (normalized) strategi1975
++        0    * (normalized) strawberri1976
++        0    * (normalized) strength1977
++        0    * (normalized) stress1978
++        0    * (normalized) strong1979
++        0    * (normalized) struggl1980
++        0    * (normalized) studi1981
++        0    * (normalized) stuff1982
++        0    * (normalized) subwai1983
++        0    * (normalized) succe1984
++        0    * (normalized) success1985
++        0    * (normalized) successfulli1986
++        0    * (normalized) such1987
+-        0.09 * (normalized) sugar1988
++        0    * (normalized) sugari1989
++        0    * (normalized) suggest1990
+-        0.49 * (normalized) summer1991
++        0    * (normalized) sundai1992
++        0    * (normalized) super1993
++        0    * (normalized) supper1994
++        0    * (normalized) support1995
++        0.54 * (normalized) suppos1996
++        0    * (normalized) sure1997
++        0.39 * (normalized) surround1998
++        0    * (normalized) survei1999
+-        0.81 * (normalized) swap2000
++        0.96 * (normalized) sweet2001
++        0    * (normalized) sweeten2002
+-        0.23 * (normalized) switch2003
++        0    * (normalized) system2004
++        0    * (normalized) t2005
++        0    * (normalized) tab2006
++        0    * (normalized) tag2007
+-        0.73 * (normalized) take2008
++        0    * (normalized) taken2009
+-        1.28 * (normalized) talk2010
++        0    * (normalized) task2011
++        0    * (normalized) tast2012
++        0    * (normalized) tasti2013
++        0    * (normalized) tea2014
++        0    * (normalized) team2015
++        0    * (normalized) teas2016
++        0.65 * (normalized) tell2017
++        0    * (normalized) tempt2018
++        0    * (normalized) temptat2019
++        0    * (normalized) tend2020
++        0    * (normalized) term2021
++        0    * (normalized) textur2022
+-        0.98 * (normalized) tgif2023
++        0    * (normalized) th2024
++        0    * (normalized) than2025
+-        0.81 * (normalized) thank2026
+-        0.65 * (normalized) thanksgiv2027
+-        0.55 * (normalized) that2028
+-        0.04 * (normalized) the2029
+-        0.51 * (normalized) thei2030
++        0    * (normalized) their2031
++        0    * (normalized) them2032
++        0    * (normalized) theme2033
+-        0.85 * (normalized) then2034
+-        0.62 * (normalized) there2035
+-        0.67 * (normalized) therefor2036
+-        1.01 * (normalized) these2037
+-        0.68 * (normalized) thi2038
+-        0.25 * (normalized) thing2039
++        1.19 * (normalized) think2040
+-        0.95 * (normalized) third2041
+-        0.82 * (normalized) those2042
+-        0.15 * (normalized) though2043
+-        0.59 * (normalized) thought2044
++        0    * (normalized) three2045
++        0    * (normalized) through2046
++        0    * (normalized) throughout2047
++        0    * (normalized) throw2048
++        0    * (normalized) thumb2049
++        0.5  * (normalized) time2050
++        0    * (normalized) tip2051
++        0    * (normalized) tire2052
+-        0.02 * (normalized) to2053
++        0    * (normalized) toast2054
+-        0.98 * (normalized) todai2055
++        0    * (normalized) togeth2056
++        0    * (normalized) told2057
+-        0.14 * (normalized) tomato2058
++        0    * (normalized) ton2059
++        0    * (normalized) too2060
++        0    * (normalized) took2061
++        0.06 * (normalized) top2062
++        0    * (normalized) topic2063
++        0    * (normalized) total2064
++        0    * (normalized) touch2065
++        0    * (normalized) tough2066
++        0    * (normalized) toward2067
++        0    * (normalized) track2068
++        0    * (normalized) train2069
++        0    * (normalized) treat2070
+-        0.67 * (normalized) tri2071
++        0    * (normalized) trick2072
++        0    * (normalized) troubl2073
+-        0.23 * (normalized) try2074
++        0    * (normalized) turkei2075
++        0    * (normalized) turn2076
++        0    * (normalized) tweak2077
++        0    * (normalized) twice2078
++        0.19 * (normalized) two2079
++        0    * (normalized) type2080
++        0    * (normalized) typic2081
++        0    * (normalized) typicalregular2082
+-        0.78 * (normalized) under2083
++        0    * (normalized) understand2084
+-        0.78 * (normalized) unfortun2085
++        0    * (normalized) unhealthi2086
++        0    * (normalized) until2087
++        0    * (normalized) up2088
+-        0.43 * (normalized) updat2089
+-        0.3  * (normalized) us2090
+-        0.68 * (normalized) usual2091
++        0    * (normalized) vacat2092
++        0    * (normalized) valu2093
++        0    * (normalized) vari2094
++        0    * (normalized) varieti2095
++        0    * (normalized) ve2096
+-        0.36 * (normalized) veget2097
++        0    * (normalized) vegetarian2098
+-        0.87 * (normalized) veggi2099
++        0    * (normalized) veri2100
++        0    * (normalized) video2101
++        0    * (normalized) visit2102
+-        0.06 * (normalized) wa2103
+-        0.76 * (normalized) wai2104
++        0.17 * (normalized) walk2105
++        0    * (normalized) want2106
++        0    * (normalized) warm2107
++        0    * (normalized) wasn2108
++        0    * (normalized) wast2109
++        0    * (normalized) watch2110
++        0    * (normalized) watcher2111
++        0    * (normalized) water2112
++        0.14 * (normalized) we2113
++        0    * (normalized) weather2114
++        0    * (normalized) websit2115
++        0    * (normalized) wednesdai2116
++        0    * (normalized) week2117
++        0    * (normalized) weekend2118
++        0    * (normalized) weekli2119
++        0    * (normalized) weigh2120
++        0    * (normalized) weight2121
+-        0.53 * (normalized) welcom2122
++        0.6  * (normalized) well2123
++        0    * (normalized) went2124
++        0    * (normalized) were2125
++        1.03 * (normalized) what2126
+-        0.38 * (normalized) whatev2127
++        0    * (normalized) wheat2128
++        0.32 * (normalized) when2129
++        0.34 * (normalized) where2130
++        0.51 * (normalized) which2131
+-        0.45 * (normalized) while2132
++        0    * (normalized) white2133
++        0    * (normalized) who2134
++        0    * (normalized) whole2135
++        0.68 * (normalized) why2136
++        0    * (normalized) wide2137
++        0    * (normalized) wife2138
++        0.55 * (normalized) will2139
++        0    * (normalized) win2140
++        0    * (normalized) wish2141
++        0.11 * (normalized) with2142
++        0    * (normalized) within2143
++        0    * (normalized) without2144
++        0    * (normalized) won2145
++        0    * (normalized) wonder2146
++        0    * (normalized) wont2147
++        0    * (normalized) word2148
++        0.1  * (normalized) work2149
++        0    * (normalized) workout2150
++        0    * (normalized) worri2151
++        0    * (normalized) worth2152
++        0.42 * (normalized) would2153
++        0    * (normalized) wouldn2154
+-        1.12 * (normalized) wow2155
++        0    * (normalized) write2156
+-        0.58 * (normalized) www2157
+-        0.23 * (normalized) y2158
+-        0.35 * (normalized) ye2159
++        0    * (normalized) year2160
++        0    * (normalized) yet2161
+-        0.24 * (normalized) yogurt2162
++        0    * (normalized) you2163
++        0    * (normalized) young2164
++        0    * (normalized) your2165
++        0    * (normalized) yourself2166
+-        0.1  * (normalized) youv2167
++        0    * (normalized) yummi2168
++        0.45 * (normalized) prevtopicprob12169
++        0    * (normalized) prevtopicprob22170
++        0    * (normalized) prevtopicprob32171
++        0    * (normalized) prevtopicprob42172
++        0.43 * (normalized) prevtopicprob52173
++        0.19 * (normalized) prevtopicprob62174
++        0.54 * (normalized) prevtopicprob72175
++        0    * (normalized) prevtopicprob82176
++        0    * (normalized) prevtopicprob92177
++        0.03 * (normalized) prevtopicprob102178
++        0    * (normalized) prevtopicprob112179
++        0    * (normalized) prevtopicprob122180
++        0    * (normalized) prevtopicprob132181
++        0.65 * (normalized) prevtopicprob142182
++        0.01 * (normalized) prevtopicprob152183
++        0    * (normalized) prevtopicprob162184
++        0    * (normalized) prevtopicprob172185
++        0    * (normalized) prevtopicprob182186
++        0.36 * (normalized) prevtopicprob192187
++        0.86 * (normalized) prevtopicprob202188
+-        1.25 * (normalized) prevtopicprob212189
++        0    * (normalized) prevtopicprob222190
++        0    * (normalized) prevtopicprob232191
+-        0.41 * (normalized) prevtopicprob242192
++        0    * (normalized) prevtopicprob252193
++        0.26 * (normalized) prevtopicprob262194
+-        0.5  * (normalized) prevtopicprob272195
++        0    * (normalized) prevtopicprob282196
+-        0.08 * (normalized) prevtopicprob292197
++        0    * (normalized) prevtopicprob302198
++        0    * (normalized) prevtopicprob312199
+-        0.51 * (normalized) prevtopicprob322200
++        0    * (normalized) prevtopicprob332201
++        1.7  * (normalized) prevtopicprob342202
+-        0.94 * (normalized) prevtopicprob352203
++        0    * (normalized) prevtopicprob362204
++        0.42 * (normalized) prevtopicprob372205
++        0    * (normalized) prevtopicprob382206
++        0.44 * (normalized) prevtopicprob392207
++        0    * (normalized) prevtopicprob402208
+-        3.57 * (normalized) prevtopicprob412209
++        0    * (normalized) prevtopicprob422210
++        0    * (normalized) prevtopicprob432211
+-        7    * (normalized) currtopicprob12212
++        0    * (normalized) currtopicprob22213
++        0    * (normalized) currtopicprob32214
++        0    * (normalized) currtopicprob42215
+-        1.17 * (normalized) currtopicprob52216
++        2.98 * (normalized) currtopicprob62217
+-       14.54 * (normalized) currtopicprob72218
++        0    * (normalized) currtopicprob82219
+-        2.07 * (normalized) currtopicprob92220
+-        7.55 * (normalized) currtopicprob102221
++        1.35 * (normalized) currtopicprob112222
+-        0.42 * (normalized) currtopicprob122223
+-       19.21 * (normalized) currtopicprob132224
++        0    * (normalized) currtopicprob142225
+-       37.21 * (normalized) currtopicprob152226
+-        7.34 * (normalized) currtopicprob162227
++        2.93 * (normalized) currtopicprob172228
++        0    * (normalized) currtopicprob182229
+-        5.01 * (normalized) currtopicprob192230
++        0    * (normalized) currtopicprob202231
++        0    * (normalized) currtopicprob212232
++        2.62 * (normalized) currtopicprob222233
+-       24.71 * (normalized) currtopicprob232234
+-        0.99 * (normalized) currtopicprob242235
++        0    * (normalized) currtopicprob252236
+-        0.89 * (normalized) currtopicprob262237
+-        0.01 * (normalized) currtopicprob272238
+-       11.15 * (normalized) currtopicprob282239
++        7.74 * (normalized) currtopicprob292240
++        0    * (normalized) currtopicprob302241
+-        4.99 * (normalized) currtopicprob312242
++        0    * (normalized) currtopicprob322243
+-       22.34 * (normalized) currtopicprob332244
++        0    * (normalized) currtopicprob342245
++        0    * (normalized) currtopicprob352246
++        0    * (normalized) currtopicprob362247
+-        8.08 * (normalized) currtopicprob372248
++        0    * (normalized) currtopicprob382249
++        0    * (normalized) currtopicprob392250
+-       21.16 * (normalized) currtopicprob402251
++        0    * (normalized) currtopicprob412252
++        0    * (normalized) currtopicprob422253
++        0    * (normalized) currtopicprob432254
+-        1.02 * 1.0
 
-Machine linear: showing attribute weights, not support vectors.
-
-         0.8553 * (normalized) [xxxx]1
- +      -0.2407 * (normalized) a2
- +       0      * (normalized) abil3
- +      -0      * (normalized) abl4
- +      -0.1375 * (normalized) about5
- +      -0.3511 * (normalized) accomplish7
- +       0.0206 * (normalized) account8
- +      -0      * (normalized) actual11
- +      -0.0647 * (normalized) ad12
- +       0.0149 * (normalized) add13
- +       0.3329 * (normalized) advanc15
- +      -0.437  * (normalized) advic17
- +      -0.201  * (normalized) afternoon21
- +       0.021  * (normalized) again22
- +       0.1368 * (normalized) ago23
- +       0.1179 * (normalized) ahead25
- +       3.3558 * (normalized) alex26
- +       0      * (normalized) all27
- +       1      * (normalized) allow28
- +       0      * (normalized) almost30
- +       0      * (normalized) along31
- +       0      * (normalized) alreadi32
- +      -0      * (normalized) also33
- +       0      * (normalized) although34
- +       0.3695 * (normalized) alwai35
- +      -0.0103 * (normalized) am36
- +       0.1647 * (normalized) amaz37
- +       2.1245 * (normalized) ami38
- +      -0.1178 * (normalized) and41
- +       0      * (normalized) andor42
- +       0.6821 * (normalized) ani43
- +      -1      * (normalized) anoth45
- +      -0      * (normalized) answer46
- +      -0      * (normalized) anyon47
- +      -0.071  * (normalized) anyth48
- +      -0.9189 * (normalized) anywai49
- +      -0      * (normalized) appeal51
- +      -1      * (normalized) appear52
- +       1      * (normalized) appreci55
- +      -0.4096 * (normalized) ar58
- +      -0.0648 * (normalized) around62
- +       0.1358 * (normalized) articl63
- +       0.037  * (normalized) as65
- +       0      * (normalized) asid66
- +       0.0204 * (normalized) ask67
- +       0.218  * (normalized) asparagu68
- +      -1      * (normalized) at70
- +       0      * (normalized) attent73
- +       1      * (normalized) attitud74
- +      -0.0205 * (normalized) avail76
- +      -0.4167 * (normalized) awai78
- +      -0.1688 * (normalized) awar79
- +       0.691  * (normalized) awesom80
- +       0      * (normalized) babi81
- +      -0      * (normalized) back82
- +       0.0189 * (normalized) bad83
- +      -0.0178 * (normalized) bag84
- +      -0      * (normalized) bake85
- +       0.1213 * (normalized) banana87
- +      -0      * (normalized) base88
- +      -0.0454 * (normalized) basi89
- +       0.3212 * (normalized) be91
- +       0.0047 * (normalized) bean92
- +       0      * (normalized) becom95
- +      -0.0639 * (normalized) been96
- +      -0.0344 * (normalized) befor97
- +      -1.454  * (normalized) begin99
- +      -0.0931 * (normalized) below102
- +       0.0183 * (normalized) benefit103
- +       0      * (normalized) besid105
- +       1.3723 * (normalized) best106
- +       0.0343 * (normalized) better107
- +      -1      * (normalized) between108
- +       1      * (normalized) beverag109
- +      -0.0935 * (normalized) biggest111
- +      -0.2748 * (normalized) bit112
- +       0      * (normalized) blend113
- +      -1      * (normalized) blog114
- +      -0      * (normalized) blueberri115
- +      -0.1767 * (normalized) bodi116
- +      -0.8109 * (normalized) bonu117
- +      -0.0726 * (normalized) bore118
- +      -0.2488 * (normalized) both119
- +       0      * (normalized) bought121
- +      -1      * (normalized) boyfriend122
- +      -0.1673 * (normalized) bread123
- +      -0.1611 * (normalized) breakfast124
- +      -0.0088 * (normalized) breastfeed125
- +      -0      * (normalized) bring126
- +      -1      * (normalized) bui130
- +       0      * (normalized) build131
- +      -0      * (normalized) burger133
- +      -0.0084 * (normalized) busi134
- +      -0.4122 * (normalized) but135
- +       0.7703 * (normalized) by137
- +       0.0401 * (normalized) call139
- +       0.2613 * (normalized) calori140
- +      -0      * (normalized) came141
- +      -0.67   * (normalized) can142
- +      -0.1347 * (normalized) candi143
- +      -1      * (normalized) carb146
- +       0.4384 * (normalized) case149
- +       0.0928 * (normalized) cash150
- +       2.801  * (normalized) cathi151
- +      -0      * (normalized) challeng156
- +      -0      * (normalized) chanc157
- +       0.6434 * (normalized) chang158
- +       0.7515 * (normalized) chat160
- +       0      * (normalized) chees164
- +       0.2584 * (normalized) chef165
- +      -0.2294 * (normalized) choic168
- +      -0.0427 * (normalized) choos169
- +       2.8141 * (normalized) chri172
- +       1      * (normalized) christma173
- +       2.66   * (normalized) clair174
- +       2.1074 * (normalized) clone179
- +      -1      * (normalized) close180
- +      -0.1475 * (normalized) coach181
- +      -0      * (normalized) coffe182
- +      -0.0095 * (normalized) come186
- +      -0      * (normalized) comfort187
- +      -0.8293 * (normalized) comma188
- +       1      * (normalized) commit190
- +       0      * (normalized) commun191
- +      -2      * (normalized) compet193
- +      -0.2587 * (normalized) complet194
- +      -0.8163 * (normalized) concern195
- +       0.0338 * (normalized) confid196
- +      -0      * (normalized) congrat197
- +      -1      * (normalized) congratul198
- +      -0      * (normalized) connect199
- +       0      * (normalized) consciou200
- +       0.2263 * (normalized) consist203
- +       0.0116 * (normalized) consum204
- +      -0.2645 * (normalized) content206
- +      -0.1484 * (normalized) continu207
- +       0.3642 * (normalized) control208
- +       0.7495 * (normalized) conveni209
- +      -1.0825 * (normalized) cook210
- +      -0      * (normalized) cooki211
- +       1      * (normalized) correct215
- +      -1      * (normalized) cost216
- +       0      * (normalized) could217
- +      -0.2696 * (normalized) cours220
- +      -0.1158 * (normalized) cream224
- +      -0.1092 * (normalized) cucumb228
- +      -0.002  * (normalized) cup229
- +      -1      * (normalized) current232
- +      -0      * (normalized) custom233
- +       0.0647 * (normalized) dai236
- +       0.8907 * (normalized) daili237
- +       0.153  * (normalized) decis242
- +       0.6434 * (normalized) dedic243
- +      -0      * (normalized) definit244
- +       0.8166 * (normalized) delici246
- +       0      * (normalized) depend247
- +       0      * (normalized) describ248
- +       0      * (normalized) desk249
- +      -0.0195 * (normalized) dessert251
- +       0      * (normalized) did254
- +      -0      * (normalized) didn255
- +       0.0038 * (normalized) diet256
- +       0      * (normalized) differ257
- +      -0.0043 * (normalized) difficult258
- +      -1      * (normalized) digest259
- +      -0.4351 * (normalized) dinner260
- +       0.9683 * (normalized) dip261
- +      -0.9194 * (normalized) direct262
- +       0.1147 * (normalized) discourag263
- +       0      * (normalized) dish266
- +      -0.0201 * (normalized) do267
- +      -0      * (normalized) doesn269
- +      -0      * (normalized) don270
- +      -0.5785 * (normalized) done271
- +      -0.2581 * (normalized) down273
- +      -1      * (normalized) dress274
- +       0      * (normalized) dri275
- +       0.1242 * (normalized) drink276
- +       0      * (normalized) drive277
- +       0      * (normalized) dure279
- +      -0.9769 * (normalized) e280
- +       0.5397 * (normalized) each281
- +      -1      * (normalized) easi283
- +       0      * (normalized) easili285
- +      -0.1738 * (normalized) eat286
- +      -0.4473 * (normalized) eater287
- +       0.8007 * (normalized) ecoach288
- +      -0.2697 * (normalized) effort290
- +      -0.5099 * (normalized) egg291
- +       0.0897 * (normalized) els294
- +      -0.3397 * (normalized) email295
- +       0      * (normalized) encourag296
- +       1.1346 * (normalized) end297
- +      -1      * (normalized) energet299
- +       0.2939 * (normalized) energi300
- +      -0.5978 * (normalized) engag301
- +       0.0191 * (normalized) enjoi302
- +      -0.2312 * (normalized) enough304
- +      -0      * (normalized) enrol305
- +      -1.267  * (normalized) etc309
- +       0      * (normalized) even310
- +       0      * (normalized) event311
- +       0.1537 * (normalized) everyth316
- +       0.0091 * (normalized) exampl318
- +      -1.4421 * (normalized) exchang319
- +       2.7585 * (normalized) exclam321
- +      -0.5471 * (normalized) exercis322
- +      -0.1377 * (normalized) expens323
- +       0.8365 * (normalized) experi324
- +      -0      * (normalized) extrem326
- +       0      * (normalized) fact328
- +       0.004  * (normalized) famili332
- +       0.7137 * (normalized) fantast334
- +       0.5332 * (normalized) far335
- +       0      * (normalized) favorit339
- +       0      * (normalized) featur340
- +      -0.0361 * (normalized) feel344
- +       0      * (normalized) few346
- +       1      * (normalized) fianc347
- +      -1      * (normalized) find352
- +      -0.4076 * (normalized) first355
- +      -0.3086 * (normalized) fix357
- +       0.3528 * (normalized) flavor358
- +      -0      * (normalized) focu359
- +      -0.1813 * (normalized) follow361
- +      -0.0464 * (normalized) food362
- +       0      * (normalized) for363
- +       1      * (normalized) form364
- +      -0.1501 * (normalized) forward365
- +       0.9115 * (normalized) found366
- +       0.224  * (normalized) fresh370
- +      -1      * (normalized) fri371
- +       0.4102 * (normalized) friend373
- +      -0.5489 * (normalized) from375
- +       0.7873 * (normalized) frozen376
- +       0.0591 * (normalized) fruit377
- +      -0.2572 * (normalized) fruitsveget378
- +      -0.0995 * (normalized) full382
- +       2.7963 * (normalized) fullstop383
- +      -0      * (normalized) fun384
- +       1      * (normalized) further385
- +       0.1175 * (normalized) futur386
- +       0.0139 * (normalized) game388
- +       1      * (normalized) garden389
- +      -0.814  * (normalized) gener391
- +      -1.2809 * (normalized) get392
- +      -0      * (normalized) give393
- +       0      * (normalized) given394
- +       0      * (normalized) glad395
- +       0      * (normalized) gluten396
- +       0.589  * (normalized) go398
- +      -0.2686 * (normalized) goal399
- +       0.7659 * (normalized) goe400
- +      -0.0419 * (normalized) good402
- +      -0      * (normalized) got403
- +       0      * (normalized) gotten404
- +      -0.1464 * (normalized) grab405
- +      -1      * (normalized) graduat407
- +       0.5084 * (normalized) grain408
- +       1      * (normalized) grape409
- +      -0.2422 * (normalized) great410
- +      -0.1091 * (normalized) group414
- +      -0      * (normalized) ha418
- +       0.0792 * (normalized) habit419
- +       0      * (normalized) had420
- +       1.5795 * (normalized) haha422
- +       1      * (normalized) half423
- +       0.023  * (normalized) happen425
- +      -1      * (normalized) happi426
- +      -0.0063 * (normalized) hard427
- +       0      * (normalized) have429
- +      -0      * (normalized) haven430
- +       0      * (normalized) he432
- +       0.6828 * (normalized) health434
- +       0.4848 * (normalized) healthi435
- +       0.0179 * (normalized) healthier436
- +       0.4834 * (normalized) healthiest437
- +      -0.0614 * (normalized) hear438
- +      -0      * (normalized) heard439
- +       1.7094 * (normalized) hectic441
- +      -0.8183 * (normalized) hello443
- +      -0.0257 * (normalized) help444
- +      -1      * (normalized) here446
- +      -0.9071 * (normalized) hi447
- +       0.1371 * (normalized) high448
- +       0.197  * (normalized) higher449
- +       1      * (normalized) highest450
- +       0.5745 * (normalized) holidai454
- +       0      * (normalized) home455
- +      -0      * (normalized) hope459
- +       1      * (normalized) hopefulli460
- +       0.3689 * (normalized) hour461
- +      -0.5712 * (normalized) how463
- +       0      * (normalized) howev464
- +       0      * (normalized) http465
- +       0.9586 * (normalized) hyphen469
- +      -0.0057 * (normalized) i470
- +      -0.3532 * (normalized) idea473
- +      -0      * (normalized) if474
- +      -0.0161 * (normalized) imagin477
- +      -0.2502 * (normalized) impact478
- +       1.4078 * (normalized) import479
- +      -1.8164 * (normalized) improv480
- +      -0.3322 * (normalized) in481
- +      -0      * (normalized) incent482
- +       0      * (normalized) incorpor484
- +       0.2183 * (normalized) increas485
- +       1      * (normalized) independ486
- +      -0.0009 * (normalized) inform491
- +       0.769  * (normalized) insight494
- +       1.2529 * (normalized) instead495
- +       0.0173 * (normalized) intak496
- +      -1      * (normalized) interest497
- +      -1      * (normalized) into498
- +       3      * (normalized) iphon501
- +      -0.4676 * (normalized) is502
- +      -0.8494 * (normalized) it505
- +      -0.8223 * (normalized) job509
- +       0      * (normalized) join510
- +      -0.0101 * (normalized) joke511
- +       0.0067 * (normalized) juic512
- +       0.8589 * (normalized) juicer513
- +       1.7852 * (normalized) june515
- +       2      * (normalized) junk516
- +      -0.0908 * (normalized) just517
- +      -0      * (normalized) keep519
- +      -0      * (normalized) kei520
- +       2.8116 * (normalized) kelli521
- +       0.5607 * (normalized) kid524
- +       0      * (normalized) kitchen526
- +      -0.8911 * (normalized) know527
- +       1.0722 * (normalized) kudo528
- +       1      * (normalized) larg530
- +      -0      * (normalized) last531
- +      -0.4526 * (normalized) late533
- +      -0      * (normalized) later534
- +      -0.0663 * (normalized) laugh535
- +       0      * (normalized) least540
- +      -0.1672 * (normalized) left542
- +       0.2473 * (normalized) less543
- +       0      * (normalized) let544
- +      -0      * (normalized) letter545
- +      -0.1452 * (normalized) level547
- +       0.7015 * (normalized) life548
- +       0.1483 * (normalized) lifestyl549
- +      -0.1099 * (normalized) like550
- +      -0.285  * (normalized) link552
- +      -0.169  * (normalized) list553
- +       0.1296 * (normalized) littl554
- +      -0      * (normalized) live555
- +       1      * (normalized) local558
- +      -0.2505 * (normalized) long559
- +      -1      * (normalized) longer560
- +      -1      * (normalized) look561
- +      -1      * (normalized) loss563
- +       0.0082 * (normalized) lot565
- +       0.4078 * (normalized) love566
- +      -0      * (normalized) low567
- +       0      * (normalized) lower568
- +       0.0645 * (normalized) lunch569
- +       0      * (normalized) m570
- +      -0.3732 * (normalized) made571
- +      -0.3102 * (normalized) mai572
- +      -0      * (normalized) mail573
- +      -0      * (normalized) main574
- +       0      * (normalized) maintain575
- +      -1.8418 * (normalized) make577
- +      -0.3272 * (normalized) manag578
- +       1      * (normalized) mani580
- +       0.0048 * (normalized) materi582
- +      -0.8068 * (normalized) matter583
- +      -0.1604 * (normalized) mayb584
- +      -0.1571 * (normalized) me585
- +      -0.1378 * (normalized) meal586
- +      -0.9765 * (normalized) mealssnack587
- +      -0.0498 * (normalized) meat589
- +       0.9178 * (normalized) meet590
- +       0      * (normalized) mention591
- +      -0      * (normalized) menu592
- +       1      * (normalized) menuchoic593
- +       0.0868 * (normalized) messag594
- +       1      * (normalized) middl595
- +      -0      * (normalized) might597
- +      -0.1759 * (normalized) mind600
- +       0      * (normalized) minut601
- +      -1      * (normalized) miss602
- +      -0.2678 * (normalized) mix603
- +       0      * (normalized) model604
- +      -1      * (normalized) moder605
- +      -1      * (normalized) mondai606
- +      -0.3501 * (normalized) monei607
- +       0.1543 * (normalized) month608
- +       0.0272 * (normalized) more609
- +       1      * (normalized) morn610
- +      -0.043  * (normalized) mostli612
- +      -0      * (normalized) motiv614
- +       1      * (normalized) move615
- +      -0.062  * (normalized) much616
- +      -0.679  * (normalized) my619
- +       0.0097 * (normalized) myself620
- +       0      * (normalized) name621
- +       1.7012 * (normalized) natur622
- +       0.9794 * (normalized) need625
- +       0      * (normalized) new628
- +       1      * (normalized) nice630
- +      -0      * (normalized) night631
- +      -1      * (normalized) no632
- +      -0.0109 * (normalized) not636
- +       0      * (normalized) note637
- +      -0      * (normalized) notic639
- +       0.1649 * (normalized) now641
- +      -0.278  * (normalized) number642
- +      -0.8287 * (normalized) nutrient644
- +      -0      * (normalized) oatmeal647
- +      -0.2685 * (normalized) of652
- +      -1      * (normalized) off653
- +       0.9187 * (normalized) offer654
- +       0.0632 * (normalized) offic655
- +       0.0208 * (normalized) often656
- +      -0.065  * (normalized) ok659
- +      -0.837  * (normalized) okai660
- +      -0.3644 * (normalized) old661
- +       0.0176 * (normalized) on663
- +      -0.0583 * (normalized) onc664
- +      -0      * (normalized) onli666
- +       0.7898 * (normalized) opportun668
- +       0.0016 * (normalized) option669
- +      -0.2232 * (normalized) or670
- +       0.0083 * (normalized) orang671
- +       0.0247 * (normalized) other675
- +      -1      * (normalized) our676
- +      -0.0909 * (normalized) out677
- +       0.0557 * (normalized) over679
- +       0.0179 * (normalized) own682
- +       0      * (normalized) pack683
- +      -2.4206 * (normalized) parent687
- +       0      * (normalized) part688
- +       0.0062 * (normalized) particip690
- +      -0.2631 * (normalized) partner691
- +      -0      * (normalized) past693
- +       0      * (normalized) pasta694
- +      -0      * (normalized) path695
- +      -0.1039 * (normalized) pea696
- +       0      * (normalized) peanut697
- +       0      * (normalized) peopl699
- +      -0.2607 * (normalized) pepper700
- +      -1      * (normalized) person703
- +       0      * (normalized) piec706
- +      -0.2533 * (normalized) pizza708
- +      -0.7845 * (normalized) place709
- +       0.2478 * (normalized) plain711
- +       0.0026 * (normalized) plan712
- +      -0.2566 * (normalized) pleas713
- +       0.8738 * (normalized) point715
- +      -0      * (normalized) portion717
- +      -0.1066 * (normalized) post720
- +      -0.2635 * (normalized) potato721
- +      -0      * (normalized) prepar724
- +       0.666  * (normalized) pretti726
- +      -0      * (normalized) previou727
- +      -0.0079 * (normalized) problem730
- +       1.1262 * (normalized) produc732
- +      -0.3507 * (normalized) program733
- +      -0.2885 * (normalized) project735
- +      -0.1825 * (normalized) protein737
- +       0      * (normalized) put742
- +      -0.2926 * (normalized) qualiti743
- +      -0.2554 * (normalized) question745
- +       3.0764 * (normalized) questionmark746
- +      -0      * (normalized) quick747
- +       0.0096 * (normalized) quickli748
- +      -1      * (normalized) quotemark750
- +      -0.2624 * (normalized) rare751
- +       0.963  * (normalized) rate753
- +       0      * (normalized) rather754
- +      -1      * (normalized) raw755
- +      -0      * (normalized) rd756
- +      -0.1132 * (normalized) re757
- +       0.0871 * (normalized) reach758
- +       0      * (normalized) read759
- +       0      * (normalized) readi760
- +      -0      * (normalized) real762
- +       0      * (normalized) realiz763
- +      -0.1784 * (normalized) reason765
- +       0.8241 * (normalized) receiv766
- +       0      * (normalized) recent767
- +       0.5329 * (normalized) recip768
- +       0      * (normalized) recommend769
- +      -1      * (normalized) reflect771
- +      -0      * (normalized) regard772
- +      -0      * (normalized) remind782
- +       0      * (normalized) replac783
- +      -0.0188 * (normalized) repli784
- +       0.0213 * (normalized) research787
- +      -1      * (normalized) resourc788
- +      -2.4207 * (normalized) respect789
- +       0.022  * (normalized) respond790
- +       0.2287 * (normalized) respons791
- +      -0.1691 * (normalized) result794
- +       0.1815 * (normalized) return795
- +       0.086  * (normalized) right798
- +      -1      * (normalized) roast799
- +       0      * (normalized) role800
- +       0.0447 * (normalized) routin802
- +       0.5445 * (normalized) run804
- +      -0.2738 * (normalized) s805
- +      -0      * (normalized) sai806
- +      -0      * (normalized) said807
- +      -0.0311 * (normalized) salad808
- +       0      * (normalized) same809
- +       0.8671 * (normalized) sandwich810
- +       1      * (normalized) satisfi811
- +       0.1331 * (normalized) schedul814
- +      -1      * (normalized) school815
- +      -0.2161 * (normalized) season817
- +       0.0207 * (normalized) section819
- +       0      * (normalized) see820
- +      -0      * (normalized) seem821
- +       1      * (normalized) semiclon824
- +      -0      * (normalized) sent826
- +      -0.1894 * (normalized) serv829
- +       0.3241 * (normalized) session830
- +       0      * (normalized) set831
- +      -0.1757 * (normalized) share833
- +       0      * (normalized) shift835
- +      -0.871  * (normalized) shop836
- +      -1      * (normalized) should838
- +      -0.3129 * (normalized) side841
- +       0      * (normalized) sinc846
- +      -0      * (normalized) sincer847
- +      -0.9839 * (normalized) site849
- +      -0.2604 * (normalized) situat850
- +      -0.7135 * (normalized) size851
- +      -0.174  * (normalized) slow854
- +      -0.1718 * (normalized) small855
- +      -0.0082 * (normalized) smoothi857
- +      -0.0018 * (normalized) snack858
- +      -0.4561 * (normalized) so859
- +      -0.2427 * (normalized) soda860
- +      -0.0247 * (normalized) some862
- +      -1      * (normalized) someon863
- +      -0.815  * (normalized) someth864
- +       0      * (normalized) sometim865
- +       0.0183 * (normalized) son867
- +      -0.0842 * (normalized) soon868
- +       1.7126 * (normalized) sorri870
- +      -0      * (normalized) sound872
- +       0.0108 * (normalized) soup873
- +       0      * (normalized) spend876
- +       0      * (normalized) spice877
- +       0.4831 * (normalized) spinach878
- +      -1      * (normalized) st880
- +       0.0917 * (normalized) stai881
- +       0.4295 * (normalized) star882
- +       0.2537 * (normalized) start883
- +      -0.3066 * (normalized) stash884
- +      -1      * (normalized) steam886
- +      -0.2638 * (normalized) step887
- +       0      * (normalized) stick888
- +       0.0008 * (normalized) still889
- +       1      * (normalized) stock891
- +      -0.1314 * (normalized) stop892
- +       0.8233 * (normalized) store893
- +       0.7363 * (normalized) strategi894
- +      -1      * (normalized) strong898
- +       1.0074 * (normalized) studi900
- +       0      * (normalized) stuff901
- +       0.1248 * (normalized) succe903
- +       0.5306 * (normalized) success904
- +       1.6495 * (normalized) successfulli905
- +      -0.2587 * (normalized) such906
- +       0.5882 * (normalized) sugar907
- +       0.0189 * (normalized) suggest909
- +       0.1688 * (normalized) summer910
- +       0.284  * (normalized) sundai911
- +      -0      * (normalized) supper913
- +      -2.3736 * (normalized) support914
- +      -0.2507 * (normalized) suppos915
- +       0      * (normalized) sure916
- +      -0.0204 * (normalized) survei918
- +      -0.8033 * (normalized) sweet920
- +       1      * (normalized) sweeten921
- +       0.1228 * (normalized) system923
- +      -1.054  * (normalized) t924
- +       0      * (normalized) take927
- +       1      * (normalized) task930
- +       0.1008 * (normalized) tast931
- +       0      * (normalized) tea933
- +      -0.8396 * (normalized) team934
- +       0.736  * (normalized) teas935
- +      -0      * (normalized) tempt937
- +      -1      * (normalized) temptat938
- +      -1      * (normalized) term940
- +      -0.2532 * (normalized) tgif942
- +      -0.1011 * (normalized) th943
- +      -0      * (normalized) than944
- +       0.0954 * (normalized) thank945
- +      -0.3338 * (normalized) that947
- +      -0.0823 * (normalized) the948
- +       0      * (normalized) thei949
- +       1      * (normalized) their950
- +       0.1167 * (normalized) them951
- +      -0.067  * (normalized) then953
- +       0      * (normalized) there954
- +      -0      * (normalized) these956
- +       0.857  * (normalized) thi957
- +      -0.0188 * (normalized) thing958
- +       0.1048 * (normalized) think959
- +      -1      * (normalized) those961
- +       0.0185 * (normalized) though962
- +      -1      * (normalized) thought963
- +       0.6193 * (normalized) through965
- +       0      * (normalized) throughout966
- +      -0      * (normalized) throw967
- +      -0.1955 * (normalized) time969
- +       0      * (normalized) tip970
- +      -0      * (normalized) tire971
- +      -1.0494 * (normalized) to972
- +       1      * (normalized) todai974
- +       0.01   * (normalized) togeth975
- +       1      * (normalized) tomato977
- +      -0.1388 * (normalized) too979
- +      -0      * (normalized) took980
- +      -1.2061 * (normalized) top981
- +       0.8104 * (normalized) topic982
- +       0      * (normalized) toward986
- +      -0.2471 * (normalized) track987
- +       0      * (normalized) treat989
- +       0      * (normalized) tri990
- +       1      * (normalized) trick991
- +       0      * (normalized) try993
- +      -0.1943 * (normalized) turn995
- +      -0      * (normalized) two998
- +       0.019  * (normalized) type999
- +      -0      * (normalized) understand1003
- +      -1      * (normalized) unfortun1004
- +       1      * (normalized) unhealthi1005
- +      -0.178  * (normalized) up1007
- +       1      * (normalized) updat1008
- +      -0.0066 * (normalized) us1009
- +       0      * (normalized) usual1010
- +      -0      * (normalized) vacat1011
- +      -0.0238 * (normalized) valu1012
- +       0.9298 * (normalized) varieti1014
- +      -0      * (normalized) ve1015
- +      -0.0589 * (normalized) veget1016
- +      -0.0716 * (normalized) vegetarian1017
- +      -0.0339 * (normalized) veggi1018
- +      -0.0969 * (normalized) veri1019
- +       0      * (normalized) visit1021
- +      -0.283  * (normalized) volum1022
- +       0.6863 * (normalized) wa1023
- +      -0.7742 * (normalized) wai1024
- +      -0.0101 * (normalized) want1026
- +       0      * (normalized) wasn1028
- +      -0      * (normalized) water1032
- +       0      * (normalized) we1033
- +       0.0638 * (normalized) websit1035
- +      -1      * (normalized) wednesdai1036
- +       1.6719 * (normalized) week1037
- +      -0.3084 * (normalized) weekend1038
- +      -1      * (normalized) weight1041
- +      -0.0148 * (normalized) welcom1042
- +      -0.1575 * (normalized) well1043
- +       0.3149 * (normalized) were1045
- +      -0.5728 * (normalized) what1046
- +      -0      * (normalized) when1049
- +      -0      * (normalized) where1050
- +       0      * (normalized) which1051
- +      -0      * (normalized) whole1055
- +      -0.3168 * (normalized) why1056
- +      -0.0112 * (normalized) will1059
- +       0.1259 * (normalized) win1060
- +      -0.165  * (normalized) with1062
- +       0      * (normalized) without1064
- +       0.5657 * (normalized) word1068
- +       0.018  * (normalized) work1069
- +       1      * (normalized) worth1072
- +      -0      * (normalized) would1073
- +      -0      * (normalized) wouldn1074
- +      -1      * (normalized) wow1075
- +      -0      * (normalized) write1076
- +      -0.255  * (normalized) www1077
- +       0      * (normalized) ye1079
- +      -0.0021 * (normalized) year1080
- +       0.0991 * (normalized) yet1081
- +      -1      * (normalized) yogurt1082
- +      -0.0176 * (normalized) you1083
- +       0.3272 * (normalized) your1085
- +       0      * (normalized) yummi1088
- +      -0.6201 * (normalized) [xxxx]1089
- +      -0.4626 * (normalized) a1090
- +       0      * (normalized) abl1092
- +       0      * (normalized) about1093
- +      -0.216  * (normalized) actual1099
- +      -0.6945 * (normalized) ad1100
- +      -0.8051 * (normalized) add1101
- +      -0      * (normalized) addit1102
- +       0      * (normalized) advic1105
- +       0      * (normalized) afraid1107
- +       1.46   * (normalized) after1108
- +       0      * (normalized) again1110
- +       0      * (normalized) ago1111
- +       0      * (normalized) ahead1113
- +      -0.6174 * (normalized) alex1114
- +      -0.4746 * (normalized) all1115
- +      -0      * (normalized) almost1118
- +      -0      * (normalized) along1119
- +      -0      * (normalized) alreadi1120
- +      -0.2767 * (normalized) also1121
- +      -0.5267 * (normalized) although1122
- +       0      * (normalized) alwai1123
- +       0      * (normalized) am1124
- +      -0.2471 * (normalized) amaz1125
- +      -0.488  * (normalized) ami1126
- +      -0      * (normalized) amount1127
- +      -0      * (normalized) an1128
- +      -0.527  * (normalized) and1129
- +       0      * (normalized) andor1130
- +       1      * (normalized) ani1131
- +      -0.208  * (normalized) anim1132
- +       1.1684 * (normalized) anoth1133
- +      -0      * (normalized) answer1134
- +      -0.9191 * (normalized) anyth1136
- +       0.8556 * (normalized) anywai1137
- +      -0.4988 * (normalized) appl1141
- +      -0      * (normalized) approach1144
- +       0      * (normalized) april1145
- +       0.8064 * (normalized) ar1146
- +      -0.5453 * (normalized) around1150
- +       0      * (normalized) articl1151
- +       0.9372 * (normalized) as1153
- +       1      * (normalized) asid1154
- +       0      * (normalized) ask1155
- +       0      * (normalized) asparagu1156
- +      -1      * (normalized) at1158
- +      -0.8171 * (normalized) august1163
- +       0      * (normalized) avail1164
- +      -0      * (normalized) avoid1165
- +       0.6705 * (normalized) awesom1168
- +       0      * (normalized) back1170
- +      -0      * (normalized) bad1171
- +       0      * (normalized) balanc1174
- +       0      * (normalized) banana1175
- +       1.4765 * (normalized) base1176
- +       0      * (normalized) basi1177
- +      -1      * (normalized) basic1178
- +      -0.2658 * (normalized) be1179
- +      -0.2877 * (normalized) becaus1182
- +       0      * (normalized) been1184
- +       0      * (normalized) began1186
- +       0      * (normalized) begin1187
- +       1      * (normalized) below1190
- +      -0      * (normalized) benefit1191
- +       0      * (normalized) berri1192
- +      -1      * (normalized) besid1193
- +      -2.1242 * (normalized) best1194
- +       0.5943 * (normalized) between1196
- +       0      * (normalized) beverag1197
- +      -0.5319 * (normalized) blend1201
- +       0      * (normalized) blog1202
- +      -0.6731 * (normalized) bonu1205
- +      -0.5418 * (normalized) both1207
- +      -0      * (normalized) bother1208
- +      -0.4337 * (normalized) bread1211
- +       0.4847 * (normalized) breakfast1212
- +       0      * (normalized) bring1214
- +      -0      * (normalized) budget1217
- +      -0.7817 * (normalized) busi1222
- +      -0.4102 * (normalized) but1223
- +       0      * (normalized) butter1224
- +       0      * (normalized) by1225
- +       0.8878 * (normalized) can1230
- +       0      * (normalized) candi1231
- +      -0.6386 * (normalized) cant1233
- +      -0.7402 * (normalized) cathi1239
- +      -0      * (normalized) celeri1240
- +      -0      * (normalized) cereal1241
- +       0      * (normalized) challeng1244
- +      -0      * (normalized) chanc1245
- +      -0      * (normalized) chang1246
- +       0      * (normalized) chat1248
- +      -0      * (normalized) cheaper1249
- +      -0.6159 * (normalized) cheer1251
- +      -0      * (normalized) chef1253
- +       0      * (normalized) chicken1254
- +      -0      * (normalized) choic1256
- +      -0.6751 * (normalized) chri1260
- +      -0.1683 * (normalized) christma1261
- +      -2.1574 * (normalized) clair1262
- +      -0.299  * (normalized) click1266
- +       0      * (normalized) coach1269
- +       0      * (normalized) coffe1270
- +      -0.3281 * (normalized) cold1271
- +      -0      * (normalized) compar1280
- +      -0      * (normalized) complet1282
- +      -1      * (normalized) concern1283
- +      -0      * (normalized) confid1284
- +       2.1647 * (normalized) congrat1285
- +      -0.5008 * (normalized) congratul1286
- +      -0      * (normalized) consciou1288
- +       0      * (normalized) consum1292
- +       0      * (normalized) continu1295
- +       0.5008 * (normalized) cook1298
- +       0.7371 * (normalized) could1305
- +      -0      * (normalized) coupl1307
- +      -0      * (normalized) cours1308
- +      -0.503  * (normalized) creat1313
- +       0      * (normalized) cup1317
- +      -0      * (normalized) curb1318
- +      -0.2635 * (normalized) current1320
- +       1.1872 * (normalized) cut1322
- +       0      * (normalized) d1323
- +      -0      * (normalized) dai1324
- +      -0      * (normalized) daili1325
- +       1.395  * (normalized) dear1327
- +       0      * (normalized) decemb1328
- +       0      * (normalized) delici1334
- +       1.1309 * (normalized) describ1336
- +      -0.6081 * (normalized) despit1338
- +      -0.4972 * (normalized) dessert1339
- +       0      * (normalized) determin1341
- +       1.3121 * (normalized) did1342
- +      -1      * (normalized) diet1344
- +       0.8031 * (normalized) differ1345
- +      -0.201  * (normalized) dinner1348
- +       0      * (normalized) dish1354
- +       1.4994 * (normalized) do1355
- +       1.3915 * (normalized) doe1356
- +      -0.174  * (normalized) don1358
- +       0      * (normalized) done1359
- +      -0      * (normalized) dri1363
- +      -1      * (normalized) drink1364
- +       0.7495 * (normalized) due1366
- +      -0.7789 * (normalized) dure1367
- +      -0.5023 * (normalized) e1368
- +      -0.4757 * (normalized) each1369
- +       0.6847 * (normalized) easi1371
- +      -0      * (normalized) easier1372
- +      -0      * (normalized) easili1373
- +      -0.376  * (normalized) eat1374
- +      -0      * (normalized) ecoach1376
- +      -0.7394 * (normalized) either1380
- +       0      * (normalized) email1383
- +       1      * (normalized) energi1388
- +      -1.1543 * (normalized) enjoi1390
- +      -0.5299 * (normalized) especi1396
- +      -0.2085 * (normalized) etc1397
- +      -1      * (normalized) even1398
- +      -0      * (normalized) ever1400
- +       1      * (normalized) everi1401
- +      -0.6229 * (normalized) everyth1404
- +      -0.7193 * (normalized) exampl1406
- +       1      * (normalized) exchang1407
- +      -0      * (normalized) exercis1410
- +      -0      * (normalized) extra1413
- +       0      * (normalized) famili1420
- +       1.4679 * (normalized) fantast1422
- +       0      * (normalized) fat1425
- +      -0      * (normalized) favorit1427
- +      -0      * (normalized) featur1428
- +      -0      * (normalized) februari1430
- +       0      * (normalized) feel1432
- +      -0      * (normalized) few1434
- +      -0      * (normalized) fianc1435
- +      -0.5539 * (normalized) find1440
- +      -0      * (normalized) finish1441
- +      -0.3543 * (normalized) first1443
- +       0      * (normalized) fit1444
- +      -0.2502 * (normalized) flavor1446
- +      -0      * (normalized) food1450
- +      -0.6491 * (normalized) for1451
- +      -0      * (normalized) form1452
- +      -0      * (normalized) forward1453
- +      -0      * (normalized) found1454
- +       0      * (normalized) free1455
- +      -0      * (normalized) fresh1458
- +       0.7275 * (normalized) friend1461
- +      -0      * (normalized) friendli1462
- +       1.7535 * (normalized) from1463
- +      -0.3532 * (normalized) frozen1464
- +       0.4536 * (normalized) fruit1465
- +      -0      * (normalized) game1476
- +       0      * (normalized) gener1479
- +       0.1129 * (normalized) get1480
- +      -1      * (normalized) give1481
- +      -0.2312 * (normalized) given1482
- +      -1      * (normalized) glad1483
- +       3.4331 * (normalized) gm1485
- +       0      * (normalized) go1486
- +       0      * (normalized) goal1487
- +       1.4375 * (normalized) good1490
- +       0      * (normalized) got1491
- +      -0      * (normalized) gradual1494
- +      -0      * (normalized) grain1496
- +       0.1572 * (normalized) great1498
- +      -0      * (normalized) groceri1501
- +       1      * (normalized) guess1504
- +       1.1998 * (normalized) ha1506
- +      -0      * (normalized) habit1507
- +       0      * (normalized) had1508
- +      -0.6101 * (normalized) haha1510
- +       0      * (normalized) half1511
- +      -0      * (normalized) happen1513
- +      -1.421  * (normalized) happi1514
- +       0      * (normalized) hard1515
- +      -0.7673 * (normalized) have1517
- +       0.9862 * (normalized) haven1518
- +       0.7576 * (normalized) health1522
- +       0.3831 * (normalized) healthi1523
- +      -0      * (normalized) healthier1524
- +       3.4298 * (normalized) hei1530
- +       3.4371 * (normalized) hello1531
- +      -0.6961 * (normalized) help1532
- +       0      * (normalized) her1533
- +      -1.5644 * (normalized) here1534
- +       4.1792 * (normalized) hi1535
- +       0      * (normalized) high1536
- +      -0      * (normalized) higher1537
- +       0      * (normalized) highest1538
- +       0      * (normalized) holidai1542
- +      -0.3973 * (normalized) homemad1544
- +       1      * (normalized) honestli1546
- +      -0.6538 * (normalized) hope1547
- +      -0.8627 * (normalized) hopefulli1548
- +       1.6352 * (normalized) how1551
- +      -1.3358 * (normalized) howev1552
- +      -0.285  * (normalized) http1553
- +      -0      * (normalized) huge1554
- +      -0.5256 * (normalized) i1558
- +      -0.2505 * (normalized) id1560
- +      -0      * (normalized) idea1561
- +      -0.1413 * (normalized) if1562
- +      -0.5142 * (normalized) ill1563
- +      -0.4331 * (normalized) im1564
- +       0      * (normalized) import1567
- +       1.4551 * (normalized) in1569
- +       0.6495 * (normalized) incorpor1572
- +       0      * (normalized) increas1573
- +      -0      * (normalized) indic1575
- +       0      * (normalized) inform1579
- +      -0.7527 * (normalized) instead1583
- +       0      * (normalized) intak1584
- +       0      * (normalized) interest1585
- +       0      * (normalized) into1586
- +       0.513  * (normalized) is1590
- +      -0.0758 * (normalized) it1593
- +      -0.336  * (normalized) iv1595
- +       0.6418 * (normalized) juic1600
- +      -0.8124 * (normalized) juli1602
- +      -0.8169 * (normalized) june1603
- +      -0      * (normalized) junk1604
- +       0.7504 * (normalized) just1605
- +      -0.3156 * (normalized) keep1607
- +      -1.0541 * (normalized) kelli1609
- +      -0      * (normalized) kept1610
- +      -0.6915 * (normalized) kind1613
- +       0      * (normalized) know1615
- +       1.4341 * (normalized) kudo1616
- +      -0.5304 * (normalized) last1619
- +       1      * (normalized) lastli1620
- +      -0.4584 * (normalized) late1621
- +       0      * (normalized) less1631
- +       1.4825 * (normalized) let1632
- +      -0      * (normalized) level1635
- +       0.206  * (normalized) life1636
- +      -0      * (normalized) lifestyl1637
- +      -0.3868 * (normalized) like1638
- +      -0      * (normalized) list1641
- +       0      * (normalized) littl1642
- +      -0.3616 * (normalized) look1649
- +      -0.4894 * (normalized) lose1650
- +       1      * (normalized) lot1653
- +      -0      * (normalized) low1655
- +      -0      * (normalized) lower1656
- +      -0.5352 * (normalized) lunch1657
- +      -0      * (normalized) made1659
- +       0      * (normalized) mai1660
- +      -0      * (normalized) mail1661
- +      -0.4964 * (normalized) main1662
- +      -0.5322 * (normalized) maintain1663
- +       0      * (normalized) make1665
- +       0      * (normalized) march1669
- +       0      * (normalized) materi1670
- +      -0.885  * (normalized) mayb1672
- +      -0      * (normalized) me1673
- +      -0.7041 * (normalized) meal1674
- +       0      * (normalized) mealssnack1675
- +      -0      * (normalized) menu1680
- +      -0.255  * (normalized) menuchoic1681
- +      -0      * (normalized) messag1682
- +       0      * (normalized) might1685
- +      -0      * (normalized) milk1687
- +      -0      * (normalized) minut1689
- +       0      * (normalized) model1692
- +      -0      * (normalized) month1696
- +      -0      * (normalized) more1697
- +      -0      * (normalized) most1699
- +      -0.7737 * (normalized) mostli1700
- +       0.1127 * (normalized) move1703
- +      -0      * (normalized) much1704
- +      -0.6058 * (normalized) my1707
- +       0      * (normalized) myself1708
- +       0      * (normalized) navig1711
- +      -0.3102 * (normalized) need1713
- +      -0      * (normalized) new1716
- +       1      * (normalized) next1717
- +      -0.8366 * (normalized) nice1718
- +      -0.2025 * (normalized) no1720
- +      -0.5664 * (normalized) normal1723
- +      -0.9176 * (normalized) not1724
- +      -0.4059 * (normalized) note1725
- +      -0.5183 * (normalized) noth1726
- +       0      * (normalized) notic1727
- +       0      * (normalized) novemb1728
- +      -0.1873 * (normalized) now1729
- +       0      * (normalized) number1730
- +      -0      * (normalized) obstacl1736
- +      -0      * (normalized) octob1739
- +       0      * (normalized) of1740
- +       0      * (normalized) off1741
- +       1      * (normalized) often1744
- +       1.3154 * (normalized) ok1747
- +       0.1635 * (normalized) on1751
- +      -0.3213 * (normalized) onc1752
- +      -0.2533 * (normalized) onion1753
- +      -0.0644 * (normalized) onli1754
- +      -0      * (normalized) open1755
- +       0      * (normalized) opportun1756
- +       0      * (normalized) option1757
- +      -0.6254 * (normalized) or1758
- +      -0.6315 * (normalized) other1763
- +       1.1743 * (normalized) our1764
- +      -0.06   * (normalized) out1765
- +      -0.334  * (normalized) outsid1766
- +      -1.0692 * (normalized) over1767
- +      -0      * (normalized) overal1768
- +      -0      * (normalized) own1770
- +       1      * (normalized) pack1771
- +       0      * (normalized) parent1775
- +       0      * (normalized) part1776
- +       0.6193 * (normalized) parti1777
- +      -0      * (normalized) past1781
- +      -0.2362 * (normalized) peanut1785
- +       1      * (normalized) peopl1787
- +       0      * (normalized) per1789
- +      -0.2403 * (normalized) perhap1790
- +      -0      * (normalized) person1791
- +      -0.0434 * (normalized) pick1792
- +      -0      * (normalized) piec1794
- +      -0.4954 * (normalized) pizza1796
- +       0      * (normalized) place1797
- +      -0      * (normalized) plai1798
- +      -0.2161 * (normalized) plan1800
- +       2.1154 * (normalized) pleas1801
- +      -0.5721 * (normalized) plu1802
- +       0      * (normalized) point1803
- +       0      * (normalized) pop1804
- +      -0      * (normalized) portion1805
- +      -0.9434 * (normalized) possibl1807
- +       0      * (normalized) prep1811
- +       1      * (normalized) prepar1812
- +      -0      * (normalized) pretti1814
- +       0      * (normalized) prioriti1816
- +       1      * (normalized) probabl1817
- +      -0      * (normalized) problem1818
- +      -0      * (normalized) program1821
- +       0      * (normalized) project1823
- +       0      * (normalized) protein1825
- +      -0.2697 * (normalized) purchas1828
- +      -1      * (normalized) quit1837
- +      -0.0414 * (normalized) quotemark1838
- +       0      * (normalized) rate1841
- +      -0      * (normalized) rather1842
- +      -0      * (normalized) read1847
- +      -0      * (normalized) readi1848
- +       0      * (normalized) realiz1851
- +      -0      * (normalized) reason1853
- +       0      * (normalized) recip1856
- +       0      * (normalized) recommend1857
- +      -0.9556 * (normalized) regard1860
- +       1      * (normalized) rememb1869
- +       0      * (normalized) remind1870
- +      -0      * (normalized) repli1872
- +      -0.3766 * (normalized) research1875
- +      -0      * (normalized) respons1879
- +       0      * (normalized) restaur1881
- +       0      * (normalized) result1882
- +       1      * (normalized) right1886
- +       0      * (normalized) role1888
- +       0      * (normalized) routin1890
- +      -0      * (normalized) sai1894
- +      -0.597  * (normalized) salad1896
- +      -0.415  * (normalized) same1897
- +      -0.1262 * (normalized) sandwich1898
- +      -0      * (normalized) schedul1902
- +      -0.5382 * (normalized) school1903
- +      -0      * (normalized) score1904
- +       0      * (normalized) season1905
- +      -0.3591 * (normalized) second1906
- +       0      * (normalized) section1907
- +      -1.0025 * (normalized) see1908
- +      -0.6626 * (normalized) seem1909
- +       0      * (normalized) semiclon1912
- +       0      * (normalized) send1913
- +      -0.9244 * (normalized) sent1914
- +       0      * (normalized) septemb1915
- +      -0.1743 * (normalized) serv1917
- +       0      * (normalized) session1918
- +      -0.2701 * (normalized) sever1920
- +       0      * (normalized) shop1924
- +       0      * (normalized) short1925
- +      -0      * (normalized) should1926
- +       0      * (normalized) side1929
- +      -0      * (normalized) similar1931
- +      -0.8716 * (normalized) sinc1934
- +      -1      * (normalized) sincer1935
- +       0      * (normalized) site1937
- +      -0      * (normalized) situat1938
- +       0      * (normalized) size1939
- +       0      * (normalized) small1943
- +       0      * (normalized) smoothi1945
- +       0      * (normalized) snack1946
- +      -0.418  * (normalized) so1947
- +       1.3175 * (normalized) some1950
- +      -0      * (normalized) someon1951
- +      -0      * (normalized) someth1952
- +       1.0868 * (normalized) sometim1953
- +       0      * (normalized) somewhat1954
- +       0      * (normalized) soon1956
- +      -0.6508 * (normalized) sorri1958
- +      -0.694  * (normalized) sound1960
- +      -0      * (normalized) spend1964
- +      -0      * (normalized) squash1967
- +       1      * (normalized) stai1969
- +      -0      * (normalized) star1970
- +      -0.3032 * (normalized) start1971
- +       0      * (normalized) stash1972
- +       0      * (normalized) step1975
- +       0      * (normalized) stick1976
- +       0      * (normalized) still1977
- +      -0      * (normalized) stop1980
- +       0      * (normalized) store1981
- +      -0      * (normalized) strategi1982
- +       1      * (normalized) strawberri1983
- +      -0      * (normalized) stress1985
- +      -0      * (normalized) studi1988
- +       0.2529 * (normalized) success1992
- +       0      * (normalized) such1994
- +       0      * (normalized) sugar1995
- +      -0      * (normalized) suggest1997
- +      -0.7522 * (normalized) summer1998
- +       0      * (normalized) support2002
- +       1      * (normalized) suppos2003
- +      -0      * (normalized) sure2004
- +       1      * (normalized) surround2005
- +      -0      * (normalized) survei2006
- +      -0.545  * (normalized) swap2007
- +       0.6356 * (normalized) sweet2008
- +      -0      * (normalized) tab2013
- +      -0      * (normalized) tag2014
- +      -0.2084 * (normalized) take2015
- +       0      * (normalized) taken2016
- +      -1.2686 * (normalized) talk2017
- +       0      * (normalized) teas2023
- +       1.326  * (normalized) tell2024
- +      -0.2475 * (normalized) textur2029
- +      -0.9275 * (normalized) tgif2030
- +       0      * (normalized) than2032
- +      -0.7839 * (normalized) thank2033
- +      -0.3796 * (normalized) thanksgiv2034
- +      -1.0424 * (normalized) that2035
- +       0.3017 * (normalized) the2036
- +      -1.264  * (normalized) thei2037
- +      -0      * (normalized) their2038
- +      -0      * (normalized) them2039
- +      -0      * (normalized) theme2040
- +      -1.0053 * (normalized) then2041
- +      -0.7269 * (normalized) there2042
- +      -0.5075 * (normalized) therefor2043
- +      -0.4163 * (normalized) these2044
- +      -0.503  * (normalized) thi2045
- +      -0.4542 * (normalized) thing2046
- +       1.25   * (normalized) think2047
- +      -0.4316 * (normalized) third2048
- +      -0.7148 * (normalized) those2049
- +      -0.2554 * (normalized) though2050
- +      -0      * (normalized) through2053
- +      -0      * (normalized) throughout2054
- +       0.7094 * (normalized) time2057
- +       0.5731 * (normalized) to2060
- +      -0.6345 * (normalized) todai2062
- +       0      * (normalized) told2064
- +      -0.2607 * (normalized) tomato2065
- +       0      * (normalized) too2067
- +       0.6909 * (normalized) top2069
- +      -0      * (normalized) track2075
- +      -0      * (normalized) treat2077
- +      -0.8646 * (normalized) tri2078
- +       0      * (normalized) troubl2080
- +      -0.2488 * (normalized) try2081
- +      -0      * (normalized) tweak2084
- +       1      * (normalized) two2086
- +       0      * (normalized) typic2088
- +      -0.6648 * (normalized) under2090
- +      -0.7091 * (normalized) unfortun2092
- +      -0      * (normalized) up2095
- +      -0.3395 * (normalized) updat2096
- +      -0.3129 * (normalized) us2097
- +      -0.5304 * (normalized) usual2098
- +       0      * (normalized) valu2100
- +       0      * (normalized) varieti2102
- +      -0.8234 * (normalized) veget2104
- +       0      * (normalized) veggi2106
- +      -0      * (normalized) veri2107
- +      -0      * (normalized) video2108
- +       0.6788 * (normalized) visit2109
- +      -0.2304 * (normalized) wa2111
- +      -0.5132 * (normalized) wai2112
- +       0.1434 * (normalized) walk2113
- +       0      * (normalized) want2114
- +      -0      * (normalized) water2120
- +       0.563  * (normalized) we2121
- +      -0      * (normalized) websit2123
- +      -0      * (normalized) week2125
- +       0      * (normalized) weekend2126
- +      -0.2885 * (normalized) welcom2130
- +       1.3655 * (normalized) well2131
- +      -0      * (normalized) went2132
- +      -0      * (normalized) were2133
- +       2.2434 * (normalized) what2134
- +      -0.2907 * (normalized) when2137
- +       1.4735 * (normalized) where2138
- +       0.2468 * (normalized) which2139
- +      -0.2547 * (normalized) while2140
- +       1      * (normalized) who2142
- +      -0      * (normalized) whole2143
- +       1.6548 * (normalized) why2144
- +      -0      * (normalized) wife2146
- +       1      * (normalized) will2147
- +      -0      * (normalized) win2148
- +       0.8375 * (normalized) with2150
- +      -0      * (normalized) within2151
- +      -0      * (normalized) wonder2154
- +       0.7515 * (normalized) work2157
- +      -0.5181 * (normalized) would2161
- +      -0.7462 * (normalized) wow2163
- +       0      * (normalized) www2165
- +       0      * (normalized) y2166
- +       0      * (normalized) ye2167
- +       0      * (normalized) year2168
- +      -0      * (normalized) yet2169
- +       0      * (normalized) yogurt2170
- +       0.6888 * (normalized) you2171
- +       0.3281 * (normalized) your2173
- +       0.3565 * (normalized) youv2175
- +       1.5339 * (normalized) prevtopicprob12177
- +       1.395  * (normalized) prevtopicprob22178
- +       1.7562 * (normalized) prevtopicprob32179
- +      -1.2179 * (normalized) currtopicprob12181
- +      -0.863  * (normalized) currtopicprob22182
- +      -1.115  * (normalized) currtopicprob32183
- +       0.267  * (normalized) currtopicprob42184
- -       3.2957
-
-Number of kernel evaluations: 641660761 (32.017% cached)
 
 
-
-Time taken to build model: 161.16 seconds
+Time taken to build model: 67.35 seconds
 
 === Stratified cross-validation ===
 === Summary ===
 
-Correctly Classified Instances       93896               98.3338 %
-Incorrectly Classified Instances      1591                1.6662 %
-Kappa statistic                          0.7243
-Mean absolute error                      0.0167
-Root mean squared error                  0.1291
-Relative absolute error                 26.2072 %
-Root relative squared error             72.4043 %
-Total Number of Instances            95487     
+Correctly Classified Instances       94469               99.0023 %
+Incorrectly Classified Instances       952                0.9977 %
+Kappa statistic                          0.8432
+Mean absolute error                      0.01  
+Root mean squared error                  0.0999
+Relative absolute error                 15.6819 %
+Root relative squared error             56.0084 %
+Total Number of Instances            95421     
 
 === Detailed Accuracy By Class ===
 
                  TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class
-                 0.993    0.304    0.990      0.993    0.991      0.725    0.844     0.990     1
-                 0.696    0.007    0.774      0.696    0.733      0.725    0.844     0.549     2
-Weighted Avg.    0.983    0.295    0.983      0.983    0.983      0.725    0.844     0.975     
+                 0.995    0.151    0.995      0.995    0.995      0.843    0.922     0.995     1
+                 0.849    0.005    0.848      0.849    0.848      0.843    0.922     0.725     2
+Weighted Avg.    0.990    0.147    0.990      0.990    0.990      0.843    0.922     0.986     
 
 === Confusion Matrix ===
 
      a     b   <-- classified as
- 91713   636 |     a = 1
-   955  2183 |     b = 2
+ 91806   477 |     a = 1
+   475  2663 |     b = 2
 

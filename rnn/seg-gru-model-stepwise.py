@@ -1,4 +1,3 @@
-# RNN with variable length input sequences to one word output
 import numpy
 
 from random import random
@@ -14,9 +13,6 @@ from keras.callbacks import EarlyStopping, ModelCheckpoint, Callback
 import utility_stepwise
 
 from vocabulary import Vocabulary
-
-# fix random seed for reproducibility
-numpy.random.seed(42)
 
 # system configuration
 max_len = 50
@@ -40,7 +36,7 @@ class ResetStatesCallback(Callback):
 vocabulary_obj = Vocabulary()
 vocabulary_obj.create()
 
-# create mapping of characters to integers (0-25) and the reverse
+# create mapping of words to integers (0-25) and the reverse
 char_to_int = dict((c, i+1) for i, c in enumerate(vocabulary_obj.vocab))
 int_to_char = dict((i+1, c) for i, c in enumerate(vocabulary_obj.vocab))
 
