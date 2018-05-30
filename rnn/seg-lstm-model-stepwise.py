@@ -6,7 +6,7 @@ from keras.layers import Dense
 from keras.layers import TimeDistributed
 from keras.callbacks import Callback
 
-import utility_stepwise_gru
+import utility_stepwise
 
 from vocabulary import Vocabulary
 
@@ -37,8 +37,8 @@ char_to_int = dict((c, i+1) for i, c in enumerate(vocabulary_obj.vocab))
 int_to_char = dict((i+1, c) for i, c in enumerate(vocabulary_obj.vocab))
 
 # prepare the data set of input to output pairs encoded as integers
-data = utility_stepwise_gru.get_ecoaching_data()
-folds_data = utility_stepwise_gru.split_data(data, folds)
+data = utility_stepwise.get_ecoaching_data()
+folds_data = utility_stepwise.split_data(data, folds)
 results = []
 
 for fold_num in range(folds):
@@ -50,14 +50,14 @@ for fold_num in range(folds):
             train_data = train_data + folds_data[i]
 
     # get encoded training data
-    X, y = utility_stepwise_gru.get_encoded_sequence(train_data, vocabulary_obj, max_len)
+    X, y = utility_stepwise.get_encoded_sequence(train_data, vocabulary_obj, max_len)
 
     # print total number of instances
     print("# of instances: ", len(y))
 
     # create and fit the model
     model = Sequential()
-    model.add(GRU(lstm_out, input_shape=(max_len, 1), return_sequences=True))
+    model.add(LSTM(lstm_out, input_shape=(max_len, 1), return_sequences=True))
     model.add(TimeDistributed(Dense(1, activation='sigmoid')))
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
@@ -69,7 +69,7 @@ for fold_num in range(folds):
         model.fit(x_data, y_data, callbacks=[ResetStatesCallback()], shuffle=False, batch_size=batch_size, verbose=0)
 
     # get encoded test data
-    test_x, test_y = utility_stepwise_gru.get_encoded_sequence(test_data, vocabulary_obj, max_len)
+    test_x, test_y = utility_stepwise.get_encoded_sequence(test_data, vocabulary_obj, max_len)
 
     prediction_y = []
     prediction_prob_y = []
@@ -95,19 +95,19 @@ for fold_num in range(folds):
             original_y.append(orig_y[0, j][0])
 
 
-    f = open("results_GRU_summit.txt", "a")
+    f = open("results_LSTM_summit.txt", "a")
     f.write("\n\nCount one: " + str(count_one))
     f.write("\nCount zero: " + str(count_zero))
     f.flush()
     f.close()
 
-    f = open("roc_GRU_summit.txt", "a")
+    f = open("roc_LSTM_summit.txt", "a")
     for i in range(len(prediction_prob_y)):
         f.write("\n" + str(original_y[i]) + "," + str(prediction_y[i]) + "," + str(prediction_prob_y[i]))
     f.flush()
     f.close()
 
-    accuracy, precision, recall, f_measure = utility_stepwise_gru.get_macro_average_performance(original_y, prediction_y)
+    accuracy, precision, recall, f_measure = utility_stepwise.get_macro_average_performance(original_y, prediction_y)
     results.append([fold_num, precision, recall, f_measure])
 
 # print results

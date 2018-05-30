@@ -60,7 +60,7 @@ def clean_text(text):
 
 # evaluate model with F1, Precision and Recall
 def get_macro_average_performance(actual, predicted):
-    f = open("results_LSTM_summit.txt", "a")
+    f = open("results_GRU_summit.txt", "a")
     f.write("fold number \n")
     f.write("actual: ")
     f.writelines(["%s," % item for item in actual])
