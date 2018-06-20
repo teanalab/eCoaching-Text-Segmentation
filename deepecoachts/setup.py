@@ -1,12 +1,12 @@
 from setuptools import setup
 from setuptools import find_packages
 
-setup(name='deepbond',
+setup(name='deepecoach',
       version='0.0.2',
-      description='Deep neural approach to Boundary and Disfluency Detection',
-      author='Marcos Treviso',
-      author_email='marcosvtreviso@gmail.com',
-      url='https://github.com/mtreviso/deepbond',
+      description='Deep neural approach for ecoaching text segmentation',
+      author='Mehedi Hasan',
+      author_email='mehedi@wayne.edu',
+      url='https://github.com/teanalab/eCoaching-Text-Segmentation',
       license='MIT',
       install_requires=['numpy>=1.11.0',
                         'keras>=2.1.5',
@@ -26,7 +26,7 @@ setup(name='deepbond',
       # target platform.
       entry_points=dict(
           console_scripts=[
-              'deepbond = deepbond.__main__:cli',
+              'deepecoach = deepecoach.__main__:cli',
           ],
       ),
 

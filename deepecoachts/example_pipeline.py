@@ -1,5 +1,5 @@
-from deepbond.task import SentenceBoundaryDetector, FillerDetector, EditDisfDetector
-from deepbond import Pipeline
+from deepecoach.task import SentenceBoundaryDetector, FillerDetector, EditDisfDetector
+from deepecoach import Pipeline
 
 def print_predictions(texts):
 	for t in texts:

@@ -1,22 +1,14 @@
-# deepbondd
-Deep neural approach to Boundary and Disfluency Detection
+# deepecoachd
+Deep neural approach for ecoaching text segmentation
 
-This is part of my MSc project. More info:
-
-My dissertation (ptbr): http://www.teses.usp.br/teses/disponiveis/55/55134/tde-05022018-090740/pt-br.php
-EACL paper: http://www.aclweb.org/anthology/E17-1030
-STIL paper: http://aclweb.org/anthology/W17-6618
-
-If you want to use my data, please send me a e-mail.
-
-
+This project is adapted from the authors: http://www.aclweb.org/anthology/E17-1030
 
 # How to use a trained model?
 
 Once you trained and saved a model, you can use a special class for loading each task. First, you need to import them:
 
 ```python
-from deepbond.task import SentenceBoundaryDetector, FillerDetector, EditDisfDetector
+from deepecoach.task import SentenceBoundaryDetector, FillerDetector, EditDisfDetector
 ```
 
 Then you need to specify the prediciton model for lexical data and the prediction model for prosodic data:
@@ -41,7 +33,7 @@ See `example_test.py` for more details.
 # How can I apply the entire pipeline?
 
 ```python
-from deepbond import Pipeline # import pipeline
+from deepecoach import Pipeline # import pipeline
 ```
 
 You need to instatiate each independent model for Sentence Segmentation and Disfluency Detection. Something like this:
@@ -81,7 +73,7 @@ If you would like to use an embedding model, you should specify the type using -
 
 First, the imports:
 ```python
-from deepbond.train import configure, train, get_default_options
+from deepecoach.train import configure, train, get_default_options
 ```
 
 Then setting the name and the save directory for your model:
@@ -112,7 +104,7 @@ options['pos_type'] = 'nlpnet'
 options['pos_file'] = 'path/to/postagger/'		
 ```
 
-Finally, call configure() and deepbond will create the directiries for your id and you can fit and save your model by calling train()
+Finally, call configure() and deepecoach will create the directiries for your id and you can fit and save your model by calling train()
 ```python
 configure(options)
 train(options)
