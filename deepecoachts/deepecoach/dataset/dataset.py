@@ -45,12 +45,6 @@ class DataSet(metaclass=ABCMeta):
             print(txt)
         f.close()
 
-    def _save_cleaned_file(self, filename):
-        if 'ABCD' in filename or 'PUCRS' in filename:
-            f = open(filename, 'w', encoding='utf8')
-            f.write(self.texts[-1])
-            f.close()
-
     @abstractmethod
     def _clean_text_file(self, text):
         """
@@ -67,9 +61,9 @@ class DataSet(metaclass=ABCMeta):
 
     def _set_nb_attributes(self):
         self.nb_texts = len(self.word_texts)
-        self.nb_sentences = sum(map(lambda x: x.count('.'), self.word_texts))
+        self.nb_sentences = sum(map(lambda x: x.count('newsegment'), self.word_texts))
         self.nb_words = sum(map(len, self.word_texts))
-        self.max_sentence_size = max(map(lambda x: len(x) - x.count('.'), self.word_texts))
+        self.max_sentence_size = max(map(lambda x: len(x) - x.count('newsegment'), self.word_texts))
         self.nb_classes = len(tokenizer.labels)
         self.vocab_size = len(tokenizer.word_index)
 
@@ -91,120 +85,6 @@ class DirDataSet(DataSet):
         return re.sub(r'\ +', ' ', text.strip())
 
 
-class DataSetManager:
-    def __init__(self, originals=[], extensions=[], task='ts'):
-        """
-        Class to deal with a collection of datasets
-        :param originals: list of datasets
-        :param extensions: list of datasets
-        """
-        self.originals = originals
-        self.extensions = extensions
-        self.task = task
-        self.word_texts = None
-        self._set_nb_attributes()
-
-    @property
-    def vocabulary(self):
-        return tokenizer.word_index
-
-    @property
-    def nb_classes(self):
-        return DataSetManager.get_nb_classes(self.task)
-
-    @staticmethod
-    def get_nb_classes(task):
-        if task == 'ts':
-            return 2
-        elif task == 'dd_fillers':
-            return 3
-        elif task == 'dd_editdisfs':
-            return 4
-        elif task == 'dd_editdisfs_binary':
-            return 2
-        elif task == 'ssdd':
-            return 2
-        return 2
-
-    @staticmethod
-    def load_and_get_vocabulary(filename):
-        tokenizer.load_vocabulary(filename)
-        return tokenizer.word_index
-
-    @staticmethod
-    def reset_vocabulary():
-        tokenizer.reset()
-
-    def get_texts(self):
-        if self.word_texts is not None:
-            return self.word_texts
-        self.word_texts = []
-        for ds in self.originals:
-            self.word_texts.extend(ds.word_texts)
-        for ds in self.extensions:
-            self.word_texts.extend(ds.word_texts)
-        return self.word_texts
-
-    def save_vocabulary(self, filename):
-        tokenizer.save_vocabulary(filename)
-
-    def load_vocabulary(self, filename):
-        tokenizer.load_vocabulary(filename)
-
-    def _set_nb_attributes(self):
-        self.nb_texts = 0
-        self.nb_sentences = 0
-        self.nb_words = 0
-        self.max_sentence_size = 0
-        for ds in self.originals + self.extensions:
-            self.nb_texts += ds.nb_texts
-            self.nb_sentences += ds.nb_sentences
-            self.nb_words += ds.nb_words
-            self.max_sentence_size = max(ds.max_sentence_size, self.max_sentence_size)
-
-    def info(self):
-        logger.info(type(self).__name__)
-        logger.info('Nb texts: {}'.format(self.nb_texts))
-        logger.info('Nb sentences: {}'.format(self.nb_sentences))
-        logger.info('Nb words: {}'.format(self.nb_words))
-        logger.info('Nb disfs: {}'.format(self.nb_disfs))
-        logger.info('Vocabulary size: {}'.format(len(self.vocabulary)))
-        logger.info('Avg sentence size: {}'.format(self.nb_words / self.nb_sentences))
-        logger.info('Avg sentence per file: {}'.format(self.nb_sentences / self.nb_texts))
-
-    def split(self, ratio=0.8, shuffle=True, olds=[]):
-        if self.task == 'ts':
-            ds_train = DataSetTS()
-            ds_test = DataSetTS()
-        else:
-            ds_train = DataSetSSandDD()
-            ds_test = DataSetSSandDD()
-        ds_train.add_from_dataset(self.extensions)
-        ds_test.add_from_dataset(self.originals)
-        if shuffle:
-            ds_test.shuffle(olds=olds)
-        ds_leftover = ds_test.truncate(ratio)
-        ds_train.add_from_dataset([ds_leftover])
-        if shuffle:
-            ds_train.shuffle()
-        return ds_train, ds_test
-
-    def split_by_index(self, train_index, test_index, shuffle=False):
-        if self.task == 'ts':
-            ds_train = DataSetTS()
-            ds_test = DataSetTS()
-        else:
-            ds_train = DataSetSSandDD()
-            ds_test = DataSetSSandDD()
-        ds_train.add_from_dataset(self.originals, index=train_index)
-        ds_train.add_from_dataset(self.extensions)
-        ds_test.add_from_dataset(self.originals, index=test_index)
-        if shuffle:
-            ds_test.shuffle()
-            ds_train.shuffle()
-        return ds_train, ds_test
-
-
 class DataSetTS:
     def __init__(self, binary=False):
         self.texts = []
@@ -212,22 +92,9 @@ class DataSetTS:
         self.word_id_texts = []
         self.shuffle_indexes = []
         self.binary = binary
-        tokenizer = None
 
     def indexes_to_words(self, indexes_texts):
         return tokenizer.index_texts_to_text(indexes_texts)
-
-    def add_from_dataset(self, datasets=[], index=None):
-        for ds in datasets:
-            self.texts.extend(ds.texts)
-            self.word_texts.extend(ds.word_texts)
-            self.word_id_texts.extend(ds.word_id_texts)
-        self.shuffle_indexes = list(range(len(self.word_texts)))
-        if index is not None:
-            self.texts = [self.texts[i] for i in index]
-            self.word_texts = [self.word_texts[i] for i in index]
-            self.word_id_texts = [self.word_id_texts[i] for i in index]
-            self.shuffle_indexes = [i for i in index]
 
     def as_matrix(self, ids=True):
         x, y = [], []
@@ -268,7 +135,7 @@ class DataSetTS:
 
     def truncate(self, ratio):
         limit = len(self.texts) - int(len(self.texts) * ratio)
-        ds_leftover = DataSetSS()
+        ds_leftover = DataSetTS()
         ds_leftover.texts = self.texts[limit:]
         ds_leftover.word_texts = self.word_texts[limit:]
         ds_leftover.word_id_texts = self.word_id_texts[limit:]

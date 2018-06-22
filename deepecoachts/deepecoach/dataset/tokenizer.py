@@ -21,20 +21,20 @@ class SentTokenizer(Singleton):
     def __init__(self):
         self.unknown_word = '*rare*'
         self.unknown_word_id = 0
-        self.word_count = OrderedDict({'.': 0})  # add '.' to the vocabulary
+        self.word_count = OrderedDict({'newsegment': 0})  # add '.' to the vocabulary
         self.word_index = OrderedDict()
         self.index_word = OrderedDict()
-        self.labels = [' ', '.']
+        self.labels = ['s', 'n']
         self.tokenizer = RegexpTokenizer(r'\S+')  # \w+|\$[\d\.]+|\S+
         self.loaded = False
 
     def reset(self):
         self.unknown_word = '*rare*'
         self.unknown_word_id = 0
-        self.word_count = OrderedDict({'.': 0})  # add '.' to the vocabulary
+        self.word_count = OrderedDict({'newsegment': 0})  # add '.' to the vocabulary
         self.word_index = OrderedDict()
         self.index_word = OrderedDict()
-        self.labels = [' ', '.']
+        self.labels = ['s', 'n']
         self.tokenizer = RegexpTokenizer(r'\S+')  # \w+|\$[\d\.]+|\S+
         self.loaded = False
 
@@ -64,13 +64,8 @@ class SentTokenizer(Singleton):
             self.build_vocab()
         return word_texts
 
-    def text_to_word_sequence(self, text, normalize=False):
-        if normalize:
-            return self.tokenizer.tokenize(self._normalize(text))
+    def text_to_word_sequence(self, text):
         return self.tokenizer.tokenize(text)
-
-    def _normalize(self, text):
-        return text
 
     def _count_words(self, word_sequence):
         for word in word_sequence:

@@ -17,7 +17,6 @@ class LexicalModel(metaclass=ABCMeta):
         self.input_length = input_length
         self.use_embeddings = use_embeddings
         self.use_pos = use_pos
-        self.use_handcrafted = use_handcrafted
         self.classifier = None
         self._prepare_params()
         self.name = 'lexical'
@@ -52,8 +51,6 @@ class LexicalModel(metaclass=ABCMeta):
                     input_data['input_emb'] = np.array([data_in[len(input_data)][i] for i in indexes])
                 if self.use_pos:
                     input_data['input_pos'] = np.array([data_in[len(input_data)][i] for i in indexes])
-                if self.use_handcrafted:
-                    input_data['input_hc'] = np.array([data_in[len(input_data)][i] for i in indexes])
                 if len(input_data) == 0:
                     raise Exception('You must use at least one feature.')
                 output_data = {'output_source': np.array([data_out[i] for i in indexes])}

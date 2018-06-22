@@ -2,8 +2,6 @@ import logging
 import os
 import numpy as np
 from deepecoach.models.ss_model import SSModel
-from deepecoach.models.dd_model import FillerModel, EditDisfModel
-from deepecoach.models.combiners import LinearCombiner
 from deepecoach.utils import unvectorize
 
 logger = logging.getLogger(__name__)

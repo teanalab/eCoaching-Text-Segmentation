@@ -17,8 +17,8 @@ class Word2Vec(Embedding):
     def save(self, save_file):
         self.model.save(save_file)
 
-    def train(self, train_file, **kwargs):
+    def train(self, train_file):
         logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
-        self.model = gensim.models.Word2Vec(gensim.models.word2vec.LineSentence(train_file),
-                                            size=self.dimensions, window=self.window_size, iter=self.epochs,
-                                            min_count=self.min_count, workers=self.workers, **kwargs)
+        self.model = gensim.models.Word2Vec(gensim.models.word2vec.LineSentence(train_file), size=self.dimensions,
+                                            window=self.window_size, iter=self.epochs, min_count=self.min_count,
+                                            workers=self.workers, sg=0)

@@ -9,9 +9,8 @@ from nltk import ngrams
 from nltk.probability import FreqDist
 
 logger = logging.getLogger(__name__)
-# IDEIA: usar modelo de lingua para verificar a perplexidade das sentencas: Entropia Cruzada. import coh-metrix:
 
-class ErrorAnalysisSS:
+class ErrorAnalysisTS:
 
 	def __init__(self, gold_dir, pred_dir):
 		self.gold_dir = gold_dir
@@ -76,7 +75,7 @@ class ErrorAnalysisSS:
 	def _text_to_labels(self, text):
 		labels = []
 		for word in text.strip().split():
-			if word == '.':
+			if word == 'newsegment':
 				labels[-1] = 1
 			else:
 				labels.append(0)
@@ -332,7 +331,7 @@ if __name__ == '__main__':
 	pred_dir = sys.argv[2]
 	logger.debug('Analyzing errors for gold data: {}'.format(gold_dir))
 	logger.debug('Analyzing errors for pred data: {}'.format(pred_dir))
-	ea = ErrorAnalysisSS(gold_dir=gold_dir, pred_dir=pred_dir)
+	ea = ErrorAnalysisTS(gold_dir=gold_dir, pred_dir=pred_dir)
 	ea.most_frequent(k=10)
 	ea.ngram_importance(n=[1, 2, 3], k=10)
 	ea.average_sentence_length()

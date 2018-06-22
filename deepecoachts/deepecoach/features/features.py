@@ -2,7 +2,7 @@ import logging
 import numpy as np
 
 from deepecoach.dataset import SentTokenizer
-from deepecoach.features import AvailableEmbeddings, POS, Prosodic, HandCrafted
+from deepecoach.features import AvailableEmbeddings, POS
 
 logger = logging.getLogger(__name__)
 tokenizer = SentTokenizer()  # vocabulary
@@ -10,9 +10,7 @@ tokenizer = SentTokenizer()  # vocabulary
 
 class Features:
     def __init__(self, embedding_type='random', embedding_file=None,
-                 POS_type='nlpnet', POS_file=None,
-                 prosodic_type='principal', prosodic_classify=True,
-                 use_pos=True, use_embeddings=True, use_handcrafted=False):
+                 POS_type='nlpnet', POS_file=None, use_pos=True, use_embeddings=True):
 
         # POS
         self.use_pos = use_pos
@@ -27,28 +25,15 @@ class Features:
         self.embeddings = AvailableEmbeddings.get(embedding_type)()
         self.embeddings.load(tokenizer.word_index if embedding_type == 'id' else embedding_file)
 
-        # PROSODIC
-        self.prosodic = Prosodic(prosodic_type, prosodic_classify,
-                                 nb_features=3, first=1, last=3, max_size=10, pad_value=-1)
-
-        # HANDCRAFTED
-        self.use_handcrafted = use_handcrafted
-        if self.use_handcrafted:
-            self.handcrafted = HandCrafted(wang_single_limit=4, wang_pair_limit=4,
-                                           prefix_size=(2, 4), prefix_limit=2, eos_limit=2, use_pos=use_pos)
-
     def save(self, filename):
         import json
         data = {
             'use_pos': self.use_pos,
             'use_embeddings': self.use_embeddings,
-            'use_handcrafted': self.use_handcrafted,
             'POS_type': self.pos.type,
             'POS_file': self.pos.filename,
             'embedding_type': self.embedding_type,
             'embedding_file': self.embedding_file,
-            'prosodic_type': self.prosodic.type,
-            'prosodic_classify': self.prosodic.classify
         }
         with open(filename, 'w') as f:
             json.dump(data, f)
@@ -80,27 +65,5 @@ class Features:
             weights[index] = self.embeddings.get_vector(word)
         return weights
 
-    def get_handcrafted(self, word_texts, pos_texts):
-        return self.handcrafted.get(word_texts, pos_texts)
-
-    def embeddings_statistics(self, word_texts):
-        if self.use_embeddings:
-            logger.info('Top 10 embeddings misses in dataset:')
-            words = [w_ for w in word_texts for w_ in w]
-            nb_oovs, nb_occur_oovs, top_k_oovs = self.embeddings.oov_statistics(
-                words)
-            logger.info('Total de palavras fora do vocabulario: %d' % nb_oovs)
-            logger.info(
-                'Total de ocorrencia de palavras fora do vocabulario: %d' % nb_occur_oovs)
-            for w, c in top_k_oovs:
-                logger.info('%s: %d' % (w, c))
-
     def get_POS(self, texts):
         return self.pos.get(texts)
-
-    def get_prosodic(self, pros_texts, mask_lines=None, mask_value=0.0, average=False, normalize=False):
-        return self.prosodic.get(pros_texts, mask_lines=mask_lines,
-                                 mask_value=mask_value, average=average, normalize=normalize)
-
-    def test_prosodic(self, pros_texts, map_with):
-        return self.prosodic.test_prosodic(pros_texts, map_with)

@@ -32,14 +32,14 @@ class Glove(Embedding):
     def save(self, save_file):
         self.model.save(save_file)
 
-    def _read_corpus(self, filename):
+    def read_custom_corpus(self, filename):
         with open(filename, 'r') as datafile:
             for line in datafile:
                 yield line.strip().split()
 
-    def train(self, train_file, **kwargs):
+    def train(self, train_file):
         corpus_model = glove.Corpus()
-        corpus_model.fit(self._read_corpus(train_file), window=self.window_size)
-        self.model = DGlove(no_components=self.dimensions, **kwargs)
+        corpus_model.fit(self.read_custom_corpus(train_file), window=self.window_size, )
+        self.model = DGlove(no_components=self.dimensions, learning_rate=0.05)
         self.model.fit(corpus_model.matrix, no_threads=self.workers, epochs=self.epochs, verbose=True)
         self.model.add_dictionary(corpus_model.dictionary)

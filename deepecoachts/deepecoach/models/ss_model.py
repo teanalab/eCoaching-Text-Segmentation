@@ -87,13 +87,6 @@ class SSModel:
 			self.model.classifier.fit_generator(train_generator, samples_per_epoch=len(train_buckets[0]),
 												validation_data=val_generator, nb_val_samples=nb_val_samples,
 												nb_epoch=nb_epoch, callbacks=callbacks)
-		elif self.strategy.name == 'dicted':
-			self.model.classifier.fit(train_data, train_y)			
-		elif self.strategy.name == 'window':
-			s = [sample_weight[0][0], sample_weight[0][-1]]
-			class_weight = dict(zip(range(len(s)), s))
-			self.model.classifier.fit(train_data, train_y, nb_epoch=nb_epoch, batch_size=self.batch_size, 
-									validation_data=val_data, callbacks=callbacks, class_weight=class_weight)
 		else:
 			self.model.classifier.fit(train_data, train_y, nb_epoch=nb_epoch, batch_size=self.batch_size, 
 									validation_data=val_data, callbacks=callbacks, sample_weight=sample_weight)
@@ -128,11 +121,6 @@ class SSModel:
 			preds = self.strategy.unprepare(preds)
 			preds, _ = reorder_buckets(preds, preds, lengths, data_by_length)
 			return preds, lengths, data_by_length
-		elif self.strategy.name == 'dicted':
-			flat_dict = lambda x: [[[w['0'], w['1']] for w in sent] for sent in x]
-			preds = self.model.classifier.predict_marginals(data)
-			preds = flat_dict(preds)
-			preds = [np.array(p) for p in preds]
 		else:
 			preds = self.model.classifier.predict(data, batch_size=self.batch_size, verbose=verbose)
 			preds = self.strategy.unprepare(preds)
@@ -146,16 +134,6 @@ class SSModel:
 			preds_vec, golds 		= reorder_buckets(preds_vec, golds, lengths, data_by_length)
 			preds_vec 				= self.strategy.unprepare(preds_vec)
 			preds 					= [unvectorize(np.array(p)) for p in preds_vec] 
-		elif self.strategy.name == 'dicted':
-			golds = gold
-			preds_vec = self.predict(data, verbose=verbose)
-			preds = [unvectorize(p) for p in preds_vec]
-		elif self.strategy.name == 'window':
-			golds = gold
-			preds_vec = self.predict(data, verbose=verbose)
-			preds = unvectorize(np.array(preds_vec))
-			preds = reshape_like(preds, map_with=golds)
-			preds_vec = reshape_like(preds_vec, map_with=golds)
 		else:
 			golds = gold
 			preds_vec = self.predict(data, verbose=verbose)
