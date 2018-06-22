@@ -77,10 +77,10 @@ def train(options):
 							options['prosodic_type'], options['prosodic_classify'], 
 							not options['without_pos'], not options['without_emb'], options['use_handcrafted'])
 	strategy = load_strategy(options['train_strategy'], options['window_size'], dsm.max_sentence_size)
-	lexical_model, lexical_params, prosodic_model, prosodic_params = load_models(options['models'][0], options['models'][1], features, dsm.vocabulary, dsm.nb_classes, strategy)
+	lexical_model, lexical_params = load_models(options['models'][0], features, dsm.vocabulary, dsm.nb_classes, strategy)
 	
 	# train
-	tm = TrainManager(lexical_model, lexical_params, prosodic_model, prosodic_params, strategy, options['batch_size'], options['task'])
+	tm = TrainManager(lexical_model, lexical_params, strategy, options['batch_size'], options['task'])
 	
 	# load trained model
 	if options['load']:
@@ -126,9 +126,9 @@ def train(options):
 def get_default_options():
 	return {
 		# required!
-		'id': 'default_example_ss_controle',	# all models will be stored in data/models/:id:
-		'task': 'ss', 							# one of ss/dd_fillers/dd_editdisfs/ssdd
-		'dataset': 'controle', 					# see loader.py (used only for training and error analysis)
+		'id': 'default_example_ts',				# all models will be stored in data/models/:id:
+		'task': 'ts', 							# one of ts/dd_fillers/dd_editdisfs/ssdd
+		'dataset': 'ecoach', 					# see loader.py (used only for training and error analysis)
 		'dataset-dir': None,
 
 		'load': False, 			# load the trained model for :id:
@@ -150,7 +150,7 @@ def get_default_options():
 		'without_pos': True,					# do not use pos
 
 		'emb_type': 'word2vec',		# method used for generate embeddings: see features/embeddings
-		'emb_file': '',	# e.g. Embeddings-DeepEcoach/ptbr/word2vec/pt_word2vec_sg_600.emb
+		'emb_file': '',				# e.g. Embeddings-DeepEcoach/ptbr/word2vec/pt_word2vec_sg_600.emb
 		'without_emb': False,		# do not use embeddings
 
 		'use_handcrafted': False,	# do not use handcrafter features (useful only for edit disfluences)

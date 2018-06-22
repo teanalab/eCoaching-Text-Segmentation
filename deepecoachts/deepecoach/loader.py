@@ -576,7 +576,7 @@ def load_dataset(dataset, extra=False, vocabulary=None, task='ss'):
 	return dsm
 
 
-def load_dataset_dir(dataset_path, extra=False, vocabulary=None, task='ss'):
+def load_dataset_dir(dataset_path, extra=False, vocabulary=None, task='ts'):
 	originals = []	# datasets with prosody >> used both for train and test
 	extensions = []	# datasets that may not have prosody >> used only for train
 	ds = DirDataSet(dataset_path, vocabulary=vocabulary)
@@ -641,7 +641,7 @@ def _select_model(Models, model_params, x):
 	return model, params
 
 
-def load_models(lexical, prosodic, features, vocabulary, nb_classes, strategy):
+def load_models(lexical, features, vocabulary, nb_classes, strategy):
 	
 	l_model_params = {
 		'features': 		features,
@@ -654,14 +654,5 @@ def load_models(lexical, prosodic, features, vocabulary, nb_classes, strategy):
 	}
 	l_model, l_params = _select_model(LexicalModels, l_model_params, lexical)
 
-
-	p_model_params = {
-		'features': 	features,
-		'vocabulary': 	vocabulary,
-		'nb_classes': 	nb_classes,
-		'input_length': strategy.input_length
-	}
-	p_model, p_params = _select_model(ProsodicModels, p_model_params, prosodic)
-
-	return l_model, l_params, p_model, p_params
+	return l_model, l_params
 

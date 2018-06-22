@@ -41,5 +41,4 @@ logging.getLogger(__name__).addHandler(logging.NullHandler())
 # imports
 from . import error_analysis
 from . import train
-from . import task
 from .pipeline import Pipeline
