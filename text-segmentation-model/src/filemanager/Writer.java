@@ -178,9 +178,13 @@ public class Writer {
 	
 	public static void createGoldStandard(String arffTextFile, String  arffFileStr2WordVector, 
 			String  goldStandardFile, String wordProbabilitiesFile, boolean withTopicDistribution, String model) {
+		
+		int invalidCount = 1;
 
 		// create word dictionary for the entire collections
 		HashMap<String, Integer> mapWordDictionary = Reader.getWordDictionary(arffFileStr2WordVector);
+		System.out.println(mapWordDictionary.size());
+		
 		Map<Integer, Double> mapLabelDist = Reader.getLabelDistribution(arffFileStr2WordVector);
 				
 		// create map for topic distribution
@@ -255,7 +259,8 @@ public class Writer {
 			        	}
 		        	}
 	        		else {
-	        			System.out.println(oneLineText[i]);
+	        			System.out.println(oneLineText[i] + " " + invalidCount);
+	        			invalidCount++;
 	        			continue;
 	        		}
 		        	

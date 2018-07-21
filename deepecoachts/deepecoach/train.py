@@ -127,7 +127,7 @@ def get_default_options():
 	return {
 		# required!
 		'id': 'default_example_ts',				# all models will be stored in data/models/:id:
-		'task': 'ts', 							# one of ts/dd_fillers/dd_editdisfs/ssdd
+		'task': 'ts', 							
 		'dataset': 'ecoach', 					# see loader.py (used only for training and error analysis)
 		'dataset-dir': None,
 
@@ -181,11 +181,6 @@ def configure(options={}):
 	file_handler = logging.FileHandler('{}.log'.format('data/log/'+options['id']))
 	file_handler.setFormatter(log_formatter)
 	root_logger.addHandler(file_handler)
-
-	# use GPU?
-	# if options['gpu']:
-	# 	import theano.sandbox.cuda
-	# 	theano.sandbox.cuda.use('gpu')
 
 	if not os.path.exists(options['model_dir']):
 		os.makedirs(options['model_dir'])

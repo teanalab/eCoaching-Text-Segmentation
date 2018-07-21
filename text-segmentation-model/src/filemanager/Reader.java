@@ -186,7 +186,7 @@ public class Reader {
 	    for (String w : mapWordDictionary.keySet()) {
 	    	Map<Integer, Double> mapLabelByWord = new HashMap<Integer, Double>(); 
 	    	for (int label : mapLabelDist.keySet()) {
-	    		if (mapWordProbabilityForClass.get(label).containsKey(w)) {
+	    		if (mapWordProbabilityForClass.containsKey(label) && mapWordProbabilityForClass.get(label).containsKey(w)) {
 	    			double prob_w_by_l = mapWordProbabilityForClass.get(label).get(w);
 			    	double prob_w = (double)mapWordDictionary.get(w)/mapWordDictionary.size();
 			    	double prob_l_by_w = (prob_w_by_l*mapLabelDist.get(label))/prob_w;
@@ -240,7 +240,7 @@ public class Reader {
 	    for (String w : mapWordDictionary.keySet()) {
 	    	Map<Integer, Double> mapLabelByWord = new HashMap<Integer, Double>(); 
 	    	for (int label : mapLabelDist.keySet()) {
-	    		if (mapWordProbabilityForClass.get(label).containsKey(w)) {
+	    		if (mapWordProbabilityForClass.containsKey(label) && mapWordProbabilityForClass.get(label).containsKey(w)) {
 	    			double prob_w_by_l = mapWordProbabilityForClass.get(label).get(w);
 			    	double prob_w = (double)mapWordDictionary.get(w)/mapWordDictionary.size();
 			    	double prob_l_by_w = (prob_w_by_l*mapLabelDist.get(label))/prob_w;

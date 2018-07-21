@@ -48,7 +48,7 @@ public class AppMain {
 		// 5. add label as break (1) or not (0)
 		
 		FileManager.createGoldStandard(arffTextFile, arffFileStr2WordVector, goldStandardFile,
-				wordProbabilitiesFile, true, "lca");
+				wordProbabilitiesFile, true, "mg-lda");
 
 		// run model with arff file to evaluate the model performance
 		//SegmentationModel model = new SegmentationModel();
