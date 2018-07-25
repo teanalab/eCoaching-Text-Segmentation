@@ -31,7 +31,7 @@ lines(1-roc_obj_mlp$specificities, roc_obj_mlp$sensitivities, col='blue', lty=1,
 lines(1-roc_obj_crf$specificities, roc_obj_crf$sensitivities, col='green', lty=1, lwd=1)
 lines(1-roc_obj_crnn$specificities, roc_obj_crnn$sensitivities, col='magenta', lty=1, lwd=1)
 lines(0:1, 0:1, col='black', lty=5, lwd=1)
-legend(0.77,0.30, c("BRNN", "MLP", "CRF", "CRNN"), 
+legend(0.77,0.33, c("BRNN", "MLP", "CRF", "CRNN"), 
        lty=c(1,1,1,1), col=c('red', 'blue', 'green', 'magenta'), cex=1, lwd=1)
 
 
@@ -58,7 +58,7 @@ lines(1-roc_obj_mlp$specificities, roc_obj_mlp$sensitivities, col='blue', lty=1,
 lines(1-roc_obj_crf$specificities, roc_obj_crf$sensitivities, col='green', lty=1, lwd=1)
 lines(1-roc_obj_crnn$specificities, roc_obj_crnn$sensitivities, col='magenta', lty=1, lwd=1)
 lines(0:1, 0:1, col='black', lty=5, lwd=1)
-legend(0.77,0.30, c("BRNN", "MLP", "CRF", "CRNN"), 
+legend(0.77,0.33, c("BRNN", "MLP", "CRF", "CRNN"), 
        lty=c(1,1,1,1), col=c('red', 'blue', 'green', 'magenta'), cex=1, lwd=1)
 
 print('done')
