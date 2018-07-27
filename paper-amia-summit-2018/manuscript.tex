@@ -64,26 +64,25 @@ The experimental dataset for this work was constructed from 49 e-coaching sessio
 
 \subsection*{\textit{Features}}
 
-We utilized three types of features in conjunction with CRF, MLP, BRNN and CRNN methods: word embeddings, punctuation and POS features. Since POS tags have been shown to be effective semantic abstractions of individual words, we used topic features for our experiment \cite{liu2005using,treviso2017sentence}. To extract our POS features, we tag the e-Coaching emails using the NLTK POS tagger \cite{bird2009natural}. Punctuation marks, which correspond to one of the symbols \{`.', `,', `!', `?', `:', `;'\} between a pair of words, are also employed as a feature since punctuation marks designate the boundary of a sentence, clause and phrase and often also correspond to a segment boundary. For natural language processing (NLP) tasks, inputs are received as a text where words can be considered as the basic processing unit. Therefore, it is important to represent a word in such a way that it carries all relevant information. Word embeddings are one of this representation where each word represented as a real-valued vector in a high dimensional vector space. The distributed representation of word allows capturing semantic, syntactic and morphological information from large unannotated corpora  \cite{pennington2014glove, mikolov2013distributed}. In our experiment, we utilized pre-trained word2vec word vectors for words and trained word2vec word vectors for punctuation marks.  
+We utilized three types of features in conjunction with CRF, MLP, BRNN and CRNN methods: word embeddings, punctuation and POS features. Since POS tags have been shown to be effective semantic abstractions of individual words, we used topic features for our experiment \cite{liu2005using,treviso2017sentence}. To extract our POS features, we tag the e-Coaching emails using the NLTK POS tagger \cite{bird2009natural}. Punctuation marks, which correspond to one of the symbols \{`.', `,', `!', `?', `:', `;'\} between a pair of words, are also employed as a feature since punctuation marks designate the boundary of a sentence, clause and phrase and often also correspond to a segment boundary. For natural language processing (NLP) tasks, inputs are received as a text where words can be considered as the basic processing unit. Therefore, it is important to represent a word in such a way that it carries all relevant information. Word embeddings are one of this representation where each word represented as a real-valued vector in a high dimensional vector space. The distributed representation of word allows capturing semantic, syntactic and morphological information from large unannotated corpora  \cite{pennington2014glove, mikolov2013distributed}. Since pre-trained word2vec word vectors provides the best results, in our experiment, we utilized pre-trained word2vec word vectors for words. Trained word vectors were also utilized when punctuation marks are not available in the pre-trained word2vec word vectors. Figure~\ref{fig:embedding-dimension} illustrates the performance of CRNN model on e-Coaching email segmentation by varying the dimension of pre-trained and trained word embeddings with GloVe and word2vec models. 
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=1.0\textwidth]{figures/roc-curves.eps}
-    \caption{\textbf{Receiver operating characteristic curves showing the performance of binary classifiers for the segmentation of e-Coaching text when lexical features (left) and combination of lexical, DL-LDA-based topic (except LSTM and GRU) and punctuation features (right) are used}.}
-    \label{fig:roc-curves22}
+    \includegraphics[width=0.6\textwidth]{figures/embedding-dimension.eps}
+    \caption{\textbf{Performance of CRNN model on e-Coaching email segmentation by varying the dimension of pre-trained and trained word embeddings with GloVe and word2vec models.}}
+    \label{fig:embedding-dimension}
 \end{figure}   
-   
 
 \subsection*{\textit{Classifiers}}
 
-In the present study, we experimented with four different classifiers, including one traditional machine learning method, CRF and three neural networks models. Since neural networks provide a flexible architecture for constructing and synthesizing complex models, we take the advantage of this flexibility to test MLP, BRNN and CRNN models for the task of segmentation of e-Coaching emails.
+In the present study, we experimented with four different classifiers, including one traditional machine learning method, CRF and three neural networks models. Since neural networks provide a flexible architecture for constructing and synthesizing complex models, we take the advantage of this flexibility to test MLP, BRNN and CRNN models for the task of segmentation of e-Coaching emails.\\
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=1.0\textwidth]{figures/roc-curves.eps}
-    \caption{\textbf{Receiver operating characteristic curves showing the performance of binary classifiers for the segmentation of e-Coaching text when lexical features (left) and combination of lexical, DL-LDA-based topic (except LSTM and GRU) and punctuation features (right) are used}.}
-    \label{fig:roc-curves22}
-\end{figure}   
+    \includegraphics[width=0.60\textwidth]{figures/length-mlp.eps}
+    \caption{\textbf{Performance of MLP model on e-Coaching email segmentation by varying the length of sample size.}}
+    \label{fig:length-mlp}
+\end{figure}
 
 \textbf{Conditional Random Field}: state-of-the-art supervised classification method proven to be effective for text categorization\cite{joachims1998text} for its ability to cope with high dimensional input feature space. SVM finds the hyperplane that maximizes the separation between the closest ``new segment'' and ``same segment'' training examples. We scaled our dataset to utilize linear SVM with optimal cost 512 in experiments.   
 
@@ -94,7 +93,7 @@ In the present study, we experimented with four different classifiers, including
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/CRNN.eps}
-    \caption{\textbf{Receiver operating characteristic curves showing the performance of binary classifiers for the segmentation of e-Coaching text when lexical features (left) and combination of lexical, DL-LDA-based topic (except LSTM and GRU) and punctuation features (right) are used}.}
+    \caption{\textbf{Architecture of convolutional recurrent neural networks for automatic segmentation of e-Coaching emails}.}
     \label{fig:crnn}
 \end{figure}
 
@@ -110,7 +109,8 @@ Our experimental results have two important directions. First, results are repor
 
 \begin{table}[ht]
 \centering
-\caption{Performance of NB, SVM and KNN methods for identification of ``new segment'' and ``same segment'' classes as well as their weighted average. The highest value for each performance metric is highlighted in bold.}
+\caption{Performance of CRF, MLP, BRNN and CRNN methods for identification of ``new segment'' class as well as weighted average over ``new segment'' and ``same segment'' classes when word embeddings or lexical features are used. The highest value for each performance metric
+is highlighted in bold.}
 \label{tab:result_base}
   \begin{tabular}{|l|l|l|l|l|l|l|}
   \hline
@@ -127,7 +127,8 @@ As follows from Table~\ref{tab:result_base}, KNN outperforms all other models in
 
 \begin{table}[ht]
 \centering
-\caption{Performance of NB, SVM and KNN methods with different topic model-based features for segmentation of e-Coaching emails as a weighted average over ``same segment'' and ``new segment'' classification results, when all features are used together. The highest value for each performance metric is highlighted in bold.}
+\caption{Performance of CRF, MLP, BRNN and CRNN methods for identification of ``new segment'' class as well as weighted average over ``new segment'' and ``same segment'' classes when all features are used together. The highest value for each performance metric
+is highlighted in bold.}
 \label{tab:result_weighted_avg}
  \begin{tabular}{|l|l|l|l|l|l|l|}
   \hline
@@ -145,12 +146,12 @@ Table~\ref{tab:result_weighted_avg} summarizes the weighted average results of t
 \section*{Discussion}
 This study is the first effort to evaluate the automatic segmentation of e-Coaching emails. Experimental results indicate that SVM is the best model among all machine learning methods considered for this study. SVM achieved 0.990 F1-measure in overall, 0.845 and 0.995 F1-measures for detecting ``new segment'' and ``same segment'', respectively. The robust performance of SVM provides the evidence that machine learning models are capable to learn conceptual information from clinical exchange. It also indicates that topic features are more important than lexical features, even when deep learning methods are employed. Although the domain of this study was intentionally quite small, we believe that our study is not limited to the e-Coaching domain and it can be successfully applied to other domains, in which discourse segmentation is a preliminary step for annotation.
 
-Punctuation mark and topic model-based features made a significant improvement in performance of all machine learning methods. Among all topic model-based feature, the DL-LDA-based topic feature provides the highest performance in ``new segment'' and ``same segment'' classification as well as weighted average over ``new segment'' and ``same segment'' classification results. In nearly all cases, ML methods perform better, when lexical features are used in combination with punctuation and topic model-based features. This results also indicate that segmentation performance might be improved by adding additional relevant features.         
+Punctuation mark and topic model-based features made a significant improvement in performance of all machine learning methods. Among all topic model-based feature, the DL-LDA-based topic feature provides the highest performance in ``new segment'' and ``same segment'' classification as well as weighted average over ``new segment'' and ``same segment'' classification results. In nearly all cases, ML methods perform better, when lexical features are used in combination with punctuation and topic model-based features. This results also indicate that segmentation performance might be improved by adding additional relevant features. \\       
 
 \begin{figure}[!htb]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/roc-curves.eps}
-    \caption{\textbf{Receiver operating characteristic curves showing the performance of binary classifiers for the segmentation of e-Coaching text when lexical features (left) and combination of lexical, DL-LDA-based topic (except LSTM and GRU) and punctuation features (right) are used}.}
+    \caption{\textbf{Receiver operating characteristic curves showing the performance of binary classifiers for the segmentation of e-Coaching text when only word embeddings/lexical (left) and combination of word embeddings/lexical, POS and punctuation features (right) are used}.}
     \label{fig:roc-curves}
 \end{figure}
 
@@ -158,13 +159,13 @@ In this paper, results are reported by each class to avoid confusion regarding o
 
 \begin{table}[ht]
 \centering
-\caption{Performance of NB, SVM and KNN methods with different topic model-based features for segmentation of e-Coaching emails as a weighted average over ``same segment'' and ``new segment'' classification results, when all features are used together. The highest value for each performance metric is highlighted in bold.}
-\label{tab:result_weighted_avg}
+\caption{AUC values of all classifiers when only word embeddings/lexical and combination of word embeddings/lexical, POS and punctuation features are used. Highest value for each experiment across all models is highlighted in boldface.}
+\label{tab:result_roc}
  \begin{tabular}{|l|l|l|l|l|}
   \hline
-\multirow{2}{*}{\textbf{Features}} & \multicolumn{4}{|c|}{\textbf{Area Under the Curve (AUC)}} \\\cline{2-5}
+\multirow{2}{*}{\textbf{Features}} & \multicolumn{4}{|c|}{\textbf{Area Under the ROC Curve (AUC)}} \\\cline{2-5}
  & \textbf{CRF} & \textbf{MLP}  & \textbf{BRNN} & \textbf{CRNN} \\ \hline      
- word embeddings & \textbf{0.966} & 0.951 & 0.920 & 0.965 \\ \hline
+ word embeddings or lexical features & \textbf{0.966} & 0.951 & 0.920 & 0.965 \\ \hline
  all features & \textbf{0.994} & 0.992 & 0.981 & 0.986 \\ \hline
   \end{tabular}
 \end{table}      
