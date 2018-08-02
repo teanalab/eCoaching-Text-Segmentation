@@ -12,9 +12,9 @@ wd = '/home/mehedi/teana/projects/eCoaching-Text-Segmentation/plots/'
 data <- read.csv(paste(wd,"parameters/length.csv", sep=''))
 
 # plot graph
-plot(range(1,7), range(0.710, 0.775), type="n", ylab = "F1-Measure", xlab = "# of next or prior words/punctuation marks in a sample (l)")
+plot(range(1,7), range(0.605, 0.765), type="n", ylab = "F1-Measure", xlab = "# of next or prior words/punctuation marks in a sample (l)")
 lines(data$n, data$fmeasure, lwd=1.5, lty=1, type='b', col='blue', pch=18)
-points(x = 2, y = 0.771, col = "red", pch = 1, cex = 2)
+points(x = 2, y = 0.760, col = "red", pch = 1, cex = 2)
 textxy(data$n, data$fmeasure, labs=data$fmeasure, pos=3,  cex = 0.7)
 
 head(data)
