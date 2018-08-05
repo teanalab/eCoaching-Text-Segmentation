@@ -1,342 +1,439 @@
 %!PS-Adobe-3.0 EPSF-3.0
-%%DocumentNeededResources: font Helvetica
-%%+ font Helvetica-Bold
-%%+ font Helvetica-Oblique
-%%+ font Helvetica-BoldOblique
-%%+ font Symbol
-%%Title: R Graphics Output
-%%Creator: R Software
-%%Pages: (atend)
-%%BoundingBox: 0 0 531 360
+%%Creator: cairo 1.14.6 (http://cairographics.org)
+%%CreationDate: Sun Aug  5 13:57:50 2018
+%%Pages: 1
+%%DocumentData: Clean7Bit
+%%LanguageLevel: 2
+%%BoundingBox: 0 -1 531 296
 %%EndComments
 %%BeginProlog
-/bp  { gs sRGB gs } def
-% begin .ps.prolog
-/gs  { gsave } bind def
-/gr  { grestore } bind def
-/ep  { showpage gr gr } bind def
-/m   { moveto } bind def
-/l  { rlineto } bind def
-/np  { newpath } bind def
-/cp  { closepath } bind def
-/f   { fill } bind def
-/o   { stroke } bind def
-/c   { newpath 0 360 arc } bind def
-/r   { 4 2 roll moveto 1 copy 3 -1 roll exch 0 exch rlineto 0 rlineto -1 mul 0 exch rlineto closepath } bind def
-/p1  { stroke } bind def
-/p2  { gsave bg fill grestore newpath } bind def
-/p3  { gsave bg fill grestore stroke } bind def
-/p6  { gsave bg eofill grestore newpath } bind def
-/p7  { gsave bg eofill grestore stroke } bind def
-/t   { 5 -2 roll moveto gsave rotate
-       1 index stringwidth pop
-       mul neg 0 rmoveto show grestore } bind def
-/ta  { 4 -2 roll moveto gsave rotate show } bind def
-/tb  { 2 -1 roll 0 rmoveto show } bind def
-/cl  { grestore gsave newpath 3 index 3 index moveto 1 index
-       4 -1 roll lineto  exch 1 index lineto lineto
-       closepath clip newpath } bind def
-/rgb { setrgbcolor } bind def
-/s   { scalefont setfont } bind def
-% end   .ps.prolog
-/sRGB { [ /CIEBasedABC
-          << /DecodeLMN
-               [ { dup 0.03928 le
-                        {12.92321 div}
-                        {0.055 add 1.055 div 2.4 exp }
-                     ifelse
-                 } bind dup dup
-               ]
-             /MatrixLMN [0.412457 0.212673 0.019334
-                         0.357576 0.715152 0.119192
-                         0.180437 0.072175 0.950301]
-             /WhitePoint [0.9505 1.0 1.0890]
-           >>
-         ] setcolorspace } bind def
-/srgb { setcolor } bind def
-%%IncludeResource: font Helvetica
-/Helvetica findfont
-dup length dict begin
-  {1 index /FID ne {def} {pop pop} ifelse} forall
-  /Encoding ISOLatin1Encoding def
-  currentdict
-  end
-/Font1 exch definefont pop
-%%IncludeResource: font Helvetica-Bold
-/Helvetica-Bold findfont
-dup length dict begin
-  {1 index /FID ne {def} {pop pop} ifelse} forall
-  /Encoding ISOLatin1Encoding def
-  currentdict
-  end
-/Font2 exch definefont pop
-%%IncludeResource: font Helvetica-Oblique
-/Helvetica-Oblique findfont
-dup length dict begin
-  {1 index /FID ne {def} {pop pop} ifelse} forall
-  /Encoding ISOLatin1Encoding def
-  currentdict
-  end
-/Font3 exch definefont pop
-%%IncludeResource: font Helvetica-BoldOblique
-/Helvetica-BoldOblique findfont
-dup length dict begin
-  {1 index /FID ne {def} {pop pop} ifelse} forall
-  /Encoding ISOLatin1Encoding def
-  currentdict
-  end
-/Font4 exch definefont pop
-%%IncludeResource: font Symbol
-/Symbol findfont
-dup length dict begin
-  {1 index /FID ne {def} {pop pop} ifelse} forall
-  currentdict
-  end
-/Font5 exch definefont pop
+save
+50 dict begin
+/q { gsave } bind def
+/Q { grestore } bind def
+/cm { 6 array astore concat } bind def
+/w { setlinewidth } bind def
+/J { setlinecap } bind def
+/j { setlinejoin } bind def
+/M { setmiterlimit } bind def
+/d { setdash } bind def
+/m { moveto } bind def
+/l { lineto } bind def
+/c { curveto } bind def
+/h { closepath } bind def
+/re { exch dup neg 3 1 roll 5 3 roll moveto 0 rlineto
+      0 exch rlineto 0 rlineto closepath } bind def
+/S { stroke } bind def
+/f { fill } bind def
+/f* { eofill } bind def
+/n { newpath } bind def
+/W { clip } bind def
+/W* { eoclip } bind def
+/BT { } bind def
+/ET { } bind def
+/pdfmark where { pop globaldict /?pdfmark /exec load put }
+    { globaldict begin /?pdfmark /pop load def /pdfmark
+    /cleartomark load def end } ifelse
+/BDC { mark 3 1 roll /BDC pdfmark } bind def
+/EMC { mark /EMC pdfmark } bind def
+/cairo_store_point { /cairo_point_y exch def /cairo_point_x exch def } def
+/Tj { show currentpoint cairo_store_point } bind def
+/TJ {
+  {
+    dup
+    type /stringtype eq
+    { show } { -0.001 mul 0 cairo_font_matrix dtransform rmoveto } ifelse
+  } forall
+  currentpoint cairo_store_point
+} bind def
+/cairo_selectfont { cairo_font_matrix aload pop pop pop 0 0 6 array astore
+    cairo_font exch selectfont cairo_point_x cairo_point_y moveto } bind def
+/Tf { pop /cairo_font exch def /cairo_font_matrix where
+      { pop cairo_selectfont } if } bind def
+/Td { matrix translate cairo_font_matrix matrix concatmatrix dup
+      /cairo_font_matrix exch def dup 4 get exch 5 get cairo_store_point
+      /cairo_font where { pop cairo_selectfont } if } bind def
+/Tm { 2 copy 8 2 roll 6 array astore /cairo_font_matrix exch def
+      cairo_store_point /cairo_font where { pop cairo_selectfont } if } bind def
+/g { setgray } bind def
+/rg { setrgbcolor } bind def
+/d1 { setcachedevice } bind def
 %%EndProlog
+%%BeginSetup
+%%BeginResource: font f-0-0
+%!FontType1-1.1 f-0-0 1.0
+11 dict begin
+/FontName /f-0-0 def
+/PaintType 0 def
+/FontType 1 def
+/FontMatrix [0.001 0 0 0.001 0 0] readonly def
+/FontBBox {0 -217 761 747                                    } readonly def
+/Encoding 256 array
+0 1 255 {1 index exch /.notdef put} for
+dup 32 /space put
+dup 35 /numbersign put
+dup 46 /period put
+dup 48 /zero put
+dup 49 /one put
+dup 50 /two put
+dup 51 /three put
+dup 53 /five put
+dup 54 /six put
+dup 56 /eight put
+dup 57 /nine put
+dup 70 /F put
+dup 71 /G put
+dup 77 /M put
+dup 86 /V put
+dup 97 /a put
+dup 98 /b put
+dup 99 /c put
+dup 100 /d put
+dup 101 /e put
+dup 102 /f put
+dup 103 /g put
+dup 105 /i put
+dup 108 /l put
+dup 109 /m put
+dup 110 /n put
+dup 111 /o put
+dup 112 /p put
+dup 114 /r put
+dup 115 /s put
+dup 116 /t put
+dup 117 /u put
+dup 118 /v put
+dup 119 /w put
+readonly def
+currentdict end
+currentfile eexec
+f983ef0097ece636fb4a96c74d26ab84185f6dfa4a16a7a1c27bbe3f1156aea698df336d20b467
+b10e7f33846656653c5ac6962759d3056cbdb3190bac614b984bf5a132dc418192443014ba63de
+800d392b6fea026574bb2535fd7bb5338f35bf15a88ea328fdaa49670c7852e3d060f3c5d6b07f
+2ef6d0f22646c5d18e19a2ae3ee120390f6dd96f76dcf1e127de5e9299077a00c17c0d71e36e5b
+9d5ec58fceda57739a6a4214d4b79d6c48d2784b60c320323c7acddddf34db833cac0cf109f799
+69d114a330d372e5c978a66acc84e3fe5557f6240856a013ffaa0199444e5c5036f775eba4a5c5
+8cde66cf604b9aca2178431127b8a1ff7ed633a65c04600af5f573483112251cae05fadec936cc
+8dac7a3f8a3ab1bef3a39aef77c611866cd434afda55e08cfbf052d1db42ad81958371158bbc06
+f90e9fef305bbdaa0e6cfb085113753d000b13a929bf3a961e7131d26224bc3993298e18630739
+da2e3db990d693bb3bf4c22586ee3f81be0fa19419bcbdd2bd7effc7ad14727429585774a78f63
+ebb5c7ad8e91bc973b980ccc1a947cc241a923af1389a58852e014ff944222d8708ab589ea947d
+24bb9fd2eba1bdde4a343a6086f109518764e7ff7110bfc9d5e041274d9c3ca7742dd86fbe0976
+ec6abb9ddb0d93143e0f3e09a63ea64905f4f6abadc6e40b768d5a9cbc0b9ed69d3b740020f573
+bddcb36a82654e38c0140afcad093cc557c9b098bac26764fc85a6c095ab4257edc6ee18d0113b
+d87591447410ff430522e2782a47aa4b08e97b5bd34696a7398555c55cd62382f2e7ba60f7e7e3
+2a9484be514b4e53093a3db109f4ec942126820fd407286f75e6f9fb7199d83a898731f2e39833
+d99dc44948178ff73fb4c1e911a0a1ac57838359f5c1c6908a72ba30f889f16e3a6faac1470ff1
+6b90f61958e6c043c52948275ec4aa7771ac18a9d8075280fa323dc032d74af5f00d2289f5329d
+36c91dbb94452665832ecf1cb56b30cbb30758fc35f45f07997bd6b23897920ba6fb3d5cfb3ab1
+f467a5eaae06efe62b59ff55143ea4749b0385f34e857479de324400920825ef3bee92eafcb5ae
+fc6f27d8b73cf2106723845378e791ce5dfac687fb59dea3be86ce9b3d97109d44021ddf3d7bde
+cc4cb9a05bef74068d196fc5d98fc87a696f73e937b9d072b361ee729a1fbe29357afc7f006b91
+7fd4168bf248fec66a050ea5b268e9f1eccd1cb535f560d7cb38b3a897fdfb8939b28c0a8d519a
+7d1070c407aa9869577521cc1eaf7e292b3d03605105e12a2d7920edfab6d52c78a38aee3cc274
+2d4ac7ab941bb90c7fc9fb7980c646b5e84c9bbab19f6e71a642275cda2e8c775179b0c94c2ca9
+0d387c63db130bbdf88d333264710da9b2ac179b8c6716335b2e9e631c7e2b9a9d48cc4411ec8d
+2db999652512b4d82e670e2c0b650ba7c2ab08b20d402d3c30b12607d9af4c45a687d6f3738d2d
+c99d073e2556e66c4dfa0f81aeed3a355edd63b5289f0ca1f9302b64c43b1a9e5965038f332d5e
+ca9de307380de493f03de5467325c10725ceb7be8a5c27ae952fdbbf90162a183ddbdc83cfda33
+560f415c283f377ab71a77264e8bcafc4859ff25effb201bb3b40b99e800e82b10b21421c6adca
+c581802511f63e5a014f16ae8a0d22f7ecdf8cc124dcebb1322eafb5dbb43e8f632283795fbbf7
+822b3490fee4f0bd4d0ea5605ce77bc49ac0d3bbad0c2eea55ae6fe8ce4acd9c9a7fc4febd8f68
+a5769102c0683f45280be3c0bb7e4c228f06268d28eecda9cacbb9562180e47aa073b70def8c34
+a01f37ca6b04844c28bf5d0e17dce77f0452cf788af24c0bcb1286843a795fe92016e32aef47f5
+7c0826ae2e05af3c7777c799d4c172bbe7beeb344ee08ff74416096eb1f60bf657f2b75147fd3d
+34b375117e008c1900c0f3dc669660c872499c30b3fa14fe2dc9965cd650f404ba14c3e945df8d
+2b435fa071ae92f79a57caa7b7656fd0b8a3c3e8f004e18b09c8baca17e9b7dbdc561dc3510a82
+d9c8e19b46afd6f43672ff9e0606386e43fc5cc9c9151a888259d260498f68621b9282dd87d47c
+94d5f462d671ff12692458d1034d72fc121f8b9963c2c0acb69985f948314f648affc773e96dd1
+e09f1d943537affad912b735e301afb9c5a7afef8b4cd5c5ef94ba2be02c996b53cbb038408e7b
+ca4bb5a2343c7219b0543bb914b7a10a1efa0cf8aee5ed27df65bc669eb7fea6e34c3d10f8aaef
+1a69c5dd9012215f2e3062b4aa53c28d882c9422cf6f7784e40fa9152878b1f4cadea53154d484
+bc4923226b9131112408e46a887c53b1b7d227286a0eafadbd09841b42e76219522f7a2f643d59
+9a46f2de0e069f255e5fb392b2d1a75710f1548c6a98ee7717d97089e3c8e9b140497e1e394e2e
+92f53c2b2906d740a86931421df71bf41f095c3eeef98fe8b110a5bce0bc1c4ad0a399e02e12be
+12f7b6736e5a58c8ca68922f71f5848dbb622f4395a4f5625d1ea720c4cd4a4d64ccf9aa3a1264
+bcd7cd4d762f39ec5395a93c1a15a156d90747a33455c4146cbd357dd5363911bba0ea96fc9b85
+a8b359d0e2fcfa1b40055d5210905e3ff9f155a231d9f2d783d2979aaf9510656a0c6f1bb21d67
+03eb2725d342cf4c3d81b4c26aea5bf93b388798fd878db9abebc3b5d0224d26add8a427e57e56
+9ed86ac45de48a878da893bf1e3506e3c0579c9ffb1c4253cf2376e26f8d531492f3af0e01e87b
+c50ee2d3a5d986006b7308bbbc4f02b06af57bb0eeb7800aef214f39b121fae6735b313eb224e6
+6869ecc4060e43015e263a33101d1b76ae7394314668ac016ff86643fcd7f55e72944759ad3770
+032b7ac20f635d7295045464b0692951a9956b11b93b4b15d5e804d2df50f9c7e7bf702aea3d1a
+595e79581993ab16e62f8c3c581bcc1770ba051427cefc3c516a56adff1920bb53d98695169396
+d272e663b77c8464a6f1dda0c1277861b58e08d9c1e22d55b8b239a4af0c452eb77b9eb60b046d
+cedf13de9f94ee7b81cb63cc26610e39ae4f6a3753e96969e6b8b39f80d0f9c61fbaeee1500af4
+dc0545bd02c0e6067236ef014b547db11c0fc058246b3b47579429cd59bdcdf5106b7f250bb0f1
+ffcaa86c9441dd25d65cc82a2c0a9e482f335948a0b713279201a27c5bd6b3912477f0fb1fc425
+b2df945884c27f5cace1e9aaa293547f0af35e760ad363f6f038b806e18440e4cc109ee4441df5
+202290c402cb0632bda6a7ab34daf754f7ada49ef71d4f8ba125eb5ae1f438d6890a22fce6a53c
+0a0d331f1d74c5dbabcb85793e916f09fcccecccf568486568f3c88cf7d0a0ab0c2b469e33ea2a
+066de9d061c4188f99f5696d96b76cad67f2eb27ac3599f313aad21ad52b6e89c3373973325d83
+26fe39d7c06ac38056de8852adea8fa99594e1daa5d7c23817bb9212daf7e88d81821792eb738a
+807e2a83f1d6cce60b82e8b8cefeb3fd631466fdcd1a6b8fbd7f54cf61a5370f3d09336f16400a
+e26bbaabf37722404257949d6c8eb576c66aa43208615dbd277b88581539eb4f229e049b5fa820
+555bb3c723767f0f1ce49e0ae06b769a8e0353e075af8384ee5d6667575133899771d5613b831e
+9fa76ee81f6599027743e31a3291654d9ee44fe2e8164ea5d0c6422a5a88f01c801b8e3f03bc14
+a6142e08580c74a80fbc279e0659fdf0123ea8c8f68578b42a15889917716a544ca79fced0ac96
+7c34db50b953574bb4e5179da2d731889365f26a7d5ea817b4994ddcc90b4e74a73bed7187fc9d
+c6ce972f9a34a1fb6701712e286563793fb3991a70cfdd0a1d68118ac08ffb09d2a8e94d0adbad
+744008248276f1f54b5471683988aa2fdac18d7ecca5364e355abe878635910f2e7fb023d70cec
+697dfa69649d25738c9057a93972ce83803abef20b0d5bbdb6206aa975f8cf240dda20216a18b1
+42b4340af8e8a773910b93ad510749e115d525d04fa7529fc116ca27a9c007e8031f603b7317ab
+59d8c15d62c8535d095aa709f8be1bc2e22fba7a8e04622f0b0e9add797c34c43fc4e50af570e7
+9b3700b5491f5cb6d4bb42627082ca3a4a3dca86627585de65e24d2b6619bff6d63b5b52feb6bb
+108c02704d0f653e8c15086a76a7d7c48fb0fe0e0563623114a0c0068ce7df5a404cb9b8a3ab11
+275569c081ae939226de44f13fa069ae5575660e67147a6e9968e8f58316c6554d04dfbff93ab8
+5853fa317dbaccf1b6367ce77ff4b9d37ee373a15de1db32391ce9b672d51b2e5a28d5080493fb
+5c2e457d7a92dcf0c8c45293e1f8796523b28e1b3cb1dcdb42ca97f63ab823f32493d744bc9e11
+88c643b7c2bd28586ad264cd2e3e4333b25ef80530d041ca215fb7dd726dcb1b4c31debbfbc4a5
+33a2deb26a550a7bf6eb039f4d5dc1629869f86ad72f5994457dd36bfdbfbfe29ae892ed7e2a43
+81100efe4be4dcecc89dab718be1f9ac66475f78f52fa4f82185664d43bad7e30a49fbd004d4c9
+cf06ec8f4f621c6e36c25943f5a6368bae7eb269a2e873afad321efe4378d84d6c6a2de069fb94
+81daa671ac88f5885f3921f788dfe88f366f043c35054cca3e8a63206106d0753818e3d69e99d6
+09ad6c6e1df916733ccaa7b1aca153949adf79aa063812b9bfaa67b05e894ffc6a7b35b0af3707
+d79097e2e26364ee15189fa44aae86faff918af13a7eb6bb6e864dc9a8410022a404e8442bdd9d
+875a8a60bdb75932a105e27f918ded6c44828fbfbf2421c79a85dd2b2627524793fca231d6b11d
+0399394b942dab7fe2b4971f5bc73ab84688ec06504fd47a51087dcb18fc668b0cc0a999e90651
+748905da4f8e8079de2df05f8f7da60d924beae04b5a2ee630a2dfb01c87a8f4d1d821dc94ee43
+30f49dbb8a6c0efd8cc0e47a60f806172cefca27ef344916b3547e7b5b1d42ab092c9c4216130d
+854da1925088776a24ae2ac67faf9478d785db91e7ee56a1b7f31e39714b9a034f2abbbc5ec181
+e3f90889600e8feed8c09d020bd92f06658b519121626d6aae76325d37ca8671681576a6a336d6
+5a1ffc9a34974e76f26e896363182aec95a66b7b588b417be9afa966413353843c4eeca03163fd
+60a47809b8c516203650f9e885c8d987964241538cf84859b14c68f717e7498da6b4fa98e83d98
+221c75c33dd846934bd53d24273bb70b89e62691b4f7bed83db4da4207aba732f6cc842287e1ba
+21480cc3d03207509e51d0cd30aac2393e04ca2091058e7ab0598b6de0228c8e9430bd11f7faef
+19911351d8f4c85d2afc9c2757de4e672126ece68636f2b4714cc2ff94278c8bd7c84cd21eb8d9
+6e492be91d3e606e4a22b17129ae4139894f2bc15033e04dd1f4d6401093739cc9ac5cc713406c
+7c432bbb3786d1ea061b77ce2bb2e41880e8ea11a683bc40ff554cd37721e8e2c86c0b0119c61c
+7838b88493d382c1358bd7d2e7c0435913ba02a0a7a0a6acd735b9b038088ffe50a25b4ff77a33
+a1414a906881cf15931076dfa27d52edb47150b23cb8650c6de1820cb156fa4037030dc06fd5e7
+62a6b912731be73d375ae7f64702dc2167bd02e84b8007780706ccf30898c702b614647c328cb4
+bc68f433acf6700000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+cleartomark
+%%EndResource
+%%BeginResource: font f-0-1
+%!FontType1-1.1 f-0-1 1.0
+11 dict begin
+/FontName /f-0-1 def
+/PaintType 0 def
+/FontType 1 def
+/FontMatrix [0.001 0 0 0.001 0 0] readonly def
+/FontBBox {0 0 516 284                                       } readonly def
+/Encoding 256 array
+0 1 255 {1 index exch /.notdef put} for
+dup 1 /uni2212 put
+readonly def
+currentdict end
+currentfile eexec
+f983ef0097ece636fb4a96c74d26ab84185f6dfa4a16a7a1c27bbe3f1156aea698df336d20b467
+b10e7f33846656653c5ac6962759d3056cbdb3190bac614b984bf5a132dc418192443014ba63de
+800d392b6fea026574bb2535fd7bb5338f35bf15a88ea328fdaa49670c7852e3d060f3c5d6b07f
+2ef6d0f22646c5d18e19a2ae3ee120390f6dd96f76dcf1e127de5e9299077a00c17c0d71e36e5b
+9d5ec58fceda57739a6a4214d4b79d6c48d2784b60c320323c7acddddf34db833cac0cf109f799
+69d114a330d372e5c978a66acc84e3fe5557f6240856a013ffaa0199444e5c5036f775eba4a5c5
+8cde66cf604b9aca2178431127b8a1ff7ed633a65c04600af5f573483112251cae134058d6a192
+3c6b565d778d9618b31789d664bb543a0e576f252e8520c2d0698c337b75c6632fc7d6cc6dce2a
+99711adacc954025343a4c35da8cec4918d7fe142feb0d1d15f1207347eb8a0634761511624620
+314a204ca45d74957a38a184114c9497c751fc2366eee90d56fb5a9054f90264a379fc8825e0c3
+10582231d8a44f89ffcd25915fccf8a88d7879d35d960519eb156983713fea7736d25e1cda4964
+fd538b570063bce032e5958827749f29b27937f4a99323db13b96f2b80a428d2d133aa0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+cleartomark
+%%EndResource
+%%EndSetup
 %%Page: 1 1
-bp
-/bg { 1 1 1 srgb } def
-0.00 0.00 531.00 360.00 r p2
-0.00 0.00 531.00 360.00 cl
-0 0 0 srgb
-0.75 setlinewidth
-[] 0 setdash
-1 setlinecap
-1 setlinejoin
-10.00 setmiterlimit
-np
-75.40 73.44 m
-378.70 0 l
-o
-np
-75.40 73.44 m
-0 -7.20 l
-o
-np
-151.14 73.44 m
-0 -7.20 l
-o
-np
-226.88 73.44 m
-0 -7.20 l
-o
-np
-302.62 73.44 m
-0 -7.20 l
-o
-np
-378.36 73.44 m
-0 -7.20 l
-o
-np
-454.10 73.44 m
-0 -7.20 l
-o
-/Font1 findfont 12 s
-75.40 47.52 (50) .5 0 t
-151.14 47.52 (100) .5 0 t
-226.88 47.52 (150) .5 0 t
-302.62 47.52 (200) .5 0 t
-378.36 47.52 (250) .5 0 t
-454.10 47.52 (300) .5 0 t
-np
-59.04 96.91 m
-0 188.10 l
-o
-np
-59.04 96.91 m
--7.20 0 l
-o
-np
-59.04 134.53 m
--7.20 0 l
-o
-np
-59.04 172.15 m
--7.20 0 l
-o
-np
-59.04 209.77 m
--7.20 0 l
-o
-np
-59.04 247.39 m
--7.20 0 l
-o
-np
-59.04 285.01 m
--7.20 0 l
-o
-41.76 96.91 (0.800) .5 90 t
-41.76 172.15 (0.810) .5 90 t
-41.76 247.39 (0.820) .5 90 t
-np
-59.04 73.44 m
-441.72 0 l
-0 227.52 l
--441.72 0 l
-0 -227.52 l
-o
-0.00 0.00 531.00 360.00 cl
-/Font1 findfont 12 s
-0 0 0 srgb
-191.86 18.72 (# of w) 0 ta
--0.120 (ord embedding dimensions) tb gr
-12.96 187.20 (F1-Measure) .5 90 t
-59.04 73.44 500.76 300.96 cl
-0 1 0 srgb
-1.12 setlinewidth
-[] 0 setdash
-1 setlinecap
-1 setlinejoin
-10.00 setmiterlimit
-np
-82.46 261.04 m
-61.62 -12.25 l
-o
-np
-158.31 248.10 m
-137.15 13.63 l
-o
-np
-309.68 261.04 m
-137.36 -27.29 l
-o
-/bg { 0 1 0 srgb } def
-np
- 72.70 262.44 m
-2.70 2.70 l
-2.70 -2.70 l
--2.70 -2.70 l
-cp p2
-np
- 148.44 247.39 m
-2.70 2.70 l
-2.70 -2.70 l
--2.70 -2.70 l
-cp p2
-np
- 299.92 262.44 m
-2.70 2.70 l
-2.70 -2.70 l
--2.70 -2.70 l
-cp p2
-np
- 451.40 232.34 m
-2.70 2.70 l
-2.70 -2.70 l
--2.70 -2.70 l
-cp p2
-/bg { 1 0 0 srgb } def
-np
- 451.40 285.01 m
-2.70 2.70 l
-2.70 -2.70 l
--2.70 -2.70 l
-cp p2
-1 0 0 srgb
-0.75 setlinewidth
-[] 0 setdash
-454.10 285.01 4.05 c p1
-/Font1 findfont 8 s
-0 0 0 srgb
-454.10 273.02 (0.825) .5 0 t
-75.40 269.64 (0.822) .5 0 t
-151.14 254.59 (0.82) .5 0 t
-302.62 269.64 (0.822) .5 0 t
-454.10 239.54 (0.818) .5 0 t
-0 0 1 srgb
-1.12 setlinewidth
-[] 0 setdash
-np
-80.51 169.70 m
-65.52 65.09 l
-o
-np
-157.59 236.66 m
-138.58 -68.83 l
-o
-np
-309.68 166.03 m
-137.36 27.29 l
-o
-/bg { 0 0 1 srgb } def
-np
- 75.40 168.83 m
-3.64 -6.30 l
--7.28 0 l
-cp p2
-np
- 151.14 244.07 m
-3.64 -6.30 l
--7.28 0 l
-cp p2
-np
- 302.62 168.83 m
-3.64 -6.30 l
--7.27 0 l
-cp p2
-np
- 454.10 198.92 m
-3.64 -6.30 l
--7.27 0 l
-cp p2
-/bg { 0.5412 0.1686 0.8863 srgb } def
-np
- 454.10 221.49 m
-3.64 -6.29 l
--7.27 0 l
-cp p2
-0 0 0 srgb
-454.10 205.31 (0.816) .5 0 t
-75.40 152.64 (0.809) .5 0 t
-151.14 227.88 (0.819) .5 0 t
-302.62 152.64 (0.809) .5 0 t
-454.10 182.74 (0.813) .5 0 t
-/bg { 1 1 1 srgb } def
-0.75 setlinewidth
-[] 0 setdash
-335.95 149.58 161.10 -72.00 r p3
-0 0 1 srgb
-1.12 setlinewidth
-[] 0 setdash
-np
-346.75 135.18 m
-21.60 0 l
-o
-0 1 0 srgb
-np
-346.75 120.78 m
-21.60 0 l
-o
-0.5412 0.1686 0.8863 srgb
-np
-346.75 106.38 m
-21.60 0 l
-o
-1 0 0 srgb
-np
-346.75 91.98 m
-21.60 0 l
-o
-/Font1 findfont 12 s
-0 0 0 srgb
-379.15 130.87 (tr) 0 ta
--0.120 (ained GloV) tb
--0.960 (e) tb gr
-379.15 116.47 (pre-tr) 0 ta
--0.120 (ained GloV) tb
--0.960 (e) tb gr
-379.15 102.07 (tr) 0 ta
--0.120 (ained w) tb
--0.120 (ord2v) tb
--0.300 (ec) tb gr
-379.15 87.67 (pre-tr) 0 ta
--0.120 (ained w) tb
--0.120 (ord2v) tb
--0.300 (ec) tb gr
-ep
+%%BeginPageSetup
+%%PageBoundingBox: 0 -1 531 296
+%%EndPageSetup
+q 0 -1 531 297 rectclip q
+1 g
+0 295.932 531 -295.934 re f
+0 g
+0.75 w
+1 J
+1 j
+[] 0.0 d
+10 M q 1 0 0 1 0 295.93222 cm
+75.398 -236.223 m 454.102 -236.223 l S Q
+q 1 0 0 1 0 295.93222 cm
+75.398 -236.223 m 75.398 -243.422 l S Q
+q 1 0 0 1 0 295.93222 cm
+151.141 -236.223 m 151.141 -243.422 l S Q
+q 1 0 0 1 0 295.93222 cm
+226.879 -236.223 m 226.879 -243.422 l S Q
+q 1 0 0 1 0 295.93222 cm
+302.621 -236.223 m 302.621 -243.422 l S Q
+q 1 0 0 1 0 295.93222 cm
+378.359 -236.223 m 378.359 -243.422 l S Q
+q 1 0 0 1 0 295.93222 cm
+454.102 -236.223 m 454.102 -243.422 l S Q
+BT
+12 0 0 12 68.7281 33.7911 Tm
+/f-0-0 1 Tf
+[(50)-4922(100)-4644(150)]TJ
+18.657 0 Td
+[(200)-4644(250)-4644(300)]TJ
+ET
+q 1 0 0 1 0 295.93222 cm
+59.039 -212.75 m 59.039 -24.652 l S Q
+q 1 0 0 1 0 295.93222 cm
+59.039 -212.75 m 51.84 -212.75 l S Q
+q 1 0 0 1 0 295.93222 cm
+59.039 -175.133 m 51.84 -175.133 l S Q
+q 1 0 0 1 0 295.93222 cm
+59.039 -137.512 m 51.84 -137.512 l S Q
+q 1 0 0 1 0 295.93222 cm
+59.039 -99.891 m 51.84 -99.891 l S Q
+q 1 0 0 1 0 295.93222 cm
+59.039 -62.27 m 51.84 -62.27 l S Q
+q 1 0 0 1 0 295.93222 cm
+59.039 -24.652 m 51.84 -24.652 l S Q
+BT
+0 12 -12 0 41.7602 68.1696 Tm
+/f-0-0 1 Tf
+[(0.800)-3768(0.810)-3768(0.820)]TJ
+ET
+q 1 0 0 1 0 295.93222 cm
+59.039 -8.699 441.723 -227.523 re S Q
+BT
+12 0 0 12 191.86 4.9911 Tm
+/f-0-0 1 Tf
+[(# of w)10(ord embedding dimensions)]TJ
+0 12 -12 0 12.9602 139.6262 Tm
+(F1)Tj
+/f-0-1 1 Tf
+<01>Tj
+/f-0-0 1 Tf
+(Measure)Tj
+ET
+Q q
+59.039 287.229 441.723 -227.52 re W n
+q
+59 287.932 442 -229 re W n
+[ 1 0 0 1 0 -0.0677795 ] concat
+  q
+0.0509804 1 0 rg
+1.12 w
+1 J
+1 j
+[] 0.0 d
+10 M q 1 0 0 1 0 296 cm
+82.461 -48.621 m 144.078 -60.871 l S Q
+q 1 0 0 1 0 296 cm
+158.309 -61.562 m 295.461 -47.93 l S Q
+q 1 0 0 1 0 296 cm
+309.68 -48.621 m 447.039 -75.91 l S Q
+72.699 248.777 m 75.398 251.48 l 78.102 248.777 l 75.398 246.078 l f
+148.441 233.73 m 151.141 236.43 l 153.84 233.73 l 151.141 231.027 l f
+299.922 248.777 m 302.621 251.48 l 305.32 248.777 l 302.621 246.078 l f
+451.398 218.68 m 454.102 221.379 l 456.801 218.68 l 454.102 215.98 l f
+1 0 0 rg
+451.398 271.348 m 454.102 274.051 l 456.801 271.348 l 454.102 268.648 l
+ f
+0.75 w
+q 1 0 0 1 0 296 cm
+458.148 -24.652 m 458.148 -22.414 456.336 -20.602 454.102 -20.602 c 451.863
+ -20.602 450.051 -22.414 450.051 -24.652 c 450.051 -26.887 451.863 -28.699
+ 454.102 -28.699 c 456.336 -28.699 458.148 -26.887 458.148 -24.652 c S Q
+0 g
+BT
+8 0 0 8 444.093 259.35898 Tm
+/f-0-0 1 Tf
+(0.825)Tj
+-47.337502 -0.42251 Td
+(0.822)Tj
+9.745514 -1.88125 Td
+(0.82)Tj
+18.657 1.88125 Td
+(0.822)Tj
+18.935001 -3.7625 Td
+(0.818)Tj
+ET
+0 0 1 rg
+1.12 w
+q 1 0 0 1 0 296 cm
+80.512 -139.961 m 146.031 -74.871 l S Q
+q 1 0 0 1 0 296 cm
+157.59 -73 m 296.172 -141.832 l S Q
+q 1 0 0 1 0 296 cm
+309.68 -143.633 m 447.039 -116.34 l S Q
+75.398 155.168 m 79.039 148.867 l 71.762 148.867 l f
+151.141 230.41 m 154.781 224.109 l 147.5 224.109 l f
+302.621 155.168 m 306.262 148.867 l 298.988 148.867 l f
+454.102 185.258 m 457.738 178.957 l 450.469 178.957 l f
+0.537255 0.156863 0.894118 rg
+454.102 207.828 m 457.738 201.539 l 450.469 201.539 l f
+0 g
+BT
+8 0 0 8 444.093 191.64898 Tm
+/f-0-0 1 Tf
+(0.816)Tj
+-47.337502 -6.583787 Td
+(0.809)Tj
+9.467525 9.405025 Td
+(0.819)Tj
+18.935001 -9.405025 Td
+(0.809)Tj
+18.935 3.7625 Td
+(0.813)Tj
+ET
+1 g
+335.949 135.918 161.102 -72 re f
+0 g
+0.75 w
+q 1 0 0 1 0 296 cm
+335.949 -160.082 161.102 -72 re S Q
+0 0 1 rg
+1.12 w
+q 1 0 0 1 0 296 cm
+346.75 -174.48 m 368.352 -174.48 l S Q
+0.0509804 1 0 rg
+q 1 0 0 1 0 296 cm
+346.75 -188.883 m 368.352 -188.883 l S Q
+0.537255 0.156863 0.894118 rg
+q 1 0 0 1 0 296 cm
+346.75 -203.281 m 368.352 -203.281 l S Q
+1 0 0 rg
+q 1 0 0 1 0 296 cm
+346.75 -217.68 m 368.352 -217.68 l S Q
+0 g
+BT
+12 0 0 12 379.15 117.20898 Tm
+/f-0-0 1 Tf
+[(tr)10(ained GloV)80(e)]TJ
+0 -1.2 Td
+(pre)Tj
+/f-0-1 1 Tf
+<01>Tj
+/f-0-0 1 Tf
+[(tr)10(ained GloV)79(e)]TJ
+0 -1.2 Td
+[(tr)10(ained w)10(ord2v)24(ec)]TJ
+0 -1.2 Td
+(pre)Tj
+/f-0-1 1 Tf
+<01>Tj
+/f-0-0 1 Tf
+[(tr)10(ained w)10(ord2v)24(ec)]TJ
+ET
+  Q
+Q
+Q Q
+showpage
 %%Trailer
-%%Pages: 1
+end restore
 %%EOF

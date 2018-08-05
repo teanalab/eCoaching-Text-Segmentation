@@ -34,4 +34,7 @@ def create_roc_csv(path):
 # call above functions for the creation of new files
 create_roc_csv('roc/base')
 create_roc_csv('roc/propose')
+create_roc_csv('roc/pos')
+create_roc_csv('roc/punctuation')
+
 print('conversion is done!')
