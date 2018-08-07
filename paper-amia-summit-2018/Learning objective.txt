@@ -1,0 +1,6 @@
+
+After participating in this session, the learner should be better able to:
+
+Learn challenges and possible solutions in the segmentation of clinical exchange in the context of electronically delivered behavior interventions.
+Recognize and select state-of-the-art machine learning methods to address the problem of e-Coaching email segmentation.
+Develop a software pipeline after integrating proposed models with auto coding classifiers to build a fully automated e-Coaching intervention.
