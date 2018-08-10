@@ -24,7 +24,7 @@ points(x = 300, y = 0.816, col = "blueviolet", pch = 17, cex = 1, lwd=1)
 text(300, 0.816, labels = c('0.816'), pos = 1, cex = 0.7)
 textxy(data$dim, data$tf1, labs=data$tf1, pos=1,  cex = 0.7)
 
-legend(222, 0.807, c("trained GloVe", "pre-trained GloVe", "trained word2vec", "pre-trained word2vec"), 
+legend(211, 0.807, c("corpus-based GloVe", "pre-trained GloVe", "corpus-based word2vec", "pre-trained word2vec"), 
        lty=c(1,1,1), col=c('blue', 'green', 'blueviolet', 'red'), cex=1, lwd=1.5)
 
 head(data)
