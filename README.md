@@ -1,11 +1,12 @@
 # eCoaching Text Segmentation
 
-We propose Deep neural approach for the segmentation of text collected from eCoaching.
+We propose deep neural approach for the segmentation of text collected from eCoaching.
 
 
 # 4 Models
-** deepecoachts: MLP, BRNN, CRNN
-** crf: CRF
+
+	* deepecoachts: MLP, BRNN, CRNN
+	* crf: CRF
 
 # Dependencies
 
