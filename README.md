@@ -3,12 +3,12 @@
 We propose deep neural approach for the segmentation of text collected from eCoaching.
 
 
-# 4 Models
+## 4 Models
 
-	* deepecoachts: MLP, BRNN, CRNN
-	* crf: CRF
+* deepecoachts: MLP, BRNN, CRNN
+* crf: CRF
 
-# Dependencies
+## Dependencies
 
 See `requirements.txt` (you can easily install them with `pip3 install requirements.txt`)
 
