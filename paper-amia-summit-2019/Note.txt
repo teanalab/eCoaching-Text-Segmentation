@@ -1,4 +1,8 @@
-The decreased AUPRs are consistent with BRNN and CRNN when POS features are used in combination with other features, suggesting that POS features are not effective in recurrent neural networks. This may be related to the fact that LSTM units are very complex and need more data to be able to converge. 
+The decreased AUPRs are consistent with BRNN and CRNN when POS features are used in combination with other features, suggesting that POS features are not effective in recurrent neural networks. LSTM units are very complex and need more data to be able to converge  
 
 We believe that the BRNN and CRNN performed poorly with POS features because POS tagging is a supervised learning solution that uses features like the previous word and next word. Since we already considered neighbor words by utilizing bi-directional RNN, it failed to achieve good results with redundant information.
+
+This may be related to the fact that MLP poorly learned new segment class and classiified segment words as non-segment words in approximately 40\% of the time.
+
+Emails: Patients = 281, Counselor = 330, Total = 611
 
