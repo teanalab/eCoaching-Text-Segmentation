@@ -26,3 +26,8 @@ all:
 0.842
 0.877
 0.867
+
+BRNN
+MLP
+CRF
+CRNN
